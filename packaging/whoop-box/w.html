@@ -1,0 +1,249 @@
+<!doctype html><html lang="ar"><meta charset="utf-8"><style>
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:'Poppins';font-weight:500 600;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf)}
+@font-face{font-family:'Poppins';font-weight:700 900;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}
+@font-face{font-family:'Anton';src:url(../pkg/anton.woff2)}
+body{margin:0;background:#555;font-family:'Cairo'}
+/* page = manufacturer die at 300dpi: 3530 x 4072 px */
+.die{position:relative;width:3530px;height:4072px;overflow:hidden;background:#fff;--c:__C__;--tint:__TINT__;--fg:__FG__;--fg2:__FG2__}
+.p{position:absolute;overflow:hidden;box-sizing:border-box}
+/* panels (x from die): glueL 315-553, front 553-1344, side 1344-1587, back 1587-2378, glueR 2378-2567 ; body y 733-3198 */
+.glueL{left:280px;width:273px;top:733px;height:2465px}
+.front{left:553px;width:791px;top:733px;height:2465px}
+.side{left:1344px;width:243px;top:733px;height:2465px}
+.back{left:1587px;width:791px;top:733px;height:2465px}
+.glueR{left:2378px;width:224px;top:733px;height:2465px}
+.lidF{left:553px;width:791px;top:327px;height:406px}
+.lidB{left:1587px;width:791px;top:209px;height:524px}
+.tabS1{left:1344px;width:243px;top:512px;height:221px}
+.tabS2{left:1344px;width:243px;top:3198px;height:221px}
+.botF{left:553px;width:791px;top:3198px;height:455px}
+.botB{left:1587px;width:791px;top:3198px;height:227px}
+.en{font-family:'Poppins';direction:ltr}.an{font-family:'Anton';direction:ltr}.ar{direction:rtl}
+.abs{position:absolute}
+.img{position:absolute;filter:drop-shadow(0 22px 26px rgba(0,0,0,.30))}
+.qr{position:absolute;background:#fff;border-radius:12px;padding:8px}.qr img{display:block;width:100%}
+.icons{position:absolute;height:34px}
+.circ{display:inline-block;width:30px;height:30px;border:3px solid currentColor;border-radius:50%;vertical-align:middle;margin-left:10px}
+.vert{writing-mode:vertical-rl;transform:rotate(180deg)}
+.pill{position:absolute;border-radius:999px;padding:14px 34px;font-family:Poppins;font-weight:700;letter-spacing:4px;font-size:26px;white-space:nowrap}
+
+/* ===== 1 BRAND ===== */
+.W1 .p{background:#F4F1F2;color:#1E0B14}
+.W1 .lidF,.W1 .botF,.W1 .tabS1,.W1 .tabS2,.W1 .glueL,.W1 .glueR,.W1 .lidB,.W1 .botB{background:#720842}
+.W1 .side{background:#720842;color:#fff}
+.W1 .gold{position:absolute;height:3px;background:#C9A24B}
+.W1 .bar{position:absolute;left:0;right:0;bottom:0;height:300px;background:#720842;color:#fff}
+/* ===== 2 BOLD COLOUR ===== */
+.W2 .p{background:var(--c);color:var(--fg)}
+.W2 .lidF,.W2 .botF,.W2 .lidB,.W2 .botB,.W2 .tabS1,.W2 .tabS2,.W2 .glueL,.W2 .glueR{background:var(--c)}
+.W2 .side{background:var(--fg);color:var(--c)}
+.W2 .big{font-family:Anton;font-size:560px;line-height:.8;letter-spacing:-8px;color:var(--fg);opacity:.14}
+/* ===== 3 ARABIC + SADU ===== */
+.W3 .p{background:#F6F2EA;color:#1A1410}
+.W3 .lidF,.W3 .botF,.W3 .lidB,.W3 .botB,.W3 .tabS1,.W3 .tabS2,.W3 .glueL,.W3 .glueR{background:#EAE3D5}
+.W3 .hero{font-family:Cairo;font-weight:900;font-size:112px;line-height:1;direction:rtl;letter-spacing:-2px;white-space:nowrap}
+.W3 .sadu{position:absolute;left:0;right:0;height:120px;background:
+ repeating-linear-gradient(90deg,var(--c) 0 36px,transparent 36px 72px),
+ repeating-linear-gradient(90deg,transparent 0 18px,#720842 18px 54px,transparent 54px 72px);
+ background-size:72px 100%;}
+.W3 .sadu2{position:absolute;left:0;right:0;height:26px;background:repeating-linear-gradient(45deg,#720842 0 20px,#C9A24B 20px 40px)}
+.W3 .side{background:var(--c);color:var(--fg)}
+/* ===== 4 WRAP STRAP ===== */
+.W4 .p{background:#F1EFEB;color:#141414}
+.W4 .lidF,.W4 .botF,.W4 .lidB,.W4 .botB,.W4 .tabS1,.W4 .tabS2,.W4 .glueL,.W4 .glueR{background:#F1EFEB}
+.W4 .strap{position:absolute;left:0;right:0;height:230px;background:var(--c);box-shadow:0 20px 30px rgba(0,0,0,.22);
+ background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 6px,transparent 6px 14px),repeating-linear-gradient(-45deg,rgba(0,0,0,.10) 0 6px,transparent 6px 14px)}
+.W4 .mag{font-family:Anton;font-size:190px;line-height:.9;letter-spacing:2px}
+/* ===== 5 EDITORIAL SPLIT ===== */
+.W5 .p{background:#fff;color:#111}
+.W5 .lidF,.W5 .botF,.W5 .tabS1,.W5 .tabS2,.W5 .glueL,.W5 .glueR,.W5 .lidB,.W5 .botB{background:var(--c)}
+.W5 .block{position:absolute;left:0;right:0;top:0;height:1500px;background:var(--c);clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
+.W5 .out{font-family:Anton;font-size:420px;line-height:.85;color:transparent;-webkit-text-stroke:4px var(--fg);opacity:.55}
+.W5 .side{background:#111;color:#fff}
+</style>
+
+<div class="die W1" id="W1">
+ <div class="p lidF"></div><div class="p lidB"></div><div class="p tabS1"></div><div class="p tabS2"></div><div class="p botF"></div><div class="p botB"></div><div class="p glueL"></div><div class="p glueR"></div>
+ <div class="p front">
+  <img class="abs" src="../pkg/logo-maroon.png" style="left:70px;top:90px;width:200px">
+  <div class="abs en" style="right:70px;top:120px;font-weight:700;letter-spacing:6px;font-size:24px;color:#720842">__MATU__</div>
+  <div class="gold" style="left:70px;right:70px;top:230px"></div>
+  <div class="abs ar" style="left:70px;right:70px;top:270px;font-size:50px;font-weight:900;line-height:1.15;white-space:nowrap">__ARTITLE__</div>
+  <div class="abs ar" style="left:70px;right:70px;top:370px;font-size:30px;font-weight:600;color:#6B4A5A">__ARSUB__</div>
+  <img class="img" src="__IMG0__" style="left:20px;top:560px;width:760px">
+  <img class="img" src="__IMG0__" style="left:-120px;top:1250px;width:760px;transform:rotate(14deg)">
+  <div class="bar">
+   <div class="abs en" style="left:70px;top:70px;font-weight:700;font-size:44px">__COL__</div>
+   <div class="abs en" style="left:70px;top:135px;font-weight:600;font-size:22px;letter-spacing:5px;opacity:.8">__MATU__ · FOR 5.0 &amp; MG</div>
+   <div class="abs en" style="right:70px;top:84px;font-weight:700;font-size:22px;letter-spacing:4px;opacity:.85">974GROUP.NET</div>
+   <div class="gold" style="left:70px;right:70px;top:36px;opacity:.9"></div>
+  </div>
+ </div>
+ <div class="p side">
+  <img class="abs" src="../pkg/logo-white.png" style="left:50%;top:80px;width:150px;transform:translateX(-50%)">
+  <div class="abs en vert" style="left:50%;top:50%;transform:translate(-50%,-50%) rotate(180deg);font-weight:700;font-size:48px;letter-spacing:6px;white-space:nowrap">__COL__ · __MATU__</div>
+  <div class="gold" style="left:40px;right:40px;bottom:80px"></div>
+ </div>
+ <div class="p back">
+  <img class="abs" src="../pkg/logo-maroon.png" style="left:70px;top:90px;width:160px">
+  <img class="img" src="__IMG2__" style="right:70px;top:80px;width:200px;filter:drop-shadow(0 12px 14px rgba(0,0,0,.25))">
+  <div class="abs en" style="left:70px;top:280px;font-weight:700;font-size:40px;line-height:1.2">__COL__<br><span style="font-weight:600;font-size:26px;color:#6B4A5A;letter-spacing:3px">__MATU__</span></div>
+  <div class="gold" style="left:70px;right:70px;top:760px"></div>
+  <div class="abs ar" style="left:70px;right:70px;top:800px;font-size:34px;font-weight:800;line-height:1.7">صُنع بفخر من قطر.<br><span style="font-weight:600;color:#4A3340">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي، اختيارك يعني لنا الكثير.</span></div>
+  <div class="abs en" style="left:70px;right:70px;top:1120px;font-size:24px;font-weight:500;line-height:1.55;color:#4A3340">Proudly founded in Qatar. We make premium bands that elevate your everyday style. Thank you for supporting a local business — your choice means the world to us.</div>
+  <div class="abs en" style="left:70px;top:1500px;font-weight:700;font-size:36px;line-height:2.2;color:#1E0B14"><div>5.0 <span class="circ"></span></div><div>MG <span class="circ"></span></div></div>
+  <div class="qr" style="left:70px;bottom:400px;width:240px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12)"><img src="../pkg/qr.png"></div>
+  <div class="abs ar" style="left:350px;bottom:580px;font-size:24px;font-weight:700;color:#4A3340">امسح وتسوّق مباشرة</div>
+  <div class="abs en" style="left:350px;bottom:430px;font-weight:700;font-size:24px;line-height:1.7">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <div class="bar" style="height:300px">
+   <img class="icons" src="../pkg/icons-white.png" style="left:70px;top:90px;height:44px">
+   <div class="abs en" style="left:70px;top:170px;font-weight:700;font-size:20px;letter-spacing:4px;opacity:.85">MADE IN CHINA · DESIGNED IN QATAR</div>
+   <div class="gold" style="left:70px;right:70px;top:36px;opacity:.9"></div>
+  </div>
+ </div>
+</div>
+
+<div class="die W2" id="W2">
+ <div class="p lidF"></div><div class="p lidB"></div><div class="p tabS1"></div><div class="p tabS2"></div><div class="p botF"></div><div class="p botB"></div><div class="p glueL"></div><div class="p glueR"></div>
+ <div class="p front">
+  <div class="abs big" style="left:-20px;top:-60px;white-space:nowrap">__MATU__</div>
+  <div class="abs big vert" style="left:430px;top:900px;font-size:640px;white-space:nowrap">__MATU__</div>
+  <img class="abs" src="__LOGO__" style="left:70px;top:90px;width:300px">
+  <div class="abs en" style="left:70px;top:290px;font-weight:700;font-size:26px;letter-spacing:6px;opacity:.75">FOR 5.0 &amp; MG</div>
+  <img class="img" src="__IMG0__" style="left:-40px;top:560px;width:820px;transform:rotate(-8deg)">
+  <img class="img" src="__IMG0__" style="left:-180px;top:1330px;width:820px;transform:rotate(10deg)">
+  <div class="abs en" style="left:70px;bottom:120px;font-weight:700;font-size:72px;line-height:1">__COL__</div>
+  <div class="abs en" style="left:70px;bottom:70px;font-weight:600;font-size:24px;letter-spacing:6px;opacity:.75">__MATU__ BAND</div>
+  <div class="abs en" style="right:70px;bottom:80px;font-weight:700;font-size:22px;letter-spacing:4px;opacity:.8">974GROUP.NET</div>
+ </div>
+ <div class="p side">
+  <div class="abs an vert" style="left:50%;top:50%;transform:translate(-50%,-50%) rotate(180deg);font-size:150px;white-space:nowrap;letter-spacing:4px">__COL__ __MATU__</div>
+ </div>
+ <div class="p back">
+  <div class="abs big" style="left:-20px;bottom:-120px;white-space:nowrap;font-size:700px">974</div>
+  <img class="abs" src="__LOGO__" style="left:70px;top:90px;width:200px">
+  <img class="img" src="__IMG2__" style="right:70px;top:80px;width:210px;filter:drop-shadow(0 12px 14px rgba(0,0,0,.35))">
+  <div class="abs en" style="left:70px;top:300px;font-weight:700;font-size:48px;line-height:1.15">__COL__<br><span style="font-size:26px;letter-spacing:5px;opacity:.75;font-weight:600">__MATU__</span></div>
+  <div class="abs ar" style="left:70px;right:70px;top:820px;font-size:34px;font-weight:800;line-height:1.7">صُنع بفخر من قطر.<br><span style="font-weight:500;opacity:.85">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي.</span></div>
+  <div class="abs en" style="left:70px;right:70px;top:1110px;font-size:24px;font-weight:500;line-height:1.55;opacity:.85">Proudly founded in Qatar. Premium bands that elevate your everyday style. Thank you for supporting a local business.</div>
+  <div class="abs en" style="left:70px;top:1450px;font-weight:700;font-size:36px;line-height:2.2"><div>5.0 <span class="circ"></span></div><div>MG <span class="circ"></span></div></div>
+  <div class="qr" style="left:70px;bottom:90px;width:260px;padding:12px;border-radius:16px"><img src="../pkg/qr.png"></div>
+  <div class="abs ar" style="left:380px;bottom:290px;font-size:26px;font-weight:700;opacity:.9">امسح وتسوّق مباشرة</div>
+  <div class="abs en" style="left:380px;bottom:150px;font-weight:700;font-size:24px;line-height:1.7">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <img class="icons" src="__ICONS__" style="left:380px;bottom:96px;height:36px">
+  <div class="abs en" style="left:380px;bottom:60px;font-size:14px;letter-spacing:4px;opacity:.65">MADE IN CHINA · DESIGNED IN QATAR</div>
+ </div>
+</div>
+
+<div class="die W3" id="W3">
+ <div class="p lidF"></div><div class="p lidB"></div><div class="p tabS1"></div><div class="p tabS2"></div><div class="p botF"></div><div class="p botB"></div><div class="p glueL"></div><div class="p glueR"></div>
+ <div class="p front">
+  <img class="abs" src="../pkg/logo-black.png" style="left:70px;top:90px;width:200px">
+  <div class="abs en" style="right:70px;top:118px;font-weight:700;letter-spacing:6px;font-size:24px;color:#720842">__MATU__ · 5.0 &amp; MG</div>
+  <div class="abs hero" style="right:70px;top:270px">__ARHERO__</div>
+  <div class="abs ar" style="right:70px;left:70px;top:470px;font-size:34px;font-weight:600;color:#5A4A40">__ARSUB__</div>
+  <img class="img" src="__IMG0__" style="left:10px;top:700px;width:780px">
+  <img class="img" src="__IMG0__" style="left:-130px;top:1450px;width:780px;transform:rotate(12deg)">
+  <div class="sadu2" style="bottom:170px"></div>
+  <div class="sadu" style="bottom:50px"></div>
+  <div class="abs en" style="left:70px;bottom:190px;font-weight:700;font-size:28px;letter-spacing:5px;color:#720842;background:#F6F2EA;padding:4px 14px 4px 0">__COL__</div>
+ </div>
+ <div class="p side">
+  <img class="abs" src="__LOGO__" style="left:50%;top:80px;width:150px;transform:translateX(-50%)">
+  <div class="abs vert ar" style="left:50%;top:50%;transform:translate(-50%,-50%) rotate(180deg);font-weight:900;font-size:120px;white-space:nowrap;writing-mode:vertical-rl">__ARHERO__</div>
+  <div class="abs en" style="left:50%;bottom:80px;transform:translateX(-50%);font-weight:700;font-size:22px;letter-spacing:4px;white-space:nowrap">__COL__</div>
+ </div>
+ <div class="p back">
+  <div class="sadu2" style="top:0"></div>
+  <img class="abs" src="../pkg/logo-black.png" style="left:70px;top:110px;width:160px">
+  <img class="img" src="__IMG2__" style="right:70px;top:100px;width:200px;filter:drop-shadow(0 12px 14px rgba(0,0,0,.25))">
+  <div class="abs en" style="left:70px;top:300px;font-weight:700;font-size:40px;line-height:1.2">__COL__<br><span style="font-weight:600;font-size:26px;letter-spacing:3px;color:#5A4A40">__MATU__</span></div>
+  <div class="abs ar" style="left:70px;right:70px;top:820px;font-size:34px;font-weight:800;line-height:1.7">صُنع بفخر من قطر.<br><span style="font-weight:600;color:#5A4A40">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي، اختيارك يعني لنا الكثير.</span></div>
+  <div class="abs en" style="left:70px;right:70px;top:1140px;font-size:24px;font-weight:500;line-height:1.55;color:#5A4A40">Proudly founded in Qatar. We make premium bands that elevate your everyday style. Thank you for supporting a local business.</div>
+  <div class="abs en" style="left:70px;top:1480px;font-weight:700;font-size:36px;line-height:2.2"><div>5.0 <span class="circ"></span></div><div>MG <span class="circ"></span></div></div>
+  <div class="qr" style="left:70px;bottom:260px;width:240px;box-shadow:0 2px 10px rgba(0,0,0,.12)"><img src="../pkg/qr.png"></div>
+  <div class="abs ar" style="left:350px;bottom:440px;font-size:24px;font-weight:700;color:#5A4A40">امسح وتسوّق مباشرة</div>
+  <div class="abs en" style="left:350px;bottom:300px;font-weight:700;font-size:24px;line-height:1.7">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <img class="icons" src="../pkg/icons-dark.png" style="left:350px;bottom:245px;height:34px">
+  <div class="abs en" style="left:350px;bottom:210px;font-size:13px;letter-spacing:3px;color:#777">MADE IN CHINA · DESIGNED IN QATAR</div>
+  <div class="sadu" style="bottom:50px"></div>
+ </div>
+</div>
+
+<div class="die W4" id="W4">
+ <div class="p lidF"></div><div class="p lidB"></div><div class="p tabS1"></div><div class="p tabS2"></div><div class="p botF"></div><div class="p botB"></div><div class="p glueL"></div><div class="p glueR"></div>
+ <div class="p glueL"><div class="strap" style="top:1500px"></div></div>
+ <div class="p front">
+  <img class="abs" src="../pkg/logo-black.png" style="left:70px;top:90px;width:200px">
+  <div class="abs en" style="right:70px;top:118px;font-weight:700;letter-spacing:6px;font-size:24px;color:#444">FOR 5.0 &amp; MG</div>
+  <div class="abs mag" style="left:62px;top:250px">__MATU__</div>
+  <div class="abs ar" style="left:70px;right:70px;top:640px;font-size:34px;font-weight:600;color:#444">__ARSUB__</div>
+  <div class="strap" style="top:1500px"></div>
+  <img class="img" src="__IMG0__" style="left:10px;top:760px;width:780px">
+  <img class="img" src="__IMG0__" style="left:-120px;top:1380px;width:780px;transform:rotate(12deg)">
+  <div class="abs en" style="left:70px;top:1590px;font-weight:700;font-size:34px;letter-spacing:4px;color:var(--fg)">__COL__</div>
+  <div class="abs en" style="left:70px;bottom:80px;font-weight:700;font-size:22px;letter-spacing:4px;color:#444">974GROUP.NET</div>
+  <div class="abs en" style="right:70px;bottom:80px;font-weight:600;font-size:18px;letter-spacing:4px;color:#888">__MATU__ BAND</div>
+ </div>
+ <div class="p side">
+  <div class="strap" style="top:1500px"></div>
+  <div class="abs" style="left:50%;top:1570px;transform:translateX(-50%);width:120px;height:90px;border-radius:16px;background:#1b1b1b;box-shadow:inset 0 2px 0 rgba(255,255,255,.25),0 6px 12px rgba(0,0,0,.4)"></div>
+  <img class="abs" src="../pkg/logo-black.png" style="left:50%;top:80px;width:150px;transform:translateX(-50%)">
+  <div class="abs en vert" style="left:50%;top:700px;transform:translateX(-50%) rotate(180deg);font-weight:700;font-size:40px;letter-spacing:6px;white-space:nowrap;color:#444">__COL__</div>
+ </div>
+ <div class="p back">
+  <div class="strap" style="top:1500px;box-shadow:none"></div>
+  <img class="abs" src="../pkg/logo-black.png" style="left:70px;top:90px;width:160px">
+  <img class="img" src="__IMG2__" style="right:70px;top:80px;width:200px;filter:drop-shadow(0 12px 14px rgba(0,0,0,.25))">
+  <div class="abs en" style="left:70px;top:280px;font-weight:700;font-size:40px;line-height:1.2">__COL__<br><span style="font-weight:600;font-size:26px;letter-spacing:3px;color:#666">__MATU__</span></div>
+  <div class="abs ar" style="left:70px;right:70px;top:800px;font-size:34px;font-weight:800;line-height:1.7">صُنع بفخر من قطر.<br><span style="font-weight:500;color:#444">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي.</span></div>
+  <div class="abs en" style="left:70px;right:70px;top:1080px;font-size:24px;font-weight:500;line-height:1.55;color:#444">Proudly founded in Qatar. Premium bands that elevate your everyday style. Thank you for supporting a local business.</div>
+  <div class="abs en" style="left:70px;top:1800px;font-weight:700;font-size:36px;line-height:2.2"><div>5.0 <span class="circ"></span></div><div>MG <span class="circ"></span></div></div>
+  <div class="qr" style="right:70px;bottom:90px;width:240px;box-shadow:0 2px 10px rgba(0,0,0,.12)"><img src="../pkg/qr.png"></div>
+  <div class="abs ar" style="left:70px;bottom:300px;font-size:24px;font-weight:700;color:#444">امسح وتسوّق مباشرة</div>
+  <div class="abs en" style="left:70px;bottom:150px;font-weight:700;font-size:24px;line-height:1.7">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <img class="icons" src="../pkg/icons-dark.png" style="left:70px;bottom:96px;height:34px">
+  <div class="abs en" style="left:70px;bottom:60px;font-size:13px;letter-spacing:3px;color:#888">MADE IN CHINA · DESIGNED IN QATAR</div>
+ </div>
+ <div class="p glueR"><div class="strap" style="top:1500px"></div></div>
+</div>
+
+<div class="die W5" id="W5">
+ <div class="p lidF"></div><div class="p lidB"></div><div class="p tabS1"></div><div class="p tabS2"></div><div class="p botF"></div><div class="p botB"></div><div class="p glueL"></div><div class="p glueR"></div>
+ <div class="p front">
+  <div class="block"></div>
+  <div class="abs out" style="left:40px;top:60px;white-space:nowrap">974</div>
+  <img class="abs" src="__LOGO__" style="left:70px;top:90px;width:200px">
+  <div class="abs en" style="right:70px;top:118px;font-weight:700;letter-spacing:6px;font-size:24px;color:var(--fg);opacity:.8">__MATU__</div>
+  <img class="img" src="__IMG0__" style="left:0px;top:430px;width:800px;transform:rotate(-6deg)">
+  <div class="abs en" style="left:70px;top:1560px;font-weight:700;font-size:96px;line-height:.95;letter-spacing:-2px">__COL__</div>
+  <div class="abs en" style="left:70px;top:1680px;font-weight:600;font-size:28px;letter-spacing:6px;color:#666">__MATU__ BAND · 5.0 &amp; MG</div>
+  <div class="abs ar" style="left:70px;right:70px;top:1760px;font-size:34px;font-weight:600;color:#444">__ARSUB__</div>
+  <div class="abs" style="left:70px;right:70px;top:1900px;height:3px;background:#111"></div>
+  <div class="abs en" style="left:70px;bottom:80px;font-weight:700;font-size:22px;letter-spacing:4px">974GROUP.NET</div>
+  <div class="abs" style="right:70px;bottom:70px;width:60px;height:60px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px #fff,0 0 0 7px #111"></div>
+ </div>
+ <div class="p side">
+  <div class="abs" style="left:0;right:0;top:0;height:520px;background:var(--c)"></div>
+  <img class="abs" src="__LOGO__" style="left:50%;top:80px;width:150px;transform:translateX(-50%)">
+  <div class="abs en vert" style="left:50%;top:1300px;transform:translateX(-50%) rotate(180deg);font-weight:700;font-size:44px;letter-spacing:6px;white-space:nowrap">__COL__ · __MATU__</div>
+ </div>
+ <div class="p back">
+  <div class="abs" style="left:0;right:0;top:0;height:560px;background:var(--c)"></div>
+  <img class="abs" src="__LOGO__" style="left:70px;top:90px;width:160px">
+  <img class="img" src="__IMG2__" style="right:70px;top:80px;width:200px;filter:drop-shadow(0 12px 14px rgba(0,0,0,.3))">
+  <div class="abs en" style="left:70px;top:280px;font-weight:700;font-size:40px;line-height:1.2;color:var(--fg)">__COL__<br><span style="font-weight:600;font-size:26px;letter-spacing:3px;opacity:.8">__MATU__</span></div>
+  <div class="abs ar" style="left:70px;right:70px;top:860px;font-size:34px;font-weight:800;line-height:1.7">صُنع بفخر من قطر.<br><span style="font-weight:500;color:#444">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي.</span></div>
+  <div class="abs en" style="left:70px;right:70px;top:1140px;font-size:24px;font-weight:500;line-height:1.55;color:#444">Proudly founded in Qatar. Premium bands that elevate your everyday style. Thank you for supporting a local business.</div>
+  <div class="abs en" style="left:70px;top:1480px;font-weight:700;font-size:36px;line-height:2.2"><div>5.0 <span class="circ"></span></div><div>MG <span class="circ"></span></div></div>
+  <div class="abs" style="left:70px;right:70px;bottom:400px;height:3px;background:#111"></div>
+  <div class="qr" style="left:70px;bottom:90px;width:240px;box-shadow:0 2px 10px rgba(0,0,0,.12)"><img src="../pkg/qr.png"></div>
+  <div class="abs ar" style="left:350px;bottom:290px;font-size:24px;font-weight:700;color:#444">امسح وتسوّق مباشرة</div>
+  <div class="abs en" style="left:350px;bottom:140px;font-weight:700;font-size:24px;line-height:1.7">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <img class="icons" src="../pkg/icons-dark.png" style="right:70px;bottom:470px;height:34px">
+  <div class="abs en" style="right:70px;bottom:435px;font-size:13px;letter-spacing:3px;color:#888">MADE IN CHINA · DESIGNED IN QATAR</div>
+ </div>
+</div>
+</html>

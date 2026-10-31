@@ -1,0 +1,91 @@
+<!doctype html><html lang="ar"><meta charset="utf-8"><style>
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:'Poppins';font-weight:500 600;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf)}
+@font-face{font-family:'Poppins';font-weight:700 900;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}
+@font-face{font-family:'Anton';src:url(anton.woff2)}
+body{margin:0;background:#333;font-family:'Cairo';display:flex;gap:60px;padding:40px;align-items:flex-start}
+.die{position:relative;width:898px;height:2729px;overflow:hidden;background:#fff}
+.p{position:absolute;left:0;width:898px;overflow:hidden;box-sizing:border-box}
+.in{position:absolute;left:35px;right:35px;top:0;bottom:0}
+.flap .in{top:35px}.glue .in{bottom:35px}
+.flap{top:0;height:390px}.front{top:390px;height:886px}.side{top:1276px;height:355px}.back{top:1631px;height:886px;transform:rotate(180deg)}.glue{top:2517px;height:212px}
+.en{font-family:'Poppins';direction:ltr}.ar{direction:rtl}.abs{position:absolute}
+.qr{position:absolute;background:#fff;border-radius:12px;padding:8px}.qr img{display:block;width:100%}
+.sw{display:inline-block;width:18px;height:18px;border-radius:4px;vertical-align:middle;margin-right:10px}
+
+/* C1 studio white */
+.C1 .p{background:#FFFFFF;color:#111}
+.C1 .small{font-family:Poppins;font-weight:600;font-size:17px;letter-spacing:3px;color:#666;direction:ltr}
+.C1 .flap,.C1 .glue{background:#F4F4F4}
+
+/* C2 colour stripe */
+.C2 .p{background:#FFFFFF;color:#111}
+.C2 .stripe{position:absolute;left:0;top:0;bottom:0;width:230px;background:var(--c);color:var(--on)}
+.C2 .vert{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);transform-origin:center;white-space:nowrap;font-family:Poppins;font-weight:700;letter-spacing:6px;font-size:22px}
+.C2 .flap,.C2 .glue{background:var(--c)}
+.C2 .side{background:var(--c)}
+
+/* C3 kraft one-colour */
+.C3 .p{background:url(kraft.jpg) 0 0/898px 2729px;color:#1A1410}
+.C3 .flap{background-position:0 0}.C3 .front{background-position:0 -390px}.C3 .side{background-position:0 -1276px}.C3 .back{background-position:0 -1631px}.C3 .glue{background-position:0 -2517px}
+.C3 .ink{color:#1A1410}
+.C3 .stamp{position:absolute;border:4px solid #1A1410;border-radius:50%;width:150px;height:150px;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);opacity:.9}
+.C3 .label{position:absolute;background:#F6F1E8;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.18);padding:10px 18px;font-family:Poppins;font-weight:700;letter-spacing:3px;font-size:18px;color:#1A1410;direction:ltr}
+.C3 .rule{position:absolute;left:52px;right:52px;height:0;border-top:3px solid #1A1410}
+
+/* C4 window */
+.C4 .p{background:#26262A;color:#F2F2F2}
+.C4 .win{position:absolute;left:52px;right:52px;top:60px;height:560px;border-radius:40px;background:#EDEDED;box-shadow:inset 0 0 0 10px #F7F7F7,0 0 0 2px rgba(255,255,255,.08);overflow:hidden}
+.C4 .flap,.C4 .glue{background:#1C1C1F}
+.C4 .thin{font-family:Poppins;font-weight:600;letter-spacing:4px;font-size:16px;color:#B5B5BA;direction:ltr}
+/* C5 arabic type + sadu */
+.C5 .p{background:var(--tint);color:#141414}
+.C5 .hero{position:absolute;right:52px;top:40px;font-size:230px;font-weight:900;line-height:1;color:var(--c);letter-spacing:-4px;direction:rtl}
+.C5 .sadu{position:absolute;left:0;right:0;height:100%;background:
+ repeating-linear-gradient(90deg,var(--c) 0 22px,transparent 22px 44px);}
+.C5 .sadu2{position:absolute;left:0;right:0;background:var(--c)}
+.C5 .flap,.C5 .glue{background:var(--c)}
+
+/* D : wrap-around strap */
+.D .p{background:#F1EFEB;color:#141414}
+.D .strap{position:absolute;left:0;right:0;height:150px;background:var(--c);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 3px,transparent 3px 6px),repeating-linear-gradient(-45deg,rgba(0,0,0,.08) 0 3px,transparent 3px 6px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.D .buckle{position:absolute;width:150px;height:90px;border-radius:14px;background:linear-gradient(180deg,#2E2E31,#0E0E10);box-shadow:0 8px 16px rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.15)}
+.D .buckle::after{content:"";position:absolute;left:14px;right:14px;top:50%;height:3px;margin-top:-1px;background:#555;border-radius:2px}
+.D .mag{font-family:'Anton';font-size:150px;letter-spacing:4px;line-height:1;color:#141414;direction:ltr}
+.D .flap,.D .glue{background:#E6E3DD}
+.D .tiny{font-family:Poppins;font-weight:600;letter-spacing:4px;font-size:16px;color:#6A6A6A;direction:ltr}
+</style>
+
+
+<div class="die D" id="D" style="--c:__C__">
+ <div class="p flap"><div class="strap" style="top:120px;height:150px"></div><div class="in">
+  <img class="abs" src="logo-black.png" style="left:52px;top:28px;width:110px">
+  <div class="abs tiny" style="right:52px;top:40px">__COL__</div>
+  <div class="buckle" style="left:50%;top:150px;transform:translateX(-50%)"></div>
+ </div></div>
+ <div class="p front"><div class="strap" style="top:560px"></div><div class="in">
+  <div class="abs mag" style="left:50%;top:60px;transform:translateX(-50%)">MAGNETIC</div>
+  <div class="abs ar" style="left:0;right:0;top:225px;text-align:center;font-size:30px;font-weight:800;color:#444">سير <span class="en" style="font-weight:700">Fitbit Air</span> منسوج مطاطي بقفل مغناطيسي</div>
+  <img class="abs" src="__BANDCUT__" style="left:50%;top:285px;width:450px;transform:translateX(-50%);filter:drop-shadow(0 26px 30px rgba(0,0,0,.32))">
+  <div class="abs en" style="left:52px;top:618px;font-weight:700;font-size:26px;letter-spacing:3px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.5)">__COL__</div><img style="display:none">
+  <img class="abs" src="logo-black.png" style="left:52px;bottom:36px;width:120px">
+  <div class="abs tiny" style="right:52px;bottom:44px;color:#444">FOR FITBIT AIR</div>
+ </div></div>
+ <div class="p side"><div class="strap" style="top:102px"></div><div class="in">
+  <img class="abs" src="logo-black.png" style="left:52px;top:26px;width:110px">
+  <div class="abs tiny" style="right:52px;top:38px">STRETCH WOVEN · MAGNETIC BUCKLE</div>
+  <div class="abs en" style="left:50%;top:50%;transform:translate(-50%,-50%);font-weight:700;font-size:34px;letter-spacing:3px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.4)">__COL__</div>
+ </div></div>
+ <div class="p back"><div class="strap" style="top:505px;height:120px;box-shadow:none"></div><div class="in">
+  <img class="abs" src="logo-black.png" style="left:52px;top:56px;width:110px">
+  <div class="abs ar" style="left:52px;right:52px;top:150px;font-size:26px;font-weight:800;line-height:1.7">صُنع بفخر من قطر.<br><span style="font-weight:500;color:#444">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي.</span></div>
+  <div class="abs en" style="left:52px;right:52px;top:400px;font-size:17px;font-weight:500;line-height:1.55;color:#444">Proudly founded in Qatar. Premium bands that elevate your everyday style. Thank you for supporting a local business.</div>
+  <div class="qr" style="left:52px;bottom:40px;width:170px;box-shadow:0 2px 8px rgba(0,0,0,.15)"><img src="qr.png"></div>
+  <div class="abs ar" style="left:250px;bottom:170px;font-size:18px;font-weight:700;color:#444">امسح وتسوّق مباشرة</div>
+  <div class="abs en" style="left:250px;bottom:84px;font-weight:700;font-size:16px;line-height:1.6">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <img class="abs" src="icons-dark.png" style="right:52px;bottom:76px;height:26px">
+  <div class="abs en" style="right:52px;bottom:48px;font-size:10px;letter-spacing:3px;color:#777">MADE IN CHINA · DESIGNED IN QATAR</div>
+ </div></div>
+ <div class="p glue"></div>
+</div>

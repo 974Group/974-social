@@ -12,6 +12,6 @@ for p,(col,mat,key,bc,_) in M.items():
         for k,(a,m) in enumerate([(0,1),(2,3),(4,5)]):
             im=Image.open(f'img/t{p}-{a:03d}.png').convert('RGB'); mk=Image.open(f'img/t{p}-{m:03d}.png').convert('L'); im.putalpha(mk); im.save(f'img/p{p}-{k}.png')
     t=tpl
-    for a,b in dict(__IMG0__=f'img/p{p}-0.png',__IMG1__=f'img/p{p}-1.png',__IMG2__=f'img/p{p}-2.png',__COL__=col,__MATU__=mat,__ARTITLE__=AR[key][0],__ARSUB__=AR[key][1],__BC__=bc).items(): t=t.replace(a,b)
+    for a,b in dict(__IMG0__=f'img/p{p}-1.png',__IMG1__=f'img/p{p}-0.png',__IMG2__=f'img/p{p}-2.png',__COL__=col,__MATU__=mat,__ARTITLE__=AR[key][0],__ARSUB__=AR[key][1],__BC__=bc).items(): t=t.replace(a,b)
     open(f'pages/w{p:02d}.html','w').write(t)
 print('ok')

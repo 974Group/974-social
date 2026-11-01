@@ -1,0 +1,181 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:'Poppins';font-weight:400;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Regular.ttf)}
+@font-face{font-family:'Poppins';font-weight:500 600;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf)}
+@font-face{font-family:'Poppins';font-weight:700 900;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}
+@font-face{font-family:'Lora';font-style:italic;font-weight:400 700;src:url(file:///usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;display:flex;flex-wrap:wrap;gap:40px;padding:40px;width:4600px}
+.ab{position:relative;overflow:hidden;flex:none}
+.post{width:1080px;height:1350px}.story{width:1080px;height:1920px}
+.en{direction:ltr;unicode-bidi:isolate;font-family:Poppins}
+.ar{font-family:Cairo;direction:rtl}
+img{display:block}
+.strip{position:absolute;left:0;right:0;background-repeat:repeat-x}
+
+/* ===== Design 1 — بيت الشعر (cream tent) ===== */
+.d1{background:#EFE4D0}
+.d1 .tex{position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply}
+.d1 .logo{position:absolute;top:118px;left:64px;width:120px}
+.d1 .kick{position:absolute;top:126px;right:64px;font:600 22px Poppins;letter-spacing:.32em;color:#8A1C22}
+.d1 h1{position:absolute;right:58px;font:900 250px/1 Cairo;color:#1C1210;letter-spacing:-2px}
+.d1 h1 b{color:#B3202A;font-weight:900}
+.d1 .sub{position:absolute;right:64px;font:700 46px Cairo;color:#3A2A24}
+.d1 .row{position:absolute;left:0;right:0;height:560px}
+.d1 .band{position:absolute;bottom:70px;filter:drop-shadow(0 26px 22px rgba(60,30,20,.28))}
+.d1 .nm{position:absolute;bottom:0;font:600 24px Poppins;color:#1C1210;letter-spacing:.06em;text-align:center;width:220px;margin-left:-110px}
+.d1 .nm i{display:block;width:44px;height:6px;border-radius:3px;margin:0 auto 10px}
+.d1 .foot{position:absolute;left:64px;right:64px;display:flex;align-items:center;justify-content:space-between}
+.d1 .price{display:flex;align-items:baseline;gap:10px;background:#B3202A;color:#fff;border-radius:999px;padding:10px 34px 14px}
+.d1 .price b{font:800 64px Poppins;line-height:1}.d1 .price span{font:700 30px Cairo}
+.d1 .meta{text-align:left;font:500 24px Poppins;color:#3A2A24;line-height:1.5}
+.d1 .meta .ar{font:700 26px Cairo;display:block;text-align:left}
+
+/* ===== Design 2 — ليل البر (dark) ===== */
+.d2{background:#120B0A}
+.d2 .bgpat{position:absolute;inset:-40px;opacity:.07;background-size:240px 120px}
+.d2 .glow{position:absolute;border-radius:50%;filter:blur(30px)}
+.d2 .logo{position:absolute;top:60px;right:64px;width:120px}
+.d2 .kick{position:absolute;top:70px;left:64px;font:500 22px Poppins;letter-spacing:.34em;color:#C9A24B}
+.d2 .ttl{position:absolute;left:0;right:0;text-align:center}
+.d2 .ttl .e{font:italic 600 120px/1 Lora;color:#F4EDE3;letter-spacing:-1px}
+.d2 .ttl .a{font:800 54px Cairo;color:#C9A24B;margin-top:6px}
+.d2 .ttl .l{font:500 30px Cairo;color:#CDBFAF;margin-top:4px}
+.d2 .hero{position:absolute;left:50%;filter:drop-shadow(0 40px 40px rgba(0,0,0,.6))}
+.d2 .tag{position:absolute;font:italic 600 34px Lora;color:#F4EDE3}
+.d2 .tag small{display:block;font:500 18px Poppins;font-style:normal;letter-spacing:.3em;color:#C9A24B}
+.d2 .mini{position:absolute;left:64px;right:64px;display:flex;justify-content:space-between}
+.d2 .mc{width:300px;text-align:center}
+.d2 .mc .box{height:240px;border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(201,162,75,.28);display:flex;align-items:center;justify-content:center}
+.d2 .mc img{height:215px}
+.d2 .mc .n{font:italic 600 32px Lora;color:#F4EDE3;margin-top:14px}
+.d2 .foot{position:absolute;left:64px;right:64px;display:flex;align-items:center;justify-content:space-between}
+.d2 .price{width:180px;height:180px;border-radius:50%;border:2px solid #C9A24B;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#C9A24B}
+.d2 .price b{font:700 70px/1 Poppins}.d2 .price span{font:700 26px Cairo}
+.d2 .meta{color:#CDBFAF;font:500 26px Poppins;line-height:1.55}
+.d2 .meta .ar{font:700 30px Cairo;color:#F4EDE3;display:block}
+</style></head><body>
+
+<!-- ============ DESIGN 1 POST ============ -->
+<div class="ab post d1" id="p1">
+  <svg class="tex" width="1080" height="1350"><filter id="n1"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .45  0 0 0 0 .35  0 0 0 .35 0"/></filter><rect width="100%" height="100%" filter="url(#n1)"/></svg>
+  <div class="strip sA" style="top:0;height:84px"></div>
+  <img class="logo" src="logo-black.png">
+  <div class="kick en">AL SADU SERIES</div>
+  <h1 class="ar" style="top:170px">الس<b>دو</b></h1>
+  <div class="sub ar" style="top:430px">تراثنا.. على معصمك</div>
+  <div class="row" style="top:520px">
+    <img class="band" src="adaam.png"   style="left:40px;height:400px">
+    <img class="band" src="sidra.png"   style="left:280px;height:440px">
+    <img class="band" src="souq.png"    style="left:520px;height:440px">
+    <img class="band" src="horizon.png" style="left:705px;height:400px">
+    <div class="nm en" style="left:200px"><i style="background:#5B2228"></i>Al Adaam</div>
+    <div class="nm en" style="left:440px"><i style="background:#7E62C9"></i>Sidra</div>
+    <div class="nm en" style="left:690px"><i style="background:#D32B2B"></i>Souq</div>
+    <div class="nm en" style="left:900px"><i style="background:#E04040;box-shadow:inset 0 0 0 2px #fff,0 0 0 1px #E04040"></i>Horizon</div>
+  </div>
+  <div class="foot" style="top:1124px">
+    <div class="price"><b class="en">99</b><span class="ar">ر.ق</span></div>
+    <div class="meta"><span class="ar">4 نقشات · سير قماش</span><span class="en">Whoop 5.0 &amp; MG · 974GROUP.NET</span></div>
+  </div>
+  <div class="strip sA" style="bottom:0;height:84px;transform:scaleY(-1)"></div>
+</div>
+
+<!-- ============ DESIGN 1 STORY ============ -->
+<div class="ab story d1" id="s1">
+  <svg class="tex" width="1080" height="1920"><rect width="100%" height="100%" filter="url(#n1)"/></svg>
+  <div class="strip sA" style="top:0;height:96px"></div>
+  <img class="logo" src="logo-black.png" style="top:200px">
+  <div class="kick en" style="top:210px">AL SADU SERIES</div>
+  <h1 class="ar" style="top:270px;font-size:300px">الس<b>دو</b></h1>
+  <div class="sub ar" style="top:590px;font-size:54px">تراثنا.. على معصمك</div>
+  <div class="row" style="top:690px;height:900px">
+    <img class="band" src="sidra.png"   style="left:90px;bottom:520px;height:370px;transform:rotate(-7deg)">
+    <img class="band" src="adaam.png"   style="left:600px;bottom:520px;height:370px;transform:rotate(7deg)">
+    <img class="band" src="souq.png"    style="left:90px;bottom:70px;height:380px;transform:rotate(6deg)">
+    <img class="band" src="horizon.png" style="left:590px;bottom:70px;height:380px;transform:rotate(-6deg)">
+    <div class="nm en" style="left:280px;bottom:465px"><i style="background:#7E62C9"></i>Sidra</div>
+    <div class="nm en" style="left:790px;bottom:465px"><i style="background:#5B2228"></i>Al Adaam</div>
+    <div class="nm en" style="left:280px;bottom:0"><i style="background:#D32B2B"></i>Souq</div>
+    <div class="nm en" style="left:790px;bottom:0"><i style="background:#E04040;box-shadow:inset 0 0 0 2px #fff,0 0 0 1px #E04040"></i>Horizon</div>
+  </div>
+  <div class="foot" style="top:1636px">
+    <div class="price"><b class="en">99</b><span class="ar">ر.ق</span></div>
+    <div class="meta"><span class="ar">4 نقشات · سير قماش</span><span class="en">Whoop 5.0 &amp; MG · 974GROUP.NET</span></div>
+  </div>
+  <div class="strip sA" style="bottom:0;height:96px;transform:scaleY(-1)"></div>
+</div>
+
+<!-- ============ DESIGN 2 POST ============ -->
+<div class="ab post d2" id="p2">
+  <div class="bgpat sB"></div>
+  <div class="glow" style="left:240px;top:330px;width:600px;height:600px;background:radial-gradient(circle,rgba(211,43,43,.42),rgba(211,43,43,0) 68%)"></div>
+  <div class="kick en">HERITAGE · 2026</div>
+  <img class="logo" src="logo-white.png">
+  <div class="ttl" style="top:120px"><div class="e en">Al Sadu</div><div class="a ar">كل نقشة.. لها حكاية</div></div>
+  <img class="hero" src="souq.png" style="top:350px;height:450px;margin-left:-220px">
+  <div class="tag en" style="left:64px;top:600px"><small>PATTERN 01</small>Souq</div>
+  <div class="mini" style="top:835px">
+    <div class="mc"><div class="box"><img src="adaam.png"></div><div class="n en">Al Adaam</div></div>
+    <div class="mc"><div class="box"><img src="sidra.png"></div><div class="n en">Sidra</div></div>
+    <div class="mc"><div class="box"><img src="horizon.png"></div><div class="n en">Horizon</div></div>
+  </div>
+  <div class="foot" style="top:1162px;align-items:flex-end">
+    <div class="meta"><span class="ar">سيور السدو · 4 نقشات</span><span class="en">Whoop 5.0 &amp; MG · 974GROUP.NET</span></div>
+    <div class="price" style="width:150px;height:150px"><b class="en" style="font-size:58px">99</b><span class="ar" style="font-size:22px">ر.ق</span></div>
+  </div>
+  <div class="strip sB2" style="bottom:0;height:22px;opacity:.9"></div>
+</div>
+
+<!-- ============ DESIGN 2 STORY ============ -->
+<div class="ab story d2" id="s2">
+  <div class="bgpat sB"></div>
+  <div class="glow" style="left:180px;top:520px;width:720px;height:720px;background:radial-gradient(circle,rgba(211,43,43,.42),rgba(211,43,43,0) 68%)"></div>
+  <div class="kick en" style="top:200px">HERITAGE · 2026</div>
+  <img class="logo" src="logo-white.png" style="top:190px">
+  <div class="ttl" style="top:300px"><div class="e en" style="font-size:150px">Al Sadu</div><div class="a ar" style="font-size:62px">كل نقشة.. لها حكاية</div></div>
+  <img class="hero" src="souq.png" style="top:580px;height:600px;margin-left:-290px">
+  <div class="tag en" style="left:64px;top:940px"><small>PATTERN 01</small>Souq</div>
+  <div class="mini" style="top:1240px">
+    <div class="mc"><div class="box"><img src="adaam.png"></div><div class="n en">Al Adaam</div></div>
+    <div class="mc"><div class="box"><img src="sidra.png"></div><div class="n en">Sidra</div></div>
+    <div class="mc"><div class="box"><img src="horizon.png"></div><div class="n en">Horizon</div></div>
+  </div>
+  <div class="foot" style="top:1610px;align-items:center">
+    <div class="meta"><span class="ar">سيور السدو · 4 نقشات</span><span class="en">Whoop 5.0 &amp; MG · 974GROUP.NET</span></div>
+    <div class="price"><b class="en">99</b><span class="ar">ر.ق</span></div>
+  </div>
+</div>
+
+<script>
+// Sadu weave strips (SVG data URLs)
+function svgURL(s){return 'url("data:image/svg+xml;utf8,'+encodeURIComponent(s)+'")'}
+// Strip A: red/black/cream border, like a tent's Sadu band
+function stripA(h){
+  const W=96;
+  const s=`<svg xmlns='http://www.w3.org/2000/svg' width='${W}' height='${h}' viewBox='0 0 96 84' preserveAspectRatio='none'>
+  <rect width='96' height='84' fill='#1C1210'/>
+  <rect y='0' width='96' height='10' fill='#B3202A'/>
+  <rect y='12' width='96' height='4' fill='#EFE4D0'/>
+  <path d='M0 18 L24 42 L48 18 L72 42 L96 18 L96 66 L72 42 L48 66 L24 42 L0 66Z' fill='#B3202A'/>
+  <path d='M24 30 L36 42 L24 54 L12 42Z M72 30 L84 42 L72 54 L60 42Z' fill='#EFE4D0'/>
+  <path d='M24 37 L29 42 L24 47 L19 42Z M72 37 L77 42 L72 47 L67 42Z' fill='#1C1210'/>
+  <path d='M48 24 L54 30 L48 36 L42 30Z M48 48 L54 54 L48 60 L42 54Z M0 36 L6 42 L0 48Z M96 36 L90 42 L96 48Z' fill='#E6B54A'/>
+  <rect y='68' width='96' height='4' fill='#EFE4D0'/>
+  <g fill='#EFE4D0'><rect x='4' y='76' width='8' height='4'/><rect x='28' y='76' width='8' height='4'/><rect x='52' y='76' width='8' height='4'/><rect x='76' y='76' width='8' height='4'/></g>
+  </svg>`;return svgURL(s)}
+function stripB(){
+  const s=`<svg xmlns='http://www.w3.org/2000/svg' width='240' height='120' viewBox='0 0 240 120'>
+  <g fill='none' stroke='#C9A24B' stroke-width='3'>
+  <path d='M0 60 L30 30 L60 60 L90 30 L120 60 L150 30 L180 60 L210 30 L240 60'/>
+  <path d='M0 60 L30 90 L60 60 L90 90 L120 60 L150 90 L180 60 L210 90 L240 60'/>
+  <path d='M60 40 L80 60 L60 80 L40 60Z M180 40 L200 60 L180 80 L160 60Z'/></g>
+  <g fill='#C9A24B'><rect x='116' y='8' width='8' height='8'/><rect x='116' y='104' width='8' height='8'/><rect x='-4' y='8' width='8' height='8'/><rect x='236' y='8' width='8' height='8'/></g></svg>`;return svgURL(s)}
+function stripB2(){
+  const s=`<svg xmlns='http://www.w3.org/2000/svg' width='44' height='22'><rect width='44' height='22' fill='#B3202A'/><path d='M0 22 L11 0 L22 22Z' fill='#1C1210'/><path d='M22 22 L33 0 L44 22Z' fill='#EFE4D0'/></svg>`;return svgURL(s)}
+document.querySelectorAll('.sA').forEach(e=>{const h=e.offsetHeight;e.style.backgroundImage=stripA(h);e.style.backgroundSize=`${Math.round(96*h/84)}px ${h}px`});
+document.querySelectorAll('.sB').forEach(e=>{e.style.backgroundImage=stripB()});
+document.querySelectorAll('.sB2').forEach(e=>{e.style.backgroundImage=stripB2();e.style.backgroundSize='44px 22px'});
+</script>
+</body></html>

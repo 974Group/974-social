@@ -1,6 +1,6 @@
 # Whoop boxes — page → product → barcode (31 Oct 2026)
 
-Design: Night White (7a). PDFs: 974-whoop-boxes-silicone-18.pdf, 974-whoop-boxes-fabric-waterproof-30.pdf
+Design: Night White (7a). PDFs: 974-whoop-boxes-silicone-20.pdf (pages 1–15, 46–50), 974-whoop-boxes-fabric-waterproof-30.pdf
 
 | Page | Colour | Material | Barcode | Shopify product / note |
 |---|---|---|---|---|
@@ -52,6 +52,10 @@ Design: Night White (7a). PDFs: 974-whoop-boxes-silicone-18.pdf, 974-whoop-boxes
 | 46 | Yellow | SILICONE | 76008553 | Yellow Whoop Silicone bands |
 | 47 | Pink | SILICONE | 50187984 | Pink Whoop Silicone bands |
 | 48 | Black Edition | SILICONE | 92510175 | Black edition Whoop Silicone bands |
+| 49 | Burgundy | SILICONE | 97430007 | New product (not on Shopify yet) — new barcode, added 2 Nov |
+| 50 | Ice Blue | SILICONE | 00970984 | ice blue Whoop Silicone bands — added 2 Nov |
 
 New barcodes assigned today: 97430001 Yellow & Navy, 97430002 Navy & Yellow (were duplicates of 97697605 = Creamy and Blue), 97430003 Onyx Shiny Gold, 97430004 Twilight Shiny Gold, 97430005 Forest Shiny Gold, 97430006 Phoenix Shiny Gold.
 Needs confirmation: Rolex pages 18–21 (print type), page 3 Baby Blue (product archived).
+
+2 Nov 2026: factory file v2 (49 pages) adds Ice Blue Silicone (p49) and renames its page 14 "Maroon Silicone" to "Burgundy Silicone" with an almost identical render. Owner says Burgundy is a new product, so both Maroon (p14, 55022490) and Burgundy (p49, 97430007) boxes are kept — confirm whether Maroon is still needed.

@@ -48,4 +48,6 @@ M={
 46:('Yellow','SILICONE','sil','76008553','Yellow Whoop Silicone bands'),
 47:('Pink','SILICONE','sil','50187984','Pink Whoop Silicone bands'),
 48:('Black Edition','SILICONE','sil','92510175','Black edition Whoop Silicone bands'),
+49:('Burgundy','SILICONE','sil','97430007','Burgundy Whoop Silicone — new product, not on Shopify yet (new barcode)'),
+50:('Ice Blue','SILICONE','sil','00970984','ice blue Whoop Silicone bands'),
 }

@@ -1,6 +1,6 @@
 # Whoop boxes — page → product → barcode (31 Oct 2026)
 
-Design: Night White (7a). PDFs: 974-whoop-boxes-silicone-20.pdf (pages 1–15, 46–50), 974-whoop-boxes-fabric-waterproof-30.pdf
+Design: Night White (7a). PDFs: 974-whoop-boxes-silicone-19.pdf (pages 1–13, 15, 46–50; Maroon removed 2 Nov), 974-whoop-boxes-fabric-waterproof-30.pdf
 
 | Page | Colour | Material | Barcode | Shopify product / note |
 |---|---|---|---|---|
@@ -17,7 +17,7 @@ Design: Night White (7a). PDFs: 974-whoop-boxes-silicone-20.pdf (pages 1–15, 4
 | 11 | Dark Grey | SILICONE | 59848748 | Dark grey Whoop Silicone bands |
 | 12 | Yellow & Navy | SILICONE | 97430001 | Yellow and Navy Whoop Silicone bands (new barcode) |
 | 13 | Navy & Yellow | SILICONE | 97430002 | Navy and Yellow Whoop Silicone bands (new barcode) |
-| 14 | Maroon | SILICONE | 55022490 | Maroon Whoop Silicone bands |
+| ~~14~~ | ~~Maroon~~ | SILICONE | 55022490 | Removed 2 Nov (replaced by Burgundy, p49) |
 | 15 | Red | SILICONE | 30422022 | Red Whoop Silicone bands |
 | 16 | Beige | FABRIC | 29740406 | Beige Whoop 5 fabric bands |
 | 17 | Burgundy | FABRIC | 63887549 | Burgundy Whoop 5 fabric bands |
@@ -58,4 +58,4 @@ Design: Night White (7a). PDFs: 974-whoop-boxes-silicone-20.pdf (pages 1–15, 4
 New barcodes assigned today: 97430001 Yellow & Navy, 97430002 Navy & Yellow (were duplicates of 97697605 = Creamy and Blue), 97430003 Onyx Shiny Gold, 97430004 Twilight Shiny Gold, 97430005 Forest Shiny Gold, 97430006 Phoenix Shiny Gold.
 Needs confirmation: Rolex pages 18–21 (print type), page 3 Baby Blue (product archived).
 
-2 Nov 2026: factory file v2 (49 pages) adds Ice Blue Silicone (p49) and renames its page 14 "Maroon Silicone" to "Burgundy Silicone" with an almost identical render. Owner says Burgundy is a new product, so both Maroon (p14, 55022490) and Burgundy (p49, 97430007) boxes are kept — confirm whether Maroon is still needed.
+2 Nov 2026: factory file v2 (49 pages) adds Ice Blue Silicone (p49) and renames its page 14 "Maroon Silicone" to "Burgundy Silicone" with an almost identical render. Owner says Burgundy is a new product, so both Maroon (p14, 55022490) and Burgundy (p49, 97430007) boxes are kept — Owner confirmed 2 Nov: Maroon removed from the box file.

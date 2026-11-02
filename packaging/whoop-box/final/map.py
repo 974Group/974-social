@@ -13,7 +13,6 @@ M={
 11:('Dark Grey','SILICONE','sil','59848748','Dark grey Whoop Silicone bands'),
 12:('Yellow & Navy','SILICONE','sil','97430001','Yellow and Navy Whoop Silicone bands (new barcode)'),
 13:('Navy & Yellow','SILICONE','sil','97430002','Navy and Yellow Whoop Silicone bands (new barcode)'),
-14:('Maroon','SILICONE','sil','55022490','Maroon Whoop Silicone bands'),
 15:('Red','SILICONE','sil','30422022','Red Whoop Silicone bands'),
 16:('Beige','FABRIC','fab','29740406','Beige Whoop 5 fabric bands'),
 17:('Burgundy','FABRIC','fab','63887549','Burgundy Whoop 5 fabric bands'),

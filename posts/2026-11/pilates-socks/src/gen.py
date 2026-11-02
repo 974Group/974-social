@@ -21,7 +21,7 @@ CSS='''
 @font-face{font-family:'Lora';font-style:italic;font-weight:400 700;src:url(file:///usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#777;display:flex;flex-wrap:wrap;gap:40px;padding:40px;width:4600px;align-items:flex-start}
-.ab{position:relative;overflow:hidden;flex:none;background:#F7EFEA;color:#2A1418}
+.ab{position:relative;overflow:hidden;flex:none;background:#F4ECE6;color:#2A1418}
 .P{width:1080px;height:1350px}.S{width:1080px;height:1920px}
 .en{font-family:Poppins;direction:ltr;unicode-bidi:isolate}
 .ar{font-family:Cairo;direction:rtl}
@@ -93,14 +93,35 @@ A.append(('specs-post','P',f'''<div class="dots" style="opacity:.3"></div>
 <div class="callout" style="right:390px;top:960px;width:260px"><b style="font-size:30px">مقاس واحد</b><span>يناسب أغلب المقاسات (Free Size)</span></div>
 <div class="abs en" style="left:64px;top:1268px;font:600 18px Poppins;letter-spacing:.3em;color:#8A6E72">974GROUP.NET</div>
 '''))
-# ---------- L4 packaging post
+# ---------- L4 packaging post (designed render)
 A.append(('packaging-post','P',f'''
-<img src="pack_c.jpg" class="abs" style="left:0;top:0;width:1080px;height:1350px;object-fit:cover;filter:saturate(1.03)">
-<div class="abs" style="left:0;right:0;bottom:0;height:420px;background:linear-gradient(rgba(42,20,24,0),rgba(42,20,24,.86) 55%)"></div>
-<img class="logo" src="logo-white.png" style="left:64px;top:56px">
-<div class="abs ar" style="right:64px;top:1030px;font:900 64px Cairo;color:#fff">جاهزة.. حتى للهدية 🎁</div>
-<div class="abs ar" style="right:64px;top:1130px;font:600 32px Cairo;color:#F2DADF">كل جوز مغلّف بباكجنق 974 وبنافذة تشوف منها التطريز</div>
-<div class="abs en" style="right:64px;top:1220px;font:600 20px Poppins;letter-spacing:.36em;color:#F2DADF">PILATES CLUB · 974GROUP.NET</div>
+<img src="pk/cherrybow.png" class="abs" style="left:0;top:-40px;width:1080px;height:1350px;object-fit:cover">
+<img class="logo" src="logo-black.png" style="left:64px;top:56px">
+<div class="kick en" style="right:64px;top:76px">THE PACKAGING</div>
+<div class="abs ar" style="left:0;right:0;top:1020px;text-align:center;font:900 64px Cairo">جاهزة.. حتى للهدية 🎁</div>
+<div class="abs ar" style="left:0;right:0;top:1118px;text-align:center;font:600 32px Cairo;color:#6E5458">كل جوز في باكجنق 974.. والنافذة تبين لك التطريز</div>
+<div class="abs en" style="left:0;right:0;top:1240px;text-align:center;font:600 20px Poppins;letter-spacing:.36em;color:#8A6E72">PILATES CLUB · 974GROUP.NET</div>
+'''))
+PK=['cherrybow','redbow','pinkbow','strawred','strawpink','cherrystripe','peach','orange','juice','lemonade','coffee','tennis']
+def pkgrid(cols,x0,y0,cw,ch,w):
+    o=''
+    for i,k in enumerate(PK):
+        cx=x0+(i%cols)*cw+cw//2; y=y0+(i//cols)*ch
+        o+=f'<img src="pk_{k}.jpg" class="abs" style="left:{cx-w//2}px;top:{y}px;width:{w}px;border-radius:14px">'
+    return o
+A.append(('packs-post','P',f'''
+<img class="logo" src="logo-black.png" style="left:64px;top:56px">
+<div class="abs lora" style="right:64px;top:46px;font-size:64px;color:#C3203A">Pilates Club</div>
+<div class="abs ar" style="right:64px;top:138px;font:800 32px Cairo">12 تصميم.. كلها مغلّفة وجاهزة 🎀</div>
+{pkgrid(3,40,230,333,262,318)}
+'''))
+A.append(('packaging-story','S',f'''
+<img src="pk/cherrybow.png" class="abs" style="left:-140px;top:0;width:1360px;height:1920px;object-fit:cover">
+<img class="logo" src="logo-black.png" style="left:64px;top:200px">
+<div class="abs lora" style="left:0;right:0;top:330px;text-align:center;font-size:110px;color:#C3203A">Pilates Club</div>
+<div class="abs ar" style="left:0;right:0;top:1440px;text-align:center;font:900 70px Cairo">جاهزة.. حتى للهدية 🎁</div>
+<div class="abs ar" style="left:0;right:0;top:1550px;text-align:center;font:600 36px Cairo;color:#6E5458">باكجنق 974 بنافذة تبين التطريز</div>
+<div class="cta" style="top:1660px"><span class="chip">علّقي «بيلاتيس» ونرسل لك الرابط</span></div>
 '''))
 # ---------- Edits
 def edit(slug,title,ar,keys,h,bg='#F7EFEA'):

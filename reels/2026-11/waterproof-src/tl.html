@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:'Poppins';font-weight:500;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf)}
+@font-face{font-family:'Poppins';font-weight:700;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:radial-gradient(90% 60% at 50% 45%,#FFFFFF,#E3F0FC);font-family:Cairo;color:#0B1E3A}
+.abs{position:absolute}
+#t1{left:0;right:0;top:250px;text-align:center;font:900 96px/1.15 Cairo;direction:rtl}
+#t1 b{color:#2E7BD6}
+.c{position:absolute;width:300px;text-align:center}
+.c img{width:300px;height:330px;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(11,30,58,.22))}
+.c span{display:block;font:500 34px Poppins;color:#3D5573;margin-top:6px}
+#end{left:0;right:0;top:0;bottom:0;text-align:center;opacity:0}
+#end .logo{position:absolute;left:50%;top:430px;width:300px;transform:translateX(-50%)}
+#end .k{position:absolute;left:0;right:0;top:640px;font:500 30px Poppins;letter-spacing:.32em;color:#2E7BD6;padding-left:.32em}
+#end .h{position:absolute;left:0;right:0;top:720px;font:900 84px Cairo;direction:rtl}
+#end .pr{position:absolute;left:0;right:0;top:900px;display:flex;justify-content:center;gap:22px;direction:rtl}
+#end .pr div{border-radius:999px;padding:14px 46px 20px;font:800 54px Cairo}
+#end .p1{background:#0B1E3A;color:#fff}.p2{border:3px solid #0B1E3A}
+#end small{font:700 34px Cairo;opacity:.8}
+#end .cta{position:absolute;left:0;right:0;top:1100px;font:800 46px Cairo;direction:rtl;color:#2E7BD6}
+#end .site{position:absolute;left:0;right:0;top:1210px;font:500 30px Poppins;letter-spacing:.3em;color:#3D5573;padding-left:.3em}
+</style></head><body>
+<div class="abs" id="t1">8 ألوان..<br><b>كلها ضد الماي</b></div>
+<div id="grid"></div>
+<div class="abs" id="end"><img class="logo" src="mark-c.png"><div class="k">WATERPROOF · WHOOP 5.0 &amp; MG</div>
+<div class="h">ماي.. عرق.. ولا يهمه 💧</div>
+<div class="pr"><div class="p1">99 <small>ر.ق · Matte</small></div><div class="p2">109 <small>ر.ق · Shiny</small></div></div>
+<div class="cta">علّق «ماي» ونرسل لك الرابط 📩</div><div class="site">974GROUP.NET</div></div>
+<script>
+const C=[['black','Black'],['grey','Grey'],['ice','Ice'],['blue','Blue'],['lime','Lime'],['orange','Orange'],['red','Rust'],['maroon','Maroon']];
+const g=document.getElementById('grid');
+C.forEach(([k,n],i)=>{const d=document.createElement('div');d.className='c';d.id='c'+i;
+ const col=i%3,row=Math.floor(i/3);
+ let x=60+col*330, y=560+row*430; if(row==2){x=225+col*330;}
+ d.style.left=x+'px';d.style.top=y+'px';d.innerHTML=`<img src="cut/${k}.png"><span>${n}</span>`;g.appendChild(d)});
+const ease=t=>t<0?0:t>1?1:1-Math.pow(1-t,3);
+const back=t=>{t=Math.max(0,Math.min(1,t));const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)};
+function render(t){
+ // 0-3.6 grid, 3.6-6 end card
+ const out=ease((t-3.4)/0.4);
+ const t1=document.getElementById('t1');const k=ease(t/0.4);t1.style.opacity=k*(1-out);t1.style.transform=`translateY(${(1-k)*30}px)`;
+ C.forEach((_,i)=>{const e=document.getElementById('c'+i);const s=0.25+i*0.22;const p=back((t-s)/0.35);
+  e.style.opacity=Math.min(1,Math.max(0,(t-s)/0.15))*(1-out);e.style.transform=`translateY(${(1-p)*60}px) scale(${0.85+0.15*p})`;});
+ const en=document.getElementById('end');const ek=ease((t-3.6)/0.5);en.style.opacity=ek;en.style.transform=`scale(${0.96+0.04*ek})`;
+}
+render(0);
+</script></body></html>

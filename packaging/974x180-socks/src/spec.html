@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Poppins';font-weight:500;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf)}
+@font-face{font-family:'Poppins';font-weight:700;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1600px;height:1000px;background:#fff;font-family:Poppins,'Noto Sans CJK SC',sans-serif;position:relative;color:#000}
+/* 1mm = 4.6px ; bag 230x130 => 1058x598 at left 240 top 170 */
+.bag{position:absolute;left:240px;top:170px;width:1058px;height:598px;border:2px solid #555}
+.zip{position:absolute;left:240px;top:170px;width:1058px;height:28px;border-bottom:1.5px dashed #888}
+.pull{position:absolute;left:300px;top:150px;width:46px;height:24px;border:2px solid #555;background:#fff}
+.art{position:absolute;left:240px;top:170px;width:1058px;height:598px}
+.vent{position:absolute;left:300px;top:690px;width:26px;height:26px;border-radius:50%;border:2px solid #555}
+.lab{position:absolute;font:600 22px Poppins,'Noto Sans CJK SC'}
+.dim{position:absolute;background:#C0392B}
+.t{position:absolute;font:700 24px Poppins;color:#C0392B}
+.arrow{position:absolute;font:700 22px Poppins;color:#000}
+h1{position:absolute;left:240px;top:40px;font:700 30px Poppins}
+h2{position:absolute;left:240px;top:86px;font:500 18px Poppins;color:#555}
+.note{position:absolute;left:240px;top:880px;font:500 18px/1.6 Poppins,'Noto Sans CJK SC';color:#333}
+</style></head><body>
+<h1>974 × 180° FITNESS — Zip bag print spec</h1>
+<h2>Frosted clear zip bag · 23 × 13 cm · 1-colour print: BLACK · artwork file: 974x180-bag-print.pdf (1:1)</h2>
+<div class="bag"></div><div class="zip"></div><div class="pull"></div>
+<img class="art" src="bagprint.png">
+<div class="vent"></div>
+<div class="lab" style="left:120px;top:770px">透气孔<br><span style="font-size:16px;color:#555">vent hole</span></div>
+<svg style="position:absolute;left:0;top:0" width="1600" height="1000"><line x1="200" y1="780" x2="300" y2="712" stroke="#000" stroke-width="2"/>
+<!-- width dim -->
+<line x1="240" y1="820" x2="1298" y2="820" stroke="#C0392B" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="240" y1="772" x2="240" y2="835" stroke="#C0392B" stroke-width="1.5"/><line x1="1298" y1="772" x2="1298" y2="835" stroke="#C0392B" stroke-width="1.5"/>
+<!-- height dim -->
+<line x1="190" y1="170" x2="190" y2="768" stroke="#C0392B" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="175" y1="170" x2="238" y2="170" stroke="#C0392B" stroke-width="1.5"/><line x1="175" y1="768" x2="238" y2="768" stroke="#C0392B" stroke-width="1.5"/>
+<!-- 1.5cm right/bottom -->
+<line x1="1229" y1="676" x2="1298" y2="676" stroke="#000" stroke-width="2" marker-start="url(#b)" marker-end="url(#b)"/>
+<line x1="1262" y1="699" x2="1262" y2="768" stroke="#000" stroke-width="2" marker-start="url(#b)" marker-end="url(#b)"/>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#C0392B"/></marker>
+<marker id="b" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8z" fill="#000"/></marker></defs></svg>
+<div class="t" style="left:735px;top:830px">23 CM</div>
+<div class="t" style="left:90px;top:450px">13 CM</div>
+<div class="lab" style="left:1320px;top:650px">距离边缘1.5cm<br><span style="font-size:16px;color:#555">1.5 cm from edge</span></div>
+<div class="lab" style="left:1090px;top:860px">距离底部1.5cm <span style="font-size:16px;color:#555">· 1.5 cm from bottom</span></div>
+<div class="lab" style="left:1320px;top:340px;font-size:18px;line-height:1.5">Logo: centred<br>标志居中<br><br>Colour: black<br>颜色：黑色</div>
+</body></html>

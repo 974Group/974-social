@@ -1,14 +1,15 @@
-import subprocess
+import subprocess,sys
+sys.path.insert(0,'/home/claude/974-social/templates'); import payfoot
 SP='/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad'
 P='/home/claude/974-social/products/fitbit-fabric-blush/src/'
 LOGO='/home/claude/974-social/posts/2026-11/waterproof/src/mark-c.png'
-others=[('Black','black'),('Grey','grey'),('Fog','fog'),('Blue','blue'),('Navy','navy'),('Purple','purple'),('Light pink','light-pink'),('Pinky Red','pinky-red'),('Orange','orange'),('Brown','brown'),('Beige','beige'),('Olive green','olive'),('Lime green','lime')]
+others=[('Brown','brown'),('Black','black'),('Grey','grey'),('Fog','fog'),('Blue','blue'),('Navy','navy'),('Purple','purple'),('Light pink','light-pink'),('Pinky Red','pinky-red'),('Orange','orange'),('Beige','beige'),('Olive green','olive'),('Lime green','lime')]
 def page(W,H,story):
-    hero=560 if not story else 740
-    heroTop=290 if not story else 470
-    strip_top=H-(520 if not story else 790)
-    sz=104 if not story else 108
-    cards=''.join(f'<div class="o"><img src="file://{P}{f}-crop.png"><span>{n}</span></div>' for n,f in others)
+    hero=550 if not story else 720
+    heroTop=280 if not story else 450
+    strip_top=H-(600 if not story else 850)
+    sz=94 if not story else 106
+    cards=''.join(f'<div class="o{" br" if f=="brown" else ""}"><img src="file://{P}{f}-crop.png"><span>{n}</span>{"<em>99 ر.ق</em>" if f=="brown" else ""}</div>' for n,f in others)
     return f'''<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}}
 @font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}}
@@ -28,11 +29,15 @@ h1 b{{font-family:Poppins;font-weight:700;color:#D46A97}}
 .new b{{font-weight:900;font-size:36px;line-height:1}} .new s{{text-decoration:none;font-family:Poppins;font-weight:700;font-size:15px;letter-spacing:2px}}
 .strip{{position:absolute;left:28px;right:28px;top:{strip_top}px;background:rgba(255,255,255,.75);border-radius:30px;padding:16px 18px 14px}}
 .strip h3{{direction:rtl;text-align:right;font-weight:800;font-size:{22 if not story else 26}px;margin:0 8px 6px;color:#7E3D5C}}
-.row{{display:flex;flex-wrap:wrap;justify-content:center;row-gap:{8 if not story else 18}px;column-gap:{14 if not story else 8}px}}
+.row{{direction:rtl;display:flex;flex-wrap:wrap;justify-content:center;row-gap:{8 if not story else 18}px;column-gap:{14 if not story else 8}px}}
 .o{{display:flex;flex-direction:column;align-items:center;width:{sz+18}px}}
 .o img{{height:{sz}px;max-width:{sz+10}px;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(0,0,0,.18))}}
 .o span{{font-family:Poppins;font-weight:500;font-size:{14 if not story else 16}px;margin-top:4px;white-space:nowrap}}
-.foot{{position:absolute;left:56px;right:56px;bottom:{40 if not story else 120}px;display:flex;justify-content:space-between;align-items:center;direction:rtl}}
+.o.br{{background:#fff;border-radius:16px;padding:4px 2px;box-shadow:0 0 0 2px #C9A24B inset}}
+.o em{{font-style:normal;font-family:Cairo;font-weight:800;font-size:{14 if not story else 16}px;color:#fff;background:#C9A24B;border-radius:10px;padding:0 8px;margin-top:2px;direction:rtl}}
+.pf{{position:absolute;left:28px;right:28px;bottom:{128 if not story else 230}px}}
+{payfoot.css(1.0 if not story else 1.12)}
+.foot{{position:absolute;left:56px;right:56px;bottom:{36 if not story else 120}px;display:flex;justify-content:space-between;align-items:center;direction:rtl}}
 .price{{background:#4A1630;color:#F9E3EB;border-radius:40px;padding:4px 34px 10px;font-weight:900;font-size:{40 if not story else 48}px}}
 .price b{{font-family:Poppins}}
 .cta{{font-weight:700;font-size:{26 if not story else 30}px}}
@@ -45,6 +50,7 @@ h1 b{{font-family:Poppins;font-weight:700;color:#D46A97}}
 <img class="hero" src="file://{P}blush-crop.png">
 <div class="new"><b>جديد</b><s>NEW</s></div>
 <div class="strip"><h3>وباقي الألوان:</h3><div class="row">{cards}</div></div>
+<div class="pf">{payfoot.html()}</div>
 <div class="foot"><div class="cta">علّق <em>«فت بت»</em> ونرسل لك الرابط 📩</div><div class="price"><b>74</b> ر.ق</div></div>
 </body></html>'''
 for name,W,H,st in (('974-fitbit-fabric-blush-post',1080,1350,False),('974-fitbit-fabric-blush-story',1080,1920,True)):

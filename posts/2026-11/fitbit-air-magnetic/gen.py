@@ -31,7 +31,7 @@ h1 i{{font-style:normal;color:#C9A24B}}
 .cta em{{font-style:normal;color:#C9A24B}}
 </style></head><body>
 <div class="head"><img src="file:///home/claude/974-social/posts/2026-11/pilates-socks/src/logo-white.png"><span>FITBIT AIR · MAGNETIC</span></div>
-<h1>بدون قفل<i>..</i> يسكّر بالمغناطيس</h1>
+<h1>بدون قفل<i>..</i> يتسكّر بالمغناطيس</h1>
 <div class="sub">منسوج مطاطي خفيف · يتضبط على أي معصم · سير <b>Fitbit Air</b></div>
 <div class="grid">{cards}</div>
 <div class="foot"><div class="cta">علّق <em>«فت بت»</em> ونرسل لك الرابط 📩</div><div class="price"><b>{PRICE}</b> ر.ق</div></div>

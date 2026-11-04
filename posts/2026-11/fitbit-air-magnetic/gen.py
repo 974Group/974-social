@@ -1,4 +1,5 @@
 import subprocess,sys
+sys.path.insert(0,'/home/claude/974-social/templates'); import payfoot
 SP='/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad'; P='/home/claude/974-social/products/fitbit-air-magnetic/'
 PRICE=sys.argv[1] if len(sys.argv)>1 else '89'
 cols=[('Black','black'),('Dark Blue','dark-blue'),('Wine Red','wine-red'),('Green','green'),('Dark Gray','dark-gray'),('Light Gray','light-gray'),('Starlight','starlight'),('White','white')]
@@ -24,6 +25,8 @@ h1 i{{font-style:normal;color:#C9A24B}}
 .t{{width:{tw}px;height:{th}px;background:radial-gradient(circle at 50% 40%,#3A3C42,#26272B);border-radius:24px;display:flex;align-items:center;justify-content:center}}
 .t img{{max-width:{tw-30}px;max-height:{th-40}px;filter:drop-shadow(0 14px 16px rgba(0,0,0,.45))}}
 .c span{{font-family:Poppins;font-weight:500;font-size:{24 if story else 21}px;margin-top:8px;color:#E7E3DA}}
+.pf{{position:absolute;left:28px;right:28px;bottom:{150 if not story else 240}px}}
+{payfoot.css(1.0 if not story else 1.12, text='#F1EFEA', label='#C9C4BA')}
 .foot{{position:absolute;left:56px;right:56px;bottom:{110 if story else 48}px;display:flex;justify-content:space-between;align-items:center;direction:rtl}}
 .price{{background:#C9A24B;color:#17181B;border-radius:40px;padding:4px 34px 10px;font-weight:900;font-size:{48 if story else 40}px}}
 .price b{{font-family:Poppins}}
@@ -34,6 +37,7 @@ h1 i{{font-style:normal;color:#C9A24B}}
 <h1>بدون قفل<i>..</i> يتسكّر بالمغناطيس</h1>
 <div class="sub">منسوج مطاطي خفيف · يتضبط على أي معصم · سير <b>Fitbit Air</b></div>
 <div class="grid">{cards}</div>
+<div class="pf">{payfoot.html()}</div>
 <div class="foot"><div class="cta">علّق <em>«فت بت»</em> ونرسل لك الرابط 📩</div><div class="price"><b>{PRICE}</b> ر.ق</div></div>
 </body></html>'''
 for name,W,H,st in (('974-fitbit-air-magnetic-post',1080,1350,False),('974-fitbit-air-magnetic-story',1080,1920,True)):

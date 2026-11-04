@@ -1,4 +1,5 @@
-import subprocess, math
+import subprocess, math, sys
+sys.path.insert(0,'/home/claude/974-social/templates'); import payfoot
 SP='/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad'
 R='/home/claude/974-social/products/'
 FONTS=f'''@font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}}
@@ -16,7 +17,7 @@ def pageA(W,H,story,price):
     top=H*0.52 if not story else H*0.50
     hero_h=520 if not story else 600
     cell=180 if not story else 186
-    imgh=150 if not story else 190
+    imgh=136 if not story else 190
     cards=''.join(f'<div class="c"><img src="file://{A}{f}-crop.png"><span>{n}</span></div>' for n,f in acols)
     return f'''<!doctype html><html><head><meta charset="utf-8"><style>{FONTS}
 body{{width:{W}px;height:{H}px;background:#F3F4EE;font-family:Cairo;color:#141414;position:relative;overflow:hidden}}
@@ -34,6 +35,8 @@ h1{{position:absolute;right:56px;top:{150 if not story else 260}px;width:{520 if
 .c{{display:flex;flex-direction:column;align-items:center}}
 .c img{{height:{imgh}px;max-width:{cell-10}px;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.18))}}
 .c span{{font-family:Poppins;font-weight:500;font-size:{17 if not story else 20}px;margin-top:6px;white-space:nowrap;color:#3a3a3a}}
+.pf{{position:absolute;left:28px;right:28px;bottom:{142 if not story else 236}px}}
+{payfoot.css(1.0 if not story else 1.12, text='#141414', label='#3a3a3a')}
 .foot{{position:absolute;left:56px;right:56px;bottom:{44 if not story else 110}px;display:flex;justify-content:space-between;align-items:center;direction:rtl}}
 .price{{background:#141414;color:#D9E33A;border-radius:40px;padding:4px 34px 10px;font-weight:900;font-size:{40 if not story else 48}px}}
 .price b{{font-family:Poppins}}
@@ -47,6 +50,7 @@ h1{{position:absolute;right:56px;top:{150 if not story else 260}px;width:{520 if
 <div class="sub">سيليكون رياضي بفتحات تهوية<br>سير <b>Garmin CIRQA</b> · 10 ألوان</div>
 <div class="holes"><i></i><i></i><i></i><i></i><i></i></div>
 <div class="grid">{cards}</div>
+<div class="pf">{payfoot.html()}</div>
 <div class="foot"><div class="cta">علّق <em>«قارمن»</em> ونرسل لك الرابط 📩</div><div class="price"><b>{price}</b> ر.ق</div></div>
 </body></html>'''
 
@@ -54,7 +58,7 @@ def pageC(W,H,story,price):
     top=H*0.52 if not story else H*0.50
     hero_h=520 if not story else 600
     cell=180 if not story else 186
-    imgh=150 if not story else 190
+    imgh=136 if not story else 190
     cards=''.join(f'<div class="c"><img src="file://{B}{f}-crop.png"><span>{n}</span></div>' for n,f in bcols)
     return f'''<!doctype html><html><head><meta charset="utf-8"><style>{FONTS}
 body{{width:{W}px;height:{H}px;background:#F3F4EE;font-family:Cairo;color:#141414;position:relative;overflow:hidden}}
@@ -72,6 +76,8 @@ h1{{position:absolute;right:56px;top:{150 if not story else 260}px;width:auto;te
 .c{{display:flex;flex-direction:column;align-items:center}}
 .c img{{height:{imgh}px;max-width:{cell-10}px;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.18))}}
 .c span{{font-family:Poppins;font-weight:500;font-size:{17 if not story else 20}px;margin-top:6px;white-space:nowrap;color:#3a3a3a}}
+.pf{{position:absolute;left:28px;right:28px;bottom:{142 if not story else 236}px}}
+{payfoot.css(1.0 if not story else 1.12, text='#141414', label='#3a3a3a')}
 .foot{{position:absolute;left:56px;right:56px;bottom:{44 if not story else 110}px;display:flex;justify-content:space-between;align-items:center;direction:rtl}}
 .price{{background:#141414;color:#F59A2F;border-radius:40px;padding:4px 34px 10px;font-weight:900;font-size:{40 if not story else 48}px}}
 .price b{{font-family:Poppins}}
@@ -85,6 +91,7 @@ h1{{position:absolute;right:56px;top:{150 if not story else 260}px;width:auto;te
 <div class="sub">سيليكون ناعم · يتضبط على أي معصم<br>سير <b>Garmin CIRQA</b> · 10 ألوان</div>
 <div class="holes"><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i></div>
 <div class="grid">{cards}</div>
+<div class="pf">{payfoot.html()}</div>
 <div class="foot"><div class="cta">علّق <em>«قارمن»</em> ونرسل لك الرابط 📩</div><div class="price"><b>{price}</b> ر.ق</div></div>
 </body></html>'''
 

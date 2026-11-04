@@ -9,6 +9,7 @@ def css(scale=1.0, text='#4A1630', label='#7E3D5C'):
 .payfoot .ch{{display:flex;flex-direction:column;align-items:center;gap:{int(3*s)}px}}
 .payfoot .ch .lg{{width:{int(72*s)}px;height:{int(40*s)}px;background:#fff;border-radius:{int(12*s)}px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(0,0,0,.12);overflow:hidden}}
 .payfoot .ch .lg svg{{height:{int(24*s)}px!important;width:auto!important}}
+.payfoot .ch.applepay .lg svg{{height:{int(44*s)}px!important}}
 .payfoot .ch .lg img{{height:{int(14*s)}px!important}}
 .payfoot .ch i{{display:none;font-style:normal;font-size:{int(13*s)}px;color:{label};font-weight:700;font-family:Cairo;white-space:nowrap}}
 .payfoot .av{{display:flex;align-items:center;gap:{int(7*s)}px;font-family:Cairo;font-weight:800;font-size:{int(17*s)}px;color:{text};white-space:nowrap}}

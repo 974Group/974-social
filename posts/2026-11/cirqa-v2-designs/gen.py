@@ -50,6 +50,44 @@ h1{{position:absolute;right:56px;top:{150 if not story else 260}px;width:{520 if
 <div class="foot"><div class="cta">علّق <em>«قارمن»</em> ونرسل لك الرابط 📩</div><div class="price"><b>{price}</b> ر.ق</div></div>
 </body></html>'''
 
+def pageC(W,H,story,price):
+    top=H*0.52 if not story else H*0.50
+    hero_h=520 if not story else 600
+    cell=180 if not story else 186
+    imgh=150 if not story else 190
+    cards=''.join(f'<div class="c"><img src="file://{B}{f}-crop.png"><span>{n}</span></div>' for n,f in bcols)
+    return f'''<!doctype html><html><head><meta charset="utf-8"><style>{FONTS}
+body{{width:{W}px;height:{H}px;background:#F3F4EE;font-family:Cairo;color:#141414;position:relative;overflow:hidden}}
+.panel{{position:absolute;left:0;top:0;width:{W}px;height:{top}px;background:#F59A2F;overflow:hidden}}
+.panel:after{{content:'';position:absolute;left:-120px;bottom:-160px;width:520px;height:520px;border-radius:50%;border:70px solid rgba(20,20,20,.06)}}
+.logo{{position:absolute;top:{56 if not story else 140}px;left:56px;height:50px}}
+.tag{{position:absolute;top:{66 if not story else 150}px;right:56px;font-family:Poppins;font-weight:700;font-size:18px;letter-spacing:3px;background:#141414;color:#F59A2F;padding:8px 18px;border-radius:30px}}
+.hero{{position:absolute;left:{30 if not story else 20}px;top:{top-hero_h-10}px;height:{hero_h}px;z-index:2;filter:drop-shadow(0 30px 30px rgba(0,0,0,.35));transform:rotate(-8deg)}}
+h1{{position:absolute;right:56px;top:{150 if not story else 260}px;width:auto;text-align:right;direction:rtl;font-weight:900;font-size:{62 if not story else 66}px;white-space:nowrap;line-height:1.05}}
+.sub{{position:absolute;right:56px;top:{345 if not story else 500}px;width:auto;white-space:nowrap;direction:rtl;text-align:right;font-weight:700;font-size:{26 if not story else 30}px;line-height:1.45}}
+.sub b{{font-family:Poppins}}
+.holes{{position:absolute;right:56px;top:{450 if not story else 620}px;display:flex;gap:10px}}
+.holes i{{width:40px;height:10px;border-radius:5px;background:#141414;opacity:.85}}
+.grid{{position:absolute;top:{top+(36 if not story else 60)}px;left:50%;transform:translateX(-50%);display:grid;grid-template-columns:repeat(5,{cell}px);gap:{14 if not story else 30}px 16px}}
+.c{{display:flex;flex-direction:column;align-items:center}}
+.c img{{height:{imgh}px;max-width:{cell-10}px;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.18))}}
+.c span{{font-family:Poppins;font-weight:500;font-size:{17 if not story else 20}px;margin-top:6px;white-space:nowrap;color:#3a3a3a}}
+.foot{{position:absolute;left:56px;right:56px;bottom:{44 if not story else 110}px;display:flex;justify-content:space-between;align-items:center;direction:rtl}}
+.price{{background:#141414;color:#F59A2F;border-radius:40px;padding:4px 34px 10px;font-weight:900;font-size:{40 if not story else 48}px}}
+.price b{{font-family:Poppins}}
+.cta{{font-weight:700;font-size:{26 if not story else 30}px}}
+.cta em{{font-style:normal;background:#F59A2F;padding:0 8px;border-radius:8px}}
+</style></head><body>
+<div class="panel"></div>
+<img class="logo" src="file://{LOGO_C}"><div class="tag">MAGNETIC</div>
+<img class="hero" src="file://{B}black-crop.png">
+<h1>بدون قفل..<br>يتسكّر بالمغناطيس</h1>
+<div class="sub">سيليكون ناعم · يتضبط على أي معصم<br>سير <b>Garmin CIRQA</b> · 10 ألوان</div>
+<div class="holes"><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i></div>
+<div class="grid">{cards}</div>
+<div class="foot"><div class="cta">علّق <em>«قارمن»</em> ونرسل لك الرابط 📩</div><div class="price"><b>{price}</b> ر.ق</div></div>
+</body></html>'''
+
 # ---------- B: CIRQA magnetic (ring of colours) ----------
 B=R+'garmin-cirqa-magnetic/src/'
 bcols=[('Black','black'),('White','white'),('Starlight','starlight'),('Grey','grey'),('Dark Blue','dark-blue'),('Wine Red','wine-red'),('Pink','pink'),('Orange','orange'),('Lime','lime'),('Army Green','army-green')]
@@ -93,7 +131,7 @@ h1 i{{font-style:normal;color:#C9A24B}}
 </body></html>'''
 
 jobs=[('974-cirqa-silicone-2-post',pageA,1080,1350,False,'89'),('974-cirqa-silicone-2-story',pageA,1080,1920,True,'89'),
-      ('974-cirqa-magnetic-post',pageB,1080,1350,False,'99'),('974-cirqa-magnetic-story',pageB,1080,1920,True,'99')]
+      ('974-cirqa-magnetic-post',pageC,1080,1350,False,'99'),('974-cirqa-magnetic-story',pageC,1080,1920,True,'99')]
 for name,fn,W,H,st,pr in jobs:
     open(name+'.html','w').write(fn(W,H,st,pr))
     js=f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:{W},height:{H}}}}});await p.goto('file://'+process.cwd()+'/{name}.html');await p.waitForTimeout(900);await p.screenshot({{path:'{name}.png'}});await b.close();}})()"

@@ -3,31 +3,33 @@
 @font-face{font-family:'Poppins';font-weight:500;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf)}
 @font-face{font-family:'Poppins';font-weight:700;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{width:1080px;height:1920px;background:radial-gradient(circle at 50% 53%,#7A1428 0%,#4A0A17 45%,#22040A 100%);font-family:Cairo;color:#F7EDEF;position:relative;overflow:hidden}
-.logo{position:absolute;top:140px;left:50%;transform:translateX(-50%);height:46px}
-h1{position:absolute;top:230px;left:40px;right:40px;text-align:center;direction:rtl;font-weight:900;font-size:66px;line-height:1.1;white-space:nowrap}
-h1 i{font-style:normal;color:#C9A24B}
-.sub{position:absolute;top:330px;left:40px;right:40px;text-align:center;direction:rtl;font-weight:600;font-size:29px;color:#E5C9CF}
-.sub b{font-family:Poppins;font-weight:700}
-.ring{position:absolute;left:220.0px;top:697.6px;width:640px;height:640px;border-radius:50%;border:2px dashed rgba(201,162,75,.45)}
-.mid{position:absolute;left:390.0px;top:867.6px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;direction:rtl}
-.mid .mg{font-size:64px;line-height:1}
-.mid .n{font-weight:900;font-size:40px;margin-top:6px}
-.mid .m{font-family:Poppins;font-weight:500;letter-spacing:3px;font-size:15px;color:#C9A24B}
-.b{position:absolute;width:165px;display:flex;flex-direction:column;align-items:center}
-.b img{height:135px;max-width:165px;object-fit:contain;filter:drop-shadow(0 12px 14px rgba(0,0,0,.5))}
-.b span{font-family:Poppins;font-weight:500;font-size:17px;margin-top:4px;white-space:nowrap;color:#F0DDE1}
+body{width:1080px;height:1920px;background:#F3F4EE;font-family:Cairo;color:#141414;position:relative;overflow:hidden}
+.panel{position:absolute;left:0;top:0;width:1080px;height:960.0px;background:#F59A2F;overflow:hidden}
+.panel:after{content:'';position:absolute;left:-120px;bottom:-160px;width:520px;height:520px;border-radius:50%;border:70px solid rgba(20,20,20,.06)}
+.logo{position:absolute;top:140px;left:56px;height:50px}
+.tag{position:absolute;top:150px;right:56px;font-family:Poppins;font-weight:700;font-size:18px;letter-spacing:3px;background:#141414;color:#F59A2F;padding:8px 18px;border-radius:30px}
+.hero{position:absolute;left:20px;top:350.0px;height:600px;z-index:2;filter:drop-shadow(0 30px 30px rgba(0,0,0,.35));transform:rotate(-8deg)}
+h1{position:absolute;right:56px;top:260px;width:auto;text-align:right;direction:rtl;font-weight:900;font-size:66px;white-space:nowrap;line-height:1.05}
+.sub{position:absolute;right:56px;top:500px;width:auto;white-space:nowrap;direction:rtl;text-align:right;font-weight:700;font-size:30px;line-height:1.45}
+.sub b{font-family:Poppins}
+.holes{position:absolute;right:56px;top:620px;display:flex;gap:10px}
+.holes i{width:40px;height:10px;border-radius:5px;background:#141414;opacity:.85}
+.grid{position:absolute;top:1020.0px;left:50%;transform:translateX(-50%);display:grid;grid-template-columns:repeat(5,186px);gap:30px 16px}
+.c{display:flex;flex-direction:column;align-items:center}
+.c img{height:190px;max-width:176px;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.18))}
+.c span{font-family:Poppins;font-weight:500;font-size:20px;margin-top:6px;white-space:nowrap;color:#3a3a3a}
 .foot{position:absolute;left:56px;right:56px;bottom:110px;display:flex;justify-content:space-between;align-items:center;direction:rtl}
-.price{background:#C9A24B;color:#22040A;border-radius:40px;padding:4px 34px 10px;font-weight:900;font-size:48px}
+.price{background:#141414;color:#F59A2F;border-radius:40px;padding:4px 34px 10px;font-weight:900;font-size:48px}
 .price b{font-family:Poppins}
 .cta{font-weight:700;font-size:30px}
-.cta em{font-style:normal;color:#C9A24B}
+.cta em{font-style:normal;background:#F59A2F;padding:0 8px;border-radius:8px}
 </style></head><body>
-<img class="logo" src="file:///home/claude/974-social/posts/2026-11/pilates-socks/src/logo-white.png">
-<h1>بدون قفل<i>..</i> يتسكّر بالمغناطيس</h1>
-<div class="sub">سيليكون ناعم يتضبط على أي معصم · سير <b>Garmin CIRQA</b></div>
-<div class="ring"></div>
-<div class="mid"><div class="mg">🧲</div><div class="n">10 ألوان</div><div class="m">MAGNETIC</div></div>
-<div class="b" style="left:458px;top:565px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/black-crop.png"><span>Black</span></div><div class="b" style="left:669px;top:634px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/white-crop.png"><span>White</span></div><div class="b" style="left:800px;top:814px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/starlight-crop.png"><span>Starlight</span></div><div class="b" style="left:800px;top:1036px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/grey-crop.png"><span>Grey</span></div><div class="b" style="left:669px;top:1216px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/dark-blue-crop.png"><span>Dark Blue</span></div><div class="b" style="left:458px;top:1285px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/wine-red-crop.png"><span>Wine Red</span></div><div class="b" style="left:246px;top:1216px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/pink-crop.png"><span>Pink</span></div><div class="b" style="left:115px;top:1036px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/orange-crop.png"><span>Orange</span></div><div class="b" style="left:115px;top:814px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/lime-crop.png"><span>Lime</span></div><div class="b" style="left:246px;top:634px"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/army-green-crop.png"><span>Army Green</span></div>
+<div class="panel"></div>
+<img class="logo" src="file:///home/claude/974-social/posts/2026-11/waterproof/src/mark-c.png"><div class="tag">MAGNETIC</div>
+<img class="hero" src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/black-crop.png">
+<h1>بدون قفل..<br>يتسكّر بالمغناطيس</h1>
+<div class="sub">سيليكون ناعم · يتضبط على أي معصم<br>سير <b>Garmin CIRQA</b> · 10 ألوان</div>
+<div class="holes"><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i></div>
+<div class="grid"><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/black-crop.png"><span>Black</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/white-crop.png"><span>White</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/starlight-crop.png"><span>Starlight</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/grey-crop.png"><span>Grey</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/dark-blue-crop.png"><span>Dark Blue</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/wine-red-crop.png"><span>Wine Red</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/pink-crop.png"><span>Pink</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/orange-crop.png"><span>Orange</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/lime-crop.png"><span>Lime</span></div><div class="c"><img src="file:///home/claude/974-social/products/garmin-cirqa-magnetic/src/army-green-crop.png"><span>Army Green</span></div></div>
 <div class="foot"><div class="cta">علّق <em>«قارمن»</em> ونرسل لك الرابط 📩</div><div class="price"><b>99</b> ر.ق</div></div>
 </body></html>

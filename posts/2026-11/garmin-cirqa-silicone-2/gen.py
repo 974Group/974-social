@@ -1,6 +1,6 @@
 import subprocess,sys
 SP='/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad'; P='/home/claude/974-social/products/garmin-cirqa-silicone-v2/src/'
-PRICE=sys.argv[1] if len(sys.argv)>1 else '99'
+PRICE=sys.argv[1] if len(sys.argv)>1 else '89'
 cols=[('Black','black'),('Starlight','starlight'),('Lime','lime'),('Midnight Blue','midnight-blue'),('Army Green','green'),('Sea Mist Blue','sea-mist-blue'),('Mousse Pink','mousse-pink'),('Orange','orange'),('White','white'),('Light Gray','light-gray')]
 def page(W,H,story):
     tw=184 if not story else 186; th=350 if not story else 430

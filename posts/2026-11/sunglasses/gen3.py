@@ -53,40 +53,40 @@ body{{width:{W}px;height:{H}px;background:radial-gradient(ellipse at 50% 0%,#3a3
 
 def d33(W,H,story):
     s=1.12 if story else 1; T=150 if story else 0
-    ch=305 if not story else 430
+    if not story: hT,gT,ch,gap,eT,fT=118,222,312,18,893,1025
+    else:         hT,gT,ch,gap,eT,fT=300,440,400,20,1290,1450
     cards=''.join(f'''<div class="cd" style="--c:{c}"><div class="im"><img src="file://{C}{k}-glass.png"></div><div class="nb"><b>{n}</b><i>{'عدسة وردية' if k=='doha' else 'فوتوكروميك'}</i></div></div>''' for k,n,c in G33)
     return f'''<style>{HEAD}
 body{{width:{W}px;height:{H}px;background:linear-gradient(180deg,#720842 0%,#51022D 60%,#2E0119 100%);font-family:Cairo;color:#fff;position:relative;overflow:hidden}}
-.logo{{position:absolute;top:{50+T}px;right:56px;height:46px}}
-.tg{{position:absolute;top:{50+T}px;left:56px;font-family:Poppins;font-weight:900;font-size:{44*s}px;letter-spacing:1px;line-height:1}}
-.tg small{{display:block;font-weight:700;font-size:{17*s}px;letter-spacing:5px;color:#F4C6DC;margin-top:6px}}
-.h{{position:absolute;top:{150*s+T}px;left:56px;right:56px;direction:rtl;font-weight:900;font-size:{56*s}px;line-height:1.2;text-align:right}}
+.top{{position:absolute;top:{48+T-(0 if not story else 40)}px;left:44px;right:44px;display:flex;justify-content:space-between;align-items:center}}
+.top img{{height:44px}}
+.top span{{font-family:Poppins;font-weight:700;font-size:{18*s}px;letter-spacing:5px;color:#F4C6DC}}
+.h{{position:absolute;top:{hT}px;left:44px;right:44px;direction:rtl;font-weight:900;font-size:{50*s}px;line-height:1.2;text-align:center;white-space:nowrap}}
 .h em{{font-style:normal;color:#F4C6DC}}
-.grid{{position:absolute;left:44px;right:44px;top:{300*s+T+(20 if story else 0)}px;display:grid;grid-template-columns:1fr 1fr;gap:{18*s}px}}
-.cd{{height:{ch}px;border-radius:30px;background:#F4F1F2;display:flex;flex-direction:column;overflow:hidden}}
-.im{{flex:1;display:flex;align-items:center;justify-content:center;padding:16px;min-height:0}}
+.grid{{position:absolute;left:44px;right:44px;top:{gT}px;display:grid;grid-template-columns:1fr 1fr;gap:{gap}px}}
+.cd{{height:{ch}px;border-radius:26px;background:#F4F1F2;display:flex;flex-direction:column;overflow:hidden}}
+.im{{flex:1;display:flex;align-items:center;justify-content:center;padding:14px 18px;min-height:0}}
 .im img{{max-width:100%;max-height:100%;filter:drop-shadow(0 12px 12px rgba(0,0,0,.25))}}
-.nb{{background:var(--c);padding:8px 18px 10px;display:flex;justify-content:space-between;align-items:center}}
-.nb b{{font-family:Poppins;font-weight:800;font-size:{21*s}px;letter-spacing:2px;white-space:nowrap}}
-.nb i{{font-style:normal;font-weight:700;font-size:{18*s}px;opacity:.9}}
-.exp{{position:absolute;left:44px;right:44px;top:{300*s+T+(20 if story else 0)+2*ch+18*s+(18 if not story else 44)}px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:10px 18px;display:flex;align-items:center;gap:12px;direction:rtl}}
-.exp .tl{{display:flex;flex-direction:column;align-items:center;gap:2px}}
-.exp .tl img{{height:{58*s}px;background:#fff;border-radius:12px;padding:5px 8px}}
-.exp .tl span{{font-weight:700;font-size:{15*s}px}}
-.exp .ar{{font-size:{28*s}px;font-weight:900;color:#F4C6DC}}
-.exp .tx{{margin-right:8px;flex:1}}
-.exp .tx b{{display:block;font-weight:900;font-size:{25*s}px;color:#F4C6DC}}
+.nb{{background:var(--c);height:{46*s}px;padding:0 18px;display:flex;justify-content:space-between;align-items:center}}
+.nb b{{font-family:Poppins;font-weight:800;font-size:{20*s}px;letter-spacing:2px;white-space:nowrap}}
+.nb i{{font-style:normal;font-weight:700;font-size:{18*s}px;opacity:.95}}
+.exp{{position:absolute;left:44px;right:44px;top:{eT}px;height:{108*s}px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:0 22px;display:flex;align-items:center;gap:12px;direction:rtl}}
+.exp .tx{{flex:1}}
+.exp .tx b{{display:block;font-weight:900;font-size:{25*s}px;color:#F4C6DC;line-height:1.3}}
 .exp .tx i{{display:block;font-style:normal;font-weight:600;font-size:{19*s}px;line-height:1.35}}
-.feat{{position:absolute;left:44px;right:44px;top:{300*s+T+(20 if story else 0)+2*ch+18*s+(118 if not story else 170)}px;display:flex;gap:12px;direction:rtl;justify-content:center}}
-.feat span{{background:rgba(255,255,255,.12);border-radius:18px;padding:6px 18px 9px;font-weight:800;font-size:{22*s}px;white-space:nowrap}}
-.feat b{{font-family:Poppins;color:#F4C6DC}}
+.exp .tl{{display:flex;flex-direction:column;align-items:center;gap:2px}}
+.exp .tl img{{height:{54*s}px;background:#fff;border-radius:12px;padding:5px 8px}}
+.exp .tl span{{font-weight:700;font-size:{15*s}px}}
+.exp .ar{{font-size:{26*s}px;font-weight:900;color:#F4C6DC}}
+.feat{{position:absolute;left:44px;right:44px;top:{fT}px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;direction:rtl}}
+.feat span{{background:rgba(255,255,255,.12);border-radius:16px;height:{50*s}px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:{21*s}px;white-space:nowrap}}
+.feat b{{font-family:Poppins;color:#F4C6DC;margin-left:6px}}
 {fcss('#F4C6DC','#51022D',story,s)}
 </style><body>
-<img class="logo" src="file://{LOGO}">
-<div class="tg">F26<small>974 GUARDS</small></div>
-<div class="h">ذراع تتعدّل <em>4 وضعيات</em><br>وتثبت على راسك</div>
+<div class="top"><span>974 GUARDS · F26</span><img src="file://{LOGO}"></div>
+<div class="h">ذراع تتعدّل <em>4 وضعيات</em> وتثبت على راسك</div>
 <div class="grid">{cards}</div>
-<div class="exp"><div class="tl"><img src="file://{C}halul-clear.png"><span>بالظل</span></div><div class="ar">←</div><div class="tl"><img src="file://{C}halul-dark.png"><span>بالشمس</span></div><div class="tx"><b>يعني شنو فوتوكروميك؟</b><i>العدسة تغمق بروحها تحت الشمس وترجع شفافة بالظل والليل</i></div></div>
+<div class="exp"><div class="tx"><b>يعني شنو فوتوكروميك؟</b><i>العدسة تغمق بروحها تحت الشمس وترجع شفافة بالظل والليل</i></div><div class="tl"><img src="file://{C}halul-clear.png"><span>بالظل</span></div><div class="ar">←</div><div class="tl"><img src="file://{C}halul-dark.png"><span>بالشمس</span></div></div>
 <div class="feat"><span><b>33</b> جرام</span><span>أطراف معدن تنثني</span><span>ضد الصدمات</span></div>
 {foot('#F4C6DC','#51022D',story)}</body>'''
 for nm,fn in (('21g',d21),('f26',d33)):

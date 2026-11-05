@@ -5,29 +5,29 @@
 @font-face{font-family:'Poppins';font-weight:900;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Black.ttf)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{width:1080px;height:1350px;background:linear-gradient(180deg,#720842 0%,#51022D 60%,#2E0119 100%);font-family:Cairo;color:#fff;position:relative;overflow:hidden}
-.logo{position:absolute;top:50px;right:56px;height:46px}
-.tg{position:absolute;top:50px;left:56px;font-family:Poppins;font-weight:900;font-size:44px;letter-spacing:1px;line-height:1}
-.tg small{display:block;font-weight:700;font-size:17px;letter-spacing:5px;color:#F4C6DC;margin-top:6px}
-.h{position:absolute;top:150px;left:56px;right:56px;direction:rtl;font-weight:900;font-size:56px;line-height:1.2;text-align:right}
+.top{position:absolute;top:48px;left:44px;right:44px;display:flex;justify-content:space-between;align-items:center}
+.top img{height:44px}
+.top span{font-family:Poppins;font-weight:700;font-size:18px;letter-spacing:5px;color:#F4C6DC}
+.h{position:absolute;top:118px;left:44px;right:44px;direction:rtl;font-weight:900;font-size:50px;line-height:1.2;text-align:center;white-space:nowrap}
 .h em{font-style:normal;color:#F4C6DC}
-.grid{position:absolute;left:44px;right:44px;top:300px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.cd{height:305px;border-radius:30px;background:#F4F1F2;display:flex;flex-direction:column;overflow:hidden}
-.im{flex:1;display:flex;align-items:center;justify-content:center;padding:16px;min-height:0}
+.grid{position:absolute;left:44px;right:44px;top:222px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cd{height:312px;border-radius:26px;background:#F4F1F2;display:flex;flex-direction:column;overflow:hidden}
+.im{flex:1;display:flex;align-items:center;justify-content:center;padding:14px 18px;min-height:0}
 .im img{max-width:100%;max-height:100%;filter:drop-shadow(0 12px 12px rgba(0,0,0,.25))}
-.nb{background:var(--c);padding:8px 18px 10px;display:flex;justify-content:space-between;align-items:center}
-.nb b{font-family:Poppins;font-weight:800;font-size:21px;letter-spacing:2px;white-space:nowrap}
-.nb i{font-style:normal;font-weight:700;font-size:18px;opacity:.9}
-.exp{position:absolute;left:44px;right:44px;top:946px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:10px 18px;display:flex;align-items:center;gap:12px;direction:rtl}
-.exp .tl{display:flex;flex-direction:column;align-items:center;gap:2px}
-.exp .tl img{height:58px;background:#fff;border-radius:12px;padding:5px 8px}
-.exp .tl span{font-weight:700;font-size:15px}
-.exp .ar{font-size:28px;font-weight:900;color:#F4C6DC}
-.exp .tx{margin-right:8px;flex:1}
-.exp .tx b{display:block;font-weight:900;font-size:25px;color:#F4C6DC}
+.nb{background:var(--c);height:46px;padding:0 18px;display:flex;justify-content:space-between;align-items:center}
+.nb b{font-family:Poppins;font-weight:800;font-size:20px;letter-spacing:2px;white-space:nowrap}
+.nb i{font-style:normal;font-weight:700;font-size:18px;opacity:.95}
+.exp{position:absolute;left:44px;right:44px;top:893px;height:108px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:0 22px;display:flex;align-items:center;gap:12px;direction:rtl}
+.exp .tx{flex:1}
+.exp .tx b{display:block;font-weight:900;font-size:25px;color:#F4C6DC;line-height:1.3}
 .exp .tx i{display:block;font-style:normal;font-weight:600;font-size:19px;line-height:1.35}
-.feat{position:absolute;left:44px;right:44px;top:1046px;display:flex;gap:12px;direction:rtl;justify-content:center}
-.feat span{background:rgba(255,255,255,.12);border-radius:18px;padding:6px 18px 9px;font-weight:800;font-size:22px;white-space:nowrap}
-.feat b{font-family:Poppins;color:#F4C6DC}
+.exp .tl{display:flex;flex-direction:column;align-items:center;gap:2px}
+.exp .tl img{height:54px;background:#fff;border-radius:12px;padding:5px 8px}
+.exp .tl span{font-weight:700;font-size:15px}
+.exp .ar{font-size:26px;font-weight:900;color:#F4C6DC}
+.feat{position:absolute;left:44px;right:44px;top:1025px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;direction:rtl}
+.feat span{background:rgba(255,255,255,.12);border-radius:16px;height:50px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:21px;white-space:nowrap}
+.feat b{font-family:Poppins;color:#F4C6DC;margin-left:6px}
 .pf{position:absolute;left:28px;right:28px;bottom:142px}
 
 .payfoot{display:flex;align-items:center;justify-content:space-between;direction:rtl;gap:16px}
@@ -50,11 +50,10 @@ body{width:1080px;height:1350px;background:linear-gradient(180deg,#720842 0%,#51
 .price b{font-family:Poppins}
 .cta{font-weight:700;font-size:26px;color:#fff} .cta em{font-style:normal;color:#F4C6DC}
 </style><body>
-<img class="logo" src="file:///home/claude/974-social/posts/2026-11/pilates-socks/src/logo-white.png">
-<div class="tg">F26<small>974 GUARDS</small></div>
-<div class="h">ذراع تتعدّل <em>4 وضعيات</em><br>وتثبت على راسك</div>
+<div class="top"><span>974 GUARDS · F26</span><img src="file:///home/claude/974-social/posts/2026-11/pilates-socks/src/logo-white.png"></div>
+<div class="h">ذراع تتعدّل <em>4 وضعيات</em> وتثبت على راسك</div>
 <div class="grid"><div class="cd" style="--c:#4D5566"><div class="im"><img src="file:///home/claude/974-social/posts/2026-11/sunglasses/cut/lusail-glass.png"></div><div class="nb"><b>LUSAIL</b><i>فوتوكروميك</i></div></div><div class="cd" style="--c:#2149A6"><div class="im"><img src="file:///home/claude/974-social/posts/2026-11/sunglasses/cut/halul-glass.png"></div><div class="nb"><b>HALUL</b><i>فوتوكروميك</i></div></div><div class="cd" style="--c:#9E1F25"><div class="im"><img src="file:///home/claude/974-social/posts/2026-11/sunglasses/cut/ruwais-glass.png"></div><div class="nb"><b>AL RUWAIS</b><i>فوتوكروميك</i></div></div><div class="cd" style="--c:#B9507E"><div class="im"><img src="file:///home/claude/974-social/posts/2026-11/sunglasses/cut/doha-glass.png"></div><div class="nb"><b>DOHA</b><i>عدسة وردية</i></div></div></div>
-<div class="exp"><div class="tl"><img src="file:///home/claude/974-social/posts/2026-11/sunglasses/cut/halul-clear.png"><span>بالظل</span></div><div class="ar">←</div><div class="tl"><img src="file:///home/claude/974-social/posts/2026-11/sunglasses/cut/halul-dark.png"><span>بالشمس</span></div><div class="tx"><b>يعني شنو فوتوكروميك؟</b><i>العدسة تغمق بروحها تحت الشمس وترجع شفافة بالظل والليل</i></div></div>
+<div class="exp"><div class="tx"><b>يعني شنو فوتوكروميك؟</b><i>العدسة تغمق بروحها تحت الشمس وترجع شفافة بالظل والليل</i></div><div class="tl"><img src="file:///home/claude/974-social/posts/2026-11/sunglasses/cut/halul-clear.png"><span>بالظل</span></div><div class="ar">←</div><div class="tl"><img src="file:///home/claude/974-social/posts/2026-11/sunglasses/cut/halul-dark.png"><span>بالشمس</span></div></div>
 <div class="feat"><span><b>33</b> جرام</span><span>أطراف معدن تنثني</span><span>ضد الصدمات</span></div>
 <div class="pf"><div class="payfoot"><div class="pills">
 <div class="ch"><div class="lg"><svg viewBox="0 0 24 24" style="height:54px" fill="none" stroke="#1E8E4E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 10v4M18 10v4"/></svg></div><i>كاش</i></div>

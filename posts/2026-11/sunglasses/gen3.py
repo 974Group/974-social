@@ -53,7 +53,7 @@ body{{width:{W}px;height:{H}px;background:radial-gradient(ellipse at 50% 0%,#3a3
 
 def d33(W,H,story):
     s=1.12 if story else 1; T=150 if story else 0
-    ch=330 if not story else 430
+    ch=305 if not story else 430
     cards=''.join(f'''<div class="cd" style="--c:{c}"><div class="im"><img src="file://{C}{k}-glass.png"></div><div class="nb"><b>{n}</b><i>{'عدسة وردية' if k=='doha' else 'فوتوكروميك'}</i></div></div>''' for k,n,c in G33)
     return f'''<style>{HEAD}
 body{{width:{W}px;height:{H}px;background:linear-gradient(180deg,#720842 0%,#51022D 60%,#2E0119 100%);font-family:Cairo;color:#fff;position:relative;overflow:hidden}}
@@ -69,7 +69,15 @@ body{{width:{W}px;height:{H}px;background:linear-gradient(180deg,#720842 0%,#510
 .nb{{background:var(--c);padding:8px 18px 10px;display:flex;justify-content:space-between;align-items:center}}
 .nb b{{font-family:Poppins;font-weight:800;font-size:{21*s}px;letter-spacing:2px;white-space:nowrap}}
 .nb i{{font-style:normal;font-weight:700;font-size:{18*s}px;opacity:.9}}
-.feat{{position:absolute;left:44px;right:44px;top:{300*s+T+(20 if story else 0)+2*ch+18*s+(22 if not story else 50)}px;display:flex;gap:12px;direction:rtl;justify-content:center}}
+.exp{{position:absolute;left:44px;right:44px;top:{300*s+T+(20 if story else 0)+2*ch+18*s+(18 if not story else 44)}px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:10px 18px;display:flex;align-items:center;gap:12px;direction:rtl}}
+.exp .tl{{display:flex;flex-direction:column;align-items:center;gap:2px}}
+.exp .tl img{{height:{58*s}px;background:#fff;border-radius:12px;padding:5px 8px}}
+.exp .tl span{{font-weight:700;font-size:{15*s}px}}
+.exp .ar{{font-size:{28*s}px;font-weight:900;color:#F4C6DC}}
+.exp .tx{{margin-right:8px;flex:1}}
+.exp .tx b{{display:block;font-weight:900;font-size:{25*s}px;color:#F4C6DC}}
+.exp .tx i{{display:block;font-style:normal;font-weight:600;font-size:{19*s}px;line-height:1.35}}
+.feat{{position:absolute;left:44px;right:44px;top:{300*s+T+(20 if story else 0)+2*ch+18*s+(118 if not story else 170)}px;display:flex;gap:12px;direction:rtl;justify-content:center}}
 .feat span{{background:rgba(255,255,255,.12);border-radius:18px;padding:6px 18px 9px;font-weight:800;font-size:{22*s}px;white-space:nowrap}}
 .feat b{{font-family:Poppins;color:#F4C6DC}}
 {fcss('#F4C6DC','#51022D',story,s)}
@@ -78,6 +86,7 @@ body{{width:{W}px;height:{H}px;background:linear-gradient(180deg,#720842 0%,#510
 <div class="tg">F26<small>974 GUARDS</small></div>
 <div class="h">ذراع تتعدّل <em>4 وضعيات</em><br>وتثبت على راسك</div>
 <div class="grid">{cards}</div>
+<div class="exp"><div class="tl"><img src="file://{C}halul-clear.png"><span>بالظل</span></div><div class="ar">←</div><div class="tl"><img src="file://{C}halul-dark.png"><span>بالشمس</span></div><div class="tx"><b>يعني شنو فوتوكروميك؟</b><i>العدسة تغمق بروحها تحت الشمس وترجع شفافة بالظل والليل</i></div></div>
 <div class="feat"><span><b>33</b> جرام</span><span>أطراف معدن تنثني</span><span>ضد الصدمات</span></div>
 {foot('#F4C6DC','#51022D',story)}</body>'''
 for nm,fn in (('21g',d21),('f26',d33)):

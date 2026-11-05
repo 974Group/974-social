@@ -14,11 +14,18 @@ def strip(scale,out):
     open('/tmp/strip.html','w').write(html)
     js=f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:{W},height:{H}}}}});await p.goto('file:///tmp/strip.html');await p.waitForTimeout(600);await p.screenshot({{path:'{out}',omitBackground:true}});await b.close();}})()"
     subprocess.run(['node','-e',js],check=True)
-for f,scale,y,cover in [('974-pilates-specs-post.png',1.0,1245,(0,1255,560,1300)),('974-pilates-specs-story.png',1.12,1780,None)]:
+import sys as _s
+JOBS={'specs':[('974-pilates-specs-post.png',1.0,1245,(0,1255,560,1300)),('974-pilates-specs-story.png',1.12,1780,None)],
+ 'pack':[('974-pilates-packaging-post.png',1.0,1238,(120,1234,960,1282)),('974-pilates-packs-post.png',1.0,1240,None),('974-pilates-packaging-story.png',1.12,1785,None)]}
+for f,scale,y,cover in JOBS[_s.argv[1] if len(_s.argv)>1 else 'specs']:
     strip(scale,'/tmp/strip.png')
     im=Image.open(f).convert('RGBA')
     if cover:
-        bg=Image.new('RGBA',(cover[2]-cover[0],cover[3]-cover[1]),(244,236,230,255)); im.alpha_composite(bg,(cover[0],cover[1]))
+        h=cover[3]-cover[1]
+        patch=im.crop((cover[0],cover[1]-h-5,cover[2],cover[1]-5))
+        from PIL import ImageFilter, ImageDraw
+        m=Image.new('L',patch.size,0); ImageDraw.Draw(m).rectangle((0,0,patch.width,patch.height),fill=255); m=m.filter(ImageFilter.GaussianBlur(1.5))
+        im.paste(patch,(cover[0],cover[1]),m)
     st=Image.open('/tmp/strip.png').convert('RGBA'); im.alpha_composite(st,(0,y))
     im.convert('RGB').save(f.replace('.png','-v2.png'))
 print('ok')

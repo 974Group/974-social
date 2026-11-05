@@ -9,7 +9,7 @@ FONTS=f'''@font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP
 @font-face{{font-family:'Poppins';font-weight:700;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}}
 *{{margin:0;padding:0;box-sizing:border-box}}'''
 fit=['f_black','f_white','f_grey','f_beige','f_yellow','f_orange','f_red','f_pink','f_purple']
-cq=['c_f1_black','c_f2_whitegrey','c_s2_starlight','c_s1_beige','c_s2_lime','c_f3_green','c_f3_orange','c_f1_pink','c_f3_purple','c_f1_blue','c_s2_seamist','c_f3_navy']
+cq=['c_f1_blue','c_f2_whitegrey','c_f3_orange','c_s1_beige','c_s2_lime']
 
 def grid(items,cols,cw,ch,gap,stagger=0):
     out=''
@@ -31,10 +31,10 @@ def page(kind,W,H):
     else:
         bg='radial-gradient(ellipse at 25% 50%,#8A1450 0%,#720842 35%,#51022D 75%,#3A0120 100%)'
         ink='#FFFFFF'; acc='#C9A24B'; mark=MARK_W
-        eb='GARMIN CIRQA'; h='كل سيور <em>CIRQA</em>'; sub='قماش وسيليكون · 12 لون'; price='من <b>89</b> ر.ق'
+        eb='GARMIN CIRQA'; h='كل سيور <em>CIRQA</em>'; sub='5 أنواع · قماش وسيليكون'; price='من <b>89</b> ر.ق'
         items=cq
-        if mob: cols,cw,ch,gap,st=4,128,172,16,0
-        else: cols,cw,ch,gap,st=6,200,258,22,34
+        if mob: cols,cw,ch,gap,st=3,175,250,20,0
+        else: cols,cw,ch,gap,st=5,215,390,45,0
     rows=(len(items)+cols-1)//cols
     gw=cols*cw+(cols-1)*gap; gh=rows*ch+(rows-1)*gap+st
     if mob: gx=40; gy=(H-gh)//2
@@ -49,7 +49,7 @@ body{{width:{W}px;height:{H}px;background:{bg};font-family:Cairo;color:{ink};pos
 .t{{position:absolute;right:{110 if not mob else 44}px;top:50%;transform:translateY(-50%);text-align:right;direction:rtl;width:{760 if not mob else 470}px}}
 .t .lg{{height:{58 if not mob else 40}px;margin-bottom:{18 if not mob else 10}px}}
 .t .eb{{font-family:Poppins;font-weight:700;letter-spacing:{6 if not mob else 4}px;font-size:{26 if not mob else 19}px;color:{acc};direction:ltr;text-align:right}}
-.t h2{{font-weight:900;font-size:{118 if not mob else 72}px;line-height:1.05;margin-top:{6 if not mob else 2}px}}
+.t h2{{font-weight:900;font-size:{(118 if kind=='fit' else 104) if not mob else 72}px;line-height:1.05;{'white-space:nowrap;' if not mob else ''}margin-top:{6 if not mob else 2}px}}
 .t h2 em{{font-style:normal;font-family:Poppins;font-weight:700;color:{acc}}}
 .t .sub{{font-weight:700;font-size:{40 if not mob else 27}px;opacity:.85;margin-top:{12 if not mob else 6}px}}
 .t .row{{display:flex;gap:{18 if not mob else 12}px;align-items:center;margin-top:{34 if not mob else 20}px}}

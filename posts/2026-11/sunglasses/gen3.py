@@ -25,32 +25,41 @@ def fcss(acc,ink,story,s):
 
 def d21(W,H,story):
     s=1.12 if story else 1; T=150 if story else 0
-    rowh=228 if not story else 300
-    cards=''.join(f'''<div class="cd" style="--c:{c}"><div class="im"><img src="file://{C}{k}-glass.png"></div><b>{n}</b></div>''' for k,n,c in G21)
+    if not story: hT,gT,ch,gap,eT,fT=118,215,212,16,895,1027
+    else:         hT,gT,ch,gap,eT,fT=300,440,270,18,1300,1460
+    cards=''.join(f'''<div class="cd" style="--c:{c}"><div class="im"><img src="file://{C}{k}-glass.png"></div><div class="nb"><b>{n}</b></div></div>''' for k,n,c in G21)
     return f'''<style>{HEAD}
 body{{width:{W}px;height:{H}px;background:radial-gradient(ellipse at 50% 0%,#3a3f47 0%,#121417 70%);font-family:Cairo;color:#fff;position:relative;overflow:hidden}}
-.logo{{position:absolute;top:{50+T}px;left:56px;height:46px}}
-.tg{{position:absolute;top:{62+T}px;right:56px;font-family:Poppins;font-weight:700;font-size:17px;letter-spacing:4px;color:#C9A24B}}
-.h{{position:absolute;top:{118+T}px;left:0;right:0;text-align:center;direction:rtl;font-weight:900;font-size:{62*s}px;line-height:1.15}}
+.top{{position:absolute;top:{48+T-(0 if not story else 40)}px;left:44px;right:44px;display:flex;justify-content:space-between;align-items:center}}
+.top img{{height:44px}}
+.top span{{font-family:Poppins;font-weight:700;font-size:{18*s}px;letter-spacing:5px;color:#C9A24B}}
+.h{{position:absolute;top:{hT}px;left:44px;right:44px;direction:rtl;font-weight:900;font-size:{50*s}px;line-height:1.2;text-align:center;white-space:nowrap}}
 .h em{{font-style:normal;font-family:Poppins;color:#C9A24B}}
-.sub{{position:absolute;top:{200*s+T+8}px;left:0;right:0;text-align:center;direction:rtl;font-weight:700;font-size:{27*s}px;opacity:.85}}
-.grid{{position:absolute;left:44px;right:44px;top:{270*s+T+(30 if story else 0)}px;display:grid;grid-template-columns:1fr 1fr;gap:{16*s}px;direction:ltr}}
-.cd{{height:{rowh}px;border-radius:26px;background:linear-gradient(160deg,var(--c) 0%,rgba(0,0,0,.25) 120%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 18px 10px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}}
-.im{{flex:1;width:100%;display:flex;align-items:center;justify-content:center;min-height:0}}
-.im img{{max-width:92%;max-height:100%;filter:drop-shadow(0 14px 14px rgba(0,0,0,.45))}}
-.cd b{{font-family:Poppins;font-weight:800;font-size:{20*s}px;letter-spacing:3px;margin-top:6px}}
-.chips{{position:absolute;left:30px;right:30px;top:{(270*s+T+(30 if story else 0))+3*rowh+2*16*s+(22 if not story else 50)}px;display:flex;gap:10px;direction:rtl;justify-content:center}}
-.chips span{{border:2px solid #C9A24B;border-radius:40px;padding:3px 18px 7px;font-weight:800;font-size:{22*s}px;white-space:nowrap}}
-.chips b{{font-family:Poppins}}
+.grid{{position:absolute;left:44px;right:44px;top:{gT}px;display:grid;grid-template-columns:1fr 1fr;gap:{gap}px}}
+.cd{{height:{ch}px;border-radius:24px;background:linear-gradient(160deg,var(--c) 0%,#1a1c20 135%);display:flex;flex-direction:column;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}}
+.im{{flex:1;display:flex;align-items:center;justify-content:center;padding:12px 18px 4px;min-height:0}}
+.im img{{max-width:100%;max-height:100%;filter:drop-shadow(0 12px 12px rgba(0,0,0,.4))}}
+.nb{{height:{42*s}px;background:rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center}}
+.nb b{{font-family:Poppins;font-weight:800;font-size:{19*s}px;letter-spacing:3px;white-space:nowrap}}
+.exp{{position:absolute;left:44px;right:44px;top:{eT}px;height:{108*s}px;background:rgba(255,255,255,.08);border:1px solid rgba(201,162,75,.45);border-radius:24px;padding:0 22px;display:flex;align-items:center;gap:12px;direction:rtl}}
+.exp .tx{{flex:1}}
+.exp .tx b{{display:block;font-weight:900;font-size:{25*s}px;color:#C9A24B;line-height:1.3}}
+.exp .tx i{{display:block;font-style:normal;font-weight:600;font-size:{19*s}px;line-height:1.35}}
+.exp .tl{{display:flex;flex-direction:column;align-items:center;gap:2px}}
+.exp .tl img{{height:{54*s}px;background:#fff;border-radius:12px;padding:5px 8px}}
+.exp .tl span{{font-weight:700;font-size:{15*s}px}}
+.exp .ar{{font-size:{26*s}px;font-weight:900;color:#C9A24B}}
+.feat{{position:absolute;left:44px;right:44px;top:{fT}px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;direction:rtl}}
+.feat span{{background:rgba(255,255,255,.1);border-radius:16px;height:{50*s}px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:{21*s}px;white-space:nowrap}}
+.feat b{{font-family:Poppins;color:#C9A24B;margin:0 6px}}
 {fcss('#C9A24B','#121417',story,s)}
 </style><body>
-<img class="logo" src="file://{LOGO}"><div class="tg">974 GUARDS</div>
+<div class="top"><span>974 GUARDS · 21G</span><img src="file://{LOGO}"></div>
 <div class="h">وزنها <em>21</em> جرام.. ما تحس فيها</div>
-<div class="sub">6 ألوان · عدسة تغمق بروحها مع الشمس</div>
 <div class="grid">{cards}</div>
-<div class="chips"><span>☀️ فوتوكروميك</span><span>UV400</span><span>إطار TR90 مرن</span></div>
+<div class="exp"><div class="tx"><b>يعني شنو فوتوكروميك؟</b><i>العدسة تغمق بروحها تحت الشمس وترجع شفافة بالظل والليل</i></div><div class="tl"><img src="file://{C}fuwairit-clear.png"><span>بالظل</span></div><div class="ar">←</div><div class="tl"><img src="file://{C}fuwairit-dark.png"><span>بالشمس</span></div></div>
+<div class="feat"><span>UV400</span><span>إطار <b>TR90</b> مرن</span><span>6 ألوان</span></div>
 {foot('#C9A24B','#121417',story)}</body>'''
-
 def d33(W,H,story):
     s=1.12 if story else 1; T=150 if story else 0
     if not story: hT,gT,ch,gap,eT,fT=118,222,312,18,893,1025

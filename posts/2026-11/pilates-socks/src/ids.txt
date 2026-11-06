@@ -1,0 +1,14 @@
+teaser-post
+teaser-story
+launch-post
+collection-post
+specs-post
+packaging-post
+packs-post
+packaging-story
+fruit-edit
+bow-edit
+coffee-edit
+launch-story
+collection-story
+specs-story

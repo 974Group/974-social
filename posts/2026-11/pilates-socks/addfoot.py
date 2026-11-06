@@ -16,6 +16,7 @@ def strip(scale,out):
     subprocess.run(['node','-e',js],check=True)
 import sys as _s
 JOBS={'specs':[('974-pilates-specs-post.png',1.0,1245,(0,1255,560,1300)),('974-pilates-specs-story.png',1.12,1780,None)],
+ 'fruit':[('974-pilates-fruit-edit.png',1.0,1250,(0,1272,560,1312))],
  'pack':[('974-pilates-packaging-post.png',1.0,1238,(120,1234,960,1282)),('974-pilates-packs-post.png',1.0,1240,None),('974-pilates-packaging-story.png',1.12,1785,None)]}
 for f,scale,y,cover in JOBS[_s.argv[1] if len(_s.argv)>1 else 'specs']:
     strip(scale,'/tmp/strip.png')

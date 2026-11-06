@@ -135,7 +135,7 @@ def edit(slug,title,ar,keys,h,bg='#F7EFEA'):
 <div class="abs ar" style="right:64px;top:150px;font:800 34px Cairo">{ar}</div>
 {grid(keys,cols,40,290,cw,ch,hh,hh+8,20)}
 <div class="abs en" style="left:64px;top:1278px;font:600 18px Poppins;letter-spacing:.3em;color:#8A6E72">PILATES CLUB · 974GROUP.NET</div>''')
-A.append(edit('fruit-edit','The Fruit Edit','فواكه.. بس للرجول 🍒🍓🍊',['cherrystripe','strawred','strawpink','peach','orange','lemonade'],420))
+A.append(edit('fruit-edit','The Fruit Edit','ألوان منعشة.. لكل تمرين 🍒🍓🍊',['cherrystripe','strawred','strawpink','peach','orange','lemonade'],420))
 A.append(edit('bow-edit','The Bow Edit','فيونكة لكل مزاج 🎀',['pinkbow','cherrybow','redbow'],620))
 A.append(('coffee-edit','P',f'''
 <img src="close_coffee.jpg" class="abs" style="left:0;top:0;width:1080px;height:760px;object-fit:cover">

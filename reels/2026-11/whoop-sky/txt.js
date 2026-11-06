@@ -9,8 +9,9 @@ const txt=`<style>${F}
 .lg{position:absolute;top:205px;left:50%;transform:translateX(-50%);height:46px}
 .h{position:absolute;top:285px;left:0;right:0;text-align:center;direction:rtl;font-family:Alx;font-weight:700;font-size:88px;line-height:1.1;letter-spacing:-1px}
 .h span{font-family:Pop;font-weight:600;letter-spacing:0}
+.b{position:absolute;top:1470px;left:0;right:0;text-align:center;direction:rtl;font-family:Alx;font-weight:600;font-size:44px;color:#0E2A47}
 .s{position:absolute;top:420px;left:0;right:0;text-align:center;font-family:Alx;font-weight:400;font-size:34px;opacity:.92;direction:rtl}
-</style><img class="lg" src="file://${LOGO}"><div class="h">كم لون فالفيديو؟</div><div class="s">سيور Whoop سيليكون</div>`;
+</style><img class="lg" src="file://${LOGO}"><div class="h">كم لون فالفيديو؟</div><div class="s">سيور Whoop سيليكون</div><div class="b">جاوب صح.. وبتوصلك مفاجأة على الخاص 🎁</div>`;
 const cnt=n=>`<style>${F}
 .c{display:none;position:absolute;top:1475px;left:0;right:0;text-align:center;font-family:Pop;font-weight:300;font-size:34px;letter-spacing:6px}
 .c b{font-weight:600}

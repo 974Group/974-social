@@ -52,7 +52,7 @@ html,body{{width:{TW}mm;height:{TH}mm;font-family:Poppins}}
 <div class="panel rot" style="top:{fy}mm;height:{P}mm">
  <div class="c" style="top:9mm"><img class="logo" src="file://{D}/mark-black.png"></div>
  <div class="c big" style="top:30mm">3 PACK</div>
- <div class="c sub" style="top:41mm">SOCKS</div>
+ <div class="c sub" style="top:41mm;letter-spacing:.3em;padding-left:.3em">SPORT · CASUAL</div>
  <div class="c" style="top:63mm"><span class="pill">FREE SIZE</span></div>
 </div>
 <!-- MIDDLE / top of pack (rotated with front) -->
@@ -62,8 +62,8 @@ html,body{{width:{TW}mm;height:{TH}mm;font-family:Poppins}}
 </div>
 <!-- BACK (upright) -->
 <div class="panel" style="top:{by}mm;height:{P}mm">
- <div class="c" style="top:7mm"><div class="info">3 PAIRS · FREE SIZE</div><div style="font:700 7.5pt Cairo,sans-serif;color:#51022D;direction:rtl">٣ أزواج · مقاس واحد</div></div>
- <div class="c care" style="top:21mm;padding:0 4mm"><h4>CARE</h4>
+ <div class="c" style="top:6mm"><div class="info">SPORT &amp; CASUAL SOCKS<br>3 PAIRS · FREE SIZE</div><div style="font:700 7pt/1.5 Cairo,sans-serif;color:#51022D;direction:rtl">دلاغات رياضية وكاجوال<br>٣ أزواج · مقاس واحد</div></div>
+ <div class="c care" style="top:29mm;padding:0 4mm"><h4>CARE</h4>
  <p>Machine wash cold · Turn inside out<br>Do not bleach or iron · Do not tumble dry</p>
  {icons}</div>
  {soc}

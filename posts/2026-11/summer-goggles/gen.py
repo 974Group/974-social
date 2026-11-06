@@ -3,13 +3,13 @@ sys.path.insert(0,'/home/claude/974-social/templates'); import payfoot
 SP='/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad'
 C=os.path.abspath('cut')+'/'
 LOGO='/home/claude/974-social/posts/2026-11/pilates-socks/src/logo-white.png'
-GS=[('yellow','Yellow','#E8C21A'),('black','Black','#2A2A2A'),('red','Red','#D7262B'),('pink','Pink','#D6337E'),('blue','Blue','#2441C9'),('grey','Grey','#8E9399')]
+GS=[('yellow','Yellow','#E8C21A',209),('black','Black','#2A2A2A',249),('red','Red','#D7262B',249),('pink','Pink','#D6337E',209),('blue','Blue','#2441C9',249),('grey','Grey','#8E9399',249)]
 STRAP='''<svg viewBox="0 0 120 60" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30 C8 14 112 14 112 30"/><rect x="22" y="22" width="76" height="28" rx="12"/><path d="M60 30v12"/></svg>'''
 ARMS='''<svg viewBox="0 0 120 60" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="22" width="76" height="28" rx="12"/><path d="M22 30 L6 22"/><path d="M98 30 L114 22"/><path d="M60 30v12"/></svg>'''
 def page(story):
     W,H=1080,(1920 if story else 1350); s=1.1 if story else 1; T=150 if story else 0
     ch=290 if not story else 360
-    cards=''.join(f'<div class="cd" style="--c:{c}"><div class="im"><img src="file://{C}{k}.png"></div><div class="nm"><i></i>{n}</div></div>' for k,n,c in GS)
+    cards=''.join(f'<div class="cd" style="--c:{c}">'+('<div class="off">خصم</div>' if p==209 else '')+f'<div class="im"><img src="file://{C}{k}.png"></div><div class="nm"><i></i>{n}<span class="pp">'+(f'<s>249</s> <b>{p}</b>' if p==209 else f'<b>{p}</b>')+'</span></div></div>' for k,n,c,p in GS)
     if not story: hT,gT,mT,fT=112,240,240+2*ch+16+20,0
     else: hT,gT=300,470; mT=gT+2*ch+16+40
     return f'''<!doctype html><html><head><meta charset="utf-8"><style>
@@ -29,6 +29,8 @@ body{{width:{W}px;height:{H}px;background:linear-gradient(180deg,#14161A 0%,#1E2
 .im{{flex:1;display:flex;align-items:center;justify-content:center;padding:12px 14px 0;min-height:0}}
 .im img{{max-width:100%;max-height:100%;filter:drop-shadow(0 12px 12px rgba(0,0,0,.5))}}
 .nm{{height:{38*s}px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:Poppins;font-weight:500;font-size:{18*s}px}}
+.cd{{position:relative}} .off{{position:absolute;top:10px;right:10px;background:#F2C14E;color:#14161A;font-weight:900;font-size:{16*s}px;border-radius:20px;padding:0 12px 3px;z-index:2}}
+.pp{{margin-left:6px;font-weight:700;color:#F2C14E}} .pp s{{color:#fff;opacity:.5;font-weight:500;font-size:.85em}}
 .nm i{{width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2px rgba(255,255,255,.4)}}
 .feat{{position:absolute;left:44px;right:44px;top:{mT}px;display:grid;grid-template-columns:1fr 1fr;gap:16px;direction:rtl}}
 .f{{border-radius:22px;background:rgba(242,193,78,.1);box-shadow:inset 0 0 0 1px rgba(242,193,78,.35);padding:{18*s}px 18px;display:flex;align-items:center;gap:14px}}
@@ -54,7 +56,7 @@ body{{width:{W}px;height:{H}px;background:linear-gradient(180deg,#14161A 0%,#1E2
 <div class="f"><div class="sw" style="font-family:Poppins;font-weight:700;color:#F2C14E;font-size:{24*s}px">UV</div><div><b>بولرايزد + حماية UV</b><em>إطار TR90 خفيف ومرن</em></div></div>
 </div>
 <div class="pf">{payfoot.html()}</div>
-<div class="foot"><div class="cta">علّق <em>«نظارة»</em> ونرسل لك الرابط 📩</div><div class="price"><b>209</b> ر.ق <s>249</s></div></div>
+<div class="foot"><div class="cta">علّق <em>«نظارة»</em> ونرسل لك الرابط 📩</div><div class="price"><small style="font-size:.6em">من </small><b>209</b> ر.ق</div></div>
 </body></html>'''
 for kind,st in (('post',False),('story',True)):
     n=f'974-goggles-2in1-{kind}'; H=1920 if st else 1350

@@ -4,6 +4,10 @@ ORDER='black-ed darkgrey greyblack whitegrey creamy creamyblue iceblue babyblue 
 FPB=int(sys.argv[2]) if len(sys.argv)>2 else 10
 sky=os.path.abspath(sys.argv[1])
 N=len(ORDER)*FPB; FPS=30
+H=FPB//2
+SCHED=[(0,H+k) for k in range(FPB-H)]+[(b,j) for b in range(1,len(ORDER)) for j in range(FPB)]+[(0,j) for j in range(H)]
+TXT=Image.open(os.path.abspath('txt.png')).convert('RGBA')
+CNT=[Image.open(os.path.abspath(f'cnt{k+1:02d}.png')).convert('RGBA') for k in range(len(ORDER))]
 bands=[Image.open(f'cut/{n}.png').convert('RGBA') for n in ORDER]
 os.makedirs('fr',exist_ok=True)
 # sky frames
@@ -23,14 +27,14 @@ for i in range(N):
         b=Image.open(f'fr/sk_{(i-(N-X))+1:04d}.png').convert('RGB')
         a=Image.blend(a,b,k)
     fr=a.convert('RGBA')
-    bi=i//FPB; j=i%FPB
+    bi,j=SCHED[i]
     b=bands[bi]
     pop=1+0.07*max(0,1-j/4)**2
     w=int(720*pop); h=int(b.height*w/b.width)
     im=b.resize((w,h),Image.LANCZOS).rotate(6*math.sin(2*math.pi*t*3),resample=Image.BICUBIC,expand=True)
-    cy=930+45*math.sin(2*math.pi*t*2)
+    cy=990+45*math.sin(2*math.pi*t*2)
     fr.alpha_composite(im,(540-im.width//2,int(cy-im.height/2)))
-    fr.alpha_composite(logo,(540-logo.width//2,210))
+    fr.alpha_composite(TXT,(0,0)); fr.alpha_composite(CNT[bi],(0,0))
     fr.convert('RGB').save(f'fr/o_{i:04d}.jpg',quality=93)
 subprocess.run(['ffmpeg','-v','error','-y','-framerate','30','-i','fr/o_%04d.jpg','-c:v','libx264','-preset','veryfast','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart','tmp_sky.mp4'],check=True)
 os.replace('tmp_sky.mp4','974-whoop-silicone-sky.mp4'); print(N,N/30)

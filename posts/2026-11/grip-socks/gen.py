@@ -32,7 +32,7 @@ COLS=[('White','#F4F4F4'),('Black','#0B0B0B'),('Red','#D9262E'),('Maroon','#7A14
 
 def slide1(story=False):
     o=150 if story else 0
-    chips=lambda names:''.join(f'<span class="ch"><i style="background:{c}"></i>{n}</span>' for n,c in COLS if n in names)
+    chips=lambda names:''.join(f'<span class="cp"><i style="background:{c}"></i>{n}</span>' for n,c in COLS if n in names)
     return head(1920 if story else 1350,story)+f'''
 .h{{position:absolute;top:{o+128}px;right:48px;width:560px;text-align:right;direction:rtl}}
 .h b{{display:block;font-weight:900;font-size:76px;line-height:1.1}}
@@ -42,8 +42,8 @@ def slide1(story=False):
 .info{{position:absolute;right:48px;width:560px;top:{o+(560 if story else 470)}px;direction:rtl}}
 .lab{{font-weight:800;font-size:20px;color:{MUTE};margin:0 0 12px}}
 .row{{display:flex;flex-wrap:wrap;gap:10px 10px;margin-bottom:10px}}
-.ch{{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(255,255,255,.35);border-radius:30px;padding:6px 16px 7px;font-family:Poppins;font-weight:500;font-size:21px}}
-.ch i{{width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.55)}}
+.cp{{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(255,255,255,.35);border-radius:30px;padding:6px 16px 7px;font-family:Poppins;font-weight:500;font-size:21px}}
+.cp i{{width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.55)}}
 .pr{{font-weight:800;font-size:24px;margin:2px 0 26px}} .pr b{{font-family:Poppins;font-size:30px}} .pr s{{font-family:Poppins;opacity:.5;margin-right:6px}} .pr em{{font-style:normal;background:#fff;color:{BG};border-radius:20px;padding:0 12px 3px;font-size:18px;margin-right:8px}}
 .sz{{display:flex;gap:12px}} .sz span{{flex:1;border-radius:18px;background:rgba(255,255,255,.08);padding:12px 10px;text-align:center}}
 .sz b{{display:block;font-family:Poppins;font-weight:700;font-size:32px;line-height:1.1}} .sz em{{display:block;font-style:normal;font-family:Poppins;font-weight:500;font-size:19px;color:{MUTE}}}
@@ -57,7 +57,7 @@ def slide1(story=False):
 <div class="row">{chips(['Red','Maroon','Blue','Grey'])}</div>
 <div class="pr"><b>39</b> ر.ق <s>60</s><em>خصم</em></div>
 <div class="lab">المقاسات</div>
-<div class="row"><span class="ch" style="direction:ltr"><b>M</b>&nbsp;38–43</span><span class="ch" style="direction:ltr"><b>L</b>&nbsp;43–46</span></div>
+<div class="row"><span class="cp" style="direction:ltr"><b>M</b>&nbsp;38–43</span><span class="cp" style="direction:ltr"><b>L</b>&nbsp;43–46</span></div>
 </div>
 {FOOT}</body></html>'''
 
@@ -99,3 +99,12 @@ def shot(n,html,H):
 if __name__=='__main__':
     shot('974-grip-1-colours',slide1(),1350)
     shot('974-grip-2-why',slide2(),1350)
+
+def story():
+    h=slide1(True)
+    extra='''<div style="position:absolute;left:48px;right:48px;top:1260px;direction:rtl;display:flex;align-items:center;gap:24px;border-top:1px solid rgba(255,255,255,.25);padding-top:34px">
+<div style="font-family:Poppins;font-weight:700;font-size:120px;line-height:.9;direction:ltr">×2</div>
+<div><b style="display:block;font-weight:900;font-size:36px;line-height:1.25">مسك أقوى من الدلاغ العادي</b><em style="display:block;font-style:normal;font-weight:600;font-size:22px;color:rgba(255,255,255,.7)">رجلك ثابتة داخل الجوتي بالتسارع والتوقف والدوران</em></div></div>'''
+    return h.replace('<div class="pf">',extra+'<div class="pf">')
+if __name__=='__main__':
+    shot('974-grip-story',story(),1920)

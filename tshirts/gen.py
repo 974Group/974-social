@@ -4,7 +4,7 @@ SP='/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad'
 C=os.path.abspath('cut')+'/'
 LW='/home/claude/974-social/posts/2026-11/pilates-socks/src/logo-white.png'
 LB='/home/claude/974-social/posts/2026-11/pilates-socks/src/logo-black.png'
-PRICE=None   # set when the owner gives the price, e.g. '99'
+PRICE='139'
 FONTS=f'''@font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}}
 @font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}}
 @font-face{{font-family:'Poppins';font-weight:500;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf)}}
@@ -70,7 +70,7 @@ def design(key,story=False):
 <div class="abs en" style="left:44px;top:{o+120}px;font-weight:900;font-size:120px;line-height:.9;letter-spacing:-3px">{D['title']}</div>
 <div class="abs en" style="left:50px;top:{o+232}px;font-weight:500;font-size:44px;font-style:italic;letter-spacing:1px;opacity:.9">{D['script']}</div>
 <div class="abs ar" style="right:48px;width:470px;top:{o+150}px;text-align:right;font-weight:700;font-size:25px;line-height:1.5">{D['ar']}</div>
-<div class="abs en" style="right:48px;top:{o+262}px;font-weight:700;font-size:18px;letter-spacing:3px;opacity:.75">{D['colors'].upper()} · XL</div>
+<div class="abs en" style="right:48px;top:{o+262}px;font-weight:700;font-size:18px;letter-spacing:3px;opacity:.75">{D['colors'].upper()} · S–XL</div>
 {sh}'''
     return page(1080,1920 if story else 1350,D['bg'],D['ink'],body,story,logo=D['logo'],extra=extra)
 

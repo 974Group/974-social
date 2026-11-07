@@ -70,8 +70,8 @@ body{{margin:0;background:#555;font-family:'Cairo'}}
   <div class="abs en" style="right:70px;top:96px;text-align:right;font-weight:700;letter-spacing:6px;font-size:22px;color:{M};line-height:1.6">QATAR<br>EDITION</div>
   <div class="abs ar" style="left:70px;right:70px;top:230px;font-size:46px;font-weight:900;color:{M};white-space:nowrap">سير سيليكون لساعة Whoop</div>
   {scene(1.15,'#5C0808')}
-  <img class="abs" src="../img/p49q-50.png" style="left:10px;top:470px;width:780px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
-  <img class="abs" src="../img/p49q-0.png" style="left:-130px;top:1160px;width:780px;transform:rotate(14deg);filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
+  <img class="abs" src="../img/p49w-50.png" style="left:10px;top:470px;width:780px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
+  <img class="abs" src="../img/p49w-0.png" style="left:-130px;top:1160px;width:780px;transform:rotate(14deg);filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
   <div class="abs en" style="right:70px;top:520px;font-weight:700;font-size:22px;letter-spacing:4px;color:rgba(255,255,255,.7)">5.0</div>
   <div class="abs en" style="right:70px;top:1200px;font-weight:700;font-size:22px;letter-spacing:4px;color:rgba(255,255,255,.7)">MG</div>
   <div class="abs ar" style="right:70px;bottom:250px;font-size:84px;font-weight:900;line-height:1">عنابي</div>

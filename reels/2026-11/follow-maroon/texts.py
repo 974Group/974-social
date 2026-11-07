@@ -26,7 +26,7 @@ L={
  'c6':'<div class="abs cap" style="opacity:.75">رجعنا أبيض.. وأسرع</div>',
  'c7':'<div class="abs cap" style="font-size:60px;font-weight:900">وقف.</div>',
  'c8':'<div class="abs cap gold">أي رقم كان الـ <span class="en">Maroon</span>؟</div>',
- 'c9':'<div class="abs cap" style="top:1462px">علّق رقمك 👇</div><div class="abs sub" style="top:1530px">الجواب في التعليقات · 23 لون سيليكون في <span class="en">974group.net</span></div>',
+ 'c9':'<div class="abs cap" style="top:1470px">جاوب صح في التعليقات 👇</div><div class="abs cap gold" style="top:1532px;font-size:40px">واحصل على <span class="en" style="letter-spacing:1px">Voucher</span> هدية 🎁</div><div class="abs en handle" style="top:1592px;opacity:.55;font-size:18px">23 SILICONE COLOURS · 974GROUP.NET</div>',
 }
 os.makedirs('txt',exist_ok=True)
 for k,v in L.items():

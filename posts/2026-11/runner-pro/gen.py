@@ -58,8 +58,9 @@ body{{width:{W}px;height:{H}px;background:radial-gradient(120% 70% at 50% 45%,#5
 <div class="pf">{payfoot.html()}</div>
 <div class="foot"><div class="cta">علّق <em>«جري»</em> ونرسل لك الرابط 📩</div><div class="price"><b>59</b> ر.ق</div></div>
 </body></html>'''
-for kind,st in (('post',False),('story',True)):
-    n=f'974-runner-pro-{kind}'; H=1920 if st else 1350
-    open(n+'.html','w').write(page(st))
-    js=f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const pg=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await pg.goto('file://'+process.cwd()+'/{n}.html');await pg.waitForTimeout(800);await pg.screenshot({{path:'{n}.png'}});await b.close();}})()"
-    subprocess.run(['node','-e',js],check=True)
+if __name__=='__main__':
+    for kind,st in (('post',False),('story',True)):
+        n=f'974-runner-pro-{kind}'; H=1920 if st else 1350
+        open(n+'.html','w').write(page(st))
+        js=f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const pg=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await pg.goto('file://'+process.cwd()+'/{n}.html');await pg.waitForTimeout(800);await pg.screenshot({{path:'{n}.png'}});await b.close();}})()"
+        subprocess.run(['node','-e',js],check=True)

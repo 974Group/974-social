@@ -24,10 +24,10 @@ body{{width:{W}px;height:{H}px;background:linear-gradient(180deg,#F4F1F2 0%,#E9E
 .abs{{position:absolute}} .en{{font-family:Poppins;direction:ltr}}
 .b{{position:absolute;transform:translate(-50%,-50%)}} .b img{{height:100%;display:block}}
 .nw{{position:absolute;right:-6px;top:-4px;background:#720842;color:#fff;font-family:Poppins;font-weight:700;font-size:{15 if story else 13}px;letter-spacing:1px;border-radius:20px;padding:3px 9px 2px}}
-.hd{{position:absolute;left:48px;right:48px;top:{ht}px;display:flex;align-items:center;justify-content:space-between}}
-.hd b{{font-family:Poppins;font-weight:700;font-size:{150 if story else 120}px;line-height:.8;letter-spacing:-5px;color:#720842}}
+.hd{{position:absolute;left:48px;right:48px;top:{ht}px;display:flex;align-items:center;justify-content:flex-start;gap:{30 if story else 26}px;direction:rtl}}
+.hd b{{direction:ltr;font-family:Poppins;font-weight:700;font-size:{150 if story else 120}px;line-height:.8;letter-spacing:-5px;color:#720842}}
 .hd div{{text-align:right;direction:rtl}} .hd i{{display:block;font-style:normal;font-weight:900;font-size:{50 if story else 44}px;line-height:1.15}}
-.hd em{{display:block;font-style:normal;font-family:Poppins;font-weight:500;font-size:{19 if story else 17}px;letter-spacing:4px;opacity:.6;direction:ltr;margin-top:6px}}
+.hd em{{display:block;font-style:normal;font-family:Poppins;font-weight:500;font-size:{19 if story else 17}px;letter-spacing:4px;opacity:.6;margin-top:6px}}
 .pf{{position:absolute;left:28px;right:28px;bottom:{pf}px}}
 {payfoot.css(1.0 if not story else 1.12)}
 .foot{{position:absolute;left:48px;right:48px;bottom:{fb}px;display:flex;justify-content:space-between;align-items:center;direction:rtl}}

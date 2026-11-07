@@ -1,7 +1,7 @@
 # Qatar Edition box for Whoop silicone (maroon / Burgundy p49), same manufacturer die as final/tpl.html
 import os,subprocess
 S='/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad/wpkg'
-M='#8A1538'; M2='#6E0F2C'; M3='#560A21'; W='#FFFFFF'
+M='#420303'; M2='#360202'; M3='#2A0101'; W='#FFFFFF'
 BC='97430007'
 def serr(w,h,n=9,fill=W,down=True):
     # white band with n triangular points along the bottom edge (Qatar flag serration)
@@ -11,7 +11,7 @@ def serr(w,h,n=9,fill=W,down=True):
         pts+= [f'{x1:.1f},{h-60}',f'{xm:.1f},{h}',f'{x0:.1f},{h-60}'] if down else []
     return f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" style="position:absolute;left:0;top:0;display:block"><polygon points="{" ".join(pts)}" fill="{fill}"/></svg>'
 def skyline(w=791,h=760):
-    sky="#4A0819"
+    sky="#5A0707"
     p=[]
     # generic towers
     for x,tw,th in [(18,46,250),(70,34,330),(250,40,300),(470,44,270),(520,30,380),(690,52,240),(745,40,330)]:
@@ -30,13 +30,13 @@ def skyline(w=791,h=760):
     return f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" style="position:absolute;left:0;bottom:0"><g fill="{sky}" opacity=".9">{"".join(p)}</g></svg>'
 def dunes(w=791,h=520):
     return f'''<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" style="position:absolute;left:0;bottom:0" preserveAspectRatio="none">
-<defs><linearGradient id="d1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A3264E"/><stop offset="1" stop-color="{M2}"/></linearGradient>
-<linearGradient id="d2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7E1233"/><stop offset="1" stop-color="{M3}"/></linearGradient></defs>
+<defs><linearGradient id="d1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E0B0B"/><stop offset="1" stop-color="{M2}"/></linearGradient>
+<linearGradient id="d2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#560606"/><stop offset="1" stop-color="{M3}"/></linearGradient></defs>
 <path d="M0 140 C140 60 260 70 380 150 C470 210 600 120 791 90 V{h} H0 Z" fill="url(#d1)"/>
 <path d="M0 300 C120 220 300 200 430 280 C540 350 660 260 791 240 V{h} H0 Z" fill="url(#d2)"/>
 <path d="M380 150 C470 210 600 120 791 90" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="3"/>
 <path d="M0 300 C120 220 300 200 430 280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3"/></svg>'''
-def scene(sc=1.15,col=None): return f'<div class="abs" style="left:0;right:0;bottom:0;height:1250px"><div class="abs" style="left:0;right:0;bottom:330px;height:760px;transform:scale({sc});transform-origin:50% 100%">{skyline() if not col else skyline().replace("#4A0819",col)}</div><div class="abs" style="left:0;right:0;bottom:0;height:520px">{dunes()}</div></div>'
+def scene(sc=1.15,col=None): return f'<div class="abs" style="left:0;right:0;bottom:0;height:1250px"><div class="abs" style="left:0;right:0;bottom:330px;height:760px;transform:scale({sc});transform-origin:50% 100%">{skyline() if not col else skyline().replace("#5A0707",col)}</div><div class="abs" style="left:0;right:0;bottom:0;height:520px">{dunes()}</div></div>'
 
 AR_T='قطر.. من هنا بدأنا'
 AR_P='توحّدت قطر على يد المؤسس الشيخ جاسم بن محمد آل ثاني، ونحتفل بذكراه كل سنة في اليوم الوطني ١٨ ديسمبر. ونالت استقلالها في ٣ سبتمبر ١٩٧١. واليوم قطر من أكبر ٣ دول في العالم بمخزون الغاز الطبيعي، وأول دولة عربية تستضيف كأس العالم لكرة القدم في ٢٠٢٢. وهذا السير بلون العنابي.. لون علمنا.'
@@ -50,7 +50,7 @@ html=f'''<!doctype html><html lang="ar"><meta charset="utf-8"><style>
 body{{margin:0;background:#555;font-family:'Cairo'}}
 .die{{position:relative;width:3530px;height:4072px;overflow:hidden;background:#fff}}
 .p{{position:absolute;overflow:hidden;box-sizing:border-box;background:linear-gradient(180deg,{M} 0%,{M2} 100%);color:#fff}}
-.glueL{{left:280px;width:273px;top:733px;height:2465px}} .front{{left:553px;width:791px;top:733px;height:2465px;background:linear-gradient(180deg,#651029 0%,#4E0A1F 100%)!important}}
+.glueL{{left:280px;width:273px;top:733px;height:2465px}} .front{{left:553px;width:791px;top:733px;height:2465px;background:linear-gradient(180deg,#4C0505 0%,#420303 55%,#350202 100%)!important}}
 .side{{left:1344px;width:243px;top:733px;height:2465px;background:#fff!important;color:{M}}}
 .back{{left:1587px;width:791px;top:733px;height:2465px}} .glueR{{left:2378px;width:224px;top:733px;height:2465px}}
 .lidF{{left:553px;width:791px;top:327px;height:406px;background:#fff!important}} .lidB{{left:1587px;width:791px;top:209px;height:524px}}
@@ -69,7 +69,7 @@ body{{margin:0;background:#555;font-family:'Cairo'}}
   <img class="abs" src="../../pkg/logo-maroon.png" style="left:70px;top:80px;width:220px">
   <div class="abs en" style="right:70px;top:96px;text-align:right;font-weight:700;letter-spacing:6px;font-size:22px;color:{M};line-height:1.6">QATAR<br>EDITION</div>
   <div class="abs ar" style="left:70px;right:70px;top:230px;font-size:46px;font-weight:900;color:{M};white-space:nowrap">سير سيليكون لساعة Whoop</div>
-  {scene(1.15,'#7C1838')}
+  {scene(1.15,'#5C0808')}
   <img class="abs" src="../img/p49q-50.png" style="left:10px;top:470px;width:780px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
   <img class="abs" src="../img/p49q-0.png" style="left:-130px;top:1160px;width:780px;transform:rotate(14deg);filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
   <div class="abs en" style="right:70px;top:520px;font-weight:700;font-size:22px;letter-spacing:4px;color:rgba(255,255,255,.7)">5.0</div>

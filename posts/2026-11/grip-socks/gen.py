@@ -76,14 +76,14 @@ def slide2(story=False):
 .stat .n{{font-family:Poppins;font-weight:700;font-size:150px;line-height:.9}}
 .stat .t b{{display:block;font-weight:900;font-size:36px;line-height:1.25}} .stat .t em{{display:block;font-style:normal;font-weight:600;font-size:21px;color:{MUTE};line-height:1.45}}
 .sole{{position:absolute;left:20px;top:{o+(260 if story else 236)}px;height:260px;opacity:.95}}
-.tb{{position:absolute;left:48px;right:48px;top:{o+(620 if story else 520)}px;direction:rtl}}
+.tb{{position:absolute;left:48px;right:48px;top:{o+(560 if story else 520)}px;direction:rtl}}
 .hd,.r{{display:grid;grid-template-columns:1.05fr 1fr 1.35fr;gap:16px;align-items:center}}
 .hd{{font-weight:900;font-size:24px;padding-bottom:12px;border-bottom:2px solid rgba(255,255,255,.5)}} .hd span:nth-child(2){{color:{MUTE}}}
 .r{{padding:{24 if story else 18}px 0;border-bottom:1px solid rgba(255,255,255,.16)}}
 .k{{font-weight:900;font-size:26px}} .a{{font-weight:600;font-size:21px;color:rgba(255,255,255,.55)}} .g{{font-weight:800;font-size:23px}}
 .g::before{{content:'✓ ';color:#fff;font-weight:900}}
-.src{{position:absolute;left:48px;right:48px;top:{o+(1290 if story else 1080)}px;direction:rtl;font-weight:500;font-size:16px;color:rgba(255,255,255,.5)}}
-.sp{{position:absolute;left:48px;right:48px;top:{o+(1210 if story else 1030)}px;direction:rtl;font-weight:700;font-size:22px}}
+.src{{position:absolute;left:48px;right:48px;top:{o+(1190 if story else 1080)}px;direction:rtl;font-weight:500;font-size:16px;color:rgba(255,255,255,.5)}}
+.sp{{position:absolute;left:48px;right:48px;top:{o+(1130 if story else 1030)}px;direction:rtl;font-weight:700;font-size:22px}}
 </style></head><body>{TOP}
 <div class="h"><b>ليش Grip؟</b><i>وش الفرق عن الدلاغ العادي</i></div>
 <div class="stat"><div class="n" style="direction:ltr">×2</div><div class="t"><b>مسك أقوى من الدلاغ العادي</b><em>القطع المطاطية تثبّت رجلك داخل الجوتي<br>بالتسارع والتوقف والدوران</em></div></div>

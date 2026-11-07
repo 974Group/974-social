@@ -1,0 +1,73 @@
+{%- comment -%}
+  "Not sure about your size?" helper — Garmin bands only.
+  4 Nov 2026: hidden for Garmin Cirqa bands (Cirqa is a screenless band, no QuickFit watch sizes).
+  7 Nov 2026: Designy T-shirts get the height/weight size finder (snippet pdp-tee-size).
+{%- endcomment -%}
+{%- if product.tags contains 'goggle-builder' -%}{%- render 'pdp-goggle-builder', product: product -%}{%- endif -%}
+{%- if product.tags contains 'lens-picker' -%}{%- render 'pdp-lens-picker', product: product -%}{%- endif -%}
+{%- if product.vendor == 'Designy Studios' or product.type == 'T-shirt' -%}{%- render 'pdp-tee-size', product: product -%}{%- endif -%}
+{%- liquid
+  assign is_ar = false
+  if request.locale.iso_code == 'ar'
+    assign is_ar = true
+  endif
+-%}
+{%- liquid
+  assign is_garmin = false
+  for c in product.collections
+    if c.handle == 'garmin-bands'
+      assign is_garmin = true
+      break
+    endif
+  endfor
+  assign devs = product.metafields.custom.device.value | join: ' ' | downcase
+  if devs contains 'garmin'
+    assign is_garmin = true
+  endif
+  assign cirqa_t = product.title | downcase
+  if devs contains 'cirqa' or cirqa_t contains 'cirqa' or product.tags contains 'Cirqa'
+    assign is_garmin = false
+  endif
+  assign fits = product.metafields.custom.watch_size.value | join: '|'
+-%}
+{%- if is_garmin -%}
+<div class="pdp-size">
+  <button type="button" class="pdp-size__btn" onclick="document.getElementById('pdp-size-dialog').showModal()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>
+    {% if is_ar %}مو متأكد من مقاس ساعتك؟{% else %}Not sure about your watch size?{% endif %}
+  </button>
+</div>
+
+<dialog id="pdp-size-dialog" class="pdp-size__dialog" aria-labelledby="pdp-size-h">
+  <div class="pdp-size__head">
+    <h2 id="pdp-size-h" class="pdp-size__title">{% if is_ar %}اعرف مقاس سوار Garmin{% else %}Find your Garmin band size{% endif %}</h2>
+    <button type="button" class="pdp-size__close" aria-label="{% if is_ar %}إغلاق{% else %}Close{% endif %}" onclick="this.closest('dialog').close()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <p class="pdp-size__intro">{% if is_ar %}دوّر على ساعتك تحت — عرض السوار مكتوب جنبها.{% else %}Find your watch below — the band width is next to it.{% endif %}</p>
+
+  {%- capture g20 -%}Fenix 7S / 7S Pro, Fenix 6S / 6S Pro, Fenix 5S / 5S Plus, Fenix 8 (43mm), Epix Pro (42mm), Instinct 2S, Descent Mk2S / Mk3 (43mm){%- endcapture -%}
+  {%- capture g22 -%}Fenix 7 / 7 Pro, Fenix 6 / 6 Pro, Fenix 5 / 5 Plus, Fenix 8 (47mm), Epix Gen 2 / Epix Pro (47mm), Forerunner 955 / 965, Forerunner 255 / 265, Instinct 2 / Instinct 3 (45mm), Instinct Crossover, Venu 3, MARQ, Tactix 8 (47mm){%- endcapture -%}
+  {%- capture g26 -%}Fenix 7X / 7X Pro, Fenix 6X / 6X Pro, Fenix 5X / 5X Plus, Fenix 8 (51mm), Epix Pro (51mm), Enduro / Enduro 2 / Enduro 3, Instinct 2X / Instinct 3 (50mm), Tactix 7 / Tactix 8 (51mm), Descent Mk2 / Mk2i / Mk3i (51mm){%- endcapture -%}
+
+  <div class="pdp-size__groups">
+    <div class="pdp-size__g{% if fits contains '20mm' %} is-fit{% endif %}">
+      <div class="pdp-size__w"><b>20mm</b><span>{% if is_ar %}ساعة 42–43mm{% else %}42–43mm watch{% endif %}</span>{% if fits contains '20mm' %}<em>{% if is_ar %}هذا السوار{% else %}This band{% endif %}</em>{% endif %}</div>
+      <p>{{ g20 }}</p>
+    </div>
+    <div class="pdp-size__g{% if fits contains '22mm' %} is-fit{% endif %}">
+      <div class="pdp-size__w"><b>22mm</b><span>{% if is_ar %}ساعة 45–47mm{% else %}45–47mm watch{% endif %}</span>{% if fits contains '22mm' %}<em>{% if is_ar %}هذا السوار{% else %}This band{% endif %}</em>{% endif %}</div>
+      <p>{{ g22 }}</p>
+    </div>
+    <div class="pdp-size__g{% if fits contains '26mm' %} is-fit{% endif %}">
+      <div class="pdp-size__w"><b>26mm</b><span>{% if is_ar %}ساعة 50–51mm{% else %}50–51mm watch{% endif %}</span>{% if fits contains '26mm' %}<em>{% if is_ar %}هذا السوار{% else %}This band{% endif %}</em>{% endif %}</div>
+      <p>{{ g26 }}</p>
+    </div>
+    <div class="pdp-size__g{% if fits contains '24mm' %} is-fit{% endif %}">
+      <div class="pdp-size__w"><b>24mm</b><span>Venu X1</span>{% if fits contains '24mm' %}<em>{% if is_ar %}هذا السوار{% else %}This band{% endif %}</em>{% endif %}</div>
+    </div>
+  </div>
+  <p class="pdp-size__outro">{% if is_ar %}نصيحة: الموديل بالضبط تلقاه في الساعة من الإعدادات › النظام › حول. لسا مو متأكد؟ راسلنا على واتساب مع صورة ونقول لك.{% else %}Tip: your exact model is shown on the watch in Settings › System › About. Still not sure? Message us on WhatsApp with a photo and we'll tell you.{% endif %}</p>
+</dialog>
+{%- endif -%}

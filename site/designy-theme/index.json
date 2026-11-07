@@ -1,0 +1,460 @@
+{
+  "sections": {
+    "ux_polish": {
+      "type": "ux-polish",
+      "settings": {
+        "glass": true,
+        "accent_color": "#a16207",
+        "ink_color": "#1c1917"
+      }
+    },
+    "season_banner": {
+      "type": "season-banner",
+      "blocks": {
+        "slide_pilates": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/hero-pilates-desktop.jpg",
+            "image_mobile": "shopify://shop_images/hero-pilates-mobile.jpg",
+            "link": "/products/pilates-club-grip-socks",
+            "alt": "دلاغات البيلاتيس Pilates Club — 12 تصميم، أي 3 بـ 134 ر.ق"
+          }
+        },
+        "slide_fitbit2": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/fitbit-silicone2-desktop-v1.jpg",
+            "image_mobile": "shopify://shop_images/fitbit-silicone2-mobile-v1.jpg",
+            "link": "/products/fitbit-silicone-bands-2-0",
+            "alt": "Fitbit Air سيليكون 2.0 — 9 ألوان"
+          }
+        },
+        "slide_cirqa": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/garmin-cirqa-all-desktop-v1.jpg",
+            "image_mobile": "shopify://shop_images/garmin-cirqa-all-mobile-v1.jpg",
+            "link": "/collections/garmin-cirqa-bands",
+            "alt": "كل سيور Garmin CIRQA — قماش وسيليكون"
+          }
+        },
+        "slide_goggles": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/season-goggles-desktop-v5.jpg",
+            "image_mobile": "shopify://shop_images/season-goggles-mobile-v5.jpg",
+            "link": "/collections/974guards?filter.p.m.custom.guard_type=Goggles",
+            "alt": "الموسم بدأ… وما خذت نظارتك؟ نظارات 974 Guards"
+          }
+        },
+        "slide_luxe3d": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/luxe-3d-desktop-v3.jpg",
+            "image_mobile": "shopify://shop_images/luxe-3d-mobile-v3.jpg",
+            "link": "/products/rolex-customised-whoop-soft-fabric-band?variant=55302368887075",
+            "alt": "تصاميم فاخرة بطباعة ثلاثية الأبعاد — سيور Whoop"
+          }
+        },
+        "slide_tshirts": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/designy-tshirts-desktop.jpg",
+            "image_mobile": "shopify://shop_images/designy-tshirts-mobile.jpg",
+            "link": "/collections/t-shirts",
+            "alt": "تيشيرتات Designy Studios × 974 — Drop 01، مقاسات S إلى XL، 139 ر.ق"
+          }
+        }
+      },
+      "block_order": [
+        "slide_tshirts",
+        "slide_pilates",
+        "slide_fitbit2",
+        "slide_cirqa",
+        "slide_goggles",
+        "slide_luxe3d"
+      ],
+      "name": "Season banner",
+      "settings": {
+        "max_width": 1200,
+        "radius": 22,
+        "desktop_ratio": "auto",
+        "mobile_ratio": "auto",
+        "autoplay": 6,
+        "show_dots": true,
+        "aria_label": "Seasonal offers",
+        "padding_top": 10,
+        "padding_bottom": 6
+      }
+    },
+    "category_chooser": {
+      "type": "category-chooser",
+      "blocks": {
+        "cat_bands": {
+          "type": "category",
+          "settings": {
+            "collection": "bands",
+            "title": "Bands",
+            "image": "",
+            "link": ""
+          }
+        },
+        "t_whoop5": {
+          "type": "tile",
+          "settings": {
+            "collection": "whoop-5-1",
+            "label": "Whoop 5.0"
+          }
+        },
+        "t_fitbit": {
+          "type": "tile",
+          "settings": {
+            "collection": "fitbit",
+            "label": "Fitbit"
+          }
+        },
+        "t_garmin": {
+          "type": "tile",
+          "settings": {
+            "collection": "garmin-bands",
+            "label": "Garmin"
+          }
+        },
+        "t_whoop4": {
+          "type": "tile",
+          "settings": {
+            "collection": "whoop",
+            "label": "Whoop 4.0"
+          }
+        },
+        "t_apple": {
+          "type": "tile",
+          "settings": {
+            "collection": "apple-watch",
+            "label": "Apple Watch"
+          }
+        },
+        "t_swatch": {
+          "type": "tile",
+          "settings": {
+            "collection": "20mm-bands-for-omega-swatch",
+            "label": "Omega Swatch"
+          }
+        },
+        "cat_guards": {
+          "type": "category",
+          "settings": {
+            "collection": "974guards",
+            "title": "Guards",
+            "image": "",
+            "link": ""
+          }
+        },
+        "t_goggles": {
+          "type": "tile",
+          "settings": {
+            "collection": "goggles",
+            "label": "Goggles",
+            "image": "shopify://shop_images/A291A3B4-F742-4BCF-8DA1-D6D78237B37C.jpg",
+            "link": "/collections/974guards?filter.p.m.custom.guard_type=Goggles"
+          }
+        },
+        "t_sun": {
+          "type": "tile",
+          "settings": {
+            "collection": "sun-glasses",
+            "label": "Sunglasses",
+            "link": "/collections/974guards?filter.p.m.custom.guard_type=Sunglasses"
+          }
+        },
+        "t_masks": {
+          "type": "tile",
+          "settings": {
+            "collection": "face-masks",
+            "label": "Face masks",
+            "link": "/collections/974guards?filter.p.m.custom.guard_type=Face+masks"
+          }
+        },
+        "t_lenses": {
+          "type": "tile",
+          "settings": {
+            "collection": "lenses",
+            "label": "Lenses & Straps",
+            "link": "/collections/974guards?filter.p.m.custom.guard_type=Lenses+and+Straps"
+          }
+        },
+        "cat_charms": {
+          "type": "category",
+          "settings": {
+            "collection": "charms",
+            "title": "Charms",
+            "image": "",
+            "link": ""
+          }
+        },
+        "t_clubs": {
+          "type": "tile",
+          "settings": {
+            "collection": "football-club-charms",
+            "label": "Football clubs"
+          }
+        },
+        "t_islamic": {
+          "type": "tile",
+          "settings": {
+            "collection": "islamic-charms",
+            "label": "Islamic"
+          }
+        },
+        "cat_cases": {
+          "type": "category",
+          "settings": {
+            "collection": "phone-cases",
+            "title": "Phone cases",
+            "image": "",
+            "link": ""
+          }
+        },
+        "t_cloudy": {
+          "type": "tile",
+          "settings": {
+            "collection": "cloudy-cases",
+            "label": "Cloudy"
+          }
+        },
+        "t_fading": {
+          "type": "tile",
+          "settings": {
+            "collection": "fading-cases",
+            "label": "Fading"
+          }
+        },
+        "t_solid": {
+          "type": "tile",
+          "settings": {
+            "collection": "solid-cases",
+            "label": "Solid"
+          }
+        },
+        "cat_slippers": {
+          "type": "category",
+          "settings": {
+            "collection": "socks",
+            "title": "Socks",
+            "image": "",
+            "link": ""
+          }
+        },
+        "t_pilates": {
+          "type": "tile",
+          "settings": {
+            "collection": "grip-socks",
+            "label": "Pilates socks",
+            "image": "shopify://shop_images/4ba431bd-8f72-403a-a4b4-95eff074bb0f.jpg",
+            "link": "/products/pilates-club-grip-socks"
+          }
+        },
+        "t_grip": {
+          "type": "tile",
+          "settings": {
+            "collection": "grip-socks",
+            "label": "Grip socks"
+          }
+        },
+        "t_running": {
+          "type": "tile",
+          "settings": {
+            "collection": "running-socks",
+            "label": "Running socks"
+          }
+        },
+        "cat_designy": {
+          "type": "category",
+          "settings": {
+            "collection": "designy",
+            "title": "Designy",
+            "image": "",
+            "link": ""
+          }
+        },
+        "t_tshirts": {
+          "type": "tile",
+          "settings": {
+            "collection": "t-shirts",
+            "label": "T-shirts",
+            "image": "shopify://shop_images/designy-tshirts-tile.jpg",
+            "link": "/collections/t-shirts"
+          }
+        }
+      },
+      "block_order": [
+        "cat_guards",
+        "t_goggles",
+        "t_sun",
+        "t_masks",
+        "t_lenses",
+        "cat_bands",
+        "t_whoop5",
+        "t_fitbit",
+        "t_garmin",
+        "t_whoop4",
+        "t_apple",
+        "t_swatch",
+        "cat_slippers",
+        "t_pilates",
+        "t_grip",
+        "t_running",
+        "cat_designy",
+        "t_tshirts",
+        "cat_charms",
+        "t_clubs",
+        "t_islamic",
+        "cat_cases",
+        "t_cloudy",
+        "t_fading",
+        "t_solid"
+      ],
+      "name": "Category chooser",
+      "settings": {
+        "intro": "What are you shopping for today?",
+        "intro_size": 14,
+        "bar_height": 50,
+        "bar_height_mobile": 48,
+        "bar_font_size": 22,
+        "bar_font_size_mobile": 17,
+        "bar_color_start": "#ffffff",
+        "bar_color_mid": "#f5f3f0",
+        "bar_color_end": "#e7e5e4",
+        "bar_text_color": "#1c1917",
+        "tile_size": 104,
+        "tile_size_mobile": 76,
+        "tile_gap": 10,
+        "label_size": 12,
+        "wrap_desktop": false,
+        "scrollbar_color": "#a16207",
+        "corner_radius": 14,
+        "shadow_strength": 10,
+        "columns_desktop": "2",
+        "group_gap": 24,
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "new_arrivals": {
+      "type": "new-arrivals",
+      "settings": {
+        "collection": "bands-newest",
+        "heading": "New this week",
+        "heading_size": 15,
+        "heading_gap": 6,
+        "days": 14,
+        "max_items": 8,
+        "in_stock_only": true,
+        "card_width": 160,
+        "card_width_mobile": 120,
+        "title_size": 11,
+        "gap": 10,
+        "show_all_link": true,
+        "all_label": "View all new",
+        "all_link": "/collections/bands",
+        "padding_top": 4,
+        "padding_bottom": 12
+      }
+    },
+    "icons_with_text_3Kbt8V": {
+      "type": "icons-with-text",
+      "blocks": {
+        "item_VaiBDc": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Free shipping",
+            "text": "<p>On all orders over 300 QAR</p>",
+            "link": ""
+          }
+        },
+        "item_QKPNeh": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "heading": "Easy returns",
+            "text": "<p>Hassle free returns policy</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_VaiBDc",
+        "item_QKPNeh"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "heading_align": "text-start",
+        "icon_size": 48,
+        "title_type_scale": "medium",
+        "text_type_scale": "medium",
+        "icon_position": "beside",
+        "mobile_stack": false,
+        "section_height": "xsmall",
+        "color_scheme": "1",
+        "full_width": true,
+        "dividers": "none",
+        "prevent_animation": false
+      }
+    },
+    "promo_strip_qCUkEF": {
+      "type": "promo-strip",
+      "blocks": {
+        "heading_tGBgH7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Whoop 4",
+            "heading_size": "h4",
+            "show_on_mobile": true,
+            "show_on_desktop": true
+          }
+        },
+        "text_nPjVmh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Buy 1 Get 1 Free</p>",
+            "enlarge_text": true,
+            "show_on_mobile": true,
+            "show_on_desktop": true
+          }
+        },
+        "button_BnTXwi": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Here",
+            "button_link": "shopify://collections/whoop",
+            "button_style": "btn btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_tGBgH7",
+        "text_nPjVmh",
+        "button_BnTXwi"
+      ],
+      "disabled": true,
+      "name": "Promo strip",
+      "settings": {
+        "section_height": "xsmall",
+        "color_scheme": "3",
+        "full_width": true,
+        "dividers": "none",
+        "prevent_animation": true
+      }
+    }
+  },
+  "order": [
+    "ux_polish",
+    "season_banner",
+    "category_chooser",
+    "new_arrivals",
+    "icons_with_text_3Kbt8V",
+    "promo_strip_qCUkEF"
+  ]
+}

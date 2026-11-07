@@ -1,0 +1,134 @@
+{%- comment -%}
+  T-shirt size finder (Designy Studios tees). 7 Nov 2026.
+  Shown when product.vendor == 'Designy Studios' or product.type == 'T-shirt'.
+  Customer enters height + weight (+ fit) and gets a recommended size; one tap selects that size.
+  Chart (flat, cm): S 74/58/62 · M 75/60/63 · L 77/61/64 · XL 78/63/67 (length/shoulder/chest). Oversized cut.
+{%- endcomment -%}
+{%- liquid
+  assign is_ar = false
+  if request.locale.iso_code == 'ar'
+    assign is_ar = true
+  endif
+-%}
+<div class="tee-size" id="tee-size">
+  <button type="button" class="tee-size__btn" onclick="document.getElementById('tee-size-dialog').showModal()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M7 5v4M12 10v4M17 15v4"/></svg>
+    {% if is_ar %}مو عارف مقاسك؟ احسبه بثواني{% else %}Not sure about your size? Find it in seconds{% endif %}
+  </button>
+</div>
+
+<dialog id="tee-size-dialog" class="tee-size__dialog" aria-labelledby="tee-size-h" dir="{% if is_ar %}rtl{% else %}ltr{% endif %}">
+  <div class="tee-size__head">
+    <h2 id="tee-size-h" class="tee-size__title">{% if is_ar %}احسب مقاسك{% else %}Find your size{% endif %}</h2>
+    <button type="button" class="tee-size__close" aria-label="{% if is_ar %}إغلاق{% else %}Close{% endif %}" onclick="this.closest('dialog').close()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <p class="tee-size__intro">{% if is_ar %}اكتب طولك ووزنك ونقول لك أي مقاس يناسبك. التيشيرت قصّته أوفرسايز.{% else %}Enter your height and weight and we'll pick your size. The tee is an oversized cut.{% endif %}</p>
+  <div class="tee-size__grid">
+    <label>{% if is_ar %}الطول (سم){% else %}Height (cm){% endif %}<input type="number" inputmode="numeric" id="tee-h" min="120" max="220" placeholder="175"></label>
+    <label>{% if is_ar %}الوزن (كجم){% else %}Weight (kg){% endif %}<input type="number" inputmode="numeric" id="tee-w" min="30" max="200" placeholder="78"></label>
+  </div>
+  <div class="tee-size__fit" role="radiogroup" aria-label="{% if is_ar %}القصّة{% else %}Fit{% endif %}">
+    <label><input type="radio" name="tee-fit" value="-1"><span>{% if is_ar %}أضيق{% else %}Snug{% endif %}</span></label>
+    <label><input type="radio" name="tee-fit" value="0" checked><span>{% if is_ar %}أوفرسايز عادي{% else %}Regular oversized{% endif %}</span></label>
+    <label><input type="radio" name="tee-fit" value="1"><span>{% if is_ar %}أوسع{% else %}Extra loose{% endif %}</span></label>
+  </div>
+  <button type="button" class="tee-size__go" id="tee-go">{% if is_ar %}احسب مقاسي{% else %}Find my size{% endif %}</button>
+  <p class="tee-size__err" id="tee-err" hidden>{% if is_ar %}اكتب طول بين 120 و220 سم ووزن بين 30 و200 كجم.{% else %}Enter a height between 120 and 220 cm and a weight between 30 and 200 kg.{% endif %}</p>
+  <div class="tee-size__res" id="tee-res" hidden>
+    <div class="tee-size__big" id="tee-big"></div>
+    <div>
+      <b id="tee-res-t"></b>
+      <span id="tee-res-s"></span>
+      <button type="button" class="tee-size__pick" id="tee-pick"></button>
+    </div>
+  </div>
+  <details class="tee-size__chart">
+    <summary>{% if is_ar %}جدول القياسات (سم، مسطّح){% else %}Size chart (cm, flat){% endif %}</summary>
+    <table><tr><th></th><th>S</th><th>M</th><th>L</th><th>XL</th></tr>
+      <tr><td>{% if is_ar %}الطول{% else %}Length{% endif %}</td><td>74</td><td>75</td><td>77</td><td>78</td></tr>
+      <tr><td>{% if is_ar %}الصدر{% else %}Chest{% endif %}</td><td>62</td><td>63</td><td>64</td><td>67</td></tr>
+      <tr><td>{% if is_ar %}الأكتاف{% else %}Shoulder{% endif %}</td><td>58</td><td>60</td><td>61</td><td>63</td></tr>
+      <tr><td>{% if is_ar %}طول الكم{% else %}Sleeve{% endif %}</td><td>21</td><td>22</td><td>23</td><td>24</td></tr></table>
+  </details>
+  <p class="tee-size__foot">{% if is_ar %}توصية تقريبية. بين مقاسين؟ خذ الأصغر لقصّة أهدى والأكبر لقصّة أوسع.{% else %}An estimate. Between sizes? Take the smaller for a calmer fit, the larger for more room.{% endif %}</p>
+</dialog>
+<style>
+  .tee-size{margin:2px 0 12px}
+  .tee-size__btn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid #e7e5e8;border-radius:999px;padding:8px 14px;background:#fff;font:700 13.5px/1 inherit;color:#51022d;cursor:pointer}
+  .tee-size__btn:hover{border-color:#720842}
+  .tee-size__dialog{border:0;border-radius:18px;padding:20px;width:min(92vw,440px);box-shadow:0 20px 60px rgba(0,0,0,.25);color:#1c1917}
+  .tee-size__dialog::backdrop{background:rgba(20,10,15,.45)}
+  .tee-size__head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+  .tee-size__title{font-size:20px;font-weight:800;margin:0;color:#51022d}
+  .tee-size__close{border:0;background:#f4f1f2;border-radius:999px;width:34px;height:34px;display:grid;place-items:center;cursor:pointer;color:#51022d}
+  .tee-size__intro{font-size:13.5px;color:#57534e;margin:0 0 14px}
+  .tee-size__grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tee-size__grid label{font-size:12.5px;font-weight:700;display:grid;gap:5px}
+  .tee-size__grid input{width:100%;border:1.5px solid #e7e5e8;border-radius:12px;padding:10px 12px;font-size:16px;font-weight:700}
+  .tee-size__grid input:focus{outline:none;border-color:#720842}
+  .tee-size__fit{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+  .tee-size__fit label{position:relative;cursor:pointer}
+  .tee-size__fit input{position:absolute;opacity:0;pointer-events:none}
+  .tee-size__fit span{display:flex;justify-content:center;align-items:center;min-height:40px;padding:6px 8px;border:1.5px solid #e7e5e8;border-radius:12px;font-size:13px;font-weight:700;text-align:center}
+  .tee-size__fit input:checked+span{border-color:#720842;background:#fbf3f7;box-shadow:inset 0 0 0 1px #720842}
+  .tee-size__go{width:100%;border:0;border-radius:12px;padding:13px;background:#720842;color:#fff;font-size:15px;font-weight:800;cursor:pointer}
+  .tee-size__err{color:#b42318;font-size:13px;font-weight:600;margin:10px 0 0}
+  .tee-size__res{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center;margin-top:14px;padding:12px 14px;border-radius:14px;background:#fbf3f7}
+  .tee-size__big{font-size:40px;font-weight:900;color:#720842;line-height:1}
+  .tee-size__res b{display:block;font-size:14.5px}
+  .tee-size__res span{display:block;font-size:12.5px;color:#57534e;margin-top:2px}
+  .tee-size__pick{margin-top:8px;border:1.5px solid #720842;background:#fff;color:#720842;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:800;cursor:pointer}
+  .tee-size__chart{margin-top:14px;font-size:13px}
+  .tee-size__chart summary{cursor:pointer;font-weight:700;color:#720842}
+  .tee-size__chart table{width:100%;border-collapse:collapse;margin-top:8px}
+  .tee-size__chart td,.tee-size__chart th{padding:6px 4px;border-bottom:1px solid #e7e5e8;text-align:center}
+  .tee-size__chart td:first-child,.tee-size__chart th:first-child{text-align:start;font-weight:700}
+  .tee-size__foot{font-size:12px;color:#78716c;margin:12px 0 0}
+</style>
+<script>
+(function(){
+  var dlg=document.getElementById('tee-size-dialog'); if(!dlg||dlg.dataset.ready) return; dlg.dataset.ready='1';
+  var AR={{ is_ar | json }};
+  var SIZES=['S','M','L','XL'];
+  var go=document.getElementById('tee-go'), err=document.getElementById('tee-err'), res=document.getElementById('tee-res');
+  var big=document.getElementById('tee-big'), rt=document.getElementById('tee-res-t'), rs=document.getElementById('tee-res-s'), pick=document.getElementById('tee-pick');
+  var chosen='';
+  /* weight bands for an oversized tee, nudged by height and the fit choice */
+  function calc(h,w,fit){
+    var i = w<60?0 : w<73?1 : w<86?2 : 3;
+    var edge = (w>=57&&w<60)||(w>=70&&w<73)||(w>=83&&w<86);
+    if(h>=184 && i<3) i++;
+    else if(h<=164 && i>0 && (w<56||(w>=60&&w<67)||(w>=73&&w<80))) i--;
+    i=Math.max(0,Math.min(3,i+fit));
+    var alt = edge && i<3 ? SIZES[i+1] : (h>=192 && i===3 ? '' : '');
+    return {size:SIZES[i], alt:alt, top:(i===3 && (w>=100||h>=195))};
+  }
+  function selectSize(s){
+    var all=[].slice.call(document.querySelectorAll('input[type=radio]')).filter(function(i){ return !i.closest('#tee-size-dialog'); });
+    var inp=all.filter(function(i){ return /size|\u0645\u0642\u0627\u0633/i.test(i.name||'') && String(i.value).trim().toUpperCase()===s; })[0]
+          || all.filter(function(i){ return String(i.value).trim().toUpperCase()===s; })[0];
+    if(inp){ var lab=(inp.id&&document.querySelector('label[for="'+inp.id+'"]'))||inp.closest('label'); (lab||inp).click(); inp.dispatchEvent(new Event('change',{bubbles:true})); return true; }
+    var sel=document.querySelector('form.js-product-form-main select, form[id^="product-form-"] select, .variant-picker select');
+    if(sel){ for(var k=0;k<sel.options.length;k++){ if(sel.options[k].text.trim().toUpperCase()===s){ sel.selectedIndex=k; sel.dispatchEvent(new Event('change',{bubbles:true})); return true; } } }
+    return false;
+  }
+  go.addEventListener('click',function(){
+    var h=+document.getElementById('tee-h').value, w=+document.getElementById('tee-w').value;
+    var f=dlg.querySelector('input[name=tee-fit]:checked'); var fit=f?+f.value:0;
+    if(!(h>=120&&h<=220&&w>=30&&w<=200)){ err.hidden=false; res.hidden=true; return; }
+    err.hidden=true;
+    var r=calc(h,w,fit); chosen=r.size;
+    big.textContent=r.size;
+    rt.textContent = AR ? 'المقاس اللي ننصح فيه' : 'Recommended size';
+    var s = r.alt ? (AR ? 'أنت بين '+r.size+' و'+r.alt+'. خذ '+r.size+' لقصّة أهدى، و'+r.alt+' لو تحبها أوسع.' : 'You are between '+r.size+' and '+r.alt+'. '+r.size+' for a calmer fit, '+r.alt+' for more room.')
+          : r.top ? (AR ? 'XL أكبر مقاس عندنا، ومع هالقياسات ممكن يجيك أقل أوفرسايز.' : 'XL is our largest size; at these measurements it will feel less oversized.')
+          : (AR ? 'قصّة أوفرسايز على طولك ووزنك.' : 'An oversized fit for your height and weight.');
+    rs.textContent=s;
+    pick.textContent = AR ? 'اختار مقاس '+r.size : 'Select size '+r.size;
+    res.hidden=false;
+  });
+  pick.addEventListener('click',function(){ selectSize(chosen); dlg.close(); });
+})();
+</script>

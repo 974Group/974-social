@@ -36,7 +36,7 @@ def dunes(w=791,h=520):
 <path d="M0 300 C120 220 300 200 430 280 C540 350 660 260 791 240 V{h} H0 Z" fill="url(#d2)"/>
 <path d="M380 150 C470 210 600 120 791 90" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="3"/>
 <path d="M0 300 C120 220 300 200 430 280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3"/></svg>'''
-def scene(sc=1.15): return f'<div class="abs" style="left:0;right:0;bottom:0;height:1250px"><div class="abs" style="left:0;right:0;bottom:330px;height:760px;transform:scale({sc});transform-origin:50% 100%">{skyline()}</div><div class="abs" style="left:0;right:0;bottom:0;height:520px">{dunes()}</div></div>'
+def scene(sc=1.15,col=None): return f'<div class="abs" style="left:0;right:0;bottom:0;height:1250px"><div class="abs" style="left:0;right:0;bottom:330px;height:760px;transform:scale({sc});transform-origin:50% 100%">{skyline() if not col else skyline().replace("#4A0819",col)}</div><div class="abs" style="left:0;right:0;bottom:0;height:520px">{dunes()}</div></div>'
 
 AR_T='قطر.. من هنا بدأنا'
 AR_P='توحّدت قطر على يد المؤسس الشيخ جاسم بن محمد آل ثاني، ونحتفل بذكراه كل سنة في اليوم الوطني ١٨ ديسمبر. ونالت استقلالها في ٣ سبتمبر ١٩٧١. واليوم قطر من أكبر ٣ دول في العالم بمخزون الغاز الطبيعي، وأول دولة عربية تستضيف كأس العالم لكرة القدم في ٢٠٢٢. وهذا السير بلون العنابي.. لون علمنا.'
@@ -50,7 +50,7 @@ html=f'''<!doctype html><html lang="ar"><meta charset="utf-8"><style>
 body{{margin:0;background:#555;font-family:'Cairo'}}
 .die{{position:relative;width:3530px;height:4072px;overflow:hidden;background:#fff}}
 .p{{position:absolute;overflow:hidden;box-sizing:border-box;background:linear-gradient(180deg,{M} 0%,{M2} 100%);color:#fff}}
-.glueL{{left:280px;width:273px;top:733px;height:2465px}} .front{{left:553px;width:791px;top:733px;height:2465px}}
+.glueL{{left:280px;width:273px;top:733px;height:2465px}} .front{{left:553px;width:791px;top:733px;height:2465px;background:linear-gradient(180deg,#651029 0%,#4E0A1F 100%)!important}}
 .side{{left:1344px;width:243px;top:733px;height:2465px;background:#fff!important;color:{M}}}
 .back{{left:1587px;width:791px;top:733px;height:2465px}} .glueR{{left:2378px;width:224px;top:733px;height:2465px}}
 .lidF{{left:553px;width:791px;top:327px;height:406px;background:#fff!important}} .lidB{{left:1587px;width:791px;top:209px;height:524px}}
@@ -69,9 +69,9 @@ body{{margin:0;background:#555;font-family:'Cairo'}}
   <img class="abs" src="../../pkg/logo-maroon.png" style="left:70px;top:80px;width:220px">
   <div class="abs en" style="right:70px;top:96px;text-align:right;font-weight:700;letter-spacing:6px;font-size:22px;color:{M};line-height:1.6">QATAR<br>EDITION</div>
   <div class="abs ar" style="left:70px;right:70px;top:230px;font-size:46px;font-weight:900;color:{M};white-space:nowrap">سير سيليكون لساعة Whoop</div>
-  {scene()}
-  <img class="abs" src="../img/p49-50.png" style="left:10px;top:470px;width:780px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
-  <img class="abs" src="../img/p49-0.png" style="left:-130px;top:1160px;width:780px;transform:rotate(14deg);filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
+  {scene(1.15,'#7C1838')}
+  <img class="abs" src="../img/p49q-50.png" style="left:10px;top:470px;width:780px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
+  <img class="abs" src="../img/p49q-0.png" style="left:-130px;top:1160px;width:780px;transform:rotate(14deg);filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
   <div class="abs en" style="right:70px;top:520px;font-weight:700;font-size:22px;letter-spacing:4px;color:rgba(255,255,255,.7)">5.0</div>
   <div class="abs en" style="right:70px;top:1200px;font-weight:700;font-size:22px;letter-spacing:4px;color:rgba(255,255,255,.7)">MG</div>
   <div class="abs ar" style="right:70px;bottom:250px;font-size:84px;font-weight:900;line-height:1">عنابي</div>

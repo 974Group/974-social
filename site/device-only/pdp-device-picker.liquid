@@ -1,0 +1,172 @@
+{%- comment -%}
+  Required device choice for products that share one stock across Whoop 5.0 and Whoop MG.
+  Shown only when the product has the tag "device-picker".
+  The choice is saved on the order as a line item property: "Device: Whoop 5.0" / "Device: Whoop MG".
+  Add to cart, the sticky bar and Buy it now are blocked until a device is chosen.
+  Per colour: if a variant has the metafield custom.device_only ("Whoop 5.0" or "Whoop MG"),
+  only that device is offered for that colour and it is chosen automatically.
+{%- endcomment -%}
+{%- liquid
+  assign is_ar = false
+  if request.locale.iso_code == 'ar'
+    assign is_ar = true
+  endif
+-%}
+{%- if product.tags contains 'device-picker' -%}
+{%- capture pdp_dev_map -%}{ {%- assign pdp_first = true -%}{%- for v in product.variants -%}{%- assign pdp_only = v.metafields.custom.device_only.value -%}{%- if pdp_only != blank -%}{%- unless pdp_first -%},{%- endunless -%}"{{ v.id }}":{{ pdp_only | json }}{%- assign pdp_first = false -%}{%- endif -%}{%- endfor -%} }{%- endcapture -%}
+<div class="pdp-dev" id="pdp-dev" data-pdp-dev data-initial-variant="{{ product.selected_or_first_available_variant.id }}">
+  <script type="application/json" class="pdp-dev__map">{{ pdp_dev_map }}</script>
+  <div class="pdp-dev__label">{% if is_ar %}اختر جهاز Whoop حقك{% else %}Choose your Whoop{% endif %} <span class="pdp-dev__req">*</span></div>
+  <div class="pdp-dev__opts" role="radiogroup" aria-label="{% if is_ar %}اختر جهاز Whoop حقك{% else %}Choose your Whoop{% endif %}">
+    <label class="pdp-dev__opt" data-dev="Whoop 5.0">
+      <input type="radio" name="pdp-dev-choice" value="Whoop 5.0">
+      <span>Whoop 5.0</span>
+    </label>
+    <label class="pdp-dev__opt" data-dev="Whoop MG">
+      <input type="radio" name="pdp-dev-choice" value="Whoop MG">
+      <span>Whoop MG</span>
+    </label>
+  </div>
+  <p class="pdp-dev__only" hidden>{% if is_ar %}هذا اللون متوفر لـ <b class="pdp-dev__only-name"></b> بس{% else %}This colour is available for <b class="pdp-dev__only-name"></b> only{% endif %}</p>
+  <p class="pdp-dev__err" role="alert" hidden>{% if is_ar %}من فضلك اختر نسخة Whoop أولاً.{% else %}Please choose your Whoop version first.{% endif %}</p>
+</div>
+<style>
+  .pdp-dev { margin: 4px 0 14px; }
+  .pdp-dev__label { font-size: 14px; font-weight: 700; color: #51022d; margin-bottom: 8px; }
+  .pdp-dev__req { color: #e32b2b; }
+  .pdp-dev__opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pdp-dev.is-single .pdp-dev__opts { grid-template-columns: 1fr; }
+  .pdp-dev__opt { position: relative; display: block; margin: 0; cursor: pointer; }
+  .pdp-dev__opt[hidden] { display: none; }
+  .pdp-dev__opt input { position: absolute; opacity: 0; pointer-events: none; }
+  .pdp-dev__opt span { display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 8px 10px; border: 1.5px solid #e7e5e8; border-radius: 12px; background: #fff; font-size: 14.5px; font-weight: 700; color: #51022d; transition: border-color .15s, background .15s; }
+  .pdp-dev__opt input:checked + span { border-color: #720842; background: #fbf3f7; box-shadow: inset 0 0 0 1px #720842; }
+  .pdp-dev__opt input:focus-visible + span { outline: 2px solid #720842; outline-offset: 2px; }
+  .pdp-dev.is-error .pdp-dev__opt span { border-color: #e32b2b; }
+  .pdp-dev__only { margin: 8px 0 0; font-size: 13px; font-weight: 600; color: #51022d; }
+  .pdp-dev__err { margin: 8px 0 0; font-size: 13px; font-weight: 600; color: #e32b2b; }
+  @keyframes pdpDevShake { 0%,100% { transform: none; } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+  .pdp-dev.is-shake .pdp-dev__opts { animation: pdpDevShake .3s ease 2; }
+</style>
+<script>
+  (function () {
+    var box = document.getElementById('pdp-dev');
+    if (!box || box.dataset.ready) return;
+    box.dataset.ready = '1';
+    var err = box.querySelector('.pdp-dev__err');
+    var only = box.querySelector('.pdp-dev__only');
+    var onlyName = box.querySelector('.pdp-dev__only-name');
+    var map = {};
+    try { map = JSON.parse(box.querySelector('.pdp-dev__map').textContent || '{}'); } catch (e) {}
+    var autoSet = false, lastVariant = null;
+
+    function forms() {
+      return document.querySelectorAll('form.js-product-form-main, form[id^="product-form-"]');
+    }
+    function chosen() {
+      var r = box.querySelector('input[name="pdp-dev-choice"]:checked');
+      return r ? r.value : '';
+    }
+    function currentVariant() {
+      var list = forms();
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].closest('.cart-drawer, cart-drawer, .quick-add')) continue;
+        var inp = list[i].querySelector('[name="id"]');
+        if (inp && inp.value) return String(inp.value);
+      }
+      var m = location.search.match(/[?&]variant=(\d+)/);
+      return m ? m[1] : (box.dataset.initialVariant || '');
+    }
+    /* keep a hidden properties[Device] input inside every main product form */
+    function sync() {
+      var val = chosen();
+      forms().forEach(function (f) {
+        if (f.closest('.cart-drawer, cart-drawer, .quick-add')) return;
+        var inp = f.querySelector('input[name="properties[Device]"]');
+        if (!val) { if (inp) inp.remove(); return; }
+        if (!inp) {
+          inp = document.createElement('input');
+          inp.type = 'hidden';
+          inp.name = 'properties[Device]';
+          f.appendChild(inp);
+        }
+        inp.value = val;
+      });
+    }
+    /* show only the device that fits the selected colour */
+    function apply() {
+      var v = currentVariant();
+      if (v === lastVariant) return;
+      lastVariant = v;
+      var dev = map[v] || '';
+      box.querySelectorAll('.pdp-dev__opt').forEach(function (l) {
+        var inp = l.querySelector('input');
+        var ok = !dev || l.dataset.dev === dev;
+        l.hidden = !ok;
+        if (!ok && inp.checked) inp.checked = false;
+      });
+      if (dev) {
+        var keep = box.querySelector('.pdp-dev__opt[data-dev="' + dev + '"] input');
+        if (keep && !keep.checked) { keep.checked = true; autoSet = true; }
+        box.classList.add('is-single');
+        onlyName.textContent = dev;
+        only.hidden = false;
+        box.classList.remove('is-error');
+        err.hidden = true;
+      } else {
+        if (autoSet) { box.querySelectorAll('input[name="pdp-dev-choice"]').forEach(function (i) { i.checked = false; }); autoSet = false; }
+        box.classList.remove('is-single');
+        only.hidden = true;
+      }
+      sync();
+    }
+
+    box.addEventListener('change', function () {
+      autoSet = false;
+      box.classList.remove('is-error');
+      err.hidden = true;
+      sync();
+    });
+    document.addEventListener('change', function (e) {
+      if (e.target && e.target.closest && !e.target.closest('#pdp-dev')) setTimeout(apply, 60);
+    });
+    setInterval(apply, 400);
+    apply();
+
+    /* block Add to cart / Buy it now / sticky bar until a device is chosen */
+    function guard(e) {
+      if (chosen()) { sync(); return; }
+      var t = e.target;
+      if (!t || !t.closest) return;
+      var hit = t.closest('.shopify-payment-button, .shopify-payment-button__button, #pdp-bar button, #pdp-bar [data-pdp-bar-atc]');
+      if (!hit) {
+        var btn = t.closest('button[type="submit"], button[name="add"], input[type="submit"]');
+        var f = btn && (btn.form || btn.closest('form'));
+        if (btn && f && (f.matches('form.js-product-form-main') || /^product-form-/.test(f.id || ''))) hit = btn;
+      }
+      if (!hit) return;
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      showError();
+    }
+    function showError() {
+      box.classList.add('is-error', 'is-shake');
+      err.hidden = false;
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(function () { box.classList.remove('is-shake'); }, 700);
+    }
+    document.addEventListener('click', guard, true);
+    document.addEventListener('submit', function (e) {
+      var f = e.target;
+      if (!f || !f.matches) return;
+      if (!(f.matches('form.js-product-form-main') || /^product-form-/.test(f.id || ''))) return;
+      if (chosen()) { sync(); return; }
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      showError();
+    }, true);
+  })();
+</script>
+{%- endif -%}

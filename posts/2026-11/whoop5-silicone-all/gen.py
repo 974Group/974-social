@@ -3,14 +3,14 @@ sys.path.insert(0,'/home/claude/974-social/templates'); import payfoot
 SP='/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad'
 C=os.path.abspath('cut')+'/'
 LOGO='/home/claude/974-social/posts/2026-11/pilates-socks/src/logo-black.png'
-# colour-wheel order (21 in stock)
+# colour-wheel order (23 in stock)
 RING=['black','black-ed','darkgrey','greyblack','whitegrey','creamy','creamyblue','splash','babyblue','iceblue','turquoise',
-      'blue','navyyellow','drenched','greenarmy','yellownavy','yellow','orange','scarlet','red','pink']
+      'blue','navyyellow','drenched','drenched-green','greenarmy','yellownavy','yellow','drenched-orange','orange','scarlet','red','pink']
 NEW={'yellow','pink','babyblue','iceblue'}
 BG='#ECE8E3'; INK='#1E1C1B'
 def page(story):
     W,H=1080,(1920 if story else 1350)
-    cx=540; cy=(960 if story else 640); R=(420 if story else 392); bh=(142 if story else 126)
+    cx=540; cy=(960 if story else 640); R=(450 if story else 398); bh=(128 if story else 116)
     items='';badges=''
     for i,n in enumerate(RING):
         a=-math.pi/2+2*math.pi*i/len(RING)
@@ -41,7 +41,7 @@ body{{width:{W}px;height:{H}px;background:radial-gradient(60% 45% at 50% {cy/H*1
 <img class="abs" src="file://{LOGO}" style="left:48px;top:{t}px;height:44px">
 <div class="abs en" style="right:48px;top:{t+8}px;font-weight:700;font-size:17px;letter-spacing:4px">WHOOP 5.0 · MG</div>
 {items}{badges}
-<div class="mid"><b>21</b><i>لون سيليكون<br>اختار لونك</i><em>SILICONE BANDS</em></div>
+<div class="mid"><b>23</b><i>لون سيليكون<br>اختار لونك</i><em>SILICONE BANDS</em></div>
 <div class="pf">{payfoot.html()}</div>
 <div class="foot"><div class="cta">علّق <em>«سيليكون»</em> ونرسل لك الرابط 📩</div><div class="price"><b>99</b> ر.ق</div></div>
 </body></html>'''

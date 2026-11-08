@@ -30,9 +30,12 @@ body{{width:{W}px;height:{H}px;position:relative;overflow:hidden;font-family:Cai
 .b1{{left:25%;transform:translateX(-50%)}}
 .b2{{left:75%;transform:translateX(-50%)}}
 .ol{{position:absolute;top:{band_y+bh-40}px;left:0;right:0;text-align:center;font-family:Poppins;font-weight:700;font-size:{150 if story else 120}px;letter-spacing:-4px;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.55);opacity:.9}}
-.price{{position:absolute;bottom:{price_b}px;left:50%;transform:translateX(-50%);background:{INK};color:#fff;border-radius:999px;padding:12px 34px;font-weight:800;font-size:38px;direction:rtl;white-space:nowrap}}
-.price b{{font-family:Poppins;font-weight:700;font-size:44px;color:{YEL}}}
-{payfoot.css(1.0 if not story else 1.12)}
+.price{{position:absolute;bottom:{price_b}px;left:50%;transform:translateX(-50%);background:{INK};color:#fff;border-radius:999px;padding:10px 12px 10px 34px;display:flex;align-items:center;gap:22px;direction:rtl;white-space:nowrap}}
+.price .nm{{font-weight:800;font-size:34px}}
+.price .nm bdi{{font-family:Poppins;font-weight:700;font-size:30px;margin-right:8px}}
+.price .pr{{background:{YEL};color:{INK};border-radius:999px;padding:4px 26px;font-weight:800;font-size:30px;display:flex;align-items:baseline;gap:8px}}
+.price .pr b{{font-family:Poppins;font-weight:700;font-size:44px}}
+{payfoot.css(1.0 if not story else 1.12, text='#FFFFFF')}
 .pf{{position:absolute;left:28px;right:28px;bottom:{pf}px}}
 </style></head><body>
 <div class="half l"></div><div class="half r"></div>
@@ -41,7 +44,7 @@ body{{width:{W}px;height:{H}px;position:relative;overflow:hidden;font-family:Cai
 <div class="hd"><div class="y">برّا كحلي<small>وجوّا أصفر</small></div><div class="n">برّا أصفر<small>وجوّا كحلي</small></div></div>
 <div class="band b1"><img src="file://{__import__('os').getcwd()}/yellownavy.png"></div>
 <div class="band b2"><img src="file://{__import__('os').getcwd()}/navyyellow.png"></div>
-<div class="price">سيليكون Whoop 5.0 / MG · <b>99</b> ر.ق</div>
+<div class="price"><span class="nm">سيليكون<bdi dir="ltr">Whoop 5.0 · MG</bdi></span><span class="pr"><b>99</b>ر.ق</span></div>
 <div class="pf">{payfoot.html()}</div>
 </body></html>'''
 import os

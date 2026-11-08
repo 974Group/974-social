@@ -10,7 +10,7 @@ for f in glob.glob(SRC+'*.png'):
 C=os.getcwd()+'/crop/'
 BG='#15171A'; LIME='#C9E64B'; TXT='#F2F2EF'; MUTE='#9A9D97'
 V1=[('v1-navy','Navy'),('v1-black','Black'),('v1-army-green','Army Green'),('v1-grey','Grey'),('v1-blue','Blue'),('v1-lime','Lime'),('v1-pink','Pink')]
-V2=[('v2-green','Green'),('v2-black-grey','Black & Grey'),('v2-white-grey','White & Grey'),('v2-blue','Blue'),('v2-black','Black')]
+V2=[('v2-white-grey','White & Grey'),('v2-green','Green'),('v2-black-grey','Black & Grey'),('v2-blue','Blue'),('v2-black','Black')]
 def col(items,ver,line1,line2,story):
     hero=items[0]; rest=items[1:]
     sw=''.join(f'<div class="sw"><img src="file://{C}{k}.png"><span>{n}</span></div>' for k,n in rest)

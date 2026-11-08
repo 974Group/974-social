@@ -41,7 +41,7 @@ body{{width:{W}px;height:{H}px;position:relative;overflow:hidden;font-family:Cai
 <div class="half l"></div><div class="half r"></div>
 <svg class="grain" width="100%" height="100%"><filter id="g"><feTurbulence baseFrequency="0.9" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
 <div class="tag"><span class="a">YELLOW · NAVY</span><span class="b">NAVY · YELLOW</span></div>
-<div class="hd"><div class="y">برّا كحلي<small>وجوّا أصفر</small></div><div class="n">برّا أصفر<small>وجوّا كحلي</small></div></div>
+<div class="hd"><div class="y">برع كحلي<small>وداخل أصفر</small></div><div class="n">برع أصفر<small>وداخل كحلي</small></div></div>
 <div class="band b1"><img src="file://{__import__('os').getcwd()}/yellownavy.png"></div>
 <div class="band b2"><img src="file://{__import__('os').getcwd()}/navyyellow.png"></div>
 <div class="price"><span class="nm">سيليكون<bdi dir="ltr">Whoop 5.0 · MG</bdi></span><span class="pr"><b>99</b>ر.ق</span></div>

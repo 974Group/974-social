@@ -23,4 +23,4 @@ def css(scale=1.0, text='#4A1630', label='#7E3D5C'):
 '''
 MARK='file:///home/claude/974-social/posts/2026-11/waterproof/src/mark-c.png'
 def html():
-    return f'<div class="payfoot"><div class="pills">{PILLS}</div><div class="av"><div class="site">974group.net</div><div class="row"><span>متوفر في</span><div class="chip"><img src="{SNOONU}"></div></div></div></div>'
+    return f'<div class="payfoot"><div class="pills">{PILLS}</div><div class="av"><div class="site">974group.net</div><div class="row"><span>متوفر بعد في</span><div class="chip"><img src="{SNOONU}"></div></div></div></div>'

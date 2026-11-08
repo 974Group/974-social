@@ -18,7 +18,7 @@ def css(scale=1.0, text='#4A1630', label='#7E3D5C'):
 .payfoot .av .chip.site{{gap:{int(6*s)}px;padding:0 {int(12*s)}px}}
 .payfoot .av .chip.site img{{height:{int(20*s)}px}}
 .payfoot .av .row{{display:flex;align-items:center;gap:{int(7*s)}px}}
-.payfoot .av .site{{font-family:Poppins;font-weight:700;font-size:{int(20*s)}px;letter-spacing:.5px;color:{text};direction:ltr}}
+.payfoot .av .site{{background:#fff;border-radius:{int(30*s)}px;height:{int(46*s)}px;padding:0 {int(20*s)}px;display:flex;align-items:center;box-shadow:0 3px 8px rgba(0,0,0,.12);font-family:Poppins;font-weight:700;font-size:{int(24*s)}px;letter-spacing:.3px;color:#51022D;direction:ltr}}
 .payfoot .av .chip b{{font-family:Poppins;font-weight:700;font-size:{int(15*s)}px;color:#51022D}}
 '''
 MARK='file:///home/claude/974-social/posts/2026-11/waterproof/src/mark-c.png'

@@ -41,6 +41,8 @@ body{{width:{W}px;height:{H}px;position:relative;overflow:hidden;font-family:Cai
 .foot{{position:absolute;left:56px;right:56px;bottom:{cta_b}px;display:flex;align-items:center;justify-content:space-between;direction:rtl}}
 .cta{{font-weight:800;font-size:{32 if story else 27}px}} .cta em{{font-style:normal;color:{ACC}}}
 .price{{background:{INK};color:#fff;border-radius:999px;padding:4px 28px 8px;font-weight:800;font-size:{28 if story else 24}px;display:flex;align-items:baseline;gap:8px}}
+
+.price small{{font-size:{20 if story else 17}px;font-weight:700;opacity:.8}}
 .price b{{font-family:Poppins;font-weight:700;font-size:{48 if story else 40}px;color:{ACC}}}
 {payfoot.css(1.0 if not story else 1.12)}
 .pf{{position:absolute;left:28px;right:28px;bottom:{pf}px}}
@@ -48,10 +50,10 @@ body{{width:{W}px;height:{H}px;position:relative;overflow:hidden;font-family:Cai
 <svg class="grain" width="100%" height="100%"><filter id="g"><feTurbulence baseFrequency="0.9" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
 <div class="big">19</div>
 <div class="tag"><span>FITBIT · <b>SILICONE</b></span><span>19 COLOURS</span></div>
-<div class="hd"><h1><bdi>19</bdi> لون..<br><em>وكلها بـ <bdi>69</bdi></em></h1><p>سيليكون <bdi dir="ltr">Fitbit</bdi> ناعم بخطوط بارزة</p></div>
+<div class="hd"><h1><bdi>19</bdi> لون..<br><em>السير بـ <bdi>69</bdi> ريال</em></h1><p>سيليكون <bdi dir="ltr">Fitbit</bdi> ناعم بخطوط بارزة</p></div>
 <div class="trio">{trio}</div>
 <div class="rows">{rows}</div>
-<div class="foot"><div class="cta">علّق <em>«فت بت»</em> ونرسل لك الرابط 📩</div><div class="price"><b>69</b>ر.ق</div></div>
+<div class="foot"><div class="cta">علّق <em>«فت بت»</em> ونرسل لك الرابط 📩</div><div class="price"><b>69</b>ر.ق <small>للسير</small></div></div>
 <div class="pf">{payfoot.html()}</div>
 </body></html>'''
 for s in (0,1): open(f'p_{s}.html','w').write(page(bool(s)))

@@ -200,4 +200,5 @@ def box():
     page('974-card-box-DIELINE', W, H, ''.join(s) + f'<rect width="{W}" height="{H}" fill="#fff" opacity=".35"/>' + ''.join(die) + legend)
     page('974-card-box-dieline-only', W, H, f'<rect width="{W}" height="{H}" fill="#fff"/>' + ''.join(die))
 
-card_back(); box()
+if __name__ == "__main__":
+    card_back(); box()

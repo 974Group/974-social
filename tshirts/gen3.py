@@ -17,8 +17,8 @@ def live(story=False):
 </div>
 <div class="abs shirts" style="left:0;right:0;top:{o+(660 if story else 570)}px">{shirts}</div>
 <div class="abs ar" style="right:48px;left:48px;top:{o+(1060 if story else 880)}px">
- <div style="font-weight:900;font-size:{56 if story else 50}px;line-height:1.15">مو عارف مقاسك؟</div>
- <div style="font-weight:700;font-size:{31 if story else 28}px;margin-top:6px;opacity:.9">أرسل لنا <u>طولك</u> و<u>وزنك</u>.. ونقول لك المقاس اللي يناسبك</div>
+ <div style="font-weight:900;font-size:{56 if story else 50}px;line-height:1.15">مب عارف مقاسك؟</div>
+ <div style="font-weight:700;font-size:{31 if story else 28}px;margin-top:6px;opacity:.9">اكتب <u>طولك</u> و<u>وزنك</u> في الموقع.. ويقترح لك المقاس الأنسب</div>
  <div class="calc"><span>175 سم</span><b>+</b><span>80 كغ</span><b>=</b><span class="res en">L</span></div>
 </div>'''
     extra=f'''.path{{display:flex;gap:14px;align-items:center;direction:ltr;justify-content:flex-end;font-weight:700;font-size:{30 if story else 27}px}}

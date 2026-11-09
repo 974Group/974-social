@@ -87,28 +87,30 @@ def cirqa_sil(story=False):
     return page(H,'radial-gradient(120% 90% at 50% 40%,#23262B 0%,#141518 100%)','#FFFFFF',body,story,LW,'GARMIN CIRQA · SILICONE',99,'علّق <em>«قارمن»</em> ونرسل لك الرابط 📩','')
 
 # ---------- C: Whoop 5 fabric (staggered line-up) ----------
-C_COL=[('alpine-green','Alpine Green'),('pine-green','Pine Green'),('green','Green'),('matcha','Matcha'),('light-blue','Light Blue'),
-       ('purple','Purple'),('wine-red','Wine Red'),('copper','Copper'),('espresso','Espresso'),('dark-grey','Dark Grey')]
+C_ROWS=[('حديدة لمّاعة','SHINY',[('pine-green','Pine Green'),('alpine-green','Alpine Green'),('matcha','Matcha'),('copper','Copper'),('espresso','Espresso')]),
+        ('حديدة مطفية','MATTE',[('green','Green'),('light-blue','Light Blue'),('purple','Purple'),('wine-red','Wine Red'),('dark-grey','Dark Grey')])]
 def w5fabric(story=False):
     o=150 if story else 0; H=1920 if story else 1350; INK='#2B2420'; C=P+'whoop5-fabric/cut/'
-    bh=168 if not story else 180; cw=176
+    bh=168 if not story else 180; cw=192
     rows=''
-    for r in range(2):
-        items=C_COL[r*5:(r+1)*5]; x0=(1080-cw*5)//2+(cw//2 if r else 0)-(cw//4)
-        top=o+(490 if story else 400)+r*(bh+95)
+    for r,(lab,en,items) in enumerate(C_ROWS):
+        top=o+(470 if story else 395)+r*(bh+125)
+        x0=(1080-cw*5)//2
+        rows+=f'<div class="rl" style="top:{top-48}px"><b>{lab}</b><span class="en">{en}</span></div>'
         for i,(f,name) in enumerate(items):
             rows+=f'<div class="it" style="left:{x0+i*cw}px;top:{top}px;width:{cw}px"><img src="file://{C}{f}.png" style="height:{bh}px"><i>{name}</i></div>'
     body=f'''
-<div class="abs" style="left:0;right:0;top:{o+(450 if story else 362)}px;height:{2*bh+200}px;background:repeating-linear-gradient(-55deg,rgba(43,36,32,.035) 0 14px,transparent 14px 34px)"></div>
+<div class="abs" style="left:0;right:0;top:{o+(400 if story else 330)}px;height:{2*bh+250}px;background:repeating-linear-gradient(-55deg,rgba(43,36,32,.035) 0 14px,transparent 14px 34px)"></div>
 <div class="abs ar" style="right:48px;left:48px;top:{o+(150 if story else 120)}px">
- <div style="font-weight:900;font-size:{78 if story else 70}px;line-height:1.08">10 ألوان fabric<br><span style="color:#9E1B2C">لـ Whoop 5.0</span></div>
+ <div style="font-weight:900;font-size:{78 if story else 70}px;line-height:1.08">10 ألوان fabric<br><span style="color:#9E1B2C">لـ Whoop 5.0 و MG</span></div>
  <div style="font-weight:700;font-size:{27 if story else 25}px;margin-top:10px;opacity:.75">نسيج ناعم · يتنفّس · خفيف على اليد</div>
 </div>
 {rows}
-<div class="abs ar" style="right:48px;left:48px;top:{o+(1130 if story else 925)}px;font-weight:800;font-size:{30 if story else 27}px">أي لون يشبهك؟ <span style="opacity:.65">قول لنا بالتعليقات 👇</span></div>'''
+<div class="abs ar" style="right:48px;left:48px;top:{o+(1160 if story else 960)}px;font-weight:800;font-size:{30 if story else 27}px">أي لون يشبهك؟ <span style="opacity:.65">قول لنا بالتعليقات 👇</span></div>'''
     extra='''.it{position:absolute;display:flex;flex-direction:column;align-items:center} .it img{filter:drop-shadow(0 14px 16px rgba(43,36,32,.25))}
+.rl{position:absolute;right:48px;left:48px;display:flex;align-items:center;gap:14px;direction:rtl} .rl b{font-weight:900;font-size:28px} .rl span{font-weight:700;font-size:14px;letter-spacing:4px;opacity:.5} .rl:after{content:'';flex:1;height:1.5px;background:rgba(43,36,32,.18)}
 .it i{font-style:normal;font-family:Poppins;font-weight:700;font-size:13px;letter-spacing:1.5px;margin-top:10px;opacity:.65;text-transform:uppercase;white-space:nowrap}'''
-    return page(H,'linear-gradient(180deg,#F3EEE6 0%,#ECE4D8 100%)',INK,body,story,LB,'WHOOP 5.0 · FABRIC',99,'اطلبه من <em>974group.net</em> 🛒',extra)
+    return page(H,'linear-gradient(180deg,#F3EEE6 0%,#ECE4D8 100%)',INK,body,story,LB,'WHOOP 5.0 · MG · FABRIC',99,'اطلبه من <em>974group.net</em> 🛒',extra)
 
 def shot(n,html,H):
     os.makedirs('out',exist_ok=True); open(f'out/{n}.html','w').write(html)

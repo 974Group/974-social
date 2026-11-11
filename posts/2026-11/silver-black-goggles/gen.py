@@ -21,8 +21,8 @@ def g(story=False):
 <div class="abs fts" style="top:{o+(1060 if story else 960)}px">{fe}</div>'''
     if story:
         body += f'''<div class="abs ar" style="right:48px;left:48px;top:{o+1240}px;display:flex;align-items:center;gap:26px;direction:rtl">
- <img src="file://{C}2c.png" style="height:150px;filter:drop-shadow(0 14px 18px rgba(0,0,0,.5))">
- <div><div style="font-weight:900;font-size:34px">ومعاها عدسة لليل</div><div style="font-weight:700;font-size:24px;opacity:.7">للكشتة والطلعات بعد المغرب</div></div></div>'''
+ <img src="file://{C}3c.png" style="height:170px;filter:drop-shadow(0 14px 18px rgba(0,0,0,.5))">
+ <div><div style="font-weight:900;font-size:34px">ومعاها عدسة لليل بلمعة ice blue</div><div style="font-weight:700;font-size:24px;opacity:.7">للكشتة والطلعات بعد المغرب</div></div></div>'''
     extra = f'''.sil{{background:linear-gradient(180deg,#FFFFFF 0%,#B9BEC5 55%,#8C9199 100%);-webkit-background-clip:text;background-clip:text;color:transparent}}
 .hero{{filter:drop-shadow(0 40px 46px rgba(0,0,0,.6))}}
 .fts{{left:48px;right:48px;display:flex;direction:rtl}} .ft{{flex:1;padding:0 18px;border-left:1.5px solid rgba(236,238,241,.22);text-align:right}} .ft:last-child{{border-left:none}} .ft:first-child{{padding-right:0}}

@@ -67,30 +67,35 @@ s.append(T(RG, 1252, 'SIDE 80 mm', 17, '#444', 700, 'Poppins', anchor='start'))
 s.append(T(FR, 1252, 'FRONT 200 x 220 mm  (bag L20 x D8 x H22 cm)  -  same design on the back', 17, '#444', 700, 'Poppins', anchor='start'))
 
 svg = ''.join(s)
-os.makedirs(D+'out', exist_ok=True)
-html = f'''<!doctype html><html><head><meta charset="utf-8"><style>{FONTS}
-@page{{size:{PW}mm {PHM}mm;margin:0}} html,body{{margin:0}} svg{{display:block;width:{PW}mm;height:{PHM}mm}}</style></head>
-<body><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}">{svg}</svg></body></html>'''
-open(D+'out/src.html', 'w').write(html)
-js = f"""const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage();
-await p.goto('file://{D}out/src.html');await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(500);
-await p.pdf({{path:'{D}out/fonts.pdf',width:'{PW}mm',height:'{PHM}mm',printBackground:true,pageRanges:'1'}});await b.close();}})()"""
-subprocess.run(['node', '-e', js], check=True)
-# outline all text: PDF -> SVG (cairo turns glyphs into paths) -> PDF
-subprocess.run(['pdftocairo', '-svg', D+'out/fonts.pdf', D+'out/outlined.svg'], check=True)
-js2 = f"""const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage();
-await p.setContent('<html><head><style>@page{{size:{PW}mm {PHM}mm;margin:0}}html,body{{margin:0}}img{{display:block;width:{PW}mm;height:{PHM}mm}}</style></head><body></body></html>');
-const svg=require('fs').readFileSync('{D}out/outlined.svg','utf8').replace(/<\\?xml[^>]*>/,'');
-await p.evaluate(s=>{{document.body.innerHTML=s;const e=document.body.firstElementChild;e.style.display='block';e.style.width='{PW}mm';e.style.height='{PHM}mm'}},svg);
-await p.pdf({{path:'{D}out/974-bag-monogram-white.pdf',width:'{PW}mm',height:'{PHM}mm',printBackground:true,pageRanges:'1'}});
-await p.setViewportSize({{width:{W},height:{H}}});await p.evaluate(()=>{{const e=document.body.firstElementChild;e.style.width='{W}px';e.style.height='{H}px'}});
-await p.screenshot({{path:'{D}out/preview.png'}});await b.close();}})()"""
-subprocess.run(['node', '-e', js2], check=True)
-from pypdf import PdfReader, PdfWriter
-from pypdf.generic import RectangleObject
-r = PdfReader(D+'out/974-bag-monogram-white.pdf'); w = PdfWriter(); pg = r.pages[0]; top = float(pg.mediabox.top); k = 72/25.4
-box = RectangleObject([0, top-PHM*k, PW*k, top]); pg.mediabox = box; pg.cropbox = box; pg.trimbox = box
-w.add_page(pg); w.add_metadata({'/Title': '974 Bag — Monogram (white)', '/Creator': '974Group'})
-w.write(D+'out/974-bag-monogram-white.pdf')
-import shutil; shutil.copy(D+'out/974-bag-monogram-white.pdf', D+'out/974-bag-monogram-white.ai')
-for x in ('fonts.pdf', 'outlined.svg', 'src.html'): os.remove(D+'out/'+x)
+def render(svg, W, H, PW, PHM, name, title):
+    os.makedirs(D+'out', exist_ok=True)
+    html = f'''<!doctype html><html><head><meta charset="utf-8"><style>{FONTS}
+    @page{{size:{PW}mm {PHM}mm;margin:0}} html,body{{margin:0}} svg{{display:block;width:{PW}mm;height:{PHM}mm}}</style></head>
+    <body><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}">{svg}</svg></body></html>'''
+    open(D+'out/src.html', 'w').write(html)
+    js = f"""const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage();
+    await p.goto('file://{D}out/src.html');await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(500);
+    await p.pdf({{path:'{D}out/fonts.pdf',width:'{PW}mm',height:'{PHM}mm',printBackground:true,pageRanges:'1'}});await b.close();}})()"""
+    subprocess.run(['node', '-e', js], check=True)
+    # outline all text: PDF -> SVG (cairo turns glyphs into paths) -> PDF
+    subprocess.run(['pdftocairo', '-svg', D+'out/fonts.pdf', D+'out/outlined.svg'], check=True)
+    js2 = f"""const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage();
+    await p.setContent('<html><head><style>@page{{size:{PW}mm {PHM}mm;margin:0}}html,body{{margin:0}}img{{display:block;width:{PW}mm;height:{PHM}mm}}</style></head><body></body></html>');
+    const svg=require('fs').readFileSync('{D}out/outlined.svg','utf8').replace(/<\\?xml[^>]*>/,'');
+    await p.evaluate(s=>{{document.body.innerHTML=s;const e=document.body.firstElementChild;e.style.display='block';e.style.width='{PW}mm';e.style.height='{PHM}mm'}},svg);
+    await p.pdf({{path:'{D}out/{name}.pdf',width:'{PW}mm',height:'{PHM}mm',printBackground:true,pageRanges:'1'}});
+    await p.setViewportSize({{width:{W},height:{H}}});await p.evaluate(()=>{{const e=document.body.firstElementChild;e.style.width='{W}px';e.style.height='{H}px'}});
+    await p.screenshot({{path:'{D}out/preview.png'}});await b.close();}})()"""
+    subprocess.run(['node', '-e', js2], check=True)
+    from pypdf import PdfReader, PdfWriter
+    from pypdf.generic import RectangleObject
+    r = PdfReader(D+f'out/{name}.pdf'); w = PdfWriter(); pg = r.pages[0]; top = float(pg.mediabox.top); k = 72/25.4
+    box = RectangleObject([0, top-PHM*k, PW*k, top]); pg.mediabox = box; pg.cropbox = box; pg.trimbox = box
+    w.add_page(pg); w.add_metadata({'/Title': title, '/Creator': '974Group'})
+    w.write(D+f'out/{name}.pdf')
+    import shutil; shutil.copy(D+f'out/{name}.pdf', D+f'out/{name}.ai')
+    for x in ('fonts.pdf', 'outlined.svg', 'src.html'): os.remove(D+'out/'+x)
+
+
+if __name__ == '__main__':
+    render(svg, W, H, PW, PHM, '974-bag-monogram-white', '974 Bag — Monogram (white)')

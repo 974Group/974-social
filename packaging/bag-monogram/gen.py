@@ -1,7 +1,21 @@
 # 974 shopping bag — design 4 "Monogram" (white). Real size in mm, vector, text outlined → .ai (PDF-compatible) + .pdf
 import json, re, subprocess, os, sys
 sys.path.insert(0, '/home/claude/974-social/packaging/playing-cards')
-from gen import logo, LOGO_RATIO, FONTS, T, igicon, globe
+from gen import logo, LOGO_RATIO, FONTS, T, igicon, globe, LOGO_D, P
+FONTS += "@font-face{font-family:'Lexend Exa';font-weight:100 900;src:url(file:///home/claude/974-social/packaging/bag-monogram/LexendExa.ttf)}"
+_n = [0]
+def logo2(x, y, w, light='#720842', dark='#51022D'):
+    # brand two-tone 974: tail of the 9, left notch of the 7, and the 4's upper body in the darker tone
+    _n[0] += 1; i = _n[0]; sc = w / P['w']
+    d9, d7, d4 = (' '.join(g) for g in P['d'])
+    def L(d, c, clip=None): return f'<path d="{d}" fill="{c}" fill-rule="evenodd"' + (f' clip-path="url(#{clip}{i})"' if clip else '') + '/>'
+    defs = (f'<clipPath id="a{i}"><rect x="0" y="640" width="1140" height="1100"/></clipPath>'
+            f'<clipPath id="b{i}"><circle cx="563" cy="563" r="563"/></clipPath>'
+            f'<clipPath id="c{i}"><polygon points="0,0 1631,0 967,1616 0,1616"/></clipPath>'
+            f'<clipPath id="e{i}"><polygon points="2240,0 2865,0 2865,1261 1740,1261"/></clipPath>')
+    return (f'<g transform="translate({x},{y}) scale({sc})"><defs>{defs}</defs>'
+            + L(d9, light) + L(d9, dark, 'a') + L(d9, light, 'b')
+            + L(d7, light) + L(d7, dark, 'c') + L(d4, light) + L(d4, dark, 'e') + '</g>')
 D = os.path.dirname(os.path.abspath(__file__)) + '/'
 BUR, DARK, GOLD, WM = '#720842', '#51022D', '#C9A24B', '#EFE7EB'
 
@@ -24,9 +38,9 @@ s.append(T(LG, 50, 'تصميم ٤ – فخم Monogram', 22, '#333', 700, 'Cairo'
 def gusset(x):
     g = f'<rect x="{x}" y="{Y}" width="300" height="{PH}" fill="#fff"/>'
     g += brackets(x, Y, 300, PH, 38, 50)
-    lw = 102; g += logo(x+150-lw/2, Y+87, lw, BUR)
+    lw = 102; g += logo2(x+150-lw/2, Y+87, lw)
     cx, cy = x+150, Y+622
-    g += f'<g transform="rotate(-90 {cx} {cy})">' + T(cx, cy+5, '974GROUP.NET', 15, GOLD, 500, ls=6) + '</g>'
+    g += f'<g transform="rotate(-90 {cx} {cy})">' + T(cx, cy+5, '974GROUP.NET', 15, GOLD, 500, 'Lexend Exa', ls=6) + '</g>'
     return g
 s.append(gusset(LG)); s.append(gusset(RG))
 
@@ -36,16 +50,16 @@ f = [f'<defs><clipPath id="fc"><rect x="{FR}" y="{Y}" width="1000" height="{PH}"
      f'<g clip-path="url(#fc)">' + logo(FR+121, Y+659, 1199, WM) + '</g>']
 f.append(brackets(FR, Y, 1000, PH, 55, 72))
 cx = FR+500
-lw = 204; f.append(logo(cx-lw/2, Y+122, lw, BUR))
-f.append(T(cx, Y+527, '974GROUP.NET', 29, BUR, 700, ls=13))
+lw = 204; f.append(logo2(cx-lw/2, Y+122, lw))
+f.append(T(cx, Y+527, '974GROUP.NET', 29, BUR, 700, 'Lexend Exa', ls=11))
 f.append(f'<line x1="{cx-29}" y1="{Y+559}" x2="{cx+29}" y2="{Y+559}" stroke="{GOLD}" stroke-width="2.4"/>')
-f.append(T(cx, Y+601, 'DOHA · QATAR', 19, BUR, 500, ls=8))
+f.append(T(cx, Y+601, 'DOHA · QATAR', 19, BUR, 500, 'Lexend Exa', ls=8))
 vx, vy = FR+62, Y+560
-f.append(f'<g transform="rotate(-90 {vx} {vy})">' + T(vx, vy+5, 'BANDS · GOGGLES · SOCKS &amp; MORE', 15, GOLD, 500, ls=8.5) + '</g>')
+f.append(f'<g transform="rotate(-90 {vx} {vy})">' + T(vx, vy+5, 'BANDS · GOGGLES · SOCKS &amp; MORE', 15, GOLD, 500, 'Lexend Exa', ls=7.5) + '</g>')
 yc = Y+1013; fs = 16
-f.append(wa(FR+188, yc-15, 19, BUR) + T(FR+214, yc, '+974 5555 6278', fs, BUR, 700, anchor='start', ls=2.2))
-f.append(igicon(FR+432, yc-14.5, 18, BUR) + T(FR+458, yc, '974.Group', fs, BUR, 700, anchor='start', ls=2.2))
-f.append(globe(FR+624, yc-15, 19, BUR) + T(FR+650, yc, '974group.net', fs, BUR, 700, anchor='start', ls=2.2))
+f.append(wa(FR+188, yc-15, 19, BUR) + T(FR+214, yc, '+974 5555 6278', fs, BUR, 600, 'Lexend Exa', anchor='start', ls=1))
+f.append(igicon(FR+432, yc-14.5, 18, BUR) + T(FR+458, yc, '974.Group', fs, BUR, 600, 'Lexend Exa', anchor='start', ls=1))
+f.append(globe(FR+624, yc-15, 19, BUR) + T(FR+650, yc, '974group.net', fs, BUR, 600, 'Lexend Exa', anchor='start', ls=1))
 s += f
 s.append(T(LG, 1252, '300mm جنب', 17, '#444', 700, 'Cairo', anchor='start'))
 s.append(T(RG, 1252, '300mm جنب', 17, '#444', 700, 'Cairo', anchor='start'))

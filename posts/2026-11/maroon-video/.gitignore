@@ -1,3 +1,6 @@
 ref/
 clips/*.jpg
 gen/
+v2/clips/
+v2/parts/
+v2/*.jpg

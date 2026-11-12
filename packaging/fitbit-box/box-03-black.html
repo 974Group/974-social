@@ -1,0 +1,134 @@
+<!doctype html><html lang="ar"><meta charset="utf-8"><style>
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(../aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:'Poppins';font-weight:500 600;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf)}
+@font-face{font-family:'Poppins';font-weight:700 900;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}
+@font-face{font-family:'Anton';src:url(anton.woff2)}
+body{margin:0;background:#333;font-family:'Cairo';display:flex;gap:60px;padding:40px;align-items:flex-start}
+/* die-line: 300dpi, 70 x 75 x 30 mm */
+.die{position:relative;width:898px;height:2729px;overflow:hidden;background:#fff}
+.p{position:absolute;left:0;width:898px;overflow:hidden;box-sizing:border-box}
+.in{position:absolute;left:35px;right:35px;top:0;bottom:0}
+.flap .in{top:35px}.glue .in{bottom:35px}
+.flap{top:0;height:390px}.front{top:390px;height:886px}.side{top:1276px;height:355px}.back{top:1631px;height:886px;transform:rotate(180deg)}.glue{top:2517px;height:212px}
+.cut{position:absolute;left:0;right:0;height:0;border-top:1px dashed rgba(0,0,0,.25);pointer-events:none}
+.en{font-family:'Poppins';direction:ltr}
+.an{font-family:'Anton';direction:ltr}
+.ar{direction:rtl}
+.abs{position:absolute}
+.band{position:absolute;filter:drop-shadow(0 18px 22px rgba(0,0,0,.28))}
+.qr{position:absolute;background:#fff;border-radius:10px;padding:6px}
+.qr img{display:block;width:100%}
+.icons{position:absolute;height:34px}
+
+/* ===== A: brand kit ===== */
+.A .p{background:#F4F1F2;color:#1E0B14}
+.A .kick{font-family:Poppins;font-weight:700;letter-spacing:5px;font-size:17px;color:#720842;direction:ltr}
+.A .gold{position:absolute;height:2px;background:#C9A24B}
+.A .bar{position:absolute;left:0;right:0;bottom:0;height:120px;background:#720842;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 44px;box-sizing:border-box}
+.A .bar .nm{font-family:Poppins;font-weight:700;font-size:30px;display:flex;align-items:center;gap:14px;direction:ltr}
+.A .bar .nm i{width:22px;height:22px;border-radius:50%;display:block;box-shadow:0 0 0 2px rgba(255,255,255,.6)}
+.A .bar .url{font-family:Poppins;font-weight:700;font-size:16px;letter-spacing:3px;opacity:.8;direction:ltr}
+.A .side{background:#720842;color:#fff}
+.A .flap,.A .glue{background:#E2E2E2}
+
+/* ===== B: product colour, bold ===== */
+.B .p{background:var(--bg);color:var(--fg)}
+.B .loops{position:absolute;inset:0;background:url(loops-03-black.png) center/auto 100% repeat-x}
+
+.B .big{font-family:'Anton';font-size:330px;line-height:.82;letter-spacing:-6px;color:var(--fg);direction:ltr}
+.B .tag{display:flex;align-items:center;gap:14px;font-family:Poppins;font-weight:700;letter-spacing:4px;font-size:18px;direction:ltr}
+.B .tag i{width:18px;height:18px;border-radius:50%;background:var(--dot);display:block;box-shadow:0 0 0 3px var(--bg),0 0 0 4px var(--fg)}
+.B .flap,.B .glue{background:var(--bg2)}
+</style>
+
+<!-- ================= DESIGN A ================= -->
+<div class="die A" id="A">
+ <div class="p flap">
+ <div class="in">
+  <img class="abs" src="logo-maroon.png" style="left:50%;top:50%;width:170px;transform:translate(-50%,-50%)">
+  <div class="gold" style="left:64px;right:64px;top:300px"></div>
+ </div>
+ </div>
+ <div class="p front">
+ <div class="in">
+  <img class="abs" src="logo-maroon.png" style="left:52px;top:54px;width:150px">
+  <div class="abs kick" style="right:52px;top:72px">NYLON LOOP</div>
+  <div class="abs ar" style="left:52px;right:52px;top:140px;font-size:46px;font-weight:900;line-height:1.1">سير نايلون لـ<span class="en" style="font-weight:700"> Fitbit Air</span></div>
+  <div class="abs ar" style="left:52px;right:52px;top:206px;font-size:22px;font-weight:600;color:#6B4A5A">خفيف · يتنفس · يتقفل بالفيلكرو</div>
+  <div class="gold" style="left:52px;right:52px;top:256px"></div>
+  <img class="band" src="band3.png" style="left:175px;top:262px;width:470px">
+  <div class="bar"><div class="nm"><i style="background:#111111"></i>Black</div><div class="url">974GROUP.NET</div></div>
+ </div>
+ </div>
+ <div class="p side">
+ <div class="in">
+  <img class="abs" src="logo-white.png" style="left:52px;top:50%;width:120px;transform:translateY(-50%)">
+  <div class="abs en" style="right:52px;top:50%;transform:translateY(-50%);text-align:right;font-weight:700">
+   <div style="font-size:30px;letter-spacing:2px">Black</div>
+   <div style="font-size:15px;letter-spacing:4px;opacity:.75;margin-top:4px">NYLON LOOP · FITBIT AIR</div></div>
+  <div class="gold" style="left:52px;right:52px;top:40px;opacity:.9"></div>
+  <div class="gold" style="left:52px;right:52px;bottom:40px;opacity:.9"></div>
+ </div>
+ </div>
+ <div class="p back">
+ <div class="in">
+  <img class="abs" src="logo-maroon.png" style="left:52px;top:54px;width:120px">
+  <div class="abs ar" style="left:52px;right:52px;top:160px;font-size:26px;font-weight:800;line-height:1.7">
+   صُنع بفخر من قطر.<br><span style="font-weight:600;color:#4A3340">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي، اختيارك يعني لنا الكثير.</span></div>
+  <div class="gold" style="left:52px;right:52px;top:420px"></div>
+  <div class="abs en" style="left:52px;right:52px;top:440px;font-size:18px;font-weight:500;line-height:1.55;color:#4A3340">
+   Proudly founded in Qatar. We make premium bands that elevate your everyday style. Thank you for supporting a local business — your choice means the world to us.</div>
+  <div class="qr" style="left:52px;bottom:150px;width:120px"><img src="qr.png"></div>
+  <div class="abs en" style="left:200px;bottom:160px;font-weight:700;font-size:18px;line-height:1.6;color:#1E0B14">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <img class="icons" src="icons.png" style="right:52px;bottom:150px;filter:brightness(.2)">
+  <div class="bar" style="height:90px"><div class="url">MADE IN CHINA · DESIGNED IN QATAR</div><div class="url">974 GROUP</div></div>
+ </div>
+ </div>
+ <div class="p glue"></div>
+ <div class="in">
+ </div>
+</div>
+
+<!-- ================= DESIGN B ================= -->
+<div class="die B" id="B" style="--bg:#141414;--bg2:#0C0C0C;--fg:#F2F2F2;--dot:#111111">
+ <div class="p flap">
+ <div class="in">
+  <div class="abs tag" style="left:52px;top:50%;transform:translateY(-50%)"><i></i>Black · FITBIT AIR</div>
+  <img class="abs" src="logo-white.png" style="right:52px;top:50%;transform:translateY(-50%);width:150px">
+ </div>
+ </div>
+ <div class="p front">
+ <div class="in">
+  <img class="abs" src="logo-white.png" style="left:52px;top:60px;width:560px">
+  <div class="abs en" style="left:52px;top:400px;font-weight:700;font-size:26px;letter-spacing:6px;color:var(--fg)">NYLON LOOP</div>
+  <div class="abs ar" style="left:52px;top:442px;font-size:30px;font-weight:700;color:var(--fg);opacity:.75">سير نايلون لـ Fitbit Air</div>
+  <img class="band" src="band3.png" style="left:290px;top:430px;width:600px">
+  <div class="abs tag" style="left:52px;bottom:52px"><i></i>Black</div>
+ </div>
+ </div>
+ <div class="p side">
+  <div class="loops"></div>
+ <div class="in">
+  <div class="abs" style="left:50%;top:50%;transform:translate(-50%,-50%);background:var(--bg);padding:14px 36px;border-radius:999px">
+   <div class="tag" style="font-size:20px;white-space:nowrap"><i></i>Black · NYLON</div></div>
+ </div>
+ </div>
+ <div class="p back">
+ <div class="in">
+  <img class="abs" src="logo-white.png" style="left:52px;top:56px;width:170px">
+  <div class="abs ar" style="left:52px;right:52px;top:170px;font-size:28px;font-weight:800;line-height:1.7;color:var(--fg)">
+   صُنع بفخر من قطر.<br><span style="font-weight:500;opacity:.8">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي.</span></div>
+  <div class="abs en" style="left:52px;right:330px;top:420px;font-size:18px;font-weight:500;line-height:1.55;color:var(--fg);opacity:.8">
+   Proudly founded in Qatar. Premium bands that elevate your everyday style. Thank you for supporting a local business.</div>
+  <div class="qr" style="left:52px;bottom:60px;width:210px;padding:10px;border-radius:14px"><img src="qr.png"></div>
+  <div class="abs ar" style="left:290px;bottom:215px;font-size:20px;font-weight:700;color:var(--fg);opacity:.85">امسح وتسوّق مباشرة</div>
+  <div class="abs en" style="left:290px;bottom:112px;font-weight:700;font-size:18px;line-height:1.6;color:var(--fg)">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <img class="icons" src="icons-white.png" style="left:290px;bottom:66px;height:30px"><img class="abs" src="rear-03-black.png" style="right:52px;bottom:210px;width:190px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.3))"><div class="abs" style="right:52px;bottom:40px;width:180px;background:#fff;border-radius:10px;padding:8px 10px 5px"><img src="bc/97410003.png" style="display:block;width:100%;height:60px"><div class="en" style="text-align:center;font-weight:600;font-size:13px;letter-spacing:3px;color:#111;margin-top:3px">97410003</div></div>
+  <div class="abs en" style="left:290px;bottom:38px;font-size:11px;letter-spacing:2px;color:var(--fg);opacity:.6">MADE IN CHINA · DESIGNED IN QATAR</div>
+ </div>
+ </div>
+ <div class="p glue"></div>
+ <div class="in">
+ </div>
+</div>

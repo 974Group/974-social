@@ -42,7 +42,7 @@ def new(story=False):
 <div class="abs en" style="left:0;right:0;top:{o+(330 if story else 250)}px;text-align:center;font-weight:700;font-size:{300 if story else 270}px;line-height:.8;letter-spacing:-6px;color:rgba(114,8,66,.05)">EXOTIC</div>
 <div class="abs ar" style="right:48px;left:48px;top:{o+(130 if story else 112)}px">
  <div style="font-weight:900;font-size:{80 if story else 70}px;line-height:1.05">وصلت.. <span style="color:{ACC}">5 جلود جديدة</span></div>
- <div style="font-weight:700;font-size:{28 if story else 25}px;margin-top:10px;opacity:.75">سيور جلد لـ <span class="en">Whoop 5.0</span> و <span class="en">MG</span> · كل سير مكتوب تحته جلده</div>
+ <div style="font-weight:700;font-size:{28 if story else 25}px;margin-top:10px;opacity:.75">سيور جلد لـ <span class="en">Whoop 5.0</span> و <span class="en">MG</span></div>
 </div>
 {row(NEW, o+(440 if story else 285), bh, INK, .7, story)}
 <div class="abs ar" style="right:48px;left:48px;top:{o+(1260 if story else 990)}px;display:flex;align-items:center;gap:14px;direction:rtl">
@@ -72,15 +72,17 @@ def restock(story=False):
 
 def himalayan(story=False):
     o = 150 if story else 0; H = 1920 if story else 1350; INK = '#2B2420'; ACC = '#7A5C48'
-    hero = 900 if story else 700
+    hero = 640 if story else 560
+    bh = 800 if story else 600
     body = f'''
-<img class="abs" src="file://{PK}edition-x-box-open-band-1.png" style="left:{90 if story else -20}px;top:{o+(400 if story else 290)}px;width:{hero}px;-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000 55%,transparent 100%)">
+<img class="abs" src="file://{C}box-open-band.png" style="left:{24 if story else 30}px;top:{o+(470 if story else 360)}px;width:{hero}px;filter:drop-shadow(0 24px 28px rgba(60,40,30,.25))">
+<img class="abs" src="file://{C}himalayan.png" style="right:{40 if story else 60}px;top:{o+(400 if story else 360)}px;height:{bh}px;filter:drop-shadow(0 28px 32px rgba(60,40,30,.32))">
 <div class="abs ar" style="right:48px;left:48px;top:{o+(130 if story else 108)}px">
  <div class="en" style="font-weight:700;font-size:{19 if story else 17}px;letter-spacing:6px;color:{ACC}">HIMALAYAN CROCODILE</div>
  <div style="font-weight:900;font-size:{84 if story else 72}px;line-height:1.05;margin-top:6px">15 قطعة..<br><span style="color:{ACC}">ولا وحدة تشبه الثانية</span></div>
  <div style="font-weight:700;font-size:{28 if story else 25}px;margin-top:12px;opacity:.78">جلد تمساح هيمالايا طبيعي · كل قطعة نقشتها ودرجتها غير</div>
 </div>
-<div class="abs ar" style="right:48px;left:{48 if story else 660}px;top:{o+(1255 if story else 640)}px">
+<div class="abs ar" style="right:48px;left:48px;top:{o+(1255 if story else 985)}px">
  <div class="pick"><b>اختار قطعتك بنفسك</b><span>نرسل لك صور الـ15 قطعة وتختار النقشة واللون اللي يعجبك</span></div>
 </div>'''
     extra = f'''.pick{{display:flex;flex-direction:column;gap:4px;border-right:4px solid {ACC};padding-right:18px}}

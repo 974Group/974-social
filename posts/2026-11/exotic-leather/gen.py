@@ -68,7 +68,7 @@ def restock(story=False):
     extra = ITCSS(INK, '0 24px 30px rgba(0,0,0,.6)', 28 if story else 24) + f'''
 .it em{{color:{SIL}}} .pill{{background:{INK};color:#151618;border:none!important}}'''
     return page(H, 'radial-gradient(120% 90% at 50% 35%,#24262B 0%,#17181B 60%,#101113 100%)', INK, body, story, LW,
-                'WHOOP 5.0 · MG · BACK IN STOCK', 'من 249', 'اطلبه من <em>974group.net</em> 🛒', extra, pf_ink=INK)
+                'WHOOP 5.0 · MG · BACK IN STOCK', 'من 249', 'علّق <em>«جلد»</em> ونرسل لك الرابط 📩', extra, pf_ink=INK)
 
 def himalayan(story=False):
     o = 150 if story else 0; H = 1920 if story else 1350; INK = '#2B2420'; ACC = '#7A5C48'
@@ -89,7 +89,7 @@ def himalayan(story=False):
 .pick b{{font-weight:900;font-size:{36 if story else 31}px}} .pick span{{font-weight:700;font-size:{24 if story else 21}px;opacity:.75}}
 .pill{{background:{INK};color:#F1E7DF;border:none!important}}'''
     return page(H, 'radial-gradient(90% 70% at 50% 50%,#F1E6DF 0%,#ECE0D8 60%,#E3D5CB 100%)', INK, body, story, LB,
-                'WHOOP 5.0 · MG · LIMITED 15', 849, 'راسلنا بالخاص ونرسل لك القطع 📩', extra)
+                'WHOOP 5.0 · MG · LIMITED 15', 849, 'علّق <em>«هيمالايا»</em> ونرسل لك القطع 📩', extra)
 
 if __name__ == '__main__':
     os.chdir(D)

@@ -31,7 +31,7 @@ def charms(story=False):
 </div>
 {h}
 <div class="abs ar" style="right:48px;left:48px;top:{o+(1310 if story else 940)}px;display:flex;gap:10px;flex-wrap:wrap;direction:rtl">
- <span class="fx">من دوري نجوم قطر 🇶🇦</span><span class="fx">هدية حلوة لأي مشجّع 🎁</span>
+ <span class="fx">دوري نجوم قطر 🇶🇦</span><span class="fx">الدوري الإنجليزي</span><span class="fx">هدية حلوة لأي مشجّع 🎁</span>
 </div>'''
     extra = f'''.c{{position:absolute;display:flex;flex-direction:column;align-items:center}}
 .c img{{filter:drop-shadow(0 18px 18px rgba(0,0,0,.5))}}

@@ -26,7 +26,7 @@ def charms(story=False):
 <div class="abs" style="left:50%;top:{o+(1330 if story else 1010)}px;display:none;width:520px;height:520px;margin-left:-260px;border:3px solid rgba(255,255,255,.06);border-radius:50%"></div>
 <div class="abs ar" style="right:48px;left:48px;top:{o+(130 if story else 110)}px">
  <div class="en" style="font-weight:700;font-size:{18 if story else 16}px;letter-spacing:5px;color:{LIME}">FOOTBALL CLUB CHARMS</div>
- <div style="font-weight:900;font-size:{84 if story else 72}px;line-height:1.05;margin-top:6px">علّق نادك ⚽</div>
+ <div style="font-weight:900;font-size:{80 if story else 66}px;line-height:1.05;margin-top:6px">علّق شعار ناديك ⚽</div>
  <div style="font-weight:700;font-size:{28 if story else 25}px;margin-top:10px;opacity:.8">Charm جلد بشعار ناديك · على شنطتك أو مفاتيحك</div>
 </div>
 {h}

@@ -9,15 +9,15 @@ D = '/home/claude/974-social/posts/2026-11/exotic-leather/'
 C = D + 'cut/'
 PK = '/home/claude/974-social/products/packaging-edition-x/'
 
-NEW = [('white-python', 'بايثون أبيض', 'جلد بايثون طبيعي', 249, True),
-       ('black-python', 'بايثون أسود', 'جلد بايثون طبيعي', 249, True),
-       ('pink-lizard', 'سحلية وردي', 'جلد سحلية طبيعي', 249, True),
+NEW = [('white-python', 'بايثون أبيض', 'جلد بايثون طبيعي', 299, True),
+       ('black-python', 'بايثون أسود', 'جلد بايثون طبيعي', 299, True),
+       ('pink-lizard', 'سحلية وردي', 'جلد سحلية طبيعي', 299, True),
        ('ivory-ostrich', 'نعام عاجي', 'جلد طبيعي بنقشة نعام', 199, False),
        ('holographic-croc', 'هولوغرافيك', 'جلد طبيعي بنقشة كروك', 199, False)]
-BACK = [('pink-python', 'بايثون وردي', 'جلد بايثون طبيعي', 249),
-        ('grey-python', 'بايثون رصاصي', 'جلد بايثون طبيعي', 249),
-        ('natural-python', 'بايثون طبيعي', 'جلد بايثون طبيعي', 249),
-        ('natural-lizard', 'سحلية طبيعي', 'جلد سحلية طبيعي', 249),
+BACK = [('pink-python', 'بايثون وردي', 'جلد بايثون طبيعي', 299),
+        ('grey-python', 'بايثون رصاصي', 'جلد بايثون طبيعي', 299),
+        ('natural-python', 'بايثون طبيعي', 'جلد بايثون طبيعي', 299),
+        ('natural-lizard', 'سحلية طبيعي', 'جلد سحلية طبيعي', 299),
         ('himalayan', 'هيمالايا', 'جلد تمساح طبيعي', 849)]
 
 def row(items, top, bh, ink, sub_op, story, cw=200):
@@ -68,7 +68,7 @@ def restock(story=False):
     extra = ITCSS(INK, '0 24px 30px rgba(0,0,0,.6)', 28 if story else 24) + f'''
 .it em{{color:{SIL}}} .pill{{background:{INK};color:#151618;border:none!important}}'''
     return page(H, 'radial-gradient(120% 90% at 50% 35%,#24262B 0%,#17181B 60%,#101113 100%)', INK, body, story, LW,
-                'WHOOP 5.0 · MG · BACK IN STOCK', 'من 249', 'علّق <em>«جلد»</em> ونرسل لك الرابط 📩', extra, pf_ink=INK)
+                'WHOOP 5.0 · MG · BACK IN STOCK', 'من 299', 'علّق <em>«جلد»</em> ونرسل لك الرابط 📩', extra, pf_ink=INK)
 
 def himalayan(story=False):
     o = 150 if story else 0; H = 1920 if story else 1350; INK = '#2B2420'; ACC = '#7A5C48'

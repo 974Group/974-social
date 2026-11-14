@@ -62,7 +62,7 @@ background:radial-gradient(800px 600px at 85% 5%,#F6D2DE 0%,transparent 65%),rad
 .snake{{position:absolute;left:0;top:0}}
 .logo{{position:absolute;left:52px;top:{o+(44 if not story else -10)}px;height:44px}}
 .kick{{position:absolute;right:52px;top:{o+(56 if not story else 2)}px;font-family:Poppins;font-weight:500;font-size:16px;letter-spacing:5px;color:{ROSE}}}
-.t1{{position:absolute;left:0;right:0;top:{o+(108 if not story else 70)}px;text-align:center;font-family:Lora;font-style:italic;font-weight:600;font-size:{150 if not story else 176}px;line-height:1;
+.t1{{position:absolute;left:0;right:0;top:{o+(88 if not story else 46)}px;text-align:center;font-family:Lora;font-style:italic;font-weight:600;font-size:{150 if not story else 176}px;line-height:1.3;padding-bottom:12px;
 background:linear-gradient(100deg,#B85A7B 0%,#D98EA8 40%,{GOLD} 75%,#D3A55A 100%);-webkit-background-clip:text;background-clip:text;color:transparent}}
 .t2{{position:absolute;left:0;right:0;top:{o+(268 if not story else 262)}px;text-align:center;direction:rtl;font-weight:900;font-size:{46 if not story else 54}px}}
 .t2 i{{font-style:normal;color:{ROSE}}}

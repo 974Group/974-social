@@ -88,6 +88,44 @@ def day1(story):
     return base(story, body)
 
 
+V1 = '/home/claude/974-social/products/garmin-cirqa-silicone-v1/cut/'
+V2 = '/home/claude/974-social/products/garmin-cirqa-silicone-v2/src/'
+
+
+def day2(story):
+    o = 230 if story else 0
+    k = 1.0 if not story else 1.12
+    rows = [(V2, ['black', 'lime', 'midnight-blue', 'mousse-pink', 'orange'], '-crop.png', 'CIRQA 2.0', '89', '53.40'),
+            (V1, ['army-green', 'white', 'navy', 'dusty-pink', 'lemon'], '.png', 'CIRQA', '99', '59.40')]
+    cw = 180 if not story else 190; gap = 14
+    x0 = (1080 - (5 * cw + 4 * gap)) // 2
+    imgs = ''
+    for r, (d, cols, suf, nm, was, now) in enumerate(rows):
+        y = o + (548 if not story else 640) + r * (198 if not story else 212)
+        for i, c in enumerate(cols):
+            imgs += f'<img src="file://{d}{c}{suf}" style="position:absolute;left:{x0+i*(cw+gap)}px;top:{y}px;width:{cw}px;height:{int(cw*0.95)}px;object-fit:contain;filter:drop-shadow(0 12px 14px rgba(0,0,0,.45))">'
+    body = f'''
+<img class="logo" src="file://{LOGOW}" style="left:48px;top:{o+40 if story else 44}px">
+<div style="position:absolute;right:48px;top:{(o+44) if story else 50}px;font-family:Poppins;font-weight:700;font-size:16px;letter-spacing:5px;color:{LIME}">NOVEMBER DEALS · DAY 2</div>
+<div style="position:absolute;left:40px;right:40px;top:{o+(110 if not story else 140)}px;display:flex;align-items:center;justify-content:space-between;direction:rtl">
+  <span class="khasm" style="font-size:{int(118*k)}px;padding:0 30px 14px;background:{GOLD}">خصم</span>
+  <span class="big" style="font-size:{int(250*k)}px;color:{GOLD};text-shadow:8px 8px 0 {DK}">40%</span>
+</div>
+<div style="position:absolute;left:0;right:0;top:{o+(400 if not story else 470)}px;text-align:center;direction:rtl">
+  <div style="font-weight:900;font-size:{int(50*k)}px">سيور سيليكون <span style="font-family:Poppins">Garmin CIRQA</span></div>
+  <div style="font-weight:800;font-size:{int(26*k)}px;color:{LIME};margin-top:2px">٢٠ لون · CIRQA و CIRQA 2.0</div>
+</div>
+{imgs}
+<div class="sticker" style="left:{30}px;top:{o+(470 if not story else 545)}px;width:150px;height:150px"><span style="font-size:19px">بس</span><span style="font-family:PoppinsB;font-size:44px">24</span><span style="font-size:19px">ساعة</span></div>
+{tape(o+(965 if not story else 1045), 3, 'عرض اليوم  ✦  DAY 2  ✦  NOVEMBER DEALS', bg=GOLD)}
+<div style="position:absolute;left:48px;right:48px;top:{o+(1050 if not story else 1125)}px;display:flex;justify-content:center;gap:16px;direction:rtl">
+  <div style="background:#fff;color:{DK};border-radius:24px;padding:6px 22px 10px;text-align:center"><div style="font-weight:800;font-size:{int(20*k)}px;font-family:Poppins">CIRQA 2.0</div><div style="font-family:Poppins;font-weight:700;font-size:{int(34*k)}px;direction:ltr"><s style="opacity:.45;font-size:.6em">89</s> 53.40 <small style="font-family:Cairo;font-size:.55em">ر.ق</small></div></div>
+  <div style="background:#fff;color:{DK};border-radius:24px;padding:6px 22px 10px;text-align:center"><div style="font-weight:800;font-size:{int(20*k)}px;font-family:Poppins">CIRQA</div><div style="font-family:Poppins;font-weight:700;font-size:{int(34*k)}px;direction:ltr"><s style="opacity:.45;font-size:.6em">99</s> 59.40 <small style="font-family:Cairo;font-size:.55em">ر.ق</small></div></div>
+</div>
+<div style="position:absolute;left:0;right:0;top:{o+(1160 if not story else 1243)}px;text-align:center;direction:rtl;font-weight:800;font-size:{int(22*k)}px;opacity:.9">الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳</div>'''
+    return base(story, body)
+
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -95,8 +133,13 @@ def shot(html, out, H):
 
 
 if __name__ == '__main__':
-    shot(announce(False), D + 'out/974-nov-deals-announce-post.png', 1350)
-    shot(announce(True), D + 'out/974-nov-deals-announce-story.png', 1920)
-    shot(day1(False), D + 'out/974-nov-deals-day1-cases-post.png', 1350)
-    shot(day1(True), D + 'out/974-nov-deals-day1-cases-story.png', 1920)
+    which = sys.argv[1] if len(sys.argv) > 1 else 'all'
+    if which in ('all', 'day1'):
+        shot(announce(False), D + 'out/974-nov-deals-announce-post.png', 1350)
+        shot(announce(True), D + 'out/974-nov-deals-announce-story.png', 1920)
+        shot(day1(False), D + 'out/974-nov-deals-day1-cases-post.png', 1350)
+        shot(day1(True), D + 'out/974-nov-deals-day1-cases-story.png', 1920)
+    if which in ('all', 'day2'):
+        shot(day2(False), D + 'out/974-nov-deals-day2-cirqa-post.png', 1350)
+        shot(day2(True), D + 'out/974-nov-deals-day2-cirqa-story.png', 1920)
     print('ok')

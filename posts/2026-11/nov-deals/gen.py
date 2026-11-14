@@ -65,12 +65,12 @@ def day1(story):
     cw = int(300 * k); gap = 20
     x0 = (1080 - (3 * cw + 2 * gap)) // 2
     for i, (f, nm) in enumerate(cases):
-        imgs += f'<img src="file://{S}{f}-c.png" style="position:absolute;left:{x0+i*(cw+gap)}px;top:{o+(560 if not story else 615)}px;width:{cw}px;height:{int(cw*1.18)}px;object-fit:contain;filter:drop-shadow(0 18px 20px rgba(0,0,0,.45))">'
+        imgs += f'<img src="file://{S}{f}-c.png" style="position:absolute;left:{x0+i*(cw+gap)}px;top:{o+(560 if not story else 665)}px;width:{cw}px;height:{int(cw*1.18)}px;object-fit:contain;filter:drop-shadow(0 18px 20px rgba(0,0,0,.45))">'
     body = f'''
 <img class="logo" src="file://{LOGOW}" style="left:48px;top:{o+40 if story else 44}px">
 <div style="position:absolute;right:48px;top:{(o+44) if story else 50}px;font-family:Poppins;font-weight:700;font-size:16px;letter-spacing:5px;color:{LIME}">NOVEMBER DEALS · DAY 1</div>
 <div style="position:absolute;left:40px;right:40px;top:{o+(110 if not story else 140)}px;display:flex;align-items:center;justify-content:space-between;direction:rtl">
-  <span class="khasm" style="font-size:{int(118*k)}px;padding:0 30px 14px">خصم</span>
+  <span class="khasm" style="font-size:{int(118*k)}px;padding:0 30px 14px;background:{GOLD}">خصم</span>
   <span class="big" style="font-size:{int(250*k)}px;color:{LIME};text-shadow:8px 8px 0 {DK}">40%</span>
 </div>
 <div style="position:absolute;left:0;right:0;top:{o+(400 if not story else 470)}px;text-align:center;direction:rtl">
@@ -78,13 +78,13 @@ def day1(story):
   <div style="font-weight:800;font-size:{int(26*k)}px;color:{LIME};margin-top:2px">تركب على <span style="font-family:Poppins">iPhone 17</span> و <span style="font-family:Poppins">18</span> · Pro و Pro Max</div>
 </div>
 {imgs}
-<div class="sticker" style="left:{36 if not story else 30}px;top:{o+(470 if not story else 560)}px"><span style="font-size:22px">بس</span><span style="font-family:PoppinsB;font-size:52px">24</span><span style="font-size:22px">ساعة</span></div>
-{tape(o+(935 if not story else 1012), 3, 'عرض اليوم  ✦  DAY 1  ✦  NOVEMBER DEALS', bg=GOLD)}
-<div style="position:absolute;left:48px;right:48px;top:{o+(1025 if not story else 1095)}px;display:flex;justify-content:center;gap:16px;direction:rtl">
+<div class="sticker" style="left:{36 if not story else 30}px;top:{o+(470 if not story else 620)}px"><span style="font-size:22px">بس</span><span style="font-family:PoppinsB;font-size:52px">24</span><span style="font-size:22px">ساعة</span></div>
+{tape(o+(935 if not story else 1060), 3, 'عرض اليوم  ✦  DAY 1  ✦  NOVEMBER DEALS', bg=GOLD)}
+<div style="position:absolute;left:48px;right:48px;top:{o+(1025 if not story else 1140)}px;display:flex;justify-content:center;gap:16px;direction:rtl">
   <div style="background:#fff;color:{DK};border-radius:24px;padding:6px 22px 10px;text-align:center"><div style="font-weight:800;font-size:{int(20*k)}px">Solid · Cloudy</div><div style="font-family:Poppins;font-weight:700;font-size:{int(34*k)}px;direction:ltr"><s style="opacity:.45;font-size:.6em">69</s> 41.40 <small style="font-family:Cairo;font-size:.55em">ر.ق</small></div></div>
   <div style="background:#fff;color:{DK};border-radius:24px;padding:6px 22px 10px;text-align:center"><div style="font-weight:800;font-size:{int(20*k)}px">Fading</div><div style="font-family:Poppins;font-weight:700;font-size:{int(34*k)}px;direction:ltr"><s style="opacity:.45;font-size:.6em">79</s> 47.40 <small style="font-family:Cairo;font-size:.55em">ر.ق</small></div></div>
 </div>
-<div style="position:absolute;left:0;right:0;top:{o+(1140 if not story else 1218)}px;text-align:center;direction:rtl;font-weight:800;font-size:{int(22*k)}px;opacity:.9">الخصم ينزل تلقائي في الموقع · ينتهي بكرة الساعة ٦ المغرب ⏳</div>'''
+<div style="position:absolute;left:0;right:0;top:{o+(1140 if not story else 1262)}px;text-align:center;direction:rtl;font-weight:800;font-size:{int(22*k)}px;opacity:.9">الخصم ينزل تلقائي في الموقع · ينتهي بكرة الساعة ٦ المغرب ⏳</div>'''
     return base(story, body)
 
 

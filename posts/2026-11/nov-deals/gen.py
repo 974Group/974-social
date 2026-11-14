@@ -126,6 +126,61 @@ def day2(story):
     return base(story, body)
 
 
+FB = '/home/claude/974-social/products/fitbit-silicone-v1/uni/'
+DR = '/home/claude/974-social/posts/2026-11/whoop5-silicone-all/cut/'
+
+
+def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra=''):
+    """Generic daily-deal layout (same look as day 1/2). rows: list of lists of image paths."""
+    o = 230 if story else 0
+    k = 1.0 if not story else 1.12
+    imgs = ''
+    gap = 14
+    top0 = o + (548 if not story else 640)
+    for r, row in enumerate(rows):
+        n = len(row); x0 = (1080 - (n * cw + (n - 1) * gap)) // 2
+        y = top0 + r * rowgap
+        for i, f in enumerate(row):
+            imgs += f'<img src="file://{f}" style="position:absolute;left:{x0+i*(cw+gap)}px;top:{y}px;width:{cw}px;height:{ch}px;object-fit:contain;filter:drop-shadow(0 12px 14px rgba(0,0,0,.45))">'
+    after = top0 + len(rows) * rowgap
+    tape_y = max(after + 10, o + (965 if not story else 1045))
+    chips = ''.join(f'<div style="background:#fff;color:{DK};border-radius:24px;padding:6px 22px 10px;text-align:center"><div style="font-weight:800;font-size:{int(20*k)}px">{lab}</div><div style="font-family:Poppins;font-weight:700;font-size:{int(34*k)}px;direction:ltr"><s style="opacity:.45;font-size:.6em">{was}</s> {now} <small style="font-family:Cairo;font-size:.55em">ر.ق</small></div></div>' for lab, was, now in prices)
+    body = f'''
+<img class="logo" src="file://{LOGOW}" style="left:48px;top:{o+40 if story else 44}px">
+<div style="position:absolute;right:48px;top:{(o+44) if story else 50}px;font-family:Poppins;font-weight:700;font-size:16px;letter-spacing:5px;color:{LIME}">NOVEMBER DEALS · DAY {day}</div>
+<div style="position:absolute;left:40px;right:40px;top:{o+(110 if not story else 140)}px;display:flex;align-items:center;justify-content:space-between;direction:rtl">
+  <span class="khasm" style="font-size:{int(118*k)}px;padding:0 30px 14px;background:{GOLD}">خصم</span>
+  <span class="big" style="font-size:{int(250*k)}px;color:{GOLD};text-shadow:8px 8px 0 {DK}">40%</span>
+</div>
+<div style="position:absolute;left:0;right:0;top:{o+(400 if not story else 470)}px;text-align:center;direction:rtl">
+  <div style="font-weight:900;font-size:{int(50*k)}px">{title}</div>
+  <div style="font-weight:800;font-size:{int(26*k)}px;color:{LIME};margin-top:2px">{sub}</div>
+</div>
+{imgs}{extra}
+<div class="sticker" style="left:30px;top:{o+(470 if not story else 545)}px;width:150px;height:150px"><span style="font-size:19px">بس</span><span style="font-family:PoppinsB;font-size:44px">24</span><span style="font-size:19px">ساعة</span></div>
+{tape(tape_y, 3, f'عرض اليوم  ✦  DAY {day}  ✦  NOVEMBER DEALS', bg=GOLD)}
+<div style="position:absolute;left:48px;right:48px;top:{tape_y+(85 if not story else 80)}px;display:flex;justify-content:center;gap:16px;direction:rtl">{chips}</div>
+<div style="position:absolute;left:0;right:0;top:{tape_y+(195 if not story else 198)}px;text-align:center;direction:rtl;font-weight:800;font-size:{int(22*k)}px;opacity:.9">{note}</div>'''
+    return base(story, body)
+
+
+def day3(story):
+    order = ['black', 'white', 'grey', 'navy', 'maroon', 'pink', 'tiffany', 'orange', 'lavender', 'green',
+             'red', 'brown', 'beige', 'blue-grey', 'light-pink', 'grey-blue', 'dark-grey', 'darker-grey', 'darker-beige']
+    pics = [FB + c + '.png' for c in order[:12]]
+    rows = [pics[:6], pics[6:12]]
+    cw = 140 if not story else 150
+    return deal(story, 3, 'سيور سيليكون <span style="font-family:Poppins">Fitbit</span>', '١٩ لون · كلها متوفرة', rows, cw, int(cw * 1.34),
+                200 if not story else 225, [('Fitbit سيليكون', '69', '41.40')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳')
+
+
+def day4(story):
+    pics = [DR + 'drenched.png', DR + 'drenched-green.png', DR + 'drenched-orange.png']
+    cw = 300 if not story else 310
+    return deal(story, 4, 'سيور <span style="font-family:Poppins">Drenched</span> سيليكون', 'لـ <span style="font-family:Poppins">Whoop 5.0 و MG</span> · سير فقط بدون الجهاز', [pics], cw, int(cw * 1.14),
+                380 if not story else 410, [('Drenched', '99', '59.40')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳')
+
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -142,4 +197,10 @@ if __name__ == '__main__':
     if which in ('all', 'day2'):
         shot(day2(False), D + 'out/974-nov-deals-day2-cirqa-post.png', 1350)
         shot(day2(True), D + 'out/974-nov-deals-day2-cirqa-story.png', 1920)
+    if which in ('all', 'day3'):
+        shot(day3(False), D + 'out/974-nov-deals-day3-fitbit-post.png', 1350)
+        shot(day3(True), D + 'out/974-nov-deals-day3-fitbit-story.png', 1920)
+    if which in ('all', 'day4'):
+        shot(day4(False), D + 'out/974-nov-deals-day4-drenched-post.png', 1350)
+        shot(day4(True), D + 'out/974-nov-deals-day4-drenched-story.png', 1920)
     print('ok')

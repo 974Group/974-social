@@ -5,7 +5,7 @@ SP = '/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad
 D = '/home/claude/974-social/posts/2026-11/nov-deals/'
 S = D + 'src/'
 LOGOW = '/home/claude/974-social/posts/2026-11/pilates-socks/src/logo-white.png'
-M = '#720842'; DK = '#3A0222'; LIME = '#D8FF3C'; GOLD = '#C9A24B'
+M = '#720842'; DK = '#3A0222'; GOLD = '#D4AF55'; LIME = GOLD  # owner: all neon → gold
 FONTS = f'''@font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}}
 @font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}}
 @font-face{{font-family:'Poppins';font-weight:700;src:url(file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf)}}
@@ -71,7 +71,7 @@ def day1(story):
 <div style="position:absolute;right:48px;top:{(o+44) if story else 50}px;font-family:Poppins;font-weight:700;font-size:16px;letter-spacing:5px;color:{LIME}">NOVEMBER DEALS · DAY 1</div>
 <div style="position:absolute;left:40px;right:40px;top:{o+(110 if not story else 140)}px;display:flex;align-items:center;justify-content:space-between;direction:rtl">
   <span class="khasm" style="font-size:{int(118*k)}px;padding:0 30px 14px;background:{GOLD}">خصم</span>
-  <span class="big" style="font-size:{int(250*k)}px;color:{LIME};text-shadow:8px 8px 0 {DK}">40%</span>
+  <span class="big" style="font-size:{int(250*k)}px;color:{GOLD};text-shadow:8px 8px 0 {DK}">40%</span>
 </div>
 <div style="position:absolute;left:0;right:0;top:{o+(400 if not story else 470)}px;text-align:center;direction:rtl">
   <div style="font-weight:900;font-size:{int(52*k)}px">كفرات <span style="font-family:Poppins">iPhone 18</span></div>

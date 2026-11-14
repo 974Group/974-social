@@ -1,0 +1,14 @@
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(fonts/cairo-ar.woff2)}
+@font-face{font-family:'Cairo';font-weight:400 900;src:url(fonts/cairo-lat.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:'Alx';src:url(fonts/Alexandria.ttf)}
+@font-face{font-family:'Lora';font-style:italic;font-weight:400 700;src:url(fonts/Lora-Italic-Variable.ttf)}
+@font-face{font-family:'Poppins';font-weight:500;src:url(fonts/Poppins-Medium.ttf)}
+@font-face{font-family:'Poppins';font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+:root{--ink:#3B1E2A;--rose:#E8A2B4;--blush:#F8E6EA;--cream:#FBF6F3;--red:#C8323C}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:Alx,Cairo;color:var(--ink);position:relative;background:radial-gradient(900px 900px at 85% 10%,#FBD9E1 0%,transparent 60%),radial-gradient(900px 900px at 0% 95%,#F6E3D6 0%,transparent 60%),var(--cream)}
+.lora{font-family:Lora;font-style:italic;font-weight:600}
+.c{position:absolute;left:0;right:0;text-align:center}
+.sock{position:absolute;filter:drop-shadow(0 22px 22px rgba(80,30,45,.18))}
+.chip{display:inline-block;background:#fff;border-radius:40px;padding:8px 30px 12px;box-shadow:0 10px 26px rgba(80,30,45,.10);font-weight:700}

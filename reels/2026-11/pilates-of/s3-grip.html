@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="assets/shared.css">
+<style>
+#ph{position:absolute;left:90px;top:330px;width:900px;height:900px;border-radius:60px;overflow:hidden;box-shadow:0 30px 60px rgba(80,30,45,.18)}
+#ph img{width:100%;height:100%;object-fit:cover}
+#t1{top:1300px;font-size:84px;direction:rtl;font-weight:700}
+#t2{top:1430px;direction:rtl}
+#t2 .chip{font-size:38px;margin:0 8px}
+</style></head><body>
+<div id="ph"><img id="im" src="assets/close_sole.jpg"></div>
+<div class="c" id="t1">نعل مانع للانزلاق</div>
+<div class="c" id="t2"><span class="chip" id="c1">ثبات على الـ Reformer</span><span class="chip" id="c2">قطن ناعم</span></div>
+<script type="module">
+import {prog,outBack,outCubic,fontsReady} from './assets/ease.js';
+const $=id=>document.getElementById(id);
+window.film={duration:2.8,ready:fontsReady(),frame(t){
+  const p=prog(t,0,.45);$('ph').style.opacity=p;$('ph').style.scale=String(.9+.1*outCubic(p));
+  $('im').style.scale=String(1.05+t*.06);
+  const p1=prog(t,.35,.75);$('t1').style.opacity=p1;$('t1').style.translate=`0 ${(1-outCubic(p1))*50}px`;
+  const a=prog(t,.7,1.05),b=prog(t,.85,1.2);$('c1').style.scale=String(Math.max(0,outBack(a)));$('c2').style.scale=String(Math.max(0,outBack(b)));
+}};
+</script></body></html>

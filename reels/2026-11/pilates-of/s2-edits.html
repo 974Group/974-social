@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="assets/shared.css">
+<style>
+#k{top:300px;font-family:Poppins;font-weight:700;font-size:24px;letter-spacing:8px;color:var(--rose)}
+#title{top:360px;font-size:120px;line-height:1.05}
+#sub{top:520px;font-size:44px;direction:rtl;opacity:.8}
+#bar{position:absolute;left:50%;top:1640px;translate:-50% 0;display:flex;gap:14px}
+#bar i{display:block;width:70px;height:8px;border-radius:8px;background:#E9CBD3}
+</style></head><body>
+<div class="c" id="k">12 DESIGNS</div>
+<div class="c lora" id="title"></div>
+<div class="c" id="sub"></div>
+<div id="socks"></div>
+<div id="bar"><i></i><i></i><i></i></div>
+<script type="module">
+import {prog,outBack,outCubic,fontsReady} from './assets/ease.js';
+const $=id=>document.getElementById(id);
+const EDITS=[
+ {t:'The Bow Edit',s:'فيونكة لكل مزاج',socks:['pinkbow','redbow','cherrybow']},
+ {t:'Fruit Edit',s:'فواكه بلون الصيف.. طول السنة',socks:['strawred','peach','orange','lemonade','juice','strawpink','cherrystripe'].slice(0,3).concat([])},
+ {t:'Pilates & Coffee',s:'كلاس الصبح.. وبعدها قهوة',socks:['coffee','tennis','cherrystripe']},
+];
+EDITS[1].socks=['strawred','orange','lemonade'];
+const box=$('socks');
+const imgs=[];
+for(let e=0;e<3;e++)for(let i=0;i<3;i++){const im=document.createElement('img');im.className='sock';im.src=`assets/socks/${EDITS[e].socks[i]}.png`;im.style.width='330px';box.appendChild(im);imgs.push(im);}
+const D=1.6; // seconds per edit
+window.film={duration:D*3,ready:fontsReady(),frame(t){
+  const e=Math.min(2,Math.floor(t/D)); const lt=t-e*D;
+  $('title').textContent=EDITS[e].t; $('sub').textContent=EDITS[e].s;
+  const pt=prog(lt,0,.35);$('title').style.opacity=pt;$('title').style.translate=`${(1-outCubic(pt))*120}px 0`;
+  $('sub').style.opacity=prog(lt,.15,.45);
+  [...$('bar').children].forEach((b,i)=>b.style.background=i===e?'var(--ink)':'#E9CBD3');
+  imgs.forEach((im,idx)=>{const ee=Math.floor(idx/3),i=idx%3;
+    if(ee!==e){im.style.opacity=0;return;}
+    const p=prog(lt,.1+i*.12,.55+i*.12); im.style.opacity=p>0?1:0;
+    const x=[60,375,690][i], y=[760,700,760][i];
+    im.style.left=x+'px'; im.style.top=y+'px';
+    im.style.scale=String(Math.max(0,outBack(p,1.8))); im.style.rotate=`${[-7,0,7][i]}deg`;
+    const out=prog(lt,D-.25,D); if(e<2){im.style.translate=`${-outCubic(out)*1200}px 0`;} else im.style.translate='0 0';
+  });
+  const out=prog(lt,D-.25,D); if(e<2){$('title').style.opacity=Math.min(pt,1-out);$('sub').style.opacity=Math.min(prog(lt,.15,.45),1-out);}
+}};
+</script></body></html>

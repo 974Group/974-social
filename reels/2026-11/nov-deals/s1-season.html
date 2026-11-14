@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="assets/shared.css">
+<style>
+#logo{position:absolute;left:60px;top:250px;height:56px}
+#k{position:absolute;right:60px;top:262px;font-family:Poppins;font-weight:700;font-size:22px;letter-spacing:6px;color:var(--gold)}
+#w1{top:640px;font-weight:900;font-size:150px;line-height:1.1}
+#w2{top:830px;font-weight:900;font-size:190px;line-height:1.1;color:var(--gold)}
+#w3{top:1080px;font-weight:900;font-size:110px}
+#tape{top:1380px}
+</style></head><body><div class="dots" id="dots"></div>
+<img id="logo" src="assets/logo-white.png"><div id="k">NOVEMBER DEALS</div>
+<div class="c" id="w1">موسم</div><div class="c" id="w2">الخصومات</div><div class="c" id="w3">بدأ 🔥</div>
+<div class="tape" id="tape"><span id="tt"></span></div>
+<script type="module">
+import {prog,outBack,outCubic,fontsReady,tapeText} from './assets/ease.js';
+const $=id=>document.getElementById(id);
+$('tt').textContent=tapeText('NOVEMBER DEALS');
+const slam=(el,a,from=1.8)=>{const p=prog(t0,a,a+.35);el.style.opacity=p;el.style.scale=String(from+(1-from)*outCubic(p));};
+let t0=0;
+window.film={duration:2.6,ready:fontsReady(),frame(t){
+  t0=t;
+  slam($('w1'),0);slam($('w2'),0.4,2.2);
+  const p3=prog(t,0.85,1.2);$('w3').style.opacity=p3;$('w3').style.scale=String(outBack(p3));
+  const pt=prog(t,1.0,1.5);$('tape').style.translate=`${(1-outCubic(pt))*1400}px 0`;$('tape').style.rotate='-4deg';
+  $('tt').style.translate=`${-t*120}px 0`;
+  $('dots').style.translate=`0 ${-t*12}px`;
+  const pl=1;$('logo').style.opacity=pl;$('k').style.opacity=pl;
+}};
+</script></body></html>

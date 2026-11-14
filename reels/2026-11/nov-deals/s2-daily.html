@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="assets/shared.css">
+<style>
+#a{top:620px;font-weight:900;font-size:170px;line-height:1.1}
+#b{top:900px}
+#b .sticker{font-size:170px;padding:0 60px 26px}
+#sub{top:1310px;font-weight:800;font-size:56px;opacity:.95}
+#sub b{color:var(--gold)}
+</style></head><body><div class="dots" id="dots"></div>
+<div class="c" id="a">كل يوم..</div>
+<div class="c" id="b"><span class="sticker" id="st">خصم جديد</span></div>
+<div class="c" id="sub">منتج مختلف <b>كل ٢٤ ساعة</b></div>
+<script type="module">
+import {prog,outBack,outCubic,fontsReady} from './assets/ease.js';
+const $=id=>document.getElementById(id);
+window.film={duration:2.6,ready:fontsReady(),frame(t){
+  const pa=prog(t,0,.35);$('a').style.opacity=pa;$('a').style.translate=`0 ${(1-outCubic(pa))*80}px`;
+  const pb=prog(t,.35,.8);$('st').style.display='inline-block';$('b').style.opacity=pb>0?1:0;
+  $('st').style.scale=String(Math.max(0,outBack(pb,2.4)));$('st').style.rotate=`${-6-(1-outCubic(pb))*20}deg`;
+  const wob=t>.8?Math.sin((t-.8)*9)*1.2*Math.exp(-(t-.8)*2):0;$('b').style.rotate=`${wob}deg`;
+  const ps=prog(t,1.0,1.4);$('sub').style.opacity=ps;$('sub').style.translate=`0 ${(1-outCubic(ps))*60}px`;
+  $('dots').style.translate=`0 ${-t*12}px`;
+}};
+</script></body></html>

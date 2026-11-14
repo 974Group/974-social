@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="assets/shared.css">
+<style>
+#upto{top:560px;font-weight:900;font-size:90px}
+#num{top:700px;font-family:Poppins;font-weight:700;font-size:380px;line-height:1;letter-spacing:-10px;direction:ltr;color:transparent;-webkit-text-stroke:6px var(--gold)}
+#off{top:1160px}
+#off .sticker{font-size:110px;padding:0 50px 18px}
+#tape{top:1480px}
+</style></head><body><div class="dots" id="dots"></div>
+<div class="c" id="upto">لين</div>
+<div class="c" id="num">0%</div>
+<div class="c" id="off"><span class="sticker" id="st">خصم</span></div>
+<div class="tape" id="tape"><span id="tt"></span></div>
+<script type="module">
+import {prog,outBack,outCubic,fontsReady,tapeText} from './assets/ease.js';
+const $=id=>document.getElementById(id);
+$('tt').textContent=tapeText('عرض اليوم  ✦  DAILY DEAL');
+window.film={duration:3,ready:fontsReady(),frame(t){
+  const pu=prog(t,0,.3);$('upto').style.opacity=pu;
+  const pc=prog(t,.15,1.35);const n=Math.round(40*outCubic(pc));$('num').textContent=n+'%';
+  const filled=t>=1.4;$('num').style.color=filled?'var(--gold)':'transparent';
+  $('num').style.textShadow=filled?'12px 12px 0 var(--dk)':'none';
+  const pop=prog(t,1.35,1.6);$('num').style.scale=String(filled?1+.12*Math.sin(Math.PI*pop):1);
+  const shake=t>1.35&&t<1.75?Math.sin(t*90)*8*(1.75-t)/.4:0;$('num').style.translate=`${shake}px 0`;
+  const ps=prog(t,1.5,1.9);$('st').style.scale=String(Math.max(0,outBack(ps,2.2)));$('st').style.rotate='6deg';$('off').style.opacity=ps>0?1:0;
+  const pt=prog(t,1.7,2.2);$('tape').style.translate=`${-(1-outCubic(pt))*1400}px 0`;$('tape').style.rotate='3deg';$('tt').style.translate=`${-t*120}px 0`;
+  $('dots').style.translate=`0 ${-t*12}px`;
+}};
+</script></body></html>

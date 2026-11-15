@@ -1,0 +1,48 @@
+{%- comment -%}
+  Variant data for products with more than 250 variants (Shopify only gives Liquid the first 250).
+  The product page asks for the remaining pages:  /products/<handle>?section_id=lx-variants&page=2
+  Used by assets/variant-picker.js. Not placed in any template.
+{%- endcomment -%}
+{%- paginate product.variants by 250 -%}
+<script type="application/json" class="js-lx-variants" data-page="{{ paginate.current_page }}" data-pages="{{ paginate.pages }}" data-items="{{ paginate.items }}">
+{
+  "variants": [
+    {%- for variant in product.variants -%}
+      {{- variant | json -}}{%- unless forloop.last %},{% endunless -%}
+    {%- endfor -%}
+  ],
+  "formatted": {
+    {%- for variant in product.variants -%}
+      {%- liquid
+        capture price
+          render 'price-as-money', price: variant.price
+        endcapture
+        capture compare_at_price
+          render 'price-as-money', price: variant.compare_at_price, show_money_with_currency: false
+        endcapture
+        capture unit_price
+          render 'price-as-money', price: variant.unit_price, show_money_with_currency: false
+        endcapture
+      -%}
+      "{{ variant.id }}":{"price":{{ price | json }}
+        {%- if variant.compare_at_price and variant.compare_at_price > variant.price -%}
+          ,"compareAtPrice":{{ compare_at_price | json -}}
+        {%- endif -%}
+        {%- if variant.unit_price_measurement -%}
+          ,"unitPrice":{{ unit_price | json -}}
+        {%- endif -%}
+        {%- if variant.inventory_management != nil and variant.inventory_quantity <= 0 -%}
+          ,"inventory":"none"
+        {%- endif -%}
+        {%- if variant.weight -%}
+          ,"weight":{{ variant.weight | weight_with_unit: variant.weight_unit | json }}
+        {%- endif -%}
+      }{%- unless forloop.last %},{% endunless -%}
+    {%- endfor -%}
+  }
+}
+</script>
+{%- endpaginate -%}
+{% schema %}
+{ "name": "LX variant data" }
+{% endschema %}

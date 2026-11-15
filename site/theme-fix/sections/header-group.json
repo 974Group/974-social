@@ -1,0 +1,118 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "lx_fix": {
+      "type": "lx-fix",
+      "settings": {}
+    },
+    "ss_scrolling_announcement_bar_CY44cw": {
+      "type": "ss-scrolling-announcement-bar",
+      "blocks": {
+        "text_gBqpMP": {
+          "type": "text",
+          "settings": {
+            "text": "توصيل مجاني للطلبات فوق 300 ريال"
+          }
+        },
+        "text_ctA9be": {
+          "type": "text",
+          "settings": {
+            "text": "شحن لكل دول الخليج 🚚📦"
+          }
+        }
+      },
+      "block_order": [
+        "text_gBqpMP",
+        "text_ctA9be"
+      ],
+      "disabled": true,
+      "name": "SS - Scrolling Announcement Bar",
+      "settings": {
+        "insert_css_class_target": ".header, .pageheader, .section-header, #announcement, .toolbar, .header__wrapper",
+        "text_size": 14,
+        "ss_font_family": "acme_n4",
+        "link": "",
+        "animation_duration": 44,
+        "animation_direction": "left",
+        "pause_hover": false,
+        "bg": "#51022d",
+        "text_color": "#ffffff",
+        "hover_opacity": 91,
+        "padding_horizontal": 2,
+        "padding_vertical": 1.5
+      }
+    },
+    "announcement": {
+      "type": "announcement",
+      "blocks": {
+        "announcement-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><strong>Welcome to our store</strong> <a href=\"#\" title=\"#\">Learn more</a></p>"
+          }
+        },
+        "announcement-2": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><strong>New collections added!</strong> <a href=\"#\" title=\"#\">Learn more</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-1",
+        "announcement-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "link1": "",
+        "link1_label": "",
+        "link2": "",
+        "link2_label": "",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "text_type_scale": "small",
+        "read_time": 7
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "enable_sticky": true,
+        "mobile_menu_position": "burger-right",
+        "logo_text": "",
+        "logo_type_scale": "1.5",
+        "logo": "shopify://shop_images/12.png",
+        "logo_width": 100,
+        "logo_h1": true,
+        "logo_center": false,
+        "enable_search": true,
+        "minimise_search_mobile": false,
+        "minimise_search_desktop": false,
+        "menu": "main-menu",
+        "menu_center": false,
+        "repeat_links": true,
+        "menu_featured_link": "Sale",
+        "quicklinks_menu": "",
+        "cta_show": false,
+        "cta_icon": "phone",
+        "cta_label": "Call us",
+        "cta_link": "",
+        "cta_border_color": "#333333",
+        "cta_bg_color": "#333333",
+        "cta_text_color": "#ffffff",
+        "bg_color": "#ffffff",
+        "text_color": "#51022d",
+        "accent_color": "#777777"
+      }
+    }
+  },
+  "order": [
+    "lx_fix",
+    "ss_scrolling_announcement_bar_CY44cw",
+    "announcement",
+    "header"
+  ]
+}

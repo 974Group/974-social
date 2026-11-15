@@ -66,10 +66,15 @@
         "text_color": "#51022d",
         "accent_color": "#777777"
       }
+    },
+    "lx_fix": {
+      "type": "lx-fix",
+      "settings": {}
     }
   },
   "order": [
     "lux_header",
+    "lx_fix",
     "header"
   ]
 }

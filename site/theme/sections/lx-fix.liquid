@@ -1,0 +1,8 @@
+{%- comment -%}
+  974Group fixes that must load on every page (independent of the Luxe header layer).
+  - lx-variants.js: products with more than 250 variants (see the file header).
+{%- endcomment -%}
+<script src="{{ 'lx-variants.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{ "name": "974 fixes", "class": "lx-fix-section" }
+{% endschema %}

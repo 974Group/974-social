@@ -266,3 +266,5 @@ html.lx {
 
 /* desktop: the product info column sits on the same ivory as the page */
 .lx .cc-main-product .product-info { background-color: transparent; }
+
+.lx .header__cart-count { background-color: var(--lx-wine2) !important; color: #fff !important; }

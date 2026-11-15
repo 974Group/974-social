@@ -117,6 +117,50 @@
       }
     }
 
+    /* Band length comes before colour, so it must not look sold out because of the colour that
+       happens to be selected: a length is crossed out only when no colour has it. And when the chosen
+       length does not exist in the current colour, jump to the first colour that has it. */
+    var allFs = picker.querySelectorAll('.option-selector');
+    var colFs = [].filter.call(allFs, function (f) { return f !== fs && f !== sizeFs; })[0];
+    var colourTouched = linked;
+    if (sizeFs && colFs) {
+      var fi = [].indexOf.call(allFs, fs), si = [].indexOf.call(allFs, sizeFs), ci = [].indexOf.call(allFs, colFs);
+      var val = function (f) { var c = f.querySelector('input.js-option:checked'); return c ? c.value : null; };
+      var fixSizes = function () {
+        if (!picker.data) return;
+        var vs = picker.data.product.variants, fit = val(fs);
+        sizeFs.querySelectorAll('input.js-option').forEach(function (inp) {
+          var exists = false, avail = false;
+          vs.forEach(function (v) {
+            if (v.options[fi] === fit && v.options[si] === inp.value) { exists = true; if (v.available) avail = true; }
+          });
+          if (inp.classList.contains('is-unavailable') === avail) inp.classList.toggle('is-unavailable', !avail);
+          if (inp.classList.contains('is-nonexistent') === exists) inp.classList.toggle('is-nonexistent', !exists);
+          if (avail && inp.nextElementSibling) inp.nextElementSibling.removeAttribute('title');
+        });
+      };
+      var fixColour = function () {
+        if (!picker.data) return;
+        var vs = picker.data.product.variants, fit = val(fs), size = val(sizeFs), col = val(colFs);
+        var has = function (c, needAvail) {
+          return vs.some(function (v) {
+            return v.options[ci] === c && v.options[fi] === fit && v.options[si] === size && (!needAvail || v.available);
+          });
+        };
+        if (has(col, true) || (colourTouched && has(col, false))) return;
+        var ins = [].slice.call(colFs.querySelectorAll('input.js-option'));
+        var pick = ins.filter(function (i) { return has(i.value, true); })[0] || (has(col, false) ? null : ins.filter(function (i) { return has(i.value, false); })[0]);
+        if (pick && !pick.checked) { var lab = pick.nextElementSibling; (lab && lab.tagName === 'LABEL' ? lab : pick).click(); }
+      };
+      colFs.addEventListener('click', function (e) { if (e.isTrusted && e.target.matches && e.target.matches('input.js-option')) colourTouched = true; });
+      section.addEventListener('change', function (e) {
+        if (!picker.contains(e.target)) return;
+        var fromColour = colFs.contains(e.target);
+        setTimeout(function () { if (!fromColour) fixColour(); fixSizes(); }, 0);
+      });
+      new MutationObserver(fixSizes).observe(sizeFs, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    }
+
     function index() {
       if (state.a === '20') return 0;
       if (state.a === 'aw' && state.b === 's') return 1;

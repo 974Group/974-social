@@ -24,9 +24,9 @@
   d.classList.add('lx');
   var preview = !(window.Shopify && Shopify.theme && Shopify.theme.role === 'main');
   try {
-    var q = new URLSearchParams(location.search).get('lx');
-    if (q !== null && /^[0-3]$/.test(q)) localStorage.setItem('lxp', q);
-    var s = localStorage.getItem('lxp');
+    var q = new URLSearchParams(location.search).get('look');
+    if (q !== null && /^[0-3]$/.test(q)) localStorage.setItem('look974', q);
+    var s = localStorage.getItem('look974');
     if (preview && s !== null) p = s;
   } catch (e) {}
   function apply(v) { ['1', '2', '3'].forEach(function (n) { d.classList.toggle('lx-p' + n, v === n); }); }
@@ -40,7 +40,7 @@
       b.type = 'button'; b.textContent = o[1];
       if (String(p) === o[0]) b.className = 'is-on';
       b.addEventListener('click', function () {
-        try { localStorage.setItem('lxp', o[0]); } catch (e) {}
+        try { localStorage.setItem('look974', o[0]); } catch (e) {}
         apply(o[0]);
         bar.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
       });

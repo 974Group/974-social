@@ -291,7 +291,7 @@ html.lx {
 
 /* =====================================================================
    10. Colour styles (section setting "Colour style"; in a preview the
-       floating switcher / ?lx=1..3 overrides it for that browser only)
+       floating switcher / ?look=1..3 overrides it for that browser only)
    ===================================================================== */
 /* 1 - Clean: pure white, cool greys, wine accents (no gold, no beige) */
 html.lx.lx-p1 {

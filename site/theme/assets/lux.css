@@ -245,7 +245,7 @@ html.lx {
 .lx .boc__tick { border: 1.5px solid var(--lx-gold); }
 .lx .boc__txt { color: var(--lx-ink); }
 
-.lx .cc-main-product .product-info__add-button .btn { height: 52px; border-color: transparent; border-radius: 14px; background: var(--lx-btn) !important; font-size: 13px; font-weight: 600; letter-spacing: .14em; box-shadow: 0 14px 26px -16px var(--lx-btn-shadow), inset 0 1px 0 rgba(255, 255, 255, .14); }
+.lx .cc-main-product .product-info__add-button .btn { height: 52px; border-color: transparent !important; border-radius: 14px; background: var(--lx-btn) !important; font-size: 13px; font-weight: 600; letter-spacing: .14em; box-shadow: 0 14px 26px -16px var(--lx-btn-shadow), inset 0 1px 0 rgba(255, 255, 255, .14); }
 .lx .cc-main-product .shopify-payment-button__button--unbranded { border-width: 1px !important; border-radius: 14px !important; font-weight: 600; letter-spacing: .14em; }
 [dir="rtl"] .lx .cc-main-product .product-info__add-button .btn, [dir="rtl"] .lx .cc-main-product .shopify-payment-button__button--unbranded { letter-spacing: 0; font-size: 15px; }
 

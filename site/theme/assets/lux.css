@@ -15,14 +15,21 @@ html.lx {
   --lx-gold-soft: #dcc7a3;
   --lx-muted: #84707a;
   --lx-ease: cubic-bezier(.22, .61, .36, 1);
+  --lx-strip: linear-gradient(90deg, #3a0220 0%, #5c0535 50%, #3a0220 100%);
+  --lx-strip-text: #f7eee2;
+  --lx-strip-dot: var(--lx-gold-soft);
+  --lx-head: rgba(255, 255, 255, .9);
+  --lx-glass: rgba(250, 247, 242, .97);
+  --lx-btn: linear-gradient(180deg, #7d0a4a 0%, #5a0434 100%);
+  --lx-btn-shadow: rgba(114, 8, 66, .75);
 }
 
 /* ---------- 1. Top strip ---------- */
-.lx-top { position: relative; height: 32px; overflow: hidden; color: #f7eee2; background: linear-gradient(90deg, #3a0220 0%, #5c0535 50%, #3a0220 100%); }
+.lx-top { position: relative; height: 32px; overflow: hidden; color: var(--lx-strip-text); background: var(--lx-strip); }
 .lx-top__in { position: relative; height: 100%; max-width: var(--page-width, 1200px); margin: 0 auto; }
 .lx-top__msg { position: absolute; inset: 0; margin: 0; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; opacity: 0; transform: translateY(8px); transition: opacity .5s var(--lx-ease), transform .5s var(--lx-ease); }
 .lx-top__msg.is-on { opacity: 1; transform: none; }
-.lx-top__msg::before, .lx-top__msg::after { content: ""; flex: none; width: 4px; height: 4px; transform: rotate(45deg); background: var(--lx-gold-soft); }
+.lx-top__msg::before, .lx-top__msg::after { content: ""; flex: none; width: 4px; height: 4px; transform: rotate(45deg); background: var(--lx-strip-dot); }
 .lx-top__msg a { color: inherit; text-decoration: none; }
 [dir="rtl"] .lx-top__msg { letter-spacing: 0; text-transform: none; font-size: 12.5px; font-family: 'Tajawal', system-ui, sans-serif; }
 @media (prefers-reduced-motion: reduce) { .lx-top__msg { transition: none; } }
@@ -31,7 +38,7 @@ html.lx {
 .lx .cc-header { background: transparent; }
 .lx store-header.header { padding: 0; background: transparent !important; transition: box-shadow .25s; }
 /* frosted layer on a pseudo-element (a filter on the header itself would break the fixed menu panel) */
-.lx store-header.header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: saturate(170%) blur(14px); backdrop-filter: saturate(170%) blur(14px); border-bottom: 1px solid transparent; transition: border-color .25s; }
+.lx store-header.header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--lx-head); -webkit-backdrop-filter: saturate(170%) blur(14px); backdrop-filter: saturate(170%) blur(14px); border-bottom: 1px solid transparent; transition: border-color .25s; }
 .lx store-header.lx-scrolled { box-shadow: 0 10px 30px -22px rgba(43, 10, 26, .45); }
 .lx store-header.lx-scrolled::before { border-bottom-color: var(--lx-line); }
 
@@ -102,7 +109,7 @@ html.lx {
 .lx-menu-foot__note { margin: 16px 0 0; text-align: center; font-size: 11.5px; color: var(--lx-muted); }
 
 /* ---------- 4. Buttons ---------- */
-.lx .btn--primary { background: linear-gradient(180deg, #7d0a4a 0%, #5a0434 100%); border-color: transparent; font-weight: 600; letter-spacing: .1em; box-shadow: 0 12px 24px -14px rgba(114, 8, 66, .75), inset 0 1px 0 rgba(255, 255, 255, .14); }
+.lx .btn--primary { background: var(--lx-btn); border-color: transparent; font-weight: 600; letter-spacing: .1em; box-shadow: 0 12px 24px -14px var(--lx-btn-shadow), inset 0 1px 0 rgba(255, 255, 255, .14); }
 [dir="rtl"] .lx .btn { letter-spacing: 0; }
 
 /* =====================================================================
@@ -198,7 +205,7 @@ html.lx {
 .lx .collection-banner__count { font-family: var(--body-font-family); font-size: 11px; font-weight: 500; letter-spacing: .14em; color: var(--lx-muted); }
 [dir="rtl"] .lx .collection-banner__heading, [dir="rtl"] .lx .collection-banner__count { letter-spacing: 0; }
 
-.lx .cc-collection-products .products-toolbar--sticky { background: rgba(250, 247, 242, .97); }
+.lx .cc-collection-products .products-toolbar--sticky { background: var(--lx-glass); }
 .lx .cc-collection-products .products-toolbar__filter-btn { height: 38px; padding: 0 16px; border: 1px solid var(--lx-line); border-radius: 999px; background: #fff; font-size: 12px; font-weight: 600; letter-spacing: .04em; }
 .lx .cc-collection-products .qc-chip { padding: 12px 14px; border-color: var(--lx-line); font-weight: 500; }
 .lx .cc-collection-products .qc-chip.is-active { background: var(--lx-wine); border-color: var(--lx-wine); color: #fff; }
@@ -238,7 +245,7 @@ html.lx {
 .lx .boc__tick { border: 1.5px solid var(--lx-gold); }
 .lx .boc__txt { color: var(--lx-ink); }
 
-.lx .cc-main-product .product-info__add-button .btn { height: 52px; border-color: transparent; border-radius: 14px; background: linear-gradient(180deg, #7d0a4a 0%, #5a0434 100%); font-size: 13px; font-weight: 600; letter-spacing: .14em; box-shadow: 0 14px 26px -16px rgba(114, 8, 66, .8), inset 0 1px 0 rgba(255, 255, 255, .14); }
+.lx .cc-main-product .product-info__add-button .btn { height: 52px; border-color: transparent; border-radius: 14px; background: var(--lx-btn); font-size: 13px; font-weight: 600; letter-spacing: .14em; box-shadow: 0 14px 26px -16px var(--lx-btn-shadow), inset 0 1px 0 rgba(255, 255, 255, .14); }
 .lx .cc-main-product .shopify-payment-button__button--unbranded { border-width: 1px !important; border-radius: 14px !important; font-weight: 600; letter-spacing: .14em; }
 [dir="rtl"] .lx .cc-main-product .product-info__add-button .btn, [dir="rtl"] .lx .cc-main-product .shopify-payment-button__button--unbranded { letter-spacing: 0; font-size: 15px; }
 
@@ -259,8 +266,8 @@ html.lx {
 [dir="rtl"] .lx .pdp-more__i summary { font-size: 15.5px; letter-spacing: 0; }
 .lx .pdp-more__i summary::after { border-right-width: 1.5px; border-bottom-width: 1.5px; border-color: var(--lx-gold); opacity: 1; }
 .lx .pdp-more__body { color: var(--lx-ink); }
-.lx .pdp-bar { background: rgba(250, 247, 242, .97); border-top: 1px solid var(--lx-line); }
-.lx .pdp-bar__btn { height: 44px; border-radius: 12px; background: linear-gradient(180deg, #7d0a4a 0%, #5a0434 100%); font-weight: 600; letter-spacing: .1em; }
+.lx .pdp-bar { background: var(--lx-glass); border-top: 1px solid var(--lx-line); }
+.lx .pdp-bar__btn { height: 44px; border-radius: 12px; background: var(--lx-btn); font-weight: 600; letter-spacing: .1em; }
 .lx .pdp-bar__btn[aria-disabled="true"] { background: #b9b3b6; }
 [dir="rtl"] .lx .pdp-bar__btn { letter-spacing: 0; }
 
@@ -268,3 +275,66 @@ html.lx {
 .lx .cc-main-product .product-info { background-color: transparent; }
 
 .lx .header__cart-count { background-color: var(--lx-wine2) !important; color: #fff !important; }
+
+/* =====================================================================
+   9. Older snippets with hard-coded brand colours follow the palette
+   ===================================================================== */
+.lx .pdp-more__i summary, .lx .paylater-note, .lx .pdp-bar__price, .lx .pdp-bar__var, .lx .pdp-ship__meter, .lx .pdp-ship__labels, .lx .pdp-ship__duty, .lx .cc-collection-products .qc-chip, .lx .dn__all, .lx .clc { color: var(--lx-wine); }
+.lx .cc-collection-products .qc-chip.is-active { color: #fff; }
+.lx .pdp-ship__fee b, .lx .pdp-size__btn, .lx .paylater-note svg, .lx .pdp-more__link { color: var(--lx-wine2); }
+.lx .pdp-ship__bar i:not(.is-free) { background: var(--lx-wine2) !important; }
+.lx .pdp-ship__now:not(.is-free) { background: var(--lx-wine2); }
+.lx .pdp-ship__now:not(.is-free)::after { border-top-color: var(--lx-wine2); }
+.lx .pdp-ship__tick.is-hit, .lx .boc__box input:checked + .boc__tick { background: var(--lx-wine2); border-color: var(--lx-wine2); }
+.lx .cc-main-product .opt-btn:checked + .opt-label--swatch { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--lx-wine2); }
+.lx .st__chip:not(#lx) { color: var(--lx-wine); border-color: var(--lx-line); box-shadow: none; }
+
+/* =====================================================================
+   10. Colour styles (section setting "Colour style"; in a preview the
+       floating switcher / ?lx=1..3 overrides it for that browser only)
+   ===================================================================== */
+/* 1 - Clean: pure white, cool greys, wine accents (no gold, no beige) */
+html.lx.lx-p1 {
+  --lx-wine: #51022d; --lx-wine2: #720842; --lx-ink: #1d1d1f; --lx-ivory: #ffffff; --lx-sand: #f5f5f7; --lx-line: #e7e7ec;
+  --lx-gold: #8a1047; --lx-gold-soft: #dccdd5; --lx-muted: #6e6e73;
+  --lx-strip: linear-gradient(90deg, #51022d 0%, #720842 50%, #51022d 100%); --lx-strip-text: #ffffff; --lx-strip-dot: #e9b8cd;
+  --lx-head: rgba(255, 255, 255, .92); --lx-glass: rgba(255, 255, 255, .97);
+}
+/* 2 - Mono: black and white, maroon only as a small accent */
+html.lx.lx-p2 {
+  --lx-wine: #111111; --lx-wine2: #111111; --lx-ink: #111111; --lx-ivory: #ffffff; --lx-sand: #f4f4f4; --lx-line: #e4e4e4;
+  --lx-gold: #8a1538; --lx-gold-soft: #d6d6d6; --lx-muted: #6b6b6b;
+  --lx-strip: #111111; --lx-strip-text: #ffffff; --lx-strip-dot: #d0356b;
+  --lx-head: rgba(255, 255, 255, .92); --lx-glass: rgba(255, 255, 255, .97);
+  --lx-btn: linear-gradient(180deg, #2a2a2a 0%, #000000 100%); --lx-btn-shadow: rgba(0, 0, 0, .55);
+  --heading-color: 17 17 17; --text-color: 17 17 17; --link-color: 17 17 17; --drawer-text-color: 17 17 17; --panel-heading-color: 17 17 17; --panel-text-color: 17 17 17;
+  --card-text-color: 17 17 17; --input-text-color: 17 17 17; --btn-bg-color: 17 17 17; --btn-bg-hover-color: 51 51 51; --btn-alt-text-color: 17 17 17; --scrollbar-color: 17 17 17;
+}
+.lx-p2 .header__cart-count { background-color: #8a1538 !important; }
+/* 3 - Bold: maroon header with white logo, white page, brighter maroon */
+html.lx.lx-p3 {
+  --lx-wine: #5c0c2b; --lx-wine2: #8a1538; --lx-ink: #22161b; --lx-ivory: #ffffff; --lx-sand: #f6f3f4; --lx-line: #ebe3e6;
+  --lx-gold: #8a1538; --lx-gold-soft: #e2c9d2; --lx-muted: #77666c;
+  --lx-strip: #5f0d26; --lx-strip-text: #ffffff; --lx-strip-dot: #f0b9c9;
+  --lx-head: rgba(255, 255, 255, .92); --lx-glass: rgba(255, 255, 255, .97);
+  --lx-btn: linear-gradient(180deg, #9c1a42 0%, #7a1231 100%); --lx-btn-shadow: rgba(138, 21, 56, .7);
+  --heading-color: 92 12 43; --text-color: 92 12 43; --link-color: 92 12 43; --drawer-text-color: 92 12 43; --panel-heading-color: 92 12 43; --panel-text-color: 92 12 43;
+  --card-text-color: 92 12 43; --input-text-color: 92 12 43; --btn-bg-color: 138 21 56; --btn-bg-hover-color: 160 40 76; --btn-alt-text-color: 92 12 43; --scrollbar-color: 92 12 43;
+}
+@media (max-width: 768.98px) {
+  html.lx.lx-p3 { --lx-head: #8a1538; }
+  .lx-p3 store-header.header::before { -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: transparent !important; }
+  .lx-p3 .header__logo img { filter: brightness(0) invert(1); }
+  .lx-p3 .header__icon, .lx-p3 .main-menu__toggle, .lx-p3 .lang-switch { color: #fff !important; }
+  .lx-p3 .header .search .search__input { background: rgba(255, 255, 255, .16) !important; color: #fff; }
+  .lx-p3 .header .search .search__input::placeholder { color: rgba(255, 255, 255, .78); }
+  .lx-p3 .header .search .search__input:focus { background: #fff !important; color: var(--lx-ink); border-color: transparent !important; box-shadow: none; }
+  .lx-p3 .header .search::before { filter: brightness(0) invert(1); opacity: .9; }
+  .lx-p3 .header__cart-count { background-color: #fff !important; color: #8a1538 !important; }
+  .lx-p3 .lx-compact .lx-search-open .header__search { background: #8a1538; border-bottom-color: transparent; }
+}
+
+/* preview-only colour switcher */
+.lx-pal { position: fixed; z-index: 2147483000; left: 50%; bottom: 88px; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; padding: 5px; border-radius: 999px; background: rgba(20, 20, 20, .9); box-shadow: 0 10px 30px rgba(0, 0, 0, .35); font-family: system-ui, sans-serif; direction: ltr; }
+.lx-pal button { height: 34px; min-width: 38px; padding: 0 10px; border: 0; border-radius: 999px; background: transparent; color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; }
+.lx-pal button.is-on { background: #fff; color: #111; }

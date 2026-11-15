@@ -18,7 +18,38 @@
 {%- assign lx_h5 = settings.heading_font | font_modify: 'weight', '500' -%}
 <style>{{ lx_h6 | font_face: font_display: 'swap' }}{{ lx_h5 | font_face: font_display: 'swap' }}</style>
 {{ 'lux.css' | asset_url | stylesheet_tag }}
-<script>document.documentElement.classList.add('lx');</script>
+<script>
+(function () {
+  var d = document.documentElement, p = {{ section.settings.palette | default: '0' | json }};
+  d.classList.add('lx');
+  var preview = !(window.Shopify && Shopify.theme && Shopify.theme.role === 'main');
+  try {
+    var q = new URLSearchParams(location.search).get('lx');
+    if (q !== null && /^[0-3]$/.test(q)) localStorage.setItem('lxp', q);
+    var s = localStorage.getItem('lxp');
+    if (preview && s !== null) p = s;
+  } catch (e) {}
+  function apply(v) { ['1', '2', '3'].forEach(function (n) { d.classList.toggle('lx-p' + n, v === n); }); }
+  apply(String(p));
+  /* preview only: floating switcher to compare the colour styles */
+  if (preview) document.addEventListener('DOMContentLoaded', function () {
+    var bar = document.createElement('div');
+    bar.className = 'lx-pal';
+    [['1', 'A'], ['2', 'B'], ['3', 'C'], ['0', 'Gold']].forEach(function (o) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = o[1];
+      if (String(p) === o[0]) b.className = 'is-on';
+      b.addEventListener('click', function () {
+        try { localStorage.setItem('lxp', o[0]); } catch (e) {}
+        apply(o[0]);
+        bar.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+      });
+      bar.appendChild(b);
+    });
+    document.body.appendChild(bar);
+  });
+})();
+</script>
 
 {%- if section.blocks.size > 0 -%}
 <div class="lx-top" role="region" aria-label="{% if is_ar %}معلومات التوصيل{% else %}Delivery information{% endif %}">
@@ -185,6 +216,12 @@
   "class": "lx-top-section",
   "settings": [
     { "type": "paragraph", "content": "Top strip + the luxe look for the whole site. Disable this section to go back to the old look." },
+    { "type": "select", "id": "palette", "label": "Colour style", "default": "0", "options": [
+      { "value": "0", "label": "Gold / ivory (first draft)" },
+      { "value": "1", "label": "A - Clean white + wine" },
+      { "value": "2", "label": "B - Black and white" },
+      { "value": "3", "label": "C - Maroon header" }
+    ] },
     { "type": "text", "id": "departments", "label": "Menu departments (collection handles, comma separated)", "default": "bands,974guards,socks,designy,charms,phone-cases" }
   ],
   "blocks": [

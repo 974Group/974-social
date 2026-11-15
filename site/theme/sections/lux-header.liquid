@@ -22,32 +22,12 @@
 (function () {
   var d = document.documentElement, p = {{ section.settings.palette | default: '0' | json }};
   d.classList.add('lx');
-  var preview = !(window.Shopify && Shopify.theme && Shopify.theme.role === 'main');
+  /* in a preview, ?look=0..4 shows another colour style for that page only */
   try {
     var q = new URLSearchParams(location.search).get('look');
-    if (q !== null && /^[0-4]$/.test(q)) localStorage.setItem('look974', q);
-    var s = localStorage.getItem('look974');
-    if (preview && s !== null) p = s;
+    if (q !== null && /^[0-4]$/.test(q) && !(window.Shopify && Shopify.theme && Shopify.theme.role === 'main')) p = q;
   } catch (e) {}
-  function apply(v) { ['1', '2', '3', '4'].forEach(function (n) { d.classList.toggle('lx-p' + n, v === n); }); }
-  apply(String(p));
-  /* preview only: floating switcher to compare the colour styles */
-  if (preview) document.addEventListener('DOMContentLoaded', function () {
-    var bar = document.createElement('div');
-    bar.className = 'lx-pal';
-    [['4', 'A+'], ['1', 'A'], ['2', 'B'], ['3', 'C']].forEach(function (o) {
-      var b = document.createElement('button');
-      b.type = 'button'; b.textContent = o[1];
-      if (String(p) === o[0]) b.className = 'is-on';
-      b.addEventListener('click', function () {
-        try { localStorage.setItem('look974', o[0]); } catch (e) {}
-        apply(o[0]);
-        bar.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
-      });
-      bar.appendChild(b);
-    });
-    document.body.appendChild(bar);
-  });
+  ['1', '2', '3', '4'].forEach(function (n) { d.classList.toggle('lx-p' + n, String(p) === n); });
 })();
 </script>
 

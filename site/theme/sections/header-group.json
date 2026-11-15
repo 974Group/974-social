@@ -33,7 +33,8 @@
         "m3"
       ],
       "settings": {
-        "departments": "bands,974guards,socks,designy,charms,phone-cases"
+        "departments": "bands,974guards,socks,designy,charms,phone-cases",
+        "palette": "1"
       }
     },
     "header": {

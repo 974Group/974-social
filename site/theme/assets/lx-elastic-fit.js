@@ -6,7 +6,9 @@
     2. (Apple Watch) Small or Large
     3. (Large) Steel or Black connector
   It only drives the theme's own radio buttons, so variants, stock and the cart stay as they are.
-  Add to cart is held until the steps are answered. Runs only where a "Fits" option with exactly
+  Order on the page: Fits steps, then Band length, then Colour (so sold-out colours for that length
+  show crossed out). Nothing is pre-chosen: add to cart is held until the steps and the band length
+  are answered. The wrist size helper button is moved under Band length. Runs only where a "Fits" option with exactly
   these 4 values exists.
 */
 (function () {
@@ -17,14 +19,16 @@
     q1: 'السير حق شنو؟', o20: 'ساعة 20 ملم', o20s: 'أي ساعة مقاس سيرها 20 ملم', oaw: 'Apple Watch', oaws: 'مع الوصلة',
     q2: 'مقاس Apple Watch', os: 'صغير', oss: '38 – 42 ملم', ol: 'كبير', ols: '44 – 49 ملم · Ultra',
     q3: 'لون الوصلة', steel: 'ستيل', black: 'أسود',
-    e1: 'اختر أول: ساعة 20 ملم أو Apple Watch', e2: 'اختر مقاس ساعتك', e3: 'اختر لون الوصلة'
+    e1: 'اختر أول: ساعة 20 ملم أو Apple Watch', e2: 'اختر مقاس ساعتك', e3: 'اختر لون الوصلة', e4: 'اختر مقاس السير'
   } : {
     q1: 'What is it for?', o20: '20mm watch', o20s: 'Any watch with a 20mm band', oaw: 'Apple Watch', oaws: 'Connector included',
     q2: 'Apple Watch size', os: 'Small', oss: '38 – 42mm', ol: 'Large', ols: '44 – 49mm · Ultra',
     q3: 'Connector colour', steel: 'Steel', black: 'Black',
-    e1: 'Choose first: 20mm watch or Apple Watch', e2: 'Choose your Apple Watch size', e3: 'Choose the connector colour'
+    e1: 'Choose first: 20mm watch or Apple Watch', e2: 'Choose your Apple Watch size', e3: 'Choose the connector colour', e4: 'Choose your band length'
   };
-  var CSS = '.elf-picker{display:flex;flex-direction:column}.elf-picker>fieldset{min-width:0}.elf-host{order:-1}' +
+  var CSS = '.elf-picker{display:flex;flex-direction:column}.elf-picker>fieldset{min-width:0}.elf-host{order:-2}.elf-size{order:-1}' +
+    '.elf-size--pending .opt-btn:checked+.opt-label--btn{background-color:#fff!important;color:var(--lx-wine,#51022d)!important;border-color:var(--lx-line,#e7e7ec)!important}' +
+    '.elf-size--pending .opt-btn:checked+.opt-label::after{box-shadow:none!important}.elf-size__help{margin-top:10px}' +
     '.elf-host>legend,.elf-host>.option-selector__btns{display:none!important}' +
     '.elf__q{display:block;margin:0 0 8px}.elf__sub{margin-top:14px}.elf__sub[hidden],.elf__err[hidden]{display:none}' +
     '.elf__row{display:grid;grid-template-columns:1fr 1fr;gap:10px}' +
@@ -33,7 +37,7 @@
     '.elf__opt img{display:block;width:100%;max-width:150px;height:auto;margin-bottom:4px;mix-blend-mode:multiply}' +
     '.elf__opt.is-on{border-color:var(--lx-wine2,#720842);box-shadow:inset 0 0 0 1px var(--lx-wine2,#720842);background:#fbf6f8}' +
     '.elf__opt:active{transform:scale(.98)}.elf__err{margin:10px 0 0;font-size:12.5px;font-weight:600;color:#e32b2b}' +
-    '.elf.is-shake{animation:elfShake .3s 2}@keyframes elfShake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}';
+    '.elf-shake{animation:elfShake .3s 2}@keyframes elfShake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}';
 
   function isFits(fs) {
     var v = [].map.call(fs.querySelectorAll('input.js-option'), function (i) { return i.value; });
@@ -63,7 +67,9 @@
         : i === 2 ? { a: 'aw', b: 'l', c: 'steel' } : i === 3 ? { a: 'aw', b: 'l', c: 'black' } : { a: null, b: null, c: null };
     }
     /* a link to a specific variant keeps its choice; otherwise the customer chooses first */
-    if (/[?&]variant=/.test(window.location.search) && !picker.closest('quick-add-drawer')) derive();
+    var inDrawer = !!picker.closest('quick-add-drawer');
+    var linked = /[?&]variant=/.test(window.location.search) && !inDrawer;
+    if (linked) derive();
 
     var ui = document.createElement('div');
     ui.className = 'elf';
@@ -79,6 +85,37 @@
     fs.classList.add('elf-host');
     picker.classList.add('elf-picker');
     var err = ui.querySelector('.elf__err');
+
+    /* band length: shown before colour, nothing pre-chosen, wrist helper right under it */
+    var section = picker.closest('.js-product') || document;
+    var sizeFs = [].filter.call(picker.querySelectorAll('fieldset.option-selector'), function (f) {
+      if (f === fs) return false;
+      var v = [].map.call(f.querySelectorAll('input.js-option'), function (i) { return i.value; });
+      return v.length > 1 && v.every(function (x) { return /^(XS|S|M|L|XL|XXL)\s*\(/.test(x); });
+    })[0];
+    var sizePending = false, sizeErr = null;
+    if (sizeFs) {
+      sizeFs.classList.add('elf-size');
+      sizeErr = document.createElement('p');
+      sizeErr.className = 'elf__err'; sizeErr.setAttribute('role', 'alert'); sizeErr.hidden = true;
+      sizeFs.appendChild(sizeErr);
+      if (!linked) { sizePending = true; sizeFs.classList.add('elf-size--pending'); }
+      var sizeDone = function (e) {
+        if (e.type === 'click' && !(e.target.matches && e.target.matches('input.js-option'))) return;
+        sizePending = false;
+        sizeFs.classList.remove('elf-size--pending');
+        sizeErr.hidden = true;
+      };
+      sizeFs.addEventListener('click', sizeDone);
+      sizeFs.addEventListener('change', sizeDone);
+      var helper = !inDrawer && section.querySelector && section.querySelector('.el-size');
+      if (helper) {
+        var blk = helper.parentElement;
+        helper.classList.add('elf-size__help');
+        sizeFs.appendChild(helper);
+        if (blk && blk.classList.contains('product-info__block')) { blk.style.margin = '0'; blk.style.padding = '0'; }
+      }
+    }
 
     function index() {
       if (state.a === '20') return 0;
@@ -120,24 +157,24 @@
     fs.addEventListener('change', function () { if (!mine) { derive(); render(); } });
 
     function hold(e) {
-      var m = missing();
+      var m = missing(), box = ui, msg = err;
+      if (!m && sizePending) { m = T.e4; box = sizeFs; msg = sizeErr; }
       if (!m) return false;
       e.preventDefault();
       e.stopImmediatePropagation();
-      err.textContent = m;
-      err.hidden = false;
-      ui.classList.remove('is-shake');
-      void ui.offsetWidth;
-      ui.classList.add('is-shake');
-      ui.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      msg.textContent = m;
+      msg.hidden = false;
+      box.classList.remove('elf-shake');
+      void box.offsetWidth;
+      box.classList.add('elf-shake');
+      box.scrollIntoView({ block: 'center', behavior: 'smooth' });
       return true;
     }
-    var section = picker.closest('.js-product') || document;
     section.addEventListener('click', function (e) {
       if (e.target.closest && e.target.closest('[name="add"], .shopify-payment-button, .product-info__dynamic-checkout-button')) hold(e);
     }, true);
     section.addEventListener('submit', function (e) { hold(e); }, true);
-    if (!picker.closest('quick-add-drawer')) {
+    if (!inDrawer) {
       document.addEventListener('click', function (e) {
         if (e.target.closest && e.target.closest('.pdp-bar__btn')) hold(e);
       }, true);

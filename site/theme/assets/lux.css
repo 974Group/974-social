@@ -35,9 +35,9 @@ html.lx {
 .lx store-header.lx-scrolled { box-shadow: 0 10px 30px -22px rgba(43, 10, 26, .45); }
 .lx store-header.lx-scrolled::before { border-bottom-color: var(--lx-line); }
 
-.lx .header .search__input { height: 44px; border-radius: 999px !important; background: var(--lx-sand) !important; border: 1px solid transparent !important; color: var(--lx-ink); transition: background .2s, border-color .2s, box-shadow .2s; }
-.lx .header .search__input::placeholder { color: var(--lx-muted); opacity: 1; }
-.lx .header .search__input:focus { background: #fff !important; border-color: var(--lx-gold) !important; box-shadow: 0 0 0 4px rgba(176, 141, 87, .16); outline: none; }
+.lx .header .search .search__input { height: 44px; border-radius: 999px !important; background: var(--lx-sand) !important; border: 1px solid transparent !important; color: var(--lx-ink); transition: background .2s, border-color .2s, box-shadow .2s; }
+.lx .header .search .search__input::placeholder { color: var(--lx-muted); opacity: 1; }
+.lx .header .search .search__input:focus { background: #fff !important; border-color: var(--lx-gold) !important; box-shadow: 0 0 0 4px rgba(176, 141, 87, .16); outline: none; }
 .lx .header .search .custom-select__btn { background: transparent !important; border-radius: 999px !important; }
 .lx .lx-search-btn { display: none; background: none; border: 0; cursor: pointer; }
 .lx .lang-switch { border: 0 !important; background: transparent !important; color: var(--lx-wine) !important; min-width: 0; height: 40px; padding: 0 8px; margin: 0; font-weight: 600; }
@@ -55,7 +55,7 @@ html.lx {
 
   /* search field: clean pill, no type dropdown, no mic */
   .lx .header .search__product-types, .lx .header .search__speech { display: none !important; }
-  .lx .header .search__input { padding-inline: 46px 18px !important; }
+  .lx .header .search .search__input { padding-inline: 46px 18px !important; }
   .lx .header .search::before { content: ""; position: absolute; z-index: 1; inset-inline-start: 17px; top: 13px; width: 18px; height: 18px; pointer-events: none; opacity: .6; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2351022d' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.800-3.800'/%3E%3C/svg%3E") center / contain no-repeat; }
 
   /* burger: two fine lines */
@@ -205,7 +205,7 @@ html.lx {
 
 /* product cards: no boxes, photo floats on sand */
 .lx .cc-collection-products .main-products-grid__results > .grid { gap: 26px 14px !important; }
-.lx .cc-collection-products .main-products-grid__results > .grid > * { background: transparent !important; border-radius: 0 !important; overflow: visible !important; -webkit-mask-image: none; mask-image: none; }
+.lx .cc-collection-products .main-products-grid__results > .grid > * { border: 0 !important; background: transparent !important; border-radius: 0 !important; overflow: visible !important; -webkit-mask-image: none; mask-image: none; }
 .lx .cc-collection-products .main-products-grid__results .card { padding: 0 !important; background: transparent !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; overflow: visible; }
 .lx .cc-collection-products .main-products-grid__results .card .card__media { border-radius: 16px !important; overflow: hidden; background: var(--lx-sand); }
 .lx .cc-collection-products .main-products-grid__results .card .card__media img, .lx .cc-collection-products .main-products-grid__results .card .media, .lx .cc-collection-products .main-products-grid__results .card .media img { border-radius: 0 !important; }
@@ -214,7 +214,7 @@ html.lx {
 .lx .cc-collection-products .card__title { font-size: 13px; font-weight: 500; color: var(--lx-ink); }
 .lx .cc-collection-products .card .price__current { font-size: 14px; font-weight: 700; }
 .lx .cc-collection-products .qc-dots span.is-on { background: var(--lx-wine); }
-.lx .card__quick-add .js-quick-add { background: rgba(255, 255, 255, .96) !important; color: var(--lx-wine) !important; border: 1px solid var(--lx-line) !important; border-radius: 50% !important; box-shadow: 0 8px 16px -10px rgba(43, 10, 26, .55) !important; }
+.lx .card__quick-add .btn--primary { background: rgba(255, 255, 255, .96) !important; color: var(--lx-wine) !important; border: 1px solid var(--lx-line) !important; border-radius: 50% !important; box-shadow: 0 8px 16px -10px rgba(43, 10, 26, .55) !important; }
 
 /* =====================================================================
    8. Product page

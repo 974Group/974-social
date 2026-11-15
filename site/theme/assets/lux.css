@@ -326,14 +326,23 @@ html.lx.lx-p3 {
   --heading-color: 92 12 43; --text-color: 92 12 43; --link-color: 92 12 43; --drawer-text-color: 92 12 43; --panel-heading-color: 92 12 43; --panel-text-color: 92 12 43;
   --card-text-color: 92 12 43; --input-text-color: 92 12 43; --btn-bg-color: 138 21 56; --btn-bg-hover-color: 160 40 76; --btn-alt-text-color: 92 12 43; --scrollbar-color: 92 12 43;
 }
+/* 4 - A+ : style A (clean white + wine) with the brand-wine header and white logo */
+html.lx.lx-p4 {
+  --lx-wine: #51022d; --lx-wine2: #720842; --lx-ink: #1d1d1f; --lx-ivory: #ffffff; --lx-sand: #f5f5f7; --lx-line: #e7e7ec;
+  --lx-gold: #8a1047; --lx-gold-soft: #dccdd5; --lx-muted: #6e6e73;
+  --lx-strip: #3a0220; --lx-strip-text: #ffffff; --lx-strip-dot: #e9b8cd;
+  --lx-head: rgba(255, 255, 255, .92); --lx-glass: rgba(255, 255, 255, .97);
+}
+/* coloured header with white logo (styles C and A+), phones only */
 @media (max-width: 768.98px) {
-  html.lx.lx-p3 { --lx-head: #8a1538; }
-  .lx-p3 store-header.header::before { -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: transparent !important; }
-  .lx-p3 .header__logo img { filter: brightness(0) invert(1); }
-  .lx-p3 .header__icon, .lx-p3 .main-menu__toggle, .lx-p3 .lang-switch { color: #fff !important; }
-  .lx-p3 .header .search .search__input { background: #fff !important; }
-  .lx-p3 .header__cart-count { background-color: #fff !important; color: #8a1538 !important; }
-  .lx-p3 .lx-compact .lx-search-open .header__search { background: #8a1538; border-bottom-color: transparent; }
+  html.lx.lx-p3 { --lx-head: #8a1538; --lx-head-solid: #8a1538; }
+  html.lx.lx-p4 { --lx-head: #51022d; --lx-head-solid: #51022d; }
+  :is(.lx-p3, .lx-p4) store-header.header::before { -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: transparent !important; }
+  :is(.lx-p3, .lx-p4) .header__logo img { filter: brightness(0) invert(1); }
+  :is(.lx-p3, .lx-p4) .header__icon, :is(.lx-p3, .lx-p4) .main-menu__toggle, :is(.lx-p3, .lx-p4) .lang-switch { color: #fff !important; }
+  :is(.lx-p3, .lx-p4) .header .search .search__input { background: #fff !important; }
+  :is(.lx-p3, .lx-p4) .header__cart-count { background-color: #fff !important; color: var(--lx-head-solid) !important; }
+  :is(.lx-p3, .lx-p4) .lx-compact .lx-search-open .header__search { background: var(--lx-head-solid); border-bottom-color: transparent; }
 }
 
 /* preview-only colour switcher */

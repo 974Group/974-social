@@ -263,3 +263,6 @@ html.lx {
 .lx .pdp-bar__btn { height: 44px; border-radius: 12px; background: linear-gradient(180deg, #7d0a4a 0%, #5a0434 100%); font-weight: 600; letter-spacing: .1em; }
 .lx .pdp-bar__btn[aria-disabled="true"] { background: #b9b3b6; }
 [dir="rtl"] .lx .pdp-bar__btn { letter-spacing: 0; }
+
+/* desktop: the product info column sits on the same ivory as the page */
+.lx .cc-main-product .product-info { background-color: transparent; }

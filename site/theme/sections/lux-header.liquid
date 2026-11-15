@@ -1,0 +1,200 @@
+{%- comment -%}
+  Luxe header layer (Redesign draft, 15 Nov 2026).
+  Sits in the header group BEFORE the theme header. It does not replace the theme header; it adds:
+    1. the slim top strip with rotating messages (blocks),
+    2. the luxe skin stylesheet (assets/lux.css) for the whole site,
+    3. extra content for the mobile menu (departments row + account / language / WhatsApp / Instagram),
+    4. a small script: search button, compact header on scroll, menu extras.
+  To switch the whole redesign off: disable this section in the header group.
+{%- endcomment -%}
+{%- liquid
+  assign is_ar = false
+  if request.locale.iso_code == 'ar'
+    assign is_ar = true
+  endif
+  assign depts = section.settings.departments | split: ','
+-%}
+{{ 'lux.css' | asset_url | stylesheet_tag }}
+<script>document.documentElement.classList.add('lx');</script>
+
+{%- if section.blocks.size > 0 -%}
+<div class="lx-top" role="region" aria-label="{% if is_ar %}معلومات التوصيل{% else %}Delivery information{% endif %}">
+  <div class="lx-top__in">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign msg = block.settings.text_en
+        if is_ar and block.settings.text_ar != blank
+          assign msg = block.settings.text_ar
+        endif
+      -%}
+      <p class="lx-top__msg{% if forloop.first %} is-on{% endif %}" {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{{ msg | escape }}</a>{%- else -%}{{ msg | escape }}{%- endif -%}
+      </p>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+<template id="lx-menu-top">
+  <div class="lx-depts">
+    <p class="lx-eyebrow">{% if is_ar %}تسوّق حسب القسم{% else %}Shop by department{% endif %}</p>
+    <div class="lx-depts__row">
+      {%- for h in depts -%}
+        {%- assign handle = h | strip -%}
+        {%- assign c = collections[handle] -%}
+        {%- if c.id -%}
+          {%- assign img = c.image | default: c.products.first.featured_image -%}
+          <a class="lx-dept" href="{{ c.url }}">
+            <span class="lx-dept__img">
+              {%- if img -%}<img src="{{ img | image_url: width: 180 }}" alt="" loading="lazy" width="90" height="90">{%- endif -%}
+            </span>
+            <span class="lx-dept__t">{{ c.title | escape }}</span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</template>
+
+<template id="lx-menu-bottom">
+  <div class="lx-menu-foot">
+    <div class="lx-menu-foot__row">
+      <a class="lx-menu-foot__btn" href="{{ routes.account_url }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20.5c1.4-3.6 4.4-5.5 8-5.5s6.600 1.900 8 5.500"/></svg>
+        {% if is_ar %}حسابي{% else %}My account{% endif %}
+      </a>
+      <a class="lx-menu-foot__btn js-lx-lang" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.600 2.600 4 5.600 4 9s-1.400 6.400-4 9c-2.600-2.600-4-5.600-4-9s1.400-6.400 4-9z"/></svg>
+        <span>{% if is_ar %}English{% else %}العربية{% endif %}</span>
+      </a>
+    </div>
+    <div class="lx-menu-foot__row lx-menu-foot__row--soc">
+      <a class="lx-menu-foot__soc js-lx-wa" href="#" target="_blank" rel="noopener" hidden>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm0 1.800a8.200 8.200 0 1 1-4.200 15.300l-.300-.200-2.900.800.800-2.800-.200-.300A8.200 8.200 0 0 1 12 3.800zM8.500 7.300c-.200 0-.500.100-.700.400-.300.300-1 1-1 2.300 0 1.400 1 2.700 1.100 2.900.200.200 2 3.100 4.900 4.300 2.400 1 2.900.800 3.400.700.500 0 1.700-.700 1.900-1.300.200-.700.200-1.200.200-1.300-.100-.200-.300-.200-.600-.400l-1.900-.900c-.300-.100-.500-.100-.700.200l-.900 1.100c-.200.200-.300.200-.600.100-.300-.200-1.200-.500-2.300-1.400-.800-.800-1.400-1.700-1.600-2-.200-.300 0-.400.100-.600l.400-.500.300-.500c.100-.200 0-.400 0-.500l-.900-2.100c-.200-.500-.400-.500-.600-.500h-.500z"/></svg>
+        {% if is_ar %}واتساب{% else %}WhatsApp{% endif %}
+      </a>
+      {%- if settings.social_instagram_url != blank -%}
+      <a class="lx-menu-foot__soc" href="{{ settings.social_instagram_url }}" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.500" y="3.500" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.200" cy="6.800" r=".600" fill="currentColor"/></svg>
+        Instagram
+      </a>
+      {%- endif -%}
+    </div>
+    <p class="lx-menu-foot__note">{% if is_ar %}توصيل نفس اليوم داخل قطر · شحن لكل دول الخليج{% else %}Same-day delivery in Qatar · Shipping to all GCC{% endif %}</p>
+  </div>
+</template>
+
+<script>
+(function () {
+  var AR = {{ is_ar | json }};
+  function ready(fn) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn); else fn(); }
+
+  /* 1. Top strip: rotate the messages */
+  ready(function () {
+    var msgs = document.querySelectorAll('.lx-top__msg');
+    if (msgs.length < 2) return;
+    var i = 0;
+    setInterval(function () {
+      msgs[i].classList.remove('is-on');
+      i = (i + 1) % msgs.length;
+      msgs[i].classList.add('is-on');
+    }, 4200);
+  });
+
+  ready(function () {
+    var sh = document.querySelector('store-header');
+    if (!sh) return;
+    var root = document.documentElement;
+    var wrap = sh.closest('.cc-header') || sh.parentElement;
+    var icons = sh.querySelector('.header__icons');
+    var cart = sh.querySelector('#cart-icon');
+    var search = sh.querySelector('.header__search');
+    var input = sh.querySelector('.js-search-input');
+
+    /* 2. Search button (shown when the search field is tucked away) */
+    if (icons && search) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'header__icon lx-search-btn text-current';
+      b.setAttribute('aria-label', AR ? 'بحث' : 'Search');
+      b.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.800-3.800"/></svg>';
+      icons.insertBefore(b, cart || null);
+      b.addEventListener('click', function () {
+        var open = sh.classList.toggle('lx-search-open');
+        if (open && input) setTimeout(function () { input.focus(); }, 60);
+      });
+      document.addEventListener('click', function (e) {
+        if (!sh.classList.contains('lx-search-open')) return;
+        if (e.target.closest('.header__search') || e.target.closest('.lx-search-btn')) return;
+        sh.classList.remove('lx-search-open');
+      });
+    }
+
+    /* 3. Compact header after scrolling (the search row tucks away, nothing jumps) */
+    var compact = false, ticking = false, lastEnd = '';
+    function vars() {
+      var r = sh.getBoundingClientRect();
+      var end = Math.max(0, r.bottom).toFixed(1) + 'px';
+      if (end === lastEnd) return;
+      lastEnd = end;
+      root.style.setProperty('--header-end', end);
+      root.style.setProperty('--header-height', Math.round(r.height) + 'px');
+    }
+    function onScroll() {
+      ticking = false;
+      var y = window.pageYOffset || 0;
+      var want = compact ? y > 24 : y > 110;
+      if (want !== compact) {
+        compact = want;
+        if (compact && search) wrap.style.setProperty('--lx-search-h', search.offsetHeight + 'px');
+        wrap.classList.toggle('lx-compact', compact);
+        if (!compact) sh.classList.remove('lx-search-open');
+      }
+      sh.classList.toggle('lx-scrolled', y > 4);
+      vars();
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    window.addEventListener('resize', function () { lastEnd = ''; onScroll(); });
+    onScroll();
+    setTimeout(function () { lastEnd = ''; vars(); }, 600);
+
+    /* 4. Mobile menu extras */
+    var menu = sh.querySelector('.main-menu__content');
+    var top = document.getElementById('lx-menu-top');
+    var bottom = document.getElementById('lx-menu-bottom');
+    if (menu && top && !menu.querySelector('.lx-depts')) menu.insertBefore(top.content.cloneNode(true), menu.firstChild);
+    if (menu && bottom && !menu.querySelector('.lx-menu-foot')) {
+      menu.appendChild(bottom.content.cloneNode(true));
+      var lang = sh.querySelector('.lang-switch'), l2 = menu.querySelector('.js-lx-lang');
+      if (lang && l2) l2.href = lang.getAttribute('href'); else if (l2) l2.hidden = true;
+      var wa = document.querySelector('a[href^="https://wa.me/"]'), w2 = menu.querySelector('.js-lx-wa');
+      if (wa && w2) { w2.href = wa.href.split('?')[0]; w2.hidden = false; }
+    }
+    var toggle = sh.querySelector('.main-menu__toggle');
+    if (toggle) toggle.addEventListener('click', function () { lastEnd = ''; vars(); sh.classList.remove('lx-search-open'); }, true);
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Luxe header layer",
+  "class": "lx-top-section",
+  "settings": [
+    { "type": "paragraph", "content": "Top strip + the luxe look for the whole site. Disable this section to go back to the old look." },
+    { "type": "text", "id": "departments", "label": "Menu departments (collection handles, comma separated)", "default": "bands,974guards,socks,designy,charms,phone-cases" }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text_en", "label": "Text (English)", "default": "Same-day delivery in Qatar" },
+        { "type": "text", "id": "text_ar", "label": "Text (Arabic)", "default": "توصيل نفس اليوم داخل قطر" },
+        { "type": "url", "id": "link", "label": "Link (optional)" }
+      ]
+    }
+  ],
+  "max_blocks": 5
+}
+{% endschema %}

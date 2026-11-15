@@ -1,0 +1,75 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "lux_header": {
+      "type": "lux-header",
+      "blocks": {
+        "m1": {
+          "type": "message",
+          "settings": {
+            "text_en": "Same-day delivery in Qatar",
+            "text_ar": "توصيل نفس اليوم داخل قطر"
+          }
+        },
+        "m2": {
+          "type": "message",
+          "settings": {
+            "text_en": "Free delivery over QAR 300",
+            "text_ar": "توصيل مجاني للطلبات فوق 300 ريال"
+          }
+        },
+        "m3": {
+          "type": "message",
+          "settings": {
+            "text_en": "Shipping to all GCC",
+            "text_ar": "شحن لكل دول الخليج"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ],
+      "settings": {
+        "departments": "bands,974guards,socks,designy,charms,phone-cases"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "enable_sticky": true,
+        "mobile_menu_position": "burger-right",
+        "logo_text": "",
+        "logo_type_scale": "1.5",
+        "logo": "shopify://shop_images/12.png",
+        "logo_width": 100,
+        "logo_h1": true,
+        "logo_center": false,
+        "enable_search": true,
+        "minimise_search_mobile": false,
+        "minimise_search_desktop": false,
+        "menu": "main-menu",
+        "menu_center": false,
+        "repeat_links": true,
+        "menu_featured_link": "Sale",
+        "quicklinks_menu": "",
+        "cta_show": false,
+        "cta_icon": "phone",
+        "cta_label": "Call us",
+        "cta_link": "",
+        "cta_border_color": "#333333",
+        "cta_bg_color": "#333333",
+        "cta_text_color": "#ffffff",
+        "bg_color": "#ffffff",
+        "text_color": "#51022d",
+        "accent_color": "#777777"
+      }
+    }
+  },
+  "order": [
+    "lux_header",
+    "header"
+  ]
+}

@@ -288,6 +288,8 @@ html.lx {
 .lx .pdp-ship__tick.is-hit, .lx .boc__box input:checked + .boc__tick { background: var(--lx-wine2); border-color: var(--lx-wine2); }
 .lx .cc-main-product .opt-btn:checked + .opt-label--swatch { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--lx-wine2); }
 .lx .cc__bar:not(#lx), .lx .cc__bar-label:not(#lx), .lx .na__heading:not(#lx), .lx .cc__tile a { color: var(--lx-wine); }
+.lx .clc:not(#lx) { color: var(--lx-wine); border-color: var(--lx-line); box-shadow: none; }
+.lx .clc__arrow:not(#lx), .lx .st__chip-x:not(#lx) { background: var(--lx-wine2); }
 .lx .st__chip:not(#lx) { color: var(--lx-wine); border-color: var(--lx-line); box-shadow: none; }
 
 /* =====================================================================

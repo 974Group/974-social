@@ -29,7 +29,7 @@ def gold(story=False):
 <div class="abs" style="left:0;right:0;top:{o+(380 if story else 300)}px;height:{1100 if story else 640}px;background:radial-gradient(55% 50% at 50% 50%,rgba(255,236,190,.75),transparent 70%)"></div>
 <div class="abs en" style="left:0;right:0;top:{o+(250 if story else 215)}px;text-align:center;font-weight:700;font-size:{250 if story else 215}px;line-height:.8;letter-spacing:-6px;color:rgba(169,127,44,.09)">GOLD</div>
 <div class="abs ar" style="right:48px;left:48px;top:{o+(130 if story else 110)}px">
- <div style="font-weight:900;font-size:{72 if story else 70}px;line-height:1.08;white-space:nowrap">البكلة الذهبية.. <span class="gt">بتوقيع 974</span></div>
+ <div style="font-weight:900;font-size:{72 if story else 70}px;line-height:1.08;white-space:nowrap">القفل الذهبي.. <span class="gt">بتوقيع</span> <img class="glogo" src="file://{D}src/logo-gold.png"></div>
  <div style="font-weight:700;font-size:{28 if story else 25}px;margin-top:10px;opacity:.75">سير قماش ناعم لـ <span class="en">Whoop 5.0</span> و <span class="en">MG</span> · حديدة ذهبي لمّاع عليها شعارنا</div>
 </div>
 {grid(top, rows, bh, cw, gap)}
@@ -40,6 +40,7 @@ def gold(story=False):
 .b img{{filter:drop-shadow(0 18px 20px rgba(70,45,10,.25))}}
 .b i{{font-style:normal;font-weight:700;font-size:{19 if story else 16}px;letter-spacing:1.5px;margin-top:10px;color:{GOLD};text-transform:uppercase}}
 .gt{{background:linear-gradient(180deg,#E6C477 0%,#B88A2E 55%,#8C6418 100%);-webkit-background-clip:text;background-clip:text;color:transparent}}
+.glogo{{height:{60 if story else 58}px;vertical-align:-6px;margin-right:8px;filter:drop-shadow(0 2px 2px rgba(90,60,10,.25))}}
 .fx{{font-weight:800;font-size:{23 if story else 21}px;color:{INK};border:1.5px solid rgba(169,127,44,.55);border-radius:40px;padding:4px 18px 7px}}
 .gd{{background:linear-gradient(180deg,#E6C477,#B88A2E);color:#fff;border:none}}
 .pill{{border-color:{GOLD}!important;color:{GOLD}}}'''

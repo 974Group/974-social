@@ -3,7 +3,7 @@ import sys, os
 sys.path.insert(0, '/home/claude/974-social/posts/2026-11/best-sellers-3')
 from gen import page, shot, LB
 D = '/home/claude/974-social/posts/2026-11/soft-fabric-gold/'
-C = '/home/claude/974-social/products/whoop5-soft-fabric/gold/cut/'
+C = '/home/claude/974-social/products/whoop5-soft-fabric/gold/cut-unified/'
 COLS = [('onyx', 'Onyx'), ('granite', 'Granite'), ('twilight', 'Twilight'), ('forest', 'Forest'), ('dune', 'Dune'),
         ('cloud', 'Cloud'), ('sky', 'Sky'), ('pink', 'Pink'), ('orange', 'Orange')]
 GOLD = '#A97F2C'; INK = '#2A1E12'

@@ -19,7 +19,8 @@ def fix(n):
         out=rgb*(1-w)+new*w
         print(n,m2.round(1))
     Image.fromarray((np.dstack([out,a])*255).astype('uint8')).save(O+n+'.png')
-for n in 'forest onyx granite twilight dune cloud sky pink orange'.split(): fix(n)
+import sys
+for n in (sys.argv[1:] or 'forest onyx granite twilight dune cloud sky pink orange'.split()): fix(n)
 fs='onyx granite twilight forest dune cloud sky pink orange'.split()
 s=Image.new('RGB',(9*300,700),(245,236,220))
 for i,f in enumerate(fs):

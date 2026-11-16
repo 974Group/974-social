@@ -4,7 +4,7 @@ from scipy import ndimage as nd
 from skimage import color
 C='/home/claude/974-social/products/whoop5-soft-fabric/gold/cut/'
 def gold_mask(n, gsd=None):
-    gsd = gsd if gsd is not None else (0.008 if n=='cloud' else 0.03)
+    gsd = gsd if gsd is not None else (0.008 if n in ('cloud','desert') else 0.03)
     im=np.array(Image.open(C+n+'.png').convert('RGBA')).astype(float)/255
     rgb=im[...,:3]; a=im[...,3]
     hsv=color.rgb2hsv(rgb); h=hsv[...,0]*360; s=hsv[...,1]; v=hsv[...,2]
@@ -12,7 +12,7 @@ def gold_mask(n, gsd=None):
     m=nd.uniform_filter(L,9); sd=np.sqrt(np.maximum(nd.uniform_filter(L*L,9)-m*m,0))
     H,W=a.shape; yy,xx=np.mgrid[0:H,0:W]
     region=(xx>W*0.38)&(yy<H*0.80)
-    cand=(a>0.8)&(h>25)&(h<70)&(s>0.06)&(v>0.38)&(sd<0.05)&region
+    cand=(a>0.8)&(h>25)&(h<70)&(s>0.06)&(v>0.38)&(sd<(0.025 if n=='desert' else 0.05))&region
     cand=nd.binary_opening(cand,iterations=2)
     lab,k=nd.label(cand)
     if k==0: return cand,rgb,a
@@ -32,7 +32,7 @@ def gold_mask(n, gsd=None):
         grow=nd.binary_dilation(mk,iterations=15)&(a>0.8)&(v>0.82)&(s<0.15)&(sd2<gsd)&region
         mk=mk|grow
     g=mk&~base
-    g=nd.binary_opening(g,iterations=(5 if n=='cloud' else 1))
+    g=nd.binary_opening(g,iterations=(5 if n in ('cloud','desert') else 1))
     mk=base|g
     lb,k=nd.label(mk)
     if k:

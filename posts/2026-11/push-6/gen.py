@@ -108,12 +108,12 @@ def magnet(story=False):
 <div class="abs" style="left:0;right:0;top:{axis}px;height:2px;background:linear-gradient(90deg,transparent,{LIME},transparent);box-shadow:0 0 24px {LIME}"></div>
 <div class="abs en mg" style="left:46px;top:{axis-22}px">N</div><div class="abs en mg" style="right:46px;top:{axis-22}px">S</div>
 <div class="abs ar" style="right:48px;left:48px;top:{o+(130 if story else 112)}px">
- <div style="font-weight:900;font-size:{68 if story else 62}px;line-height:1.08;white-space:nowrap">يتسكر بالمغناطيس.. <span style="color:{LIME}">ثانية وخلاص</span></div>
+ <div style="font-weight:900;font-size:{76 if story else 66}px;line-height:1.08">يتسكر بالمغناطيس..<br><span style="color:{LIME}">ثانية وخلاص</span></div>
  <div style="font-weight:700;font-size:{27 if story else 24}px;margin-top:10px;opacity:.75">سير سيليكون مغناطيسي لـ <span class="en">Garmin CIRQA</span> · 10 ألوان</div>
 </div>
 {row(MG[:5], y1)}{row(MG[5:], y2)}
 <div class="abs ar" style="right:48px;left:48px;top:{o+(1330 if story else 1010)}px;display:flex;gap:10px;direction:rtl">
- <span class="fx">بدون بكلة</span><span class="fx">ضد العرق والماء</span><span class="fx">مقاس واحد يركب الكل</span>
+ <span class="fx">بدون قفل</span><span class="fx">ضد العرق والماء</span><span class="fx">مقاس واحد يركب الكل</span>
 </div>'''
     extra = f'''.t{{position:absolute;display:flex;flex-direction:column;align-items:center}}
 .t img{{filter:drop-shadow(0 16px 18px rgba(0,0,0,.55))}}

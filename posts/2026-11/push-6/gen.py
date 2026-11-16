@@ -41,7 +41,7 @@ def mask(story=False):
 <div class="abs en" style="left:30px;top:{o+(110 if story else 90)}px;font-weight:700;font-size:{300 if story else 250}px;line-height:1;color:transparent;-webkit-text-stroke:3px rgba(201,162,75,.55)">#1</div>
 <div class="abs ar" style="right:48px;left:48px;top:{o+(150 if story else 130)}px">
  <div class="badge">الأكثر مبيعاً في 974</div>
- <div style="font-weight:900;font-size:{78 if story else 70}px;line-height:1.08;margin-top:14px">لثام الرياضة<br><span style="color:{GOLD}">اللي الكل لابسه</span></div>
+ <div style="font-weight:900;font-size:{78 if story else 70}px;line-height:1.08;margin-top:14px">الماسك<br><span style="color:{GOLD}">اللي الكل لابسه</span></div>
  <div style="font-weight:700;font-size:{27 if story else 24}px;margin-top:10px;opacity:.8">للبر · السيكل · الجري · البايك — خفيف ويتنفّس</div>
 </div>
 <div class="abs" style="left:0;right:0;top:{y0-20}px;height:{(ch)*math.ceil(23/cols)+40}px;background:radial-gradient(60% 55% at 50% 50%,rgba(255,255,255,.07),transparent 70%)"></div>
@@ -83,7 +83,7 @@ def fitfab(story=False):
  <div class="en" style="font-weight:700;font-size:{170 if story else 150}px;line-height:1;color:{ACC}">74</div>
  <div style="font-weight:800;font-size:{30 if story else 27}px;margin-top:-6px">ريال بس</div>
  <div style="display:flex;gap:10px;justify-content:center;margin-top:18px">
-  <span class="fx">ناعم على اليد</span><span class="fx">يقفل بالفلكرو</span><span class="fx">للرجال والحريم</span>
+  <span class="fx">ناعم على اليد</span><span class="fx">يتسكر باللزقة</span><span class="fx">للشباب والبنات</span>
  </div>
 </div>'''
     extra = f'''.ab{{position:absolute;width:120px;display:flex;justify-content:center}} .ab img{{filter:drop-shadow(0 12px 14px rgba(90,40,25,.25))}}
@@ -108,7 +108,7 @@ def magnet(story=False):
 <div class="abs" style="left:0;right:0;top:{axis}px;height:2px;background:linear-gradient(90deg,transparent,{LIME},transparent);box-shadow:0 0 24px {LIME}"></div>
 <div class="abs en mg" style="left:46px;top:{axis-22}px">N</div><div class="abs en mg" style="right:46px;top:{axis-22}px">S</div>
 <div class="abs ar" style="right:48px;left:48px;top:{o+(130 if story else 112)}px">
- <div style="font-weight:900;font-size:{68 if story else 62}px;line-height:1.08;white-space:nowrap">يسكّر بالمغناطيس.. <span style="color:{LIME}">ثانية وخلاص</span></div>
+ <div style="font-weight:900;font-size:{68 if story else 62}px;line-height:1.08;white-space:nowrap">يتسكر بالمغناطيس.. <span style="color:{LIME}">ثانية وخلاص</span></div>
  <div style="font-weight:700;font-size:{27 if story else 24}px;margin-top:10px;opacity:.75">سير سيليكون مغناطيسي لـ <span class="en">Garmin CIRQA</span> · 10 ألوان</div>
 </div>
 {row(MG[:5], y1)}{row(MG[5:], y2)}
@@ -139,12 +139,12 @@ def water(story=False):
     bub = ''.join(f'<div class="abs" style="left:{x}px;top:{o+y}px;width:{s}px;height:{s}px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35)"></div>' for x, y, s in [(110, 300, 18), (930, 360, 26), (980, 520, 12), (60, 560, 14), (860, 260, 10), (180, 420, 9)])
     body = f'''{rip}{bub}
 <div class="abs ar" style="right:48px;left:48px;top:{o+(130 if story else 112)}px">
- <div style="font-weight:900;font-size:{80 if story else 72}px;line-height:1.08">سبح فيه.. <span style="color:{AQ}">عادي</span> 💧</div>
+ <div style="font-weight:900;font-size:{80 if story else 72}px;line-height:1.08">اسبح فيه.. <span style="color:{AQ}">عادي</span> 💧</div>
  <div style="font-weight:700;font-size:{27 if story else 24}px;margin-top:10px;opacity:.8">سير <span class="en">Whoop 5.0</span> و <span class="en">MG</span> ضد الماء · عليه شعار 974 محفور</div>
- <div style="display:flex;gap:10px;margin-top:18px;direction:rtl"><span class="fx">سباحة</span><span class="fx">جيم</span><span class="fx">دوش</span></div>
+ <div style="display:flex;gap:10px;margin-top:18px;direction:rtl"><span class="fx">سباحة</span><span class="fx">جيم</span><span class="fx">شاور</span></div>
 </div>
 {stair}
-<div class="abs ar" style="right:48px;left:48px;top:{base+(70 if story else 52)}px;font-weight:800;font-size:{27 if story else 24}px">مات بـ <b class="en">99</b> · لمّاع بـ <b class="en">109</b> <span style="opacity:.7">ر.ق</span></div>'''
+<div class="abs ar" style="right:48px;left:48px;top:{base+(70 if story else 52)}px;font-weight:800;font-size:{27 if story else 24}px">مطفي بـ <b class="en">99</b> · لمّاع بـ <b class="en">109</b> <span style="opacity:.7">ر.ق</span></div>'''
     extra = f'''.t{{position:absolute;display:flex;flex-direction:column;align-items:center}}
 .t img{{filter:drop-shadow(0 18px 20px rgba(0,10,40,.5))}}
 .t i{{font-style:normal;font-family:Poppins;font-weight:600;font-size:{15 if story else 13}px;letter-spacing:1.5px;margin-top:4px;color:rgba(255,255,255,.75);text-transform:uppercase}}

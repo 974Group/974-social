@@ -189,7 +189,45 @@ def goggles(story=False):
                 '974 GUARDS · GOGGLES', 209, 'اطلبه من <em>974group.net</em> 🛒', extra)
 
 
-F = {'mask': mask, 'fitfab': fitfab, 'magnet': magnet, 'water': water, 'goggles': goggles}
+# ---------- 6. CIRQA fabric 3.0: editorial lookbook (colour panel + swatch strip) ----------
+C3 = [('purple', 'Purple'), ('pink', 'Pink'), ('light-pink', 'Light pink'), ('navy', 'Navy'), ('green', 'Green'), ('orange', 'Orange'), ('black', 'Black'), ('cement-gray', 'Cement Gray')]
+
+
+def cirqa3(story=False):
+    o = 150 if story else 0; H = 1920 if story else 1350; INK = '#2A1F3D'; ACC = '#6E4FC2'
+    C = R + 'products/garmin-cirqa-fabric3/cut/'
+    pw, ph = (500, 640) if story else (470, 620)
+    py = o + (150 if story else 120)
+    panel = f'''<div class="abs" style="left:48px;top:{py}px;width:{pw}px;height:{ph}px;border-radius:36px;background:linear-gradient(160deg,#DCD3F7 0%,#C2B4EE 100%)"></div>
+<div class="abs en" style="left:{48+pw-190}px;top:{py+ph-110}px;width:170px;text-align:right;font-weight:700;font-size:88px;line-height:1;color:rgba(255,255,255,.7);letter-spacing:-3px">3.0</div>
+<img class="abs" src="file://{C}purple.png" style="left:{48+(pw-int((ph-120)*0.764))//2}px;top:{py+40}px;height:{ph-130}px;filter:drop-shadow(0 26px 30px rgba(60,40,110,.35))">
+<div class="abs en" style="left:70px;top:{py+ph-48}px;font-weight:700;font-size:15px;letter-spacing:3px;color:#fff">PURPLE</div>'''
+    tx = 48 + pw + 36
+    text = f'''<div class="abs ar" style="right:48px;left:{tx}px;top:{py+20}px">
+ <div style="font-weight:800;font-size:{24 if story else 22}px;color:{ACC}">الأكثر مبيعاً من CIRQA</div>
+ <div style="font-weight:900;font-size:{74 if story else 66}px;line-height:1.1;margin-top:8px">خفيف..<br>ويتسكر<br><span style="color:{ACC}">باللزقة</span></div>
+ <div style="font-weight:700;font-size:{25 if story else 22}px;margin-top:14px;opacity:.8;line-height:1.5">سير قماش لـ<br><span class="en">Garmin CIRQA fabric 3.0</span></div>
+ <div class="sz"><span>S/M</span><span>L/XL</span></div>
+ <div class="bo">سير فقط · بدون الجهاز</div>
+</div>'''
+    if story:
+        cols, cw, ih, y0, gy = 4, 230, 170, py + ph + 56, 228
+    else:
+        cols, cw, ih, y0, gy = 8, 124, 118, py + ph + 42, 0
+    x0 = (1080 - cw * cols) // 2
+    strip = ''.join(f'<div class="t" style="left:{x0+(i%cols)*cw}px;top:{y0+(i//cols)*gy}px;width:{cw}px"><img src="file://{C}{f}.png" style="height:{ih}px"><i>{n}</i></div>' for i, (f, n) in enumerate(C3))
+    body = panel + text + strip + f'''
+<div class="abs ar" style="right:48px;left:48px;top:{y0+(gy+ih+48 if story else ih+50)}px;font-weight:800;font-size:{27 if story else 23}px">8 ألوان · مقاسين · <span style="color:{ACC}">109 ر.ق</span></div>'''
+    extra = f'''.t{{position:absolute;display:flex;flex-direction:column;align-items:center}}
+.t img{{filter:drop-shadow(0 10px 12px rgba(60,40,110,.22))}}
+.t i{{font-style:normal;font-family:Poppins;font-weight:700;font-size:{15 if story else 12}px;letter-spacing:1px;margin-top:8px;opacity:.7;white-space:nowrap;text-transform:uppercase}}
+.sz{{display:flex;gap:10px;margin-top:18px;justify-content:flex-end;direction:ltr}} .sz span{{font-family:Poppins;font-weight:700;font-size:22px;border:2px solid {INK};border-radius:30px;padding:2px 18px}}
+.bo{{display:inline-block;margin-top:16px;font-weight:800;font-size:{21 if story else 19}px;border:1.5px dashed currentColor;border-radius:30px;padding:2px 16px 4px;opacity:.75}}'''
+    return page(H, 'linear-gradient(180deg,#FBF9FE 0%,#F1ECFA 100%)', INK, body, story, LB,
+                'GARMIN CIRQA · FABRIC 3.0', 109, 'اطلبه من <em>974group.net</em> 🛒', extra)
+
+
+F = {'mask': mask, 'fitfab': fitfab, 'magnet': magnet, 'water': water, 'goggles': goggles, 'cirqa3': cirqa3}
 if __name__ == '__main__':
     os.chdir(D)
     for k in (sys.argv[1:] or F):

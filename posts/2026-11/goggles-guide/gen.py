@@ -27,7 +27,7 @@ S = {
 ORDER = ['photo', 'editions', 'twoin1', 'mx']; N = len(ORDER) + 2
 if __name__ == '__main__':
     picks = [(C+'photochromic.png','Photochromic'),(G+'green-edition-render.png','Editions'),(SG+'red.png','2 in 1'),(C+'mx-black.png','MX Clear')]
-    sl = [('01-hook', lambda: hook(N, 'عندك دراجة<br><span style="color:#C9A24B">في العزبة؟</span>', 'نظارتك لازم تكون جاهزة للشمس والغبار والليل', picks, TAG, 109))]
+    sl = [('01-hook', lambda: hook(N, 'عندك دراجة<br><span style="color:#C9A24B">فالعنه؟</span>', 'نظارتك لازم تكون جاهزة للشمس والغبار والليل', picks, TAG, 109))]
     sl += [(f'{i+2:02d}-{k}', (lambda k=k, i=i: slide(S[k], i+2, N, TAG))) for i, k in enumerate(ORDER)]
     sl += [(f'{N:02d}-cta', lambda: cta(N, [(S[k]['ar'], S[k]['head']) for k in ORDER], TAG, 109, 'وعندنا ستراب إضافي بـ 99 ر.ق لنظارات 974 Guards', what='نظارة'))]
     build(sl, D)

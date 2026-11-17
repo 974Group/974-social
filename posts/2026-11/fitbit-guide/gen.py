@@ -20,12 +20,12 @@ S = {
    bg='radial-gradient(110% 70% at 50% 40%,#2A2C30 0%,#17181B 60%,#0E0F11 100%)', ink='#FFFFFF', acc='#D7E64A'),
  'leather': dict(ar='الجلد', en='LEATHER', head='للمناسبات والدوام', chips=['مناسبات', 'دوام', 'مع الثوب', 'مع البدلة'],
    line='جلد ناعم بقطع معدنية فضية.. بالأسود والبني', price=99,
-   bands=[(C+'leather-black.png','Black')], h=420, top=440, chips_top=940,
+   bands=[(C+'leather-black.png','Black'),(C+'leather-brown.png','Brown')], h=400, top=450, chips_top=940,
    bg='linear-gradient(170deg,#F4EDE6 0%,#E4D5C6 100%)', ink='#2B1D14', acc='#8A5A3B'),
 }
 ORDER = ['silicone', 'fabric', 'magnetic', 'leather']; N = len(ORDER) + 2
 if __name__ == '__main__':
-    picks = [(C+'sil2-pink.png','Silicone'),(FF+'olive-crop.png','Fabric'),(MG+'wine-red-cut.png','Magnetic'),(C+'leather-black.png','Leather')]
+    picks = [(C+'sil2-purple.png','Silicone'),(FF+'olive-crop.png','Fabric'),(MG+'wine-red-cut.png','Magnetic'),(C+'leather-black.png','Leather')]
     sl = [('01-hook', lambda: hook(N, 'عندك <span class="en" style="font-weight:700">Fitbit Air</span>؟', 'كل سير له استخدامه.. اختار اللي يناسب يومك', picks, TAG, 69))]
     sl += [(f'{i+2:02d}-{k}', (lambda k=k, i=i: slide(S[k], i+2, N, TAG))) for i, k in enumerate(ORDER)]
     sl += [(f'{N:02d}-cta', lambda: cta(N, [(S[k]['ar'], S[k]['head']) for k in ORDER], TAG, 69, 'كل السيور تركب على <span class="en">Google Fitbit Air</span>'))]

@@ -14,7 +14,18 @@ BASE = '''.b{position:absolute;display:flex;flex-direction:column;align-items:ce
 .chips span{font-weight:800;font-size:28px;border-radius:40px;padding:4px 26px 9px}
 .rl{position:absolute;left:48px;right:48px;font-family:Poppins;font-weight:700;font-size:17px;letter-spacing:3px;text-align:left}'''
 
+import os as _os, hashlib as _hl
+def _trim(p):
+    # crop transparent padding so every band is sized by the band itself
+    out = '/tmp/guide-trim/' + _hl.md5(p.encode()).hexdigest() + '.png'
+    if not _os.path.exists(out):
+        _os.makedirs('/tmp/guide-trim', exist_ok=True)
+        im = _I.open(p).convert('RGBA'); a = im.split()[3].point(lambda v: 255 if v > 20 else 0)
+        im.crop(a.getbbox()).save(out)
+    return out
+
 def row(bands, top, h, labcol, x0=40, width=1000):
+    bands = [(_trim(p), l) for p, l in bands]
     n = len(bands); cw = width // n; x0 = x0 + (width - cw*n)//2
     for p, _ in bands:  # same visual height: no image may be width-limited
         w0, h0 = _I.open(p).size

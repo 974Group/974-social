@@ -7,7 +7,7 @@ TAG = '974 GUARDS · GOGGLES'
 S = {
  'photo': dict(ar='الفوتوكروميك', en='PHOTOCHROMIC EDITION', head='نظارة وحدة للنهار والليل', chips=['نهار', 'ليل', 'غبار', 'بر'],
    line='عدسة ذكية تغمق بروحها في الشمس وترجع شفافة بالليل', price=349,
-   bands=[(GC+'ph1.png','Photochromic')], h=330, top=500, chips_top=900,
+   bands=[(C+'photochromic.png','Photochromic')], h=330, top=500, chips_top=900,
    bg='radial-gradient(110% 70% at 50% 40%,#2A2C30 0%,#17181B 60%,#0E0F11 100%)', ink='#FFFFFF', acc='#C9CED6'),
  'editions': dict(ar='الإيديشن', en='EDITIONS · 2 LENSES', head='عدستين.. للشمس والليل', chips=['شمس', 'ليل', 'دراجة', 'بقي'],
    line='عدسة شمس + عدسة شفافة بالمغناطيس تبدلها بثانية.. وضد الضباب', price=299, frm=True,
@@ -26,7 +26,7 @@ S = {
 }
 ORDER = ['photo', 'editions', 'twoin1', 'mx']; N = len(ORDER) + 2
 if __name__ == '__main__':
-    picks = [(GC+'ph1.png','Photochromic'),(G+'green-edition-render.png','Editions'),(SG+'red.png','2 in 1'),(C+'mx-black.png','MX Clear')]
+    picks = [(C+'photochromic.png','Photochromic'),(G+'green-edition-render.png','Editions'),(SG+'red.png','2 in 1'),(C+'mx-black.png','MX Clear')]
     sl = [('01-hook', lambda: hook(N, 'عندك دراجة<br><span style="color:#C9A24B">في العزبة؟</span>', 'نظارتك لازم تكون جاهزة للشمس والغبار والليل', picks, TAG, 109))]
     sl += [(f'{i+2:02d}-{k}', (lambda k=k, i=i: slide(S[k], i+2, N, TAG))) for i, k in enumerate(ORDER)]
     sl += [(f'{N:02d}-cta', lambda: cta(N, [(S[k]['ar'], S[k]['head']) for k in ORDER], TAG, 109, 'وعندنا ستراب إضافي بـ 99 ر.ق لنظارات 974 Guards', what='نظارة'))]

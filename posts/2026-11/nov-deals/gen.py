@@ -130,7 +130,7 @@ FB = '/home/claude/974-social/products/fitbit-silicone-v1/uni/'
 DR = '/home/claude/974-social/posts/2026-11/whoop5-silicone-all/cut/'
 
 
-def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra='', pct='40%'):
+def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra='', pct='40%', ps=1.0, tmin=None):
     """Generic daily-deal layout (same look as day 1/2). rows: list of lists of image paths."""
     o = 230 if story else 0
     k = 1.0 if not story else 1.12
@@ -143,8 +143,8 @@ def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra='', p
         for i, f in enumerate(row):
             imgs += f'<img src="file://{f}" style="position:absolute;left:{x0+i*(cw+gap)}px;top:{y}px;width:{cw}px;height:{ch}px;object-fit:contain;filter:drop-shadow(0 12px 14px rgba(0,0,0,.45))">'
     after = top0 + len(rows) * rowgap
-    tape_y = max(after + 10, o + (965 if not story else 1045))
-    chips = ''.join(f'<div style="background:#fff;color:{DK};border-radius:24px;padding:6px 22px 10px;text-align:center"><div style="font-weight:800;font-size:{int(20*k)}px">{lab}</div><div style="font-family:Poppins;font-weight:700;font-size:{int(34*k)}px;direction:ltr"><s style="opacity:.45;font-size:.6em">{was}</s> {now} <small style="font-family:Cairo;font-size:.55em">ر.ق</small></div></div>' for lab, was, now in prices)
+    tape_y = max(after + 10, o + (965 if not story else 1045)) if tmin is None else max(after + 10, tmin)
+    chips = ''.join(f'<div style="background:#fff;color:{DK};border-radius:24px;padding:6px 22px 10px;text-align:center"><div style="font-weight:800;font-size:{int(20*k)}px">{lab}</div><div style="font-family:{'PoppinsB' if ps>1 else 'Poppins'};font-weight:{900 if ps>1 else 700};font-size:{int(34*k*ps)}px;line-height:1.15;direction:ltr"><s style="opacity:.45;font-size:{'.38em' if ps>1 else '.6em'};text-decoration-thickness:3px">{was}</s> {now} <small style="font-family:Cairo;font-size:{'.38em' if ps>1 else '.55em'}">ر.ق</small></div></div>' for lab, was, now in prices)
     body = f'''
 <img class="logo" src="file://{LOGOW}" style="left:48px;top:{o+40 if story else 44}px">
 <div style="position:absolute;right:48px;top:{(o+44) if story else 50}px;font-family:Poppins;font-weight:700;font-size:16px;letter-spacing:5px;color:{LIME}">NOVEMBER DEALS · DAY {day}</div>
@@ -160,7 +160,7 @@ def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra='', p
 <div class="sticker" style="left:30px;top:{o+(470 if not story else 545)}px;width:150px;height:150px"><span style="font-size:19px">بس</span><span style="font-family:PoppinsB;font-size:44px">24</span><span style="font-size:19px">ساعة</span></div>
 {tape(tape_y, 3, f'عرض اليوم  ✦  DAY {day}  ✦  NOVEMBER DEALS', bg=GOLD)}
 <div style="position:absolute;left:48px;right:48px;top:{tape_y+(85 if not story else 80)}px;display:flex;justify-content:center;gap:16px;direction:rtl">{chips}</div>
-<div style="position:absolute;left:0;right:0;top:{tape_y+(195 if not story else 198)}px;text-align:center;direction:rtl;font-weight:800;font-size:{int(22*k)}px;opacity:.9">{note}</div>'''
+<div style="position:absolute;left:0;right:0;top:{tape_y+int((195 if not story else 198)+(ps-1)*42*k)}px;text-align:center;direction:rtl;font-weight:800;font-size:{int(22*k)}px;opacity:.9">{note}</div>'''
     return base(story, body)
 
 
@@ -185,9 +185,9 @@ GG = '/home/claude/974-social/posts/2026-11/goggles-guide/cut/'
 
 
 def day5(story):
-    cw = 640 if not story else 700
+    cw = 560 if not story else 600
     return deal(story, 5, 'نظارة <span style="font-family:Poppins">Photochromic</span>', 'عدسة ذكية تغمق في الشمس وترجع شفافة بالليل', [[GG + 'photochromic.png']], cw, int(cw * 0.55),
-                380 if not story else 420, [('Photochromic', '349', '226.85')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%')
+                320 if not story else 345, [('Photochromic', '349', '226.85')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%', ps=2.3, tmin=0)
 
 
 def shot(html, out, H):

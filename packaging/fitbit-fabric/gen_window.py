@@ -15,15 +15,22 @@ BG, FG, STRIPE, GOLD = '#141414', '#F2F2F2', '#E9E9E9', '#C9A24B'
 WIN_W, WIN_H = round(22*PX), round(42*PX)
 WIN_X = (898 - WIN_W)//2; WIN_Y = 185
 
-def stripes(h=355):
-    # twill-weave motif (diagonal floats, like the fabric band's weave) instead of the nylon loop stripes
+def stripes(h=355, y0=34, hh=None):
+    # twill-weave motif as plain vector shapes (no SVG <pattern>: Chrome rasterises patterns in PDF -> blurry)
+    hh = h - 2*y0 if hh is None else hh
+    import math
+    a = math.radians(-28); ca, sa = math.cos(a), math.sin(a)
+    shapes = []
+    for j in range(-12, 40):
+        for i in range(-8, 40):
+            for (bx, by) in ((2, 4), (24, 19)):
+                x = i*44 + bx; y = j*30 + by
+                X = x*ca - y*sa; Y = x*sa + y*ca
+                if -60 < X < 960 and y0-40 < Y < y0+hh+40:
+                    shapes.append(f'<rect x="{X:.1f}" y="{Y:.1f}" width="34" height="9" rx="4.5" transform="rotate(-28 {X:.1f} {Y:.1f})" fill="{STRIPE}"/>')
     return (f'<svg width="898" height="{h}" style="position:absolute;left:0;top:0">'
-            '<defs><pattern id="tw" width="44" height="30" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)">'
-            f'<rect x="2" y="4" width="34" height="9" rx="4.5" fill="{STRIPE}"/>'
-            f'<rect x="24" y="19" width="34" height="9" rx="4.5" fill="{STRIPE}"/>'
-            f'<rect x="-20" y="19" width="34" height="9" rx="4.5" fill="{STRIPE}"/>'
-            '</pattern></defs>'
-            f'<rect x="0" y="34" width="898" height="{h-68}" fill="url(#tw)"/></svg>')
+            f'<defs><clipPath id="c{h}"><rect x="0" y="{y0}" width="898" height="{hh}"/></clipPath></defs>'
+            f'<g clip-path="url(#c{h})">{"".join(shapes)}</g></svg>')
 
 def front(band=None):
     win_inner = (f'<div class="tray"></div><img src="file://{band}" style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);height:{round(52*PX)}px">' if band
@@ -33,7 +40,7 @@ def front(band=None):
 <div class="abs ar" style="right:52px;top:100px;font-size:26px;font-weight:700;opacity:.75">سير فابريك لـ <span class="en">Fitbit Air</span></div>
 <div class="win" style="left:{WIN_X}px;top:{WIN_Y}px;width:{WIN_W}px;height:{WIN_H}px">{win_inner}</div>
 <div class="abs ar" style="left:52px;right:52px;bottom:128px;text-align:center;font-size:24px;font-weight:700;opacity:.8">يتسكر باللزقة · خفيف · يتنفس</div>
-<div class="abs" style="left:0;right:0;bottom:0;height:100px;overflow:hidden">{stripes(100).replace('y="34"','y="14"').replace('height="32"','height="86"')}</div>
+<div class="abs" style="left:0;right:0;bottom:0;height:100px;overflow:hidden">{stripes(100, 14, 86)}</div>
 '''
 
 def die(band=None, bc=None, colour=None):

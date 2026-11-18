@@ -130,13 +130,13 @@ FB = '/home/claude/974-social/products/fitbit-silicone-v1/uni/'
 DR = '/home/claude/974-social/posts/2026-11/whoop5-silicone-all/cut/'
 
 
-def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra='', pct='40%', ps=1.0, tmin=None):
+def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra='', pct='40%', ps=1.0, tmin=None, dy=0):
     """Generic daily-deal layout (same look as day 1/2). rows: list of lists of image paths."""
     o = 230 if story else 0
     k = 1.0 if not story else 1.12
     imgs = ''
     gap = 14
-    top0 = o + (548 if not story else 640)
+    top0 = o + (548 if not story else 640) + dy
     for r, row in enumerate(rows):
         n = len(row); x0 = (1080 - (n * cw + (n - 1) * gap)) // 2
         y = top0 + r * rowgap
@@ -190,6 +190,18 @@ def day5(story):
                 320 if not story else 345, [('Photochromic', '349', '226.85')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%', ps=2.3, tmin=0)
 
 
+SFC = '/home/claude/974-social/products/whoop5-soft-fabric/cut/'
+
+
+def day6(story):
+    order = ['onyx', 'cloud', 'forest', 'phoenix', 'twilight', 'desert', 'granite', 'orange', 'pink', 'sky', 'dune']
+    pics = [SFC + c + '.png' for c in order]
+    rows = [pics[:6], pics[6:]]
+    cw = 130 if not story else 136
+    return deal(story, 6, 'سيور <span style="font-family:Poppins">Soft Fabric</span> لـ <span style="font-family:Poppins">Whoop</span>', '١١ لون · كلها عليها الخصم', rows, cw, int(cw * 1.15),
+                160 if not story else 160, [('Soft Fabric · يبدأ من', '89', '57.85')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%', ps=2.1, tmin=0, dy=(100 if not story else 62))
+
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -215,4 +227,7 @@ if __name__ == '__main__':
     if which in ('all', 'day5'):
         shot(day5(False), D + 'out/974-nov-deals-day5-photochromic-post.png', 1350)
         shot(day5(True), D + 'out/974-nov-deals-day5-photochromic-story.png', 1920)
+    if which in ('all', 'day6'):
+        shot(day6(False), D + 'out/974-nov-deals-day6-softfabric-post.png', 1350)
+        shot(day6(True), D + 'out/974-nov-deals-day6-softfabric-story.png', 1920)
     print('ok')

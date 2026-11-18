@@ -130,7 +130,7 @@ FB = '/home/claude/974-social/products/fitbit-silicone-v1/uni/'
 DR = '/home/claude/974-social/posts/2026-11/whoop5-silicone-all/cut/'
 
 
-def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra=''):
+def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra='', pct='40%'):
     """Generic daily-deal layout (same look as day 1/2). rows: list of lists of image paths."""
     o = 230 if story else 0
     k = 1.0 if not story else 1.12
@@ -150,7 +150,7 @@ def deal(story, day, title, sub, rows, cw, ch, rowgap, prices, note, extra=''):
 <div style="position:absolute;right:48px;top:{(o+44) if story else 50}px;font-family:Poppins;font-weight:700;font-size:16px;letter-spacing:5px;color:{LIME}">NOVEMBER DEALS · DAY {day}</div>
 <div style="position:absolute;left:40px;right:40px;top:{o+(110 if not story else 140)}px;display:flex;align-items:center;justify-content:space-between;direction:rtl">
   <span class="khasm" style="font-size:{int(118*k)}px;padding:0 30px 14px;background:{GOLD}">خصم</span>
-  <span class="big" style="font-size:{int(250*k)}px;color:{GOLD};text-shadow:8px 8px 0 {DK}">40%</span>
+  <span class="big" style="font-size:{int(250*k)}px;color:{GOLD};text-shadow:8px 8px 0 {DK}">{pct}</span>
 </div>
 <div style="position:absolute;left:0;right:0;top:{o+(400 if not story else 470)}px;text-align:center;direction:rtl">
   <div style="font-weight:900;font-size:{int(50*k)}px">{title}</div>
@@ -181,6 +181,15 @@ def day4(story):
                 380 if not story else 410, [('Drenched', '99', '59.40')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳')
 
 
+GG = '/home/claude/974-social/posts/2026-11/goggles-guide/cut/'
+
+
+def day5(story):
+    cw = 640 if not story else 700
+    return deal(story, 5, 'نظارة <span style="font-family:Poppins">Photochromic</span>', 'عدسة ذكية تغمق في الشمس وترجع شفافة بالليل', [[GG + 'photochromic.png']], cw, int(cw * 0.55),
+                380 if not story else 420, [('Photochromic', '349', '226.85')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%')
+
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -203,4 +212,7 @@ if __name__ == '__main__':
     if which in ('all', 'day4'):
         shot(day4(False), D + 'out/974-nov-deals-day4-drenched-post.png', 1350)
         shot(day4(True), D + 'out/974-nov-deals-day4-drenched-story.png', 1920)
+    if which in ('all', 'day5'):
+        shot(day5(False), D + 'out/974-nov-deals-day5-photochromic-post.png', 1350)
+        shot(day5(True), D + 'out/974-nov-deals-day5-photochromic-story.png', 1920)
     print('ok')

@@ -12,22 +12,28 @@ BAND = '/home/claude/974-social/products/fitbit-fabric-blush/src/'
 PX = 300/25.4                      # px per mm
 BG, FG, STRIPE, GOLD = '#141414', '#F2F2F2', '#E9E9E9', '#C9A24B'
 # window in FRONT-panel coordinates (px); front panel = 898 x 886 incl. 35 px side bleed
-WIN_W, WIN_H = round(22*PX), round(44*PX)
-WIN_X = (898 - WIN_W)//2; WIN_Y = 205
+WIN_W, WIN_H = round(22*PX), round(42*PX)
+WIN_X = (898 - WIN_W)//2; WIN_Y = 185
 
 def stripes(h=355):
-    # same rounded "loop" stripes as the nylon box side panel
-    n = 14; gap = 898/n
-    return ''.join(f'<i style="left:{i*gap + gap*0.22:.0f}px;width:{gap*0.56:.0f}px;top:40px;height:{h-80}px"></i>' for i in range(n))
+    # twill-weave motif (diagonal floats, like the fabric band's weave) instead of the nylon loop stripes
+    return (f'<svg width="898" height="{h}" style="position:absolute;left:0;top:0">'
+            '<defs><pattern id="tw" width="44" height="30" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)">'
+            f'<rect x="2" y="4" width="34" height="9" rx="4.5" fill="{STRIPE}"/>'
+            f'<rect x="24" y="19" width="34" height="9" rx="4.5" fill="{STRIPE}"/>'
+            f'<rect x="-20" y="19" width="34" height="9" rx="4.5" fill="{STRIPE}"/>'
+            '</pattern></defs>'
+            f'<rect x="0" y="34" width="898" height="{h-68}" fill="url(#tw)"/></svg>')
 
 def front(band=None):
     win_inner = (f'<div class="tray"></div><img src="file://{band}" style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);height:{round(52*PX)}px">' if band
-                 else f'<span>WINDOW<br>22 × 44 mm<br>+ clear PET</span>')
+                 else f'<span>WINDOW<br>22 × 42 mm<br>+ clear PET</span>')
     return f'''<img class="abs" src="file://{LW}" style="left:52px;top:52px;width:250px">
 <div class="abs en" style="right:52px;top:62px;text-align:right;font-weight:700;font-size:24px;letter-spacing:6px">FABRIC BAND</div>
 <div class="abs ar" style="right:52px;top:100px;font-size:26px;font-weight:700;opacity:.75">سير فابريك لـ <span class="en">Fitbit Air</span></div>
 <div class="win" style="left:{WIN_X}px;top:{WIN_Y}px;width:{WIN_W}px;height:{WIN_H}px">{win_inner}</div>
-<div class="abs ar" style="left:52px;right:52px;bottom:60px;text-align:center;font-size:24px;font-weight:700;opacity:.8">يتسكر باللزقة · خفيف · يتنفس</div>
+<div class="abs ar" style="left:52px;right:52px;bottom:128px;text-align:center;font-size:24px;font-weight:700;opacity:.8">يتسكر باللزقة · خفيف · يتنفس</div>
+<div class="abs" style="left:0;right:0;bottom:0;height:100px;overflow:hidden">{stripes(100).replace('y="34"','y="14"').replace('height="32"','height="86"')}</div>
 '''
 
 def die(band=None, bc=None, colour=None):

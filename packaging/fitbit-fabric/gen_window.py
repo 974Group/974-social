@@ -27,10 +27,10 @@ def front(band=None):
 <div class="abs en" style="right:52px;top:62px;text-align:right;font-weight:700;font-size:24px;letter-spacing:6px">FABRIC BAND</div>
 <div class="abs ar" style="right:52px;top:100px;font-size:26px;font-weight:700;opacity:.75">سير فابريك لـ <span class="en">Fitbit Air</span></div>
 <div class="win" style="left:{WIN_X}px;top:{WIN_Y}px;width:{WIN_W}px;height:{WIN_H}px">{win_inner}</div>
-<div class="abs ar" style="right:52px;bottom:60px;font-size:24px;font-weight:700;opacity:.8">يتسكر باللزقة · خفيف</div>
-<div class="abs tag" style="left:52px;bottom:52px"><span>COLOUR</span><b></b></div>'''
+<div class="abs ar" style="left:52px;right:52px;bottom:60px;text-align:center;font-size:24px;font-weight:700;opacity:.8">يتسكر باللزقة · خفيف · يتنفس</div>
+'''
 
-def die(band=None):
+def die(band=None, bc=None, colour=None):
     return f'''<div class="die">
  <div class="p flap"><div class="abs tag2" style="left:87px;top:50%;transform:translateY(-50%)">FABRIC · FITBIT AIR</div>
    <img class="abs" src="file://{LW}" style="right:87px;top:50%;transform:translateY(-50%);width:150px"></div>
@@ -46,7 +46,7 @@ def die(band=None):
   <div class="qr" style="left:87px;bottom:60px;width:210px"><img src="file://{B}qr.png"></div>
   <div class="abs ar" style="left:325px;bottom:215px;font-size:20px;font-weight:700;opacity:.85">امسح وتسوّق مباشرة</div>
   <div class="abs en" style="left:325px;bottom:112px;font-weight:700;font-size:18px;line-height:1.6">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
-  <div class="abs bc" style="right:87px;bottom:40px"><span>BARCODE<br>STICKER</span></div>
+  {barcode(bc, colour)}
   <div class="abs en" style="left:325px;bottom:58px;font-size:11px;letter-spacing:2px;opacity:.6">MADE IN CHINA · DESIGNED IN QATAR</div>
  </div></div>
  <div class="p glue"></div>
@@ -70,8 +70,18 @@ CSS = f'''{FONTS}
 .pill{{left:50%;top:50%;transform:translate(-50%,-50%);background:{BG};padding:14px 36px;border-radius:999px;font-family:Poppins;font-weight:700;letter-spacing:4px;font-size:20px;white-space:nowrap}}
 .qr{{position:absolute;background:#fff;border-radius:14px;padding:10px}} .qr img{{display:block;width:100%}}
 .bc{{width:220px;height:130px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center}} .bc span{{font-family:Poppins;color:#bbb;font-size:16px;letter-spacing:3px;text-align:center}}
+.bcx{{width:230px;background:#fff;border-radius:10px;padding:8px 10px 6px;text-align:center;color:#111}} .bcx img{{display:block;width:100%;height:62px}}
+.bcx div{{font-family:Poppins;font-weight:600;font-size:13px;letter-spacing:3px;margin-top:2px}} .bcx small{{font-family:Poppins;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase}}
 .cut{{position:absolute;left:0;top:0;pointer-events:none}}
 .mk{{position:relative;width:898px;height:886px;overflow:hidden;background:{BG};color:{FG};box-shadow:0 30px 60px rgba(0,0,0,.4)}}'''
+
+def barcode(bc, colour):
+    if not bc:
+        return '<div class="abs bc" style="right:87px;bottom:40px"><span>BARCODE</span></div>'
+    import sys; sys.path.insert(0, B); from c128 import code128c
+    path = f'/tmp/bc-{bc}.png'; code128c(bc, path)
+    return (f'<div class="abs bcx" style="right:87px;bottom:40px"><img src="file://{path}">'
+            f'<div>{bc}</div><small>{colour}</small></div>')
 
 def page(inner):
     return f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{inner}</body></html>'
@@ -88,8 +98,18 @@ with sync_playwright() as p:
     pg2 = br.new_page(viewport={'width': 4*898 + 5*60, 'height': 886 + 80})
     pg2.goto('file:///home/claude/974-social/packaging/fitbit-fabric/box-window-mock.html'); pg2.wait_for_timeout(600)
     pg2.screenshot(path='974-fitbit-fabric-window-box-mockup.png')
+    COLS = [('Black','29740048'),('Grey','29740024'),('Pinky Red','29740116'),('Brown','29740055'),('Blue','29740086'),('Fog','29740000'),
+            ('Beige','29740314'),('Navy','29740383'),('Olive green','29740437'),('Light pink','29740376'),('Purple','29740390'),('Blush Pink','29750597')]
+    import os; os.makedirs('per-colour', exist_ok=True)
+    for name, code in COLS:
+        open('tmp-die.html', 'w').write(page(die(None, code, name)))
+        pg.goto('file:///home/claude/974-social/packaging/fitbit-fabric/tmp-die.html'); pg.wait_for_timeout(300)
+        pg.locator('.die').screenshot(path=f'per-colour/{name.lower().replace(" ","-")}-{code}.png')
     br.close()
 from PIL import Image
 im = Image.open('974-fitbit-fabric-window-box-dieline-300dpi.png').convert('RGB')
 im.save('974-fitbit-fabric-window-box-dieline.pdf', resolution=300)
+import glob
+pages = [Image.open(f).convert('RGB') for f in sorted(glob.glob('per-colour/*.png'))]
+pages[0].save('974-fitbit-fabric-window-boxes-12-colours-barcode.pdf', resolution=300, save_all=True, append_images=pages[1:])
 print(im.size)

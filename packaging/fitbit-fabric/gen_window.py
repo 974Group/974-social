@@ -27,7 +27,7 @@ def stripes(h=355):
 
 def front(band=None):
     win_inner = (f'<div class="tray"></div><img src="file://{band}" style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);height:{round(52*PX)}px">' if band
-                 else f'<span>WINDOW<br>22 × 42 mm<br>+ clear PET</span>')
+                 else '')
     return f'''<img class="abs" src="file://{LW}" style="left:52px;top:52px;width:250px">
 <div class="abs en" style="right:52px;top:62px;text-align:right;font-weight:700;font-size:24px;letter-spacing:6px">FABRIC BAND</div>
 <div class="abs ar" style="right:52px;top:100px;font-size:26px;font-weight:700;opacity:.75">سير فابريك لـ <span class="en">Fitbit Air</span></div>
@@ -84,7 +84,7 @@ CSS = f'''{FONTS}
 
 def barcode(bc, colour):
     if not bc:
-        return '<div class="abs bc" style="right:87px;bottom:40px"><span>BARCODE</span></div>'
+        return ''   # sticker goes here (25 x 15 mm, bottom-right of the back)
     import sys; sys.path.insert(0, B); from c128 import code128c
     path = f'/tmp/bc-{bc}.png'; code128c(bc, path)
     return (f'<div class="abs bcx" style="right:87px;bottom:40px"><img src="file://{path}">'

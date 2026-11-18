@@ -21,7 +21,7 @@ def stripes(h=355):
     return ''.join(f'<i style="left:{i*gap + gap*0.22:.0f}px;width:{gap*0.56:.0f}px;top:40px;height:{h-80}px"></i>' for i in range(n))
 
 def front(band=None):
-    win_inner = (f'<img src="file://{band}" style="position:absolute;height:120%;left:50%;top:50%;transform:translate(-40%,-50%)">' if band
+    win_inner = (f'<div class="tray"></div><img src="file://{band}" style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);height:{round(52*PX)}px">' if band
                  else f'<span>WINDOW<br>22 × 44 mm<br>+ clear PET</span>')
     return f'''<img class="abs" src="file://{LW}" style="left:52px;top:52px;width:250px">
 <div class="abs en" style="right:52px;top:62px;text-align:right;font-weight:700;font-size:24px;letter-spacing:6px">FABRIC BAND</div>
@@ -65,6 +65,7 @@ CSS = f'''{FONTS}
 .tag{{display:flex;align-items:center;gap:14px}} .tag span{{font-family:Poppins;font-weight:700;letter-spacing:4px;font-size:18px;color:{GOLD}}}
 .tag b{{display:block;width:200px;height:52px;border:3px solid {GOLD};border-radius:26px}}
 .win{{position:absolute;border-radius:{round(4*PX)}px;overflow:hidden;background:#F4F1F2;outline:5px solid {GOLD};outline-offset:12px;display:flex;align-items:center;justify-content:center}}
+.tray{{position:absolute;inset:0;background:linear-gradient(180deg,#E9E5E0 0%,#F7F5F2 18%,#F7F5F2 85%,#E9E5E0 100%)}}
 .win span{{font-family:Poppins;color:#999;font-size:22px;text-align:center;line-height:1.5}}
 .loops{{position:absolute;inset:0}} .loops i{{position:absolute;background:{STRIPE};border-radius:999px}}
 .pill{{left:50%;top:50%;transform:translate(-50%,-50%);background:{BG};padding:14px 36px;border-radius:999px;font-family:Poppins;font-weight:700;letter-spacing:4px;font-size:20px;white-space:nowrap}}
@@ -93,7 +94,7 @@ with sync_playwright() as p:
     pg.goto('file:///home/claude/974-social/packaging/fitbit-fabric/box-window.html'); pg.wait_for_timeout(600)
     pg.locator('.die').screenshot(path='974-fitbit-fabric-window-box-dieline-300dpi.png')
     cols = ['grey', 'blush', 'fog', 'olive']
-    mk = ''.join(f'<div class="mk">{front(BAND + c + "-cut.png")}</div>' for c in cols)
+    mk = ''.join(f'<div class="mk">{front("/home/claude/974-social/packaging/fitbit-fabric/strips/" + c + ".png")}</div>' for c in cols)
     open('box-window-mock.html', 'w').write(page(mk).replace('body{', 'body{background:#EFE9E4;'))
     pg2 = br.new_page(viewport={'width': 4*898 + 5*60, 'height': 886 + 80})
     pg2.goto('file:///home/claude/974-social/packaging/fitbit-fabric/box-window-mock.html'); pg2.wait_for_timeout(600)

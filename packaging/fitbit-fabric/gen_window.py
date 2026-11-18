@@ -91,7 +91,8 @@ CSS = f'''{FONTS}
 
 def barcode(bc, colour):
     if not bc:
-        return ''   # sticker goes here (25 x 15 mm, bottom-right of the back)
+        # white pad 27 x 17 mm where the 25 x 15 mm barcode sticker goes
+        return f'<div class="abs" style="right:87px;bottom:40px;width:{round(27*PX)}px;height:{round(17*PX)}px;background:#fff;border-radius:{round(1.5*PX)}px"></div>'
     import sys; sys.path.insert(0, B); from c128 import code128c
     path = f'/tmp/bc-{bc}.png'; code128c(bc, path)
     return (f'<div class="abs bcx" style="right:87px;bottom:40px"><img src="file://{path}">'

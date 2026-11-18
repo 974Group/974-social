@@ -56,11 +56,11 @@ def die(band=None, bc=None, colour=None):
    صُنع بفخر من قطر.<br><span style="font-weight:500;opacity:.8">سيور بجودة عالية ترفع ستايلك اليومي. شكراً إنك تدعم مشروع محلي.</span></div>
   <div class="abs en" style="left:87px;right:87px;top:420px;font-size:18px;font-weight:500;line-height:1.55;opacity:.8">
    Proudly founded in Qatar. Premium bands that elevate your everyday style. Thank you for supporting a local business.</div>
-  <div class="qr" style="left:87px;bottom:60px;width:210px"><img src="file://{B}qr.png"></div>
-  <div class="abs ar" style="left:325px;bottom:215px;font-size:20px;font-weight:700;opacity:.85">امسح وتسوّق مباشرة</div>
-  <div class="abs en" style="left:325px;bottom:112px;font-weight:700;font-size:18px;line-height:1.6">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
+  <div class="qr" style="left:87px;bottom:60px;width:220px"><img src="file://{B}qr.png"></div>
+  <div class="abs ar" style="left:87px;bottom:300px;font-size:20px;font-weight:700;opacity:.85">امسح وتسوّق مباشرة</div>
+  <div class="abs en" style="left:330px;bottom:75px;font-weight:700;font-size:16px;line-height:1.6">974GROUP.NET<br>+974 5555 6278<br>@974.Group</div>
   {barcode(bc, colour)}
-  <div class="abs en" style="left:325px;bottom:58px;font-size:11px;letter-spacing:2px;opacity:.6">MADE IN CHINA · DESIGNED IN QATAR</div>
+  <div class="abs en" style="left:87px;bottom:24px;font-size:11px;letter-spacing:2px;opacity:.6">MADE IN CHINA · DESIGNED IN QATAR</div>
  </div></div>
  <div class="p glue"></div>
  <svg class="cut" width="898" height="2729"><rect x="{WIN_X}" y="{390+WIN_Y}" width="{WIN_W}" height="{WIN_H}" rx="{round(4*PX)}" fill="none" stroke="#E3001B" stroke-width="2"/></svg>
@@ -92,7 +92,7 @@ CSS = f'''{FONTS}
 def barcode(bc, colour):
     if not bc:
         # white pad 27 x 17 mm where the 25 x 15 mm barcode sticker goes
-        return f'<div class="abs" style="right:87px;bottom:40px;width:{round(27*PX)}px;height:{round(17*PX)}px;background:#fff;border-radius:{round(1.5*PX)}px"></div>'
+        return f'<div class="abs" style="right:87px;bottom:60px;width:{round(27*PX)}px;height:{round(17*PX)}px;background:#fff;border-radius:{round(1.5*PX)}px"></div>'
     import sys; sys.path.insert(0, B); from c128 import code128c
     path = f'/tmp/bc-{bc}.png'; code128c(bc, path)
     return (f'<div class="abs bcx" style="right:87px;bottom:40px"><img src="file://{path}">'

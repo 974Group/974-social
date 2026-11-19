@@ -51,6 +51,10 @@ html{{background:{DK}}}html,body{{width:{W}px;height:{H}px}}
 body{{position:relative;overflow:hidden;font-family:Cairo;color:#fff;
 background:radial-gradient(ellipse 2600px 1300px at 50% 18%,#9A1460 0%,rgba(154,20,96,0) 70%),linear-gradient(180deg,{M} 0%,#650638 55%,{DK} 100%);background-repeat:no-repeat}}
 .c{{position:absolute;left:0;right:0;text-align:center}}
+.sell{{position:absolute;left:0;right:0;top:1100px;display:flex;justify-content:center;gap:46px}}
+.sell .ch{{border:5px solid {GOLD};border-radius:60px;padding:14px 56px 18px;text-align:center}}
+.sell .en{{font-family:Poppins;font-weight:700;font-size:62px;letter-spacing:8px;color:{GOLD};line-height:1.15}}
+.sell .ar{{font-weight:800;font-size:58px;line-height:1.1;direction:rtl}}
 .lbl{{position:absolute;top:1105px;width:2400px;text-align:center}}
 .lbl .en{{font-family:Poppins;font-weight:700;font-size:88px;letter-spacing:20px;color:{GOLD}}}
 .lbl .ar{{font-weight:800;font-size:66px;opacity:.9;margin-top:-6px}}
@@ -60,9 +64,9 @@ background:radial-gradient(ellipse 2600px 1300px at 50% 18%,#9A1460 0%,rgba(154,
 {logo_svg(2300, 'rgba(255,255,255,.035)', f'position:absolute;right:-700px;top:300px')}
 {logo_svg(2300, 'rgba(255,255,255,.035)', f'position:absolute;left:-900px;top:-900px')}
 <!-- centre: logo + taglines -->
-<div class="c" style="top:170px">{logo_svg(500, '#fff')}</div>
-<div class="c" style="top:720px;font-family:Poppins;font-weight:700;font-size:100px;letter-spacing:26px">A QATARI BRAND · BUILT FOR RACE DAY</div>
-<div class="c" style="top:860px;font-weight:900;font-size:140px;color:{GOLD};direction:rtl">براند قطري.. جاهز ليوم السباق</div>
+<div class="c" style="top:120px">{logo_svg(500, '#fff')}</div>
+<div class="c" style="top:660px;font-family:Poppins;font-weight:700;font-size:100px;letter-spacing:26px">A QATARI BRAND · BUILT FOR RACE DAY</div>
+<div class="c" style="top:790px;font-weight:900;font-size:140px;color:{GOLD};direction:rtl">براند قطري.. جاهز ليوم السباق</div>
 <!-- left: instagram -->
 <div style="position:absolute;left:600px;top:170px;width:860px;text-align:center">
   {ig_icon(230, '#fff')}
@@ -77,9 +81,8 @@ background:radial-gradient(ellipse 2600px 1300px at 50% 18%,#9A1460 0%,rgba(154,
   <div style="font-weight:900;font-size:70px;direction:rtl;margin-top:-10px">امسح وتسوّق</div>
   <div style="font-family:Poppins;font-weight:700;font-size:66px;color:{GOLD}">974group.net</div>
 </div>
-<!-- category labels over the two tables -->
-<div class="lbl" style="left:550px"><div class="en">WHOOP 5.0 · MG</div><div class="ar">سيور ووب</div></div>
-<div class="lbl" style="left:3050px"><div class="en">GARMIN · FITBIT · APPLE</div><div class="ar">سيور قارمن · فت بت · أبل ووتش</div></div>
+<!-- what we sell: one centred row, not tied to where things stand -->
+<div class="sell"><div class="ch"><div class="en">WHOOP BANDS</div><div class="ar">سيور ووب</div></div><div class="ch"><div class="en">GARMIN BANDS</div><div class="ar">سيور قارمن</div></div><div class="ch"><div class="en">FITBIT BANDS</div><div class="ar">سيور فت بت</div></div><div class="ch"><div class="en">SUNGLASSES</div><div class="ar">نظارات</div></div><div class="ch"><div class="en">SOCKS</div><div class="ar">دلاغات</div></div></div>
 {g}
 </body></html>'''
 

@@ -91,7 +91,7 @@ def goggles():
 # ---------- Fitbit fabric ----------
 def fitbit():
     F=os.path.dirname(os.path.abspath(__file__))+'/fitbit-trim/'
-    cols=['black','grey','navy','blue','fog','olive','lime','beige','light-pink','pinky-red','purple']
+    cols=['black-L','grey','navy','blue','fog','olive','lime','beige','blush','light-pink','pinky-red','purple']
     r1=''.join(f'<img src="file://{F}{c}.png">' for c in cols[:6]); r2=''.join(f'<img src="file://{F}{c}.png">' for c in cols[6:])
     body=f'''
 <div class="abs" style="inset:0;background:linear-gradient(180deg,#EEF3F3 0%,#DCE7E8 100%)"></div><!--/bk-->
@@ -107,7 +107,7 @@ def fitbit():
   <span style="font-weight:900;font-size:44px">ريال بس</span>
 </div>
 <div class="abs rw" style="top:830px">{r2}</div>
-<div class="abs" style="left:0;right:0;top:1060px;text-align:center;direction:rtl;font-weight:800;font-size:28px;color:#17302F"><span class="en">11</span> لون متوفر · سير فقط بدون الجهاز</div>
+<div class="abs" style="left:0;right:0;top:1060px;text-align:center;direction:rtl;font-weight:800;font-size:28px;color:#17302F"><span class="en">12</span> لون · سير فقط بدون الجهاز</div>
 <div class="abs" style="left:0;right:0;top:1120px;text-align:center">{cta('اختار لونك','#17302F','#fff')}</div>'''
     return doc('#E3ECEC','#17302F',body,extra=CTA_CSS+'.pf{bottom:24px} .rw{left:0;right:0;display:flex;justify-content:center;gap:4px} .rw img{width:170px;height:200px;object-fit:contain;padding:12px 6px;filter:drop-shadow(0 10px 10px rgba(20,50,50,.18))}')
 

@@ -4,8 +4,8 @@
 # overshoot only on the price/badge pops, ambient tape scroll + dots drift, stillness at the end.
 import subprocess, sys, os, shutil
 D = '/home/claude/974-social/posts/2026-11/nov-deals/'
-src = sys.argv[1] if len(sys.argv) > 1 else D + 'out/974-nov-deals-day7-apple-loops-story.html'
-out = sys.argv[2] if len(sys.argv) > 2 else D + 'out/974-nov-deals-day7-apple-loops-story.mp4'
+src = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else D + 'out/974-nov-deals-day7-apple-loops-story.html'
+out = os.path.abspath(sys.argv[2]) if len(sys.argv) > 2 else D + 'out/974-nov-deals-day7-apple-loops-story.mp4'
 FPS, DUR = 30, 8.0
 
 JS = r'''
@@ -16,7 +16,7 @@ const easeOut=bez(0.05,0.7,0.1,1), pop=bez(0.175,0.885,0.32,1.275), inOut=bez(0.
 const seg=(t,a,d)=>clamp((t-a)/d);
 const $=(s)=>[...document.querySelectorAll(s)];
 const prods=$('img[style*="object-fit:contain"]');
-const big=document.querySelector('.big'), khasm=document.querySelector('.khasm'), sticker=document.querySelector('.sticker');
+const big=document.querySelector('.big'); const PCT=parseInt(big.textContent)||40; const khasm=document.querySelector('.khasm'), sticker=document.querySelector('.sticker');
 const tape=document.querySelector('.tape'), tapeSpan=tape.querySelector('span');
 const tapeRot=tape.style.transform;
 const all=$('body > div');
@@ -33,7 +33,7 @@ window.setT=(t)=>{
   // 0.0-0.6 header + logo fade/slide down
   const h=easeOut(seg(t,0,0.5)); [head,document.querySelector('.logo')].forEach(e=>{if(e){e.style.opacity=h;e.style.translate=`0 ${(1-h)*-24}px`;}});
   // 0.2-0.9 big % counts up and scales in
-  const b=seg(t,0.2,0.7); const n=Math.round(40*easeOut(b));
+  const b=seg(t,0.2,0.7); const n=Math.round(PCT*easeOut(b));
   big.textContent=n+'%'; big.style.opacity=clamp(b*3); big.style.scale=0.6+0.4*pop(b);
   // 0.7 khasm badge pops with a small overshoot
   const k=seg(t,0.7,0.45); khasm.style.opacity=clamp(k*3); khasm.style.scale=0.3+0.7*pop(k); khasm.style.rotate=`${(1-pop(k))*-14}deg`;

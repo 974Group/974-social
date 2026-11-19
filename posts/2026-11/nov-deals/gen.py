@@ -202,6 +202,17 @@ def day6(story):
                 160 if not story else 160, [('Soft Fabric · يبدأ من', '89', '57.85')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%', ps=2.1, tmin=0, dy=(100 if not story else 62))
 
 
+AL = '/home/claude/974-social/products/apple-loops/cut/'
+
+
+def day7(story):
+    rows = [[AL + f + '.png' for f in ('alpine-black', 'alpine-starlight', 'ocean-orange', 'ocean-white')],
+            [AL + f + '.png' for f in ('trail-blue-grey', 'trail-navy-orange', 'trail-orange', 'trail-yellow-beige')]]
+    cw = 180 if not story else 178
+    return deal(story, 7, 'سيور <span style="font-family:Poppins">Apple Watch</span>', '<span style="font-family:Poppins">Alpine · Ocean · Trail Loop</span>', rows, cw, cw,
+                cw + 18, [('Alpine', '79', '47.40'), ('Ocean', '59', '35.40'), ('Trail', '79', '47.40')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='40%', ps=1.3, tmin=0, dy=(40 if not story else 20))
+
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -230,4 +241,7 @@ if __name__ == '__main__':
     if which in ('all', 'day6'):
         shot(day6(False), D + 'out/974-nov-deals-day6-softfabric-post.png', 1350)
         shot(day6(True), D + 'out/974-nov-deals-day6-softfabric-story.png', 1920)
+    if which in ('all', 'day7'):
+        shot(day7(False), D + 'out/974-nov-deals-day7-apple-loops-post.png', 1350)
+        shot(day7(True), D + 'out/974-nov-deals-day7-apple-loops-story.png', 1920)
     print('ok')

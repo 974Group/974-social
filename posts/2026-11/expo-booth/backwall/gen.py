@@ -30,6 +30,44 @@ def ig_icon(s, col):
             f'<circle cx="50" cy="50" r="20" fill="none" stroke="{col}" stroke-width="9"/><circle cx="74" cy="26" r="6" fill="{col}"/></svg>')
 
 
+def sell_block():
+    G = GOLD
+    # main node
+    mx, my, mw, mh = 3000, 950, 1500, 140
+    brands = [('WHOOP', 'ووب'), ('GARMIN', 'قارمن'), ('FITBIT', 'فت بت'), ('APPLE WATCH', 'أبل ووتش')]
+    cw, gap, cy, ch = 560, 70, 1215, 140
+    total = len(brands) * cw + (len(brands) - 1) * gap
+    x0 = mx - total // 2
+    paths = ''
+    for i in range(len(brands)):
+        tx = x0 + i * (cw + gap) + cw // 2
+        paths += f'<path d="M{mx},{my+mh} C{mx},{my+mh+45} {tx},{cy-45} {tx},{cy}" fill="none" stroke="{G}" stroke-width="7" stroke-linecap="round"/>'
+        paths += f'<circle cx="{tx}" cy="{cy}" r="11" fill="{G}"/>'
+    paths += f'<circle cx="{mx}" cy="{my+mh}" r="14" fill="{G}"/>'
+    out = f'<svg style="position:absolute;left:0;top:0;width:{W}px;height:{H}px" viewBox="0 0 {W} {H}">{paths}</svg>'
+    out += (f'<div style="position:absolute;left:{mx-mw//2}px;top:{my}px;width:{mw}px;height:{mh}px;background:{G};border-radius:80px;'
+            f'display:flex;align-items:center;justify-content:center;gap:40px;color:{DK}">'
+            f'<span style="font-family:Poppins;font-weight:900;font-size:70px;letter-spacing:8px">SMARTWATCH BANDS</span>'
+            f'<span style="font-weight:900;font-size:66px;direction:rtl">سيور ساعات</span></div>')
+    for i, (en, ar) in enumerate(brands):
+        x = x0 + i * (cw + gap)
+        out += (f'<div style="position:absolute;left:{x}px;top:{cy}px;width:{cw}px;height:{ch}px;border:6px solid {G};border-radius:70px;'
+                f'display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(81,2,45,.55)">'
+                f'<span style="font-family:Poppins;font-weight:700;font-size:54px;letter-spacing:6px;color:{G};line-height:1.05">{en}</span>'
+                f'<span style="font-weight:800;font-size:46px;line-height:1.05;direction:rtl">{ar}</span></div>')
+    # side items with simple line icons
+    sung = (f'<svg viewBox="0 0 200 90" style="width:250px;height:112px"><path d="M10,22 H190" stroke="{G}" stroke-width="9" stroke-linecap="round"/>'
+            f'<path d="M18,22 C18,70 40,80 62,80 C84,80 92,62 92,22 Z M108,22 C108,62 116,80 138,80 C160,80 182,70 182,22 Z" fill="none" stroke="{G}" stroke-width="9" stroke-linejoin="round"/></svg>')
+    sock = (f'<svg viewBox="0 0 120 140" style="width:128px;height:150px"><path d="M30,8 H82 V78 L104,96 C116,106 110,130 92,130 L56,130 C30,130 30,112 30,96 Z" fill="none" stroke="{G}" stroke-width="9" stroke-linejoin="round"/>'
+            f'<path d="M30,30 H82" stroke="{G}" stroke-width="9"/></svg>')
+    for cx, icon, en, ar in ((1080, sung, 'SUNGLASSES', 'نظارات'), (4920, sock, 'SOCKS', 'دلاغات')):
+        out += (f'<div style="position:absolute;left:{cx-330}px;top:990px;width:660px;height:365px;border:6px solid {G};border-radius:60px;'
+                f'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(81,2,45,.55)">{icon}'
+                f'<span style="font-family:Poppins;font-weight:700;font-size:58px;letter-spacing:7px;color:{G};line-height:1.05">{en}</span>'
+                f'<span style="font-weight:800;font-size:52px;line-height:1.05;direction:rtl">{ar}</span></div>')
+    return out
+
+
 def page(guides=False):
     g = ''
     if guides:
@@ -64,9 +102,9 @@ background:radial-gradient(ellipse 2600px 1300px at 50% 18%,#9A1460 0%,rgba(154,
 {logo_svg(2300, 'rgba(255,255,255,.035)', f'position:absolute;right:-700px;top:300px')}
 {logo_svg(2300, 'rgba(255,255,255,.035)', f'position:absolute;left:-900px;top:-900px')}
 <!-- centre: logo + taglines -->
-<div class="c" style="top:120px">{logo_svg(500, '#fff')}</div>
-<div class="c" style="top:660px;font-family:Poppins;font-weight:700;font-size:100px;letter-spacing:26px">A QATARI BRAND · BUILT FOR RACE DAY</div>
-<div class="c" style="top:790px;font-weight:900;font-size:140px;color:{GOLD};direction:rtl">براند قطري.. جاهز ليوم السباق</div>
+<div class="c" style="top:110px">{logo_svg(420, '#fff')}</div>
+<div class="c" style="top:570px;font-family:Poppins;font-weight:700;font-size:96px;letter-spacing:26px">A QATARI BRAND · BUILT FOR RACE DAY</div>
+<div class="c" style="top:690px;font-weight:900;font-size:130px;color:{GOLD};direction:rtl">براند قطري.. جاهز ليوم السباق</div>
 <!-- left: instagram -->
 <div style="position:absolute;left:600px;top:170px;width:860px;text-align:center">
   {ig_icon(230, '#fff')}
@@ -75,14 +113,14 @@ background:radial-gradient(ellipse 2600px 1300px at 50% 18%,#9A1460 0%,rgba(154,
   <div style="font-weight:800;font-size:66px;color:{GOLD};direction:rtl;margin-top:-10px">تابعنا على الانستا</div>
 </div>
 <!-- right: QR -->
-<div style="position:absolute;left:4560px;top:150px;width:860px;text-align:center">
+<div style="position:absolute;left:4560px;top:120px;width:860px;text-align:center">
   <div style="display:inline-block;background:#fff;border-radius:44px;padding:44px">{qr_svg(380)}</div>
   <div style="font-family:Poppins;font-weight:700;font-size:62px;letter-spacing:4px;margin-top:22px">SCAN &amp; SHOP</div>
   <div style="font-weight:900;font-size:70px;direction:rtl;margin-top:-10px">امسح وتسوّق</div>
   <div style="font-family:Poppins;font-weight:700;font-size:66px;color:{GOLD}">974group.net</div>
 </div>
-<!-- what we sell: one centred row, not tied to where things stand -->
-<div class="sell"><div class="ch"><div class="en">WHOOP BANDS</div><div class="ar">سيور ووب</div></div><div class="ch"><div class="en">GARMIN BANDS</div><div class="ar">سيور قارمن</div></div><div class="ch"><div class="en">FITBIT BANDS</div><div class="ar">سيور فت بت</div></div><div class="ch"><div class="en">SUNGLASSES</div><div class="ar">نظارات</div></div><div class="ch"><div class="en">SOCKS</div><div class="ar">دلاغات</div></div></div>
+<!-- what we sell: bands branch into the four devices; sunglasses and socks on the sides -->
+{sell_block()}
 {g}
 </body></html>'''
 

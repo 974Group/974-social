@@ -20,11 +20,16 @@ FONTS=f'''@font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP
 body{{width:1080px;height:1350px;font-family:Cairo;position:relative;overflow:hidden}}
 .pf{{position:absolute;left:28px;right:28px;bottom:30px}}'''
 
+STORY=False; O=230
 def doc(bg,ink,body,pf_ink=None,extra=''):
+    bk,_,fg=body.rpartition('<!--/bk-->')
+    H=1920 if STORY else 1350; o=O if STORY else 0
+    st=f'body{{height:{H}px!important;--o:{o}px}} .pf{{bottom:250px!important}}' if STORY else 'body{--o:0px}'
     return f'''<!doctype html><html><head><meta charset="utf-8"><style>{FONTS}
 body{{background:{bg};color:{ink}}}
 {payfoot.css(1.0,text=pf_ink or ink,label=pf_ink or ink)}
-{extra}</style></head><body>{body}<div class="pf">{payfoot.html()}</div></body></html>'''
+{extra}
+{st}</style></head><body>{bk}<div class="abs" style="left:0;right:0;top:{o}px;height:1350px">{fg}</div><div class="pf">{payfoot.html()}</div></body></html>'''
 
 def cta(txt,bg,fg):
     return f'<div class="cta" style="background:{bg};color:{fg}">{txt} <span style="font-family:Poppins">←</span></div>'
@@ -34,9 +39,9 @@ CTA_CSS='.cta{display:inline-flex;align-items:center;gap:12px;border-radius:40px
 def rolex():
     ph=R+'reels/2026-11/rolex-src/s204.png'; C=R+'refs/rolex/'
     body=f'''
-<div class="abs" style="inset:0 0 auto 0;height:900px;background:url(file://{ph}) center 42%/1080px auto no-repeat"></div>
-<div class="abs" style="left:0;right:0;top:420px;height:500px;background:linear-gradient(180deg,rgba(20,12,8,0) 0%,rgba(20,12,8,.85) 70%,#140C08 100%)"></div>
-<div class="abs" style="left:0;right:0;top:900px;bottom:0;background:#140C08"></div>
+<div class="abs" style="inset:0 0 auto 0;height:calc(900px + var(--o));background:url(file://{ph}) center 42%/cover no-repeat"></div>
+<div class="abs" style="left:0;right:0;top:calc(420px + var(--o));height:500px;background:linear-gradient(180deg,rgba(20,12,8,0) 0%,rgba(20,12,8,.85) 70%,#140C08 100%)"></div>
+<div class="abs" style="left:0;right:0;top:calc(900px + var(--o));bottom:0;background:#140C08"></div><!--/bk-->
 <img class="abs" src="file://{LW}" style="left:48px;top:46px;height:46px">
 <div class="abs" style="right:48px;top:44px;background:#C9A24B;color:#140C08;border-radius:30px;padding:4px 22px 8px;font-weight:900;font-size:26px">الأكثر مبيعاً 🔥</div>
 <div class="abs ar" style="right:48px;left:48px;top:640px;color:#fff">
@@ -62,7 +67,7 @@ def goggles():
     cols=[('yellow','Yellow','209'),('pink','Pink','209'),('black','Black','249'),('grey','Grey','249'),('red','Red','249'),('blue','Blue','249')]
     row=''.join(f'<div class="g"><img src="file://{G}{k}.png"><i class="en">{n}</i></div>' for k,n,p in cols)
     body=f'''
-<div class="abs" style="inset:0;background:radial-gradient(120% 80% at 70% 30%,#F7E7C6 0%,#EBCF9B 55%,#D9B477 100%)"></div>
+<div class="abs" style="inset:0;background:radial-gradient(120% 80% at 70% 30%,#F7E7C6 0%,#EBCF9B 55%,#D9B477 100%)"></div><!--/bk-->
 <div class="abs en" style="left:-20px;top:300px;font-weight:900;font-size:360px;line-height:.8;color:rgba(110,70,20,.10);letter-spacing:-12px">2 IN 1</div>
 <img class="abs" src="file://{LB}" style="left:48px;top:46px;height:46px">
 <div class="abs en" style="right:48px;top:58px;font-weight:700;font-size:16px;letter-spacing:5px;color:#5A3A12">974 GUARDS · 2 IN 1</div>
@@ -89,7 +94,7 @@ def fitbit():
     cols=['black','grey','navy','blue','fog','olive','lime','beige','light-pink','pinky-red','purple']
     r1=''.join(f'<img src="file://{F}{c}.png">' for c in cols[:6]); r2=''.join(f'<img src="file://{F}{c}.png">' for c in cols[6:])
     body=f'''
-<div class="abs" style="inset:0;background:linear-gradient(180deg,#EEF3F3 0%,#DCE7E8 100%)"></div>
+<div class="abs" style="inset:0;background:linear-gradient(180deg,#EEF3F3 0%,#DCE7E8 100%)"></div><!--/bk-->
 <img class="abs" src="file://{LB}" style="left:48px;top:46px;height:46px">
 <div class="abs en" style="right:48px;top:58px;font-weight:700;font-size:16px;letter-spacing:5px;color:#355">FITBIT AIR · FABRIC</div>
 <div class="abs ar" style="left:48px;right:48px;top:130px;text-align:center;color:#17302F">
@@ -102,7 +107,7 @@ def fitbit():
   <span style="font-weight:900;font-size:44px">ريال بس</span>
 </div>
 <div class="abs rw" style="top:830px">{r2}</div>
-<div class="abs" style="left:0;right:0;top:1060px;text-align:center;font-weight:800;font-size:28px;color:#17302F"><span class="en">11</span> لون متوفر · سير فقط بدون الجهاز</div>
+<div class="abs" style="left:0;right:0;top:1060px;text-align:center;direction:rtl;font-weight:800;font-size:28px;color:#17302F"><span class="en">11</span> لون متوفر · سير فقط بدون الجهاز</div>
 <div class="abs" style="left:0;right:0;top:1120px;text-align:center">{cta('اختار لونك','#17302F','#fff')}</div>'''
     return doc('#E3ECEC','#17302F',body,extra=CTA_CSS+'.pf{bottom:24px} .rw{left:0;right:0;display:flex;justify-content:center;gap:4px} .rw img{width:170px;height:200px;object-fit:contain;padding:12px 6px;filter:drop-shadow(0 10px 10px rgba(20,50,50,.18))}')
 
@@ -112,7 +117,7 @@ def cirqa3():
     cols=[('pink','Pink','#F3B8C8'),('purple','Purple','#C8B8EC'),('navy','Navy','#AEB8D6'),('green','Green','#B9CDB0'),('orange','Orange','#F6C49C'),('light-pink','Light pink','#F6DADF'),('cement-gray','Cement Gray','#D2D2CE'),('black','Black','#B8B8B8')]
     tiles=''.join(f'<div class="t" style="background:{bg}"><img src="file://{C}{k}.png"><i class="en">{n}</i></div>' for k,n,bg in cols)
     body=f'''
-<div class="abs" style="inset:0;background:#141A2E"></div>
+<div class="abs" style="inset:0;background:#141A2E"></div><!--/bk-->
 <img class="abs" src="file://{LW}" style="left:48px;top:46px;height:46px">
 <div class="abs en" style="right:48px;top:58px;font-weight:700;font-size:16px;letter-spacing:5px;color:#9FA8C8">GARMIN CIRQA · FABRIC 3.0</div>
 <div class="abs ar" style="right:48px;left:48px;top:120px;color:#fff">
@@ -128,11 +133,13 @@ def cirqa3():
 .t img{height:230px;filter:drop-shadow(0 12px 12px rgba(0,0,0,.25))}.t i{font-style:normal;font-weight:700;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:#141A2E;margin-top:8px;opacity:.75}'''
     return doc('#141A2E','#fff',body,pf_ink='#fff',extra=extra)
 
-def shot(name,html):
+def shot(name,html,H=1350):
     p=os.path.join(OUT,name+'.html'); open(p,'w').write(html)
-    js=f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const pg=await b.newPage({{viewport:{{width:1080,height:1350}}}});await pg.goto('file://{p}');await pg.waitForTimeout(900);await pg.screenshot({{path:'{OUT}/{name}.png'}});await b.close();}})()"
+    js=f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const pg=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await pg.goto('file://{p}');await pg.waitForTimeout(900);await pg.screenshot({{path:'{OUT}/{name}.png'}});await b.close();}})()"
     subprocess.run(['node','-e',js],check=True,env={**os.environ,'PLAYWRIGHT_BROWSERS_PATH':'/opt/pw-browsers','NODE_PATH':subprocess.check_output(['npm','root','-g']).decode().strip()})
 
 if __name__=='__main__':
     F={'rolex':rolex,'goggles':goggles,'fitbit':fitbit,'cirqa3':cirqa3}
-    for k in (sys.argv[1:] or F): shot(f'974-ad-{k}',F[k]())
+    for k in (sys.argv[1:] or F):
+        STORY=False; shot(f'974-ad-{k}',F[k]())
+        STORY=True; shot(f'974-ad-{k}-story',F[k](),1920)

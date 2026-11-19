@@ -7,9 +7,9 @@ sys.path.insert(0,'/home/claude/974-social/posts/2026-11/ig-ads-best-sellers'); 
 D=os.path.dirname(os.path.abspath(__file__)); C=D+'/cut/'; OUT=D+'/out'; os.makedirs(OUT,exist_ok=True)
 WHOOP=[('w-sil','Silicone','سيليكون'),('w-wp-L','Waterproof','ووتر بروف'),('w-soft-L','Soft fabric','قماش ناعم'),('w-rolex','Rolex 3D','رولكس'),('w-wool-L','Wool','صوف'),('w-fab-L','Fabric','قماش')]
 GARMIN=[('g-20','QuickFit · watches','حق الساعات'),('g-fab3','CIRQA','حق السيركا')]
-FITBIT=[('f-fab','Fabric','قماش'),('f-sil2','Silicone 2.0','سيليكون'),('f-mag','Magnetic','مغناطيس')]
-APPLE=[('a-trail','Trail loop','ترايل لوب')]
-GLASS=[('goggle','2 in 1','نظارة 2 in 1'),('sun','Sunglasses','نظارات شمسية'),('g-brown','Brown Edition','نظارة البر')]
+FITBIT=[('f-fab-grey','Fabric','قماش'),('f-sil2','Silicone 2.0','سيليكون'),('f-mag','Magnetic','مغناطيس')]
+APPLE=[('a-trail','38 · 40 · 41 · 42 · 44 · 45 · 46 · 49','<span class="en">38–49mm</span>')]
+GLASS=[('goggle','2 in 1','بر وبحر'),('sun','Sunglasses','جري وسيكل'),('g-brown','Brown Edition','بر وتزلج')]
 SOCKS=[('s-run','Running','جري'),('sock-white','Grip','قريب'),('s-pil','Pilates','بيلاتيس')]
 
 def lab(ar): return ar.replace('2 in 1','<span class="en">2 in 1</span>')

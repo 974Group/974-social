@@ -22,23 +22,24 @@ def cells(items,h,mode='h'):
 def sec(label,body,flex=1):
     return f'<div class="sec" style="flex:{flex}"><div class="lb en">{label}</div><div class="row">{body}</div></div>'
 
-def page():
+def page(feed=False):
+    h=140 if feed else 145; hg=150 if feed else 165
     body=f'''
 <div class="abs" style="inset:0;background:#F4F1F2"></div>
-<div class="abs" style="left:0;right:0;top:0;height:455px;background:linear-gradient(160deg,#720842,#51022D)"></div><!--/bk-->
-<img class="abs" src="file://{G.LW}" style="left:48px;top:210px;height:50px">
-<div class="abs en" style="right:48px;top:226px;font-weight:700;font-size:17px;letter-spacing:5px;color:#E9C9D8">THE 974 RANGE</div>
-<div class="abs ar" style="right:48px;left:48px;top:285px;color:#fff">
-  <div style="font-weight:900;font-size:58px;line-height:1.1">كل اللي تحتاجه.. <span style="color:#C9A24B">من مكان واحد</span></div>
+<div class="abs" style="left:0;right:0;top:0;height:{455 if not feed else 250}px;background:linear-gradient(160deg,#720842,#51022D)"></div><!--/bk-->
+<img class="abs" src="file://{G.LW}" style="left:48px;top:{210 if not feed else 40}px;height:{50 if not feed else 42}px">
+<div class="abs en" style="right:48px;top:{226 if not feed else 54}px;font-weight:700;font-size:17px;letter-spacing:5px;color:#E9C9D8">THE 974 RANGE</div>
+<div class="abs ar" style="right:48px;left:48px;top:{285 if not feed else 95}px;color:#fff">
+  <div style="font-weight:900;font-size:{58 if not feed else 52}px;line-height:1.1">كل اللي تحتاجه.. <span style="color:#C9A24B">من مكان واحد</span></div>
 </div>
-<div class="abs" style="left:24px;right:24px;top:472px;display:flex;flex-direction:column;gap:12px">
-  {sec('WHOOP 5.0',cells(WHOOP,145))}
-  <div style="display:flex;gap:14px">{sec('GARMIN',cells(GARMIN,145),2)}{sec('FITBIT AIR',cells(FITBIT,145),3)}</div>
-  <div style="display:flex;gap:14px">{sec('APPLE WATCH',cells(APPLE,145),1)}{sec('GLASSES',cells(GLASS,165,'w'),3)}</div>
-  {sec('SOCKS',cells(SOCKS,145))}
+<div class="abs" style="left:24px;right:24px;top:{472 if not feed else 262}px;display:flex;flex-direction:column;gap:{12 if not feed else 9}px">
+  {sec('WHOOP 5.0',cells(WHOOP,h))}
+  <div style="display:flex;gap:14px">{sec('GARMIN',cells(GARMIN,h),2)}{sec('FITBIT AIR',cells(FITBIT,h),3)}</div>
+  <div style="display:flex;gap:14px">{sec('APPLE WATCH',cells(APPLE,h),1)}{sec('GLASSES',cells(GLASS,hg,'w'),3)}</div>
+  {sec('SOCKS',cells(SOCKS,h))}
 </div>
-<div class="abs" style="right:48px;top:370px">{G.cta('تسوّق الحين من 974group.net','#C9A24B','#51022D')}</div>'''
-    extra=G.CTA_CSS+'''body{height:1920px!important} .pf{bottom:250px!important} .pf .site{display:none!important}
+<div class="abs" style="right:48px;top:{370 if not feed else 172}px">{G.cta('تسوّق الحين من 974group.net','#C9A24B','#51022D')}</div>'''
+    extra=G.CTA_CSS+''''''+('.pf{bottom:22px!important} body{height:1350px!important} .c b{font-size:18px!important;margin-top:2px!important} .c i{font-size:12px!important} .sec{padding:7px 8px 7px!important} .lb{font-size:14px!important;margin-bottom:2px!important} .cta{font-size:24px!important;padding:5px 24px 9px!important}' if feed else '.pf{bottom:250px!important} body{height:1920px!important}')+''' .pf .site{display:none!important}
 .cta{font-size:28px}
 .sec{background:#fff;border-radius:26px;padding:10px 8px 10px;box-shadow:0 6px 18px rgba(81,2,45,.07)}
 .lb{font-weight:700;font-size:16px;letter-spacing:5px;color:#720842;text-align:center;margin-bottom:4px}
@@ -52,4 +53,4 @@ def page():
     return G.doc('#F4F1F2','#51022D',body,extra=extra)
 
 if __name__=='__main__':
-    G.OUT=OUT; G.shot('974-full-range-story',page(),1920)
+    G.OUT=OUT; G.shot('974-full-range-story',page(),1920); G.shot('974-full-range-feed',page(True),1350)

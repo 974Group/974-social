@@ -9,8 +9,8 @@ WHOOP=[('w-sil','Silicone','سيليكون'),('w-wp-L','Waterproof','ووتر ب
 GARMIN=[('g-20','QuickFit · watches','حق الساعات'),('g-fab3','CIRQA','حق السيركا')]
 FITBIT=[('f-fab','Fabric','قماش'),('f-sil2','Silicone 2.0','سيليكون'),('f-mag','Magnetic','مغناطيس')]
 APPLE=[('a-trail','Trail loop','ترايل لوب')]
-GLASS=[('goggle','2 in 1','نظارة 2 in 1'),('sun','Sunglasses','نظارات شمسية'),('g-brown','Brown Edition','قوقلز بني')]
-SOCKS=[('s-run','Running','جري'),('sock','Grip','قريب'),('s-pil','Pilates','بيلاتيس')]
+GLASS=[('goggle','2 in 1','نظارة 2 in 1'),('sun','Sunglasses','نظارات شمسية'),('g-brown','Brown Edition','نظارة البر')]
+SOCKS=[('s-run','Running','جري'),('sock-white','Grip','قريب'),('s-pil','Pilates','بيلاتيس')]
 
 def lab(ar): return ar.replace('2 in 1','<span class="en">2 in 1</span>')
 def cells(items,h,mode='h'):

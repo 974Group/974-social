@@ -37,7 +37,7 @@ background:linear-gradient(180deg,{CREAM} 0%,{SAND} 100%)}}
 .g{{position:absolute;left:{(1080-gw)//2}px;top:{o+(300 if story else 272)}px;width:{gw}px;filter:drop-shadow(0 30px 30px rgba(59,36,23,.35))}}
 .feat{{position:absolute;left:54px;right:54px;top:{o+(925 if story else 845)}px;display:flex;justify-content:center;gap:10px;direction:rtl;flex-wrap:wrap}}
 .feat div{{background:rgba(255,255,255,.75);border-radius:40px;padding:5px 18px 7px;font-weight:800;font-size:{int(20*k)}px}}
-.gp{{position:absolute;left:54px;top:{o+(300 if story else 270)}px;background:{BRD};color:{CREAM};border-radius:20px;padding:4px 22px 9px;font-family:Poppins;font-weight:900;font-size:{int(42*k)}px;box-shadow:5px 5px 0 rgba(59,36,23,.25)}}
+.gp{{position:absolute;left:54px;top:{o+(150 if story else 140)}px;background:{BRD};color:{CREAM};border-radius:20px;padding:4px 22px 9px;font-family:Poppins;font-weight:900;font-size:{int(42*k)}px;box-shadow:5px 5px 0 rgba(59,36,23,.25)}}
 .gp small{{font-family:Cairo;font-size:.45em;font-weight:800}}
 .set{{position:absolute;left:54px;right:54px;top:{o+(1010 if story else 925)}px;height:{int(280*k)}px;background:{CREAM};border-radius:30px;box-shadow:0 14px 30px rgba(59,36,23,.16);border:2px solid rgba(90,58,38,.15)}}
 .set .t{{position:absolute;right:30px;top:24px;text-align:right;direction:rtl;width:{int(380*k)}px}}

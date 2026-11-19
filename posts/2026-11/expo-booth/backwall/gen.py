@@ -61,19 +61,21 @@ background:radial-gradient(ellipse 2600px 1300px at 50% 18%,#9A1460 0%,rgba(154,
 {logo_svg(2300, 'rgba(255,255,255,.035)', f'position:absolute;left:-900px;top:-900px')}
 <!-- centre: logo + taglines -->
 <div class="c" style="top:170px">{logo_svg(500, '#fff')}</div>
-<div class="c" style="top:720px;font-family:Poppins;font-weight:700;font-size:100px;letter-spacing:26px">MADE IN QATAR · BUILT FOR RACE DAY</div>
-<div class="c" style="top:860px;font-weight:900;font-size:140px;color:{GOLD};direction:rtl">صُنع في قطر.. وجاهز ليوم السباق</div>
+<div class="c" style="top:720px;font-family:Poppins;font-weight:700;font-size:100px;letter-spacing:26px">A QATARI BRAND · BUILT FOR RACE DAY</div>
+<div class="c" style="top:860px;font-weight:900;font-size:140px;color:{GOLD};direction:rtl">براند قطري.. جاهز ليوم السباق</div>
 <!-- left: instagram -->
-<div style="position:absolute;left:600px;top:190px;width:860px;text-align:center">
+<div style="position:absolute;left:600px;top:170px;width:860px;text-align:center">
   {ig_icon(230, '#fff')}
   <div style="font-family:Poppins;font-weight:700;font-size:96px;margin-top:20px">@974.group</div>
-  <div style="font-weight:800;font-size:78px;color:{GOLD};direction:rtl">تابعنا على الانستا</div>
+  <div style="font-family:Poppins;font-weight:700;font-size:62px;color:{GOLD};letter-spacing:4px">FOLLOW US</div>
+  <div style="font-weight:800;font-size:66px;color:{GOLD};direction:rtl;margin-top:-10px">تابعنا على الانستا</div>
 </div>
 <!-- right: QR -->
-<div style="position:absolute;left:4560px;top:200px;width:860px;text-align:center">
+<div style="position:absolute;left:4560px;top:150px;width:860px;text-align:center">
   <div style="display:inline-block;background:#fff;border-radius:44px;padding:44px">{qr_svg(380)}</div>
-  <div style="font-weight:900;font-size:84px;direction:rtl;margin-top:18px">امسح وتسوّق</div>
-  <div style="font-family:Poppins;font-weight:700;font-size:70px;color:{GOLD}">974group.net</div>
+  <div style="font-family:Poppins;font-weight:700;font-size:62px;letter-spacing:4px;margin-top:22px">SCAN &amp; SHOP</div>
+  <div style="font-weight:900;font-size:70px;direction:rtl;margin-top:-10px">امسح وتسوّق</div>
+  <div style="font-family:Poppins;font-weight:700;font-size:66px;color:{GOLD}">974group.net</div>
 </div>
 <!-- category labels over the two tables -->
 <div class="lbl" style="left:550px"><div class="en">WHOOP 5.0 · MG</div><div class="ar">سيور ووب</div></div>

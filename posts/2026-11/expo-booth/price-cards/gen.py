@@ -12,18 +12,17 @@ BW, BH, B = 105, 148, 3
 
 # each card: eyebrow (EN), title (AR), sub (AR), price line(s), note, link path
 CARDS = [
-    dict(key='sunglasses', eb='SUNGLASSES', t='نظارات شمسية', sub='10 موديلات.. كل وحدة باسم مكان في قطر',
-         prices=[('كل الموديلات', '319')], note='<div class=names>' + ''.join(f'<span>{n}</span>' for n in ['LUSAIL','HALUL','ZUBARAH','DOHA','THE PEARL','DUKHAN','FUWAIRIT','AL RUWAIS','SEALINE','KHOR AL ADAID']) + '</div>',
+    dict(key='sunglasses', eb='SUNGLASSES', t='نظارات شمسية', te='Sunglasses', sub='10 موديلات.. كل وحدة باسم مكان في قطر', sube='10 models, each named after a place in Qatar',
+         prices=[('كل الموديلات', 'All models', '319')], note='<div class=names>' + ''.join(f'<span>{n}</span>' for n in ['LUSAIL','HALUL','ZUBARAH','DOHA','THE PEARL','DUKHAN','FUWAIRIT','AL RUWAIS','SEALINE','KHOR AL ADAID']) + '</div>',
          link='/collections/sun-glasses'),
-    dict(key='goggles-2in1', eb='GOGGLES · 2 IN 1', t='نظارة <span dir=ltr style="font-family:Poppins;font-weight:900">2 in 1</span>', sub='للدراجة والبر.. 6 ألوان',
-         prices=[('أصفر · وردي', '209', '249'), ('أسود · رمادي · أحمر · أزرق', '249')], note='',
-         link='/products/summer-edition-goggles'),
-    dict(key='runner-pro', eb='RUNNING SOCKS', t='جوارب الجري', sub='The Runner Pro · V2',
-         prices=[('الزوج', '59')], note='خفيفة وتتنفس.. للجري والتمرين', link='/collections/running-socks'),
-    dict(key='grip', eb='GRIP SOCKS', t='جوارب Grip', sub='ما تزلق.. للكورة والجيم',
-         prices=[('رمادي · أحمر · عنابي · أزرق', '39'), ('أبيض · أسود', '60')], note='', link='/collections/grip-socks'),
-    dict(key='pilates', eb='PILATES CLUB', t='جوارب البيلاتيس', sub='12 تصميم',
-         prices=[('الزوج', '49')], note='<b>أي 3 بـ 134 ر.ق</b>', link='/products/pilates-club-grip-socks'),
+    dict(key='goggles-2in1', eb='GOGGLES · 2 IN 1', t='نظارة <span dir=ltr style="font-family:Poppins;font-weight:900">2 in 1</span>', te='2 in 1 Goggles', sub='للدراجة والبر.. 6 ألوان', sube='For bikes and the desert · 6 colours',
+         prices=[('كل الألوان', 'All colours', '249')], note='', link='/products/summer-edition-goggles'),
+    dict(key='runner-pro', eb='RUNNING SOCKS', t='جوارب الجري', te='The Runner Pro · V2', sub='خفيفة وتتنفس.. للجري والتمرين', sube='Light and breathable, for running and training',
+         prices=[('الزوج', 'Per pair', '59')], note='', link='/collections/running-socks'),
+    dict(key='grip', eb='GRIP SOCKS', t='جوارب Grip', te='Grip Socks', sub='ما تزلق.. للكورة والجيم', sube='Anti-slip, for football and the gym',
+         prices=[('رمادي · أحمر · عنابي · أزرق', 'Grey · Red · Maroon · Blue', '39'), ('أبيض · أسود', 'White · Black', '60')], note='', link='/collections/grip-socks'),
+    dict(key='pilates', eb='PILATES CLUB', t='جوارب البيلاتيس', te='Pilates Club Grip Socks', sub='12 تصميم', sube='12 designs',
+         prices=[('الزوج', 'Per pair', '49')], note='', link='/products/pilates-club-grip-socks'),
 ]
 
 
@@ -40,15 +39,15 @@ def card_html(c):
     w0, h0 = map(float, vb.split()[2:])
     rows = ''
     for p in c['prices']:
-        lab, now = p[0], p[1]
-        was = f'<s>{p[2]}</s>' if len(p) > 2 else ''
+        lab, labe, now = p[0], p[1], p[2]
+        was = ''
         big = len(c['prices']) == 1
-        rows += f'''<div class="row{' big' if big else ''}"><span class="lab">{lab}</span><span class="pr">{was}<b>{now}</b><small>ر.ق</small></span></div>'''
+        rows += f'''<div class="row{' big' if big else ''}"><span class="lab">{lab}<em>{labe}</em></span><span class="pr">{was}<b>{now}</b><small style="font-family:Poppins">QAR</small></span></div>'''
     url = f"https://974group.net{c['link']}{'&' if '?' in c['link'] else '?'}{UTM}"
     return f'''<section style="width:{W}mm;height:{H}mm">
 <div class="top"><svg viewBox="{vb}" style="height:9mm;width:{9*w0/h0:.1f}mm"><path fill-rule="evenodd" fill="#fff" d="{lpath}"/></svg><span>{c['eb']}</span></div>
 <div class="body">
-  <h1>{c['t']}</h1><div class="sub">{c['sub']}</div>
+  <h1>{c['t']}</h1><div class="te">{c['te']}</div><div class="sub">{c['sub']}</div><div class="sube">{c['sube']}</div>
   <div class="prices">{rows}</div>
   {f'<div class="note">{c["note"]}</div>' if c['note'] else ''}
 </div>
@@ -72,9 +71,12 @@ section{{position:relative;overflow:hidden;background:{SOFT};page-break-after:al
 .body{{position:absolute;left:{B+7}mm;right:{B+7}mm;top:{B+26}mm;text-align:right;direction:rtl}}
 h1{{font-weight:900;font-size:9.5mm;line-height:1.15}}
 .sub{{font-weight:700;font-size:3.9mm;color:#5a5560;margin-top:1mm}}
-.prices{{margin-top:6mm;display:flex;flex-direction:column;gap:3mm}}
+.prices{{margin-top:5mm;display:flex;flex-direction:column;gap:3mm}}
 .row{{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:3.5mm;padding:2.5mm 4mm;box-shadow:0 .6mm 1.5mm rgba(0,0,0,.08)}}
-.row .lab{{font-weight:800;font-size:3.7mm}}
+.row .lab{{font-weight:800;font-size:3.7mm;line-height:1.25}}
+.row .lab em{{display:block;font-style:normal;font-family:Poppins;font-weight:700;font-size:2.6mm;color:#7a7380;direction:ltr;text-align:right}}
+.te{{font-family:Poppins;font-weight:700;font-size:4.4mm;color:{M};direction:ltr;text-align:right;margin-top:-.5mm}}
+.sube{{font-family:Poppins;font-weight:500;font-size:2.8mm;color:#7a7380;direction:ltr;text-align:right}}
 .row .pr{{direction:ltr;font-family:Poppins;color:{M};white-space:nowrap}}
 .row .pr b{{font-weight:900;font-size:8.5mm}}
 .row .pr small{{font-family:Cairo;font-weight:800;font-size:3.4mm;margin-left:1mm}}

@@ -35,7 +35,7 @@ def sell_block():
     # main node
     mx, my, mw, mh = 3000, 950, 1500, 140
     brands = [('WHOOP', 'ووب'), ('GARMIN', 'قارمن'), ('FITBIT', 'فت بت'), ('APPLE WATCH', 'أبل ووتش')]
-    cw, gap, cy, ch = 560, 70, 1215, 140
+    cw, gap, cy, ch = 560, 60, 1130, 140
     total = len(brands) * cw + (len(brands) - 1) * gap
     x0 = mx - total // 2
     paths = ''
@@ -44,7 +44,7 @@ def sell_block():
         paths += f'<path d="M{mx},{my+mh} C{mx},{my+mh+45} {tx},{cy-45} {tx},{cy}" fill="none" stroke="{G}" stroke-width="7" stroke-linecap="round"/>'
         paths += f'<circle cx="{tx}" cy="{cy}" r="11" fill="{G}"/>'
     paths += f'<circle cx="{mx}" cy="{my+mh}" r="14" fill="{G}"/>'
-    out = f'<svg style="position:absolute;left:0;top:0;width:{W}px;height:{H}px" viewBox="0 0 {W} {H}">{paths}</svg>'
+    out = ''
     out += (f'<div style="position:absolute;left:{mx-mw//2}px;top:{my}px;width:{mw}px;height:{mh}px;background:{G};border-radius:80px;'
             f'display:flex;align-items:center;justify-content:center;gap:40px;color:{DK}">'
             f'<span style="font-family:Poppins;font-weight:900;font-size:70px;letter-spacing:8px">SMARTWATCH BANDS</span>'
@@ -60,8 +60,8 @@ def sell_block():
             f'<path d="M18,22 C18,70 40,80 62,80 C84,80 92,62 92,22 Z M108,22 C108,62 116,80 138,80 C160,80 182,70 182,22 Z" fill="none" stroke="{G}" stroke-width="9" stroke-linejoin="round"/></svg>')
     sock = (f'<svg viewBox="0 0 120 140" style="width:128px;height:150px"><path d="M30,8 H82 V78 L104,96 C116,106 110,130 92,130 L56,130 C30,130 30,112 30,96 Z" fill="none" stroke="{G}" stroke-width="9" stroke-linejoin="round"/>'
             f'<path d="M30,30 H82" stroke="{G}" stroke-width="9"/></svg>')
-    for cx, icon, en, ar in ((1080, sung, 'SUNGLASSES', 'نظارات'), (4920, sock, 'SOCKS', 'دلاغات')):
-        out += (f'<div style="position:absolute;left:{cx-330}px;top:990px;width:660px;height:365px;border:6px solid {G};border-radius:60px;'
+    for cx, icon, en, ar in ((1080, '', 'SUNGLASSES', 'نظارات'), (4920, '', 'SOCKS', 'دلاغات')):
+        out += (f'<div style="position:absolute;left:{cx-330}px;top:990px;width:660px;height:280px;border:6px solid {G};border-radius:60px;'
                 f'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(81,2,45,.55)">{icon}'
                 f'<span style="font-family:Poppins;font-weight:700;font-size:58px;letter-spacing:7px;color:{G};line-height:1.05">{en}</span>'
                 f'<span style="font-weight:800;font-size:52px;line-height:1.05;direction:rtl">{ar}</span></div>')

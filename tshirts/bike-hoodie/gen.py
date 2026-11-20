@@ -36,27 +36,27 @@ def html2(b,h): return html(b,h).replace('</style>',EXTRA+'</style>')
 
 def post():
     b=f'''
-<div class="abs" style="inset:0;background:url(file://{PH}) 50% 58%/cover no-repeat"></div>
-<div class="ov" style="top:0;height:400px;background:linear-gradient(180deg,rgba(23,63,114,.9) 0%,rgba(37,96,164,.6) 60%,rgba(37,96,164,0) 100%)"></div>
+<div class="abs" style="inset:0;background:url(file://{PH}) 50% 35%/cover no-repeat"></div>
+<div class="ov" style="top:0;height:560px;background:linear-gradient(180deg,rgba(23,63,114,.88) 0%,rgba(37,96,164,.55) 70%,rgba(37,96,164,0) 100%)"></div>
 <div class="ov" style="bottom:0;height:200px;background:linear-gradient(0deg,rgba(23,63,114,.85) 0%,rgba(23,63,114,0) 100%)"></div>
-<img class="abs" src="file://{LOGO}" style="left:52px;top:52px;height:66px">
-<div class="abs" style="right:52px;top:44px">{HEAD.format(fs=64,sky='#9BDDF7')}</div>
-<div class="abs stw" style="left:40px;right:40px;top:250px;display:flex;justify-content:space-between;direction:rtl">{STEPS.replace('<b>','<b style="width:46px;height:46px;font-size:22px">').replace('<span>','<span style="font-size:24px">')}</div>
-<img class="abs hd" src="file://{HC}" style="left:95px;top:410px;width:650px">
-<div class="tag" style="left:520px;top:460px">على الهودي 🔥</div>
+<img class="abs" src="file://{LOGO}" style="left:44px;top:40px;height:58px">
+<img class="abs hd" src="file://{HC}" style="left:52px;top:120px;width:300px">
+<div class="tag" style="left:230px;top:118px;font-size:22px">على الهودي 🔥</div>
+<div class="abs" style="right:48px;top:44px">{HEAD.format(fs=62,sky='#9BDDF7')}</div>
+<div class="abs stw" style="right:48px;top:240px;display:flex;flex-direction:column;gap:14px">{STEPS.replace('<b>','<b style="width:46px;height:46px;font-size:22px">').replace('<span>','<span style="font-size:27px">')}</div>
 <div class="abs" style="right:40px;top:1245px">{CTA}</div>'''
     return html2(b,1350)
 
 def story():
     b=f'''
 <div class="abs" style="inset:0;background:url(file://{PH}) center/cover no-repeat"></div>
-<div class="ov" style="top:0;height:720px;background:linear-gradient(180deg,rgba(23,63,114,.92) 0%,rgba(37,96,164,.6) 65%,rgba(37,96,164,0) 100%)"></div>
+<div class="ov" style="top:0;height:800px;background:linear-gradient(180deg,rgba(23,63,114,.9) 0%,rgba(37,96,164,.55) 70%,rgba(37,96,164,0) 100%)"></div>
 <div class="ov" style="bottom:0;height:380px;background:linear-gradient(0deg,rgba(23,63,114,.9) 0%,rgba(23,63,114,0) 100%)"></div>
 <img class="abs" src="file://{LOGO}" style="left:52px;top:200px;height:66px">
 <div class="abs" style="right:52px;top:190px">{HEAD.format(fs=72,sky='#9BDDF7')}</div>
-<div class="abs stw" style="right:52px;top:420px;display:flex;flex-direction:column;gap:16px">{STEPS.replace('<b>','<b style="width:50px;height:50px;font-size:24px">').replace('<span>','<span style="font-size:28px">')}</div>
-<img class="abs hd" src="file://{HC}" style="left:75px;top:680px;width:715px">
-<div class="tag" style="left:600px;top:730px">على الهودي 🔥</div>
+<div class="abs stw" style="right:52px;top:440px;display:flex;flex-direction:column;gap:18px">{STEPS.replace('<b>','<b style="width:50px;height:50px;font-size:24px">').replace('<span>','<span style="font-size:29px">')}</div>
+<img class="abs hd" src="file://{HC}" style="left:60px;top:330px;width:315px">
+<div class="tag" style="left:250px;top:325px;font-size:22px">على الهودي 🔥</div>
 <div class="abs" style="left:0;right:0;top:1660px;text-align:center">{CTA}</div>'''
     return html2(b,1920)
 

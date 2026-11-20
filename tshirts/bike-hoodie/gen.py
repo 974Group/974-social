@@ -28,31 +28,37 @@ CTA=f'<div style="display:inline-flex;align-items:center;gap:12px;background:#ff
 def html(body,h):
     return f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS} body{{height:{h}px}}</style></head><body>{body}</body></html>'
 
+HC=D+'/src/back-cut.png'
+EXTRA='''.hd{filter:drop-shadow(0 30px 40px rgba(5,20,45,.55))}
+.ov{position:absolute;left:0;right:0}
+.stw .st span{text-shadow:0 2px 10px rgba(0,0,0,.35)}'''
+def html2(b,h): return html(b,h).replace('</style>',EXTRA+'</style>')
+
 def post():
     b=f'''
+<div class="abs" style="inset:0;background:url(file://{PH}) 50% 58%/cover no-repeat"></div>
+<div class="ov" style="top:0;height:400px;background:linear-gradient(180deg,rgba(23,63,114,.9) 0%,rgba(37,96,164,.6) 60%,rgba(37,96,164,0) 100%)"></div>
+<div class="ov" style="bottom:0;height:200px;background:linear-gradient(0deg,rgba(23,63,114,.85) 0%,rgba(23,63,114,0) 100%)"></div>
 <img class="abs" src="file://{LOGO}" style="left:52px;top:52px;height:66px">
-<div class="abs" style="right:52px;top:44px">{HEAD.format(fs=64,sky=SKY)}</div>
-<div class="abs card" style="left:52px;top:270px;width:380px;height:640px"><img src="file://{PH}" style="object-position:50% 62%"></div>
-<div class="tag" style="left:80px;top:250px">دراجتك 📸</div>
-<div class="abs arrow" style="left:448px;top:540px;font-size:56px">→</div>
-<div class="abs card" style="left:520px;top:300px;width:508px;height:451px"><img src="file://{MK}"></div>
-<div class="tag" style="right:76px;top:280px">على الهودي 🔥</div>
-<div class="abs" style="left:520px;right:52px;top:790px;display:flex;flex-direction:column;gap:16px">{STEPS}</div>
-<div class="abs" style="left:0;right:0;top:1040px;text-align:center">{CTA}</div>
-<div class="abs en" style="left:0;right:0;top:1190px;text-align:center;font-size:18px;letter-spacing:6px;opacity:.6">DESIGNY · CUSTOM HOODIES</div>'''
-    return html(b,1350)
+<div class="abs" style="right:52px;top:44px">{HEAD.format(fs=64,sky='#9BDDF7')}</div>
+<div class="abs stw" style="left:40px;right:40px;top:250px;display:flex;justify-content:space-between;direction:rtl">{STEPS.replace('<b>','<b style="width:46px;height:46px;font-size:22px">').replace('<span>','<span style="font-size:24px">')}</div>
+<img class="abs hd" src="file://{HC}" style="left:95px;top:410px;width:650px">
+<div class="tag" style="left:520px;top:460px">على الهودي 🔥</div>
+<div class="abs" style="right:40px;top:1245px">{CTA}</div>'''
+    return html2(b,1350)
 
 def story():
     b=f'''
+<div class="abs" style="inset:0;background:url(file://{PH}) center/cover no-repeat"></div>
+<div class="ov" style="top:0;height:720px;background:linear-gradient(180deg,rgba(23,63,114,.92) 0%,rgba(37,96,164,.6) 65%,rgba(37,96,164,0) 100%)"></div>
+<div class="ov" style="bottom:0;height:380px;background:linear-gradient(0deg,rgba(23,63,114,.9) 0%,rgba(23,63,114,0) 100%)"></div>
 <img class="abs" src="file://{LOGO}" style="left:52px;top:200px;height:66px">
-<div class="abs" style="right:52px;top:190px">{HEAD.format(fs=70,sky=SKY)}</div>
-<div class="abs card" style="left:52px;top:420px;width:380px;height:560px"><img src="file://{PH}" style="object-position:50% 62%"></div>
-<div class="tag" style="left:80px;top:400px">دراجتك 📸</div>
-<div class="abs" style="left:470px;right:52px;top:520px;display:flex;flex-direction:column;gap:34px">{STEPS}</div>
-<div class="abs card" style="left:200px;top:1030px;width:680px;height:604px"><img src="file://{MK}"></div>
-<div class="tag" style="right:220px;top:1010px">على الهودي 🔥</div>
+<div class="abs" style="right:52px;top:190px">{HEAD.format(fs=72,sky='#9BDDF7')}</div>
+<div class="abs stw" style="right:52px;top:420px;display:flex;flex-direction:column;gap:16px">{STEPS.replace('<b>','<b style="width:50px;height:50px;font-size:24px">').replace('<span>','<span style="font-size:28px">')}</div>
+<img class="abs hd" src="file://{HC}" style="left:75px;top:680px;width:715px">
+<div class="tag" style="left:600px;top:730px">على الهودي 🔥</div>
 <div class="abs" style="left:0;right:0;top:1660px;text-align:center">{CTA}</div>'''
-    return html(b,1920)
+    return html2(b,1920)
 
 def shot(name,doc,h):
     p=f'{OUT}/{name}.html'; open(p,'w').write(doc)

@@ -11,15 +11,9 @@ SKY='''<svg class="abs" style="left:0;bottom:0;width:1080px;height:1150px" viewB
 <rect width="1080" height="1150" fill="url(#sk)"/>
 <g fill="#0E0B12">
 <path d="M968 60 L971 230 L975 330 L980 330 L982 420 L990 420 L992 520 L1002 520 L1004 620 L1016 620 L1018 720 L1032 720 L1034 830 L1050 830 L1052 950 L1070 950 L1072 1150 L866 1150 L868 950 L886 950 L888 830 L904 830 L906 720 L920 720 L922 620 L934 620 L936 520 L946 520 L948 420 L956 420 L958 330 L963 330 L966 230 Z"/>
-<path d="M40 250 L52 250 L56 1150 L36 1150 Z"/>
-<path d="M56 300 C 200 360 300 560 290 820 C 286 940 262 1050 236 1150 L56 1150 Z"/>
-<ellipse cx="292" cy="520" rx="44" ry="10"/>
-<rect x="250" y="520" width="10" height="34"/>
 <rect x="0" y="1070" width="1080" height="80"/>
 </g>
-<g fill="none" stroke="#3A2C3E" stroke-width="5">
-<path d="M64 420 C 170 460 240 560 262 700"/><path d="M64 600 C 160 620 230 700 262 820"/><path d="M64 780 C 150 790 220 860 250 960"/>
-<path d="M64 420 L 262 820"/><path d="M64 600 L 250 960"/></g></svg>'''
+</svg>'''
 DUNES='''<svg class="abs" style="left:0;right:0;bottom:0;width:1080px;height:calc(380px + var(--o))" viewBox="0 0 1080 380" preserveAspectRatio="none">
 <path d="M0 150 C200 70 360 110 520 160 C690 210 840 100 1080 120 L1080 380 L0 380Z" fill="#1E1A16"/>
 <path d="M0 240 C180 190 340 210 500 245 C680 285 820 205 1080 225 L1080 380 L0 380Z" fill="#14110E"/></svg>'''
@@ -56,5 +50,5 @@ def page(story):
 
 if __name__=='__main__':
     G.OUT=OUT
-    G.shot('974-uae-goggles-v3-post',page(False))
-    G.shot('974-uae-goggles-v3-story',page(True),1920)
+    G.shot('974-uae-goggles-v4-post',page(False))
+    G.shot('974-uae-goggles-v4-story',page(True),1920)

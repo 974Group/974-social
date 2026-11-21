@@ -226,6 +226,17 @@ def day8(story):
                 cw * 1.2 + 16, [('Fitbit Fabric', '74', '48.10')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%', ps=2.1, tmin=0, dy=(70 if not story else 30))
 
 
+WPC = '/home/claude/974-social/posts/2026-11/waterproof/src/cut/'
+
+
+def day9(story):
+    pics = [WPC + c + '.png' for c in ('black1', 'blue', 'grey', 'lime', 'maroon', 'orange', 'rust')]
+    rows = [pics[:4], pics[4:]]
+    cw = 165 if not story else 175
+    return deal(story, 9, 'سيور <span style="font-family:Poppins">Waterproof</span> لـ <span style="font-family:Poppins">Whoop</span>', 'اسبح فيه · ٧ ألوان · سير فقط بدون الجهاز', rows, cw, int(cw * 1.13),
+                int(cw * 1.13) + 16, [('مطفي', '99', '59.40'), ('لمّاع', '109', '65.40')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='40%', ps=1.4, tmin=0, dy=(40 if not story else 0))
+
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -261,3 +272,6 @@ if __name__ == '__main__':
     if which in ('all', 'day8'):
         shot(day8(False), D + 'out/974-nov-deals-day8-fitbit-fabric-post.png', 1350)
         shot(day8(True), D + 'out/974-nov-deals-day8-fitbit-fabric-story.png', 1920)
+    if which in ('all', 'day9'):
+        shot(day9(False), D + 'out/974-nov-deals-day9-waterproof-post.png', 1350)
+        shot(day9(True), D + 'out/974-nov-deals-day9-waterproof-story.png', 1920)

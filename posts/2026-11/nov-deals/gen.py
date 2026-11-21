@@ -213,6 +213,19 @@ def day7(story):
                 cw + 18, [('Alpine', '79', '47.40'), ('Ocean', '59', '35.40'), ('Trail', '79', '47.40')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='40%', ps=1.3, tmin=0, dy=(40 if not story else 20))
 
 
+FT = '/home/claude/974-social/posts/2026-11/ig-ads-best-sellers/fitbit-trim/'
+
+
+def day8(story):
+    order = ['black-L', 'grey', 'navy', 'blue', 'fog', 'olive', 'lime', 'beige', 'light-pink', 'pinky-red', 'purple', 'orange']
+    import os
+    pics = [FT + c + '.png' for c in order if os.path.exists(FT + c + '.png')]
+    rows = [pics[:6], pics[6:]]
+    cw = 130 if not story else 136
+    return deal(story, 8, 'سيور قماش <span style="font-family:Poppins">Fitbit Air</span>', 'كل الألوان عليها الخصم · سير فقط بدون الجهاز', rows, cw, int(cw * 1.2),
+                cw * 1.2 + 16, [('Fitbit Fabric', '74', '48.10')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%', ps=2.1, tmin=0, dy=(70 if not story else 30))
+
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -245,3 +258,6 @@ if __name__ == '__main__':
         shot(day7(False), D + 'out/974-nov-deals-day7-apple-loops-post.png', 1350)
         shot(day7(True), D + 'out/974-nov-deals-day7-apple-loops-story.png', 1920)
     print('ok')
+    if which in ('all', 'day8'):
+        shot(day8(False), D + 'out/974-nov-deals-day8-fitbit-fabric-post.png', 1350)
+        shot(day8(True), D + 'out/974-nov-deals-day8-fitbit-fabric-story.png', 1920)

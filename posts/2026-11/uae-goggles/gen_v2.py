@@ -40,7 +40,7 @@ def page(story):
 <div class="abs" style="right:56px;top:{820 if story else 800}px;width:300px;color:#fff;direction:rtl;text-align:right">
   <div style="font-weight:800;font-size:22px;color:#CFC6B8">+ الماسك</div>
   <div style="font-weight:900;font-size:28px"><span class="en" style="font-size:64px">39</span> ر.ق</div>
-  <div style="font-weight:700;font-size:20px;opacity:.75">بألوان العلم 👇</div>
+  <div style="font-weight:700;font-size:20px;opacity:.75">بألوان العلم</div>
 </div>
 <div class="abs" style="left:0;right:0;top:{1060 if story else 1050}px;display:flex;justify-content:center;gap:34px">{sw}</div>
 <div class="abs" style="left:0;right:0;top:{1170 if story else 1150}px;text-align:center;display:{'block' if story else 'none'}">{G.cta('كمّل لوكك الحين','#fff','#14110E')}</div>'''
@@ -51,5 +51,5 @@ def page(story):
 
 if __name__=='__main__':
     G.OUT=OUT
-    G.shot('974-uae-goggles-v6-post',page(False))
-    G.shot('974-uae-goggles-v6-story',page(True),1920)
+    G.shot('974-uae-goggles-v7-post',page(False))
+    G.shot('974-uae-goggles-v7-story',page(True),1920)

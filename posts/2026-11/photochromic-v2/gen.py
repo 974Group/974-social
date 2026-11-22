@@ -24,7 +24,10 @@ def page(story):
   تغمق في الشمس..<br>وتصفى بالليل</div>
 <div class="abs en" style="left:70px;top:330px;font-weight:700;font-size:18px;letter-spacing:6px;color:#C9D1F2">NIGHT 🌙</div>
 <div class="abs en" style="right:70px;top:330px;font-weight:700;font-size:18px;letter-spacing:6px;color:#4A3214">☀️ DAY</div>
-<img class="abs" src="file://{GOG}" style="left:150px;top:380px;width:780px;filter:drop-shadow(0 30px 34px rgba(0,0,0,.5))">
+<img class="abs" src="file://{D}/src/front-clear.png" style="left:30px;top:430px;width:480px;filter:drop-shadow(0 24px 28px rgba(0,0,0,.55))">
+<img class="abs" src="file://{D}/src/front-dark.png" style="left:570px;top:430px;width:480px;filter:drop-shadow(0 24px 28px rgba(0,0,0,.45))">
+<div class="abs" style="left:30px;width:480px;top:770px;text-align:center;direction:rtl;font-weight:900;font-size:34px;color:#fff">بالليل.. شفافة 🌙</div>
+<div class="abs" style="left:570px;width:480px;top:770px;text-align:center;direction:rtl;font-weight:900;font-size:34px;color:#3B2410">في الشمس.. تغمق ☀️</div>
 <div class="abs" style="left:0;right:0;top:930px;display:flex;justify-content:center;gap:12px;direction:rtl">
   <span class="tg">عدسة وحدة للنهار والليل</span><span class="tg">ضد الضباب</span><span class="tg">تحمي من الغبار</span>
 </div>
@@ -38,5 +41,5 @@ def page(story):
 
 if __name__=='__main__':
     G.OUT=OUT
-    G.shot('974-photochromic-v2-post',page(False))
-    G.shot('974-photochromic-v2-story',page(True),1920)
+    G.shot('974-photochromic-v3-post',page(False))
+    G.shot('974-photochromic-v3-story',page(True),1920)

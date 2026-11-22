@@ -32,9 +32,9 @@ background:radial-gradient(ellipse 110mm 80mm at 50% 30%,#9A1460 0%,rgba(154,20,
 .qrbox .f{{display:inline-block;padding:4mm;border:1.2mm solid {C.M};border-radius:5mm}}
 .sc{{top:{B+152}mm;color:{C.M};font-family:Poppins;font-weight:900;font-size:5mm;letter-spacing:1mm}}
 .sc2{{top:{B+158}mm;color:{C.INK};font-weight:900;font-size:5mm;direction:rtl}}
-.sc3{{top:{B+165}mm;color:{C.INK};font-family:Poppins;font-weight:700;font-size:2.8mm;letter-spacing:.6mm;opacity:.7}}
-.ig{{top:{B+174}mm;color:{C.INK};display:flex;justify-content:center;align-items:center;gap:2.5mm;font-family:Poppins;font-weight:700;font-size:4.6mm}}
-.web{{top:{B+182}mm;color:{C.M};font-family:Poppins;font-weight:700;font-size:3.6mm}}
+.sc3{{top:{B+167.5}mm;color:{C.INK};font-family:Poppins;font-weight:700;font-size:2.8mm;letter-spacing:.6mm;opacity:.7}}
+.ig{{top:{B+176}mm;color:{C.INK};display:flex;justify-content:center;align-items:center;gap:2.5mm;font-family:Poppins;font-weight:700;font-size:4.6mm}}
+.web{{top:{B+184}mm;color:{C.M};font-family:Poppins;font-weight:700;font-size:3.6mm}}
 .ty{{bottom:{B+6}mm;color:{C.INK};font-weight:800;font-size:3.6mm;direction:rtl;opacity:.75}}
 </style></head><body>
 <div class="wave"></div>

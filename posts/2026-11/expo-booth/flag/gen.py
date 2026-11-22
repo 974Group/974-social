@@ -16,7 +16,7 @@ W, H = 600, 2400
 k = 96 / 25.4
 TEAR = "path('" + ' '.join(t if t.isalpha() else f'{float(t)*k:.1f}' for t in f'M 0 {H} L 0 300 C 0 120 160 0 330 0 C 520 0 {W} 160 {W} 420 L {W} 1500 C {W} 1900 560 2200 470 {H} Z'.split()) + "')"
 ITEMS = [
-    (R + 'full-range/cut/w-sil.png', 'SMARTWATCH BANDS', 'سيور ساعات ذكية', 'WHOOP · GARMIN · FITBIT · APPLE WATCH', 185),
+    (R + 'full-range/cut/w-sil.png', 'SMARTWATCH BANDS', 'سيور ساعات ذكية', 'WHOOP · GARMIN · FITBIT · APPLE', 185),
     (R + 'summer-goggles/cut/red.png', 'GOGGLES', 'نظارات البر', '', 300),
     (R + 'sunglasses/cut/lusail-hero.png', 'SUNGLASSES', 'نظارات شمسية', '', 285),
     (R + 'full-range/cut/sock-white.png', 'SOCKS', 'دلاغات', 'RUNNING · GRIP · PILATES', 115),
@@ -26,9 +26,11 @@ ITEMS = [
 def page(clip):
     w0, h0 = map(float, vb.split()[2:])
     rows = ''
-    for img, en, ar, sub, wmm in ITEMS:
-        rows += f'''<div class="it"><img src="file://{img}" style="width:{wmm}mm">
-<div class="en">{en}</div><div class="ar">{ar}</div>{f'<div class="sub">{sub}</div>' if sub else ''}</div>'''
+    for i, (img, en, ar, sub, wmm) in enumerate(ITEMS):
+        rows += (f'<div class="it"><div class="ar">{ar}</div><div class="en">{en}</div>'
+                 f'{f"<div class=sub>{sub}</div>" if sub else ""}</div>')
+        if i < len(ITEMS) - 1:
+            rows += '<div class="dot"></div>'
     return f'''<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS8p4_RHH1.woff2)}}
 @font-face{{font-family:'Cairo';font-weight:400 900;src:url(file://{SP}/aw/fonts/cairo-SLXVc1nY6HkvangtZmpQdkhzfH5lkSscRiyS8p4_RA.woff2);unicode-range:U+0000-00FF}}
@@ -44,13 +46,14 @@ background:radial-gradient(ellipse 500mm 700mm at 55% 30%,#9A1460 0%,rgba(154,20
 .tag{{top:540mm;font-family:Poppins;font-weight:700;font-size:22mm;letter-spacing:5mm;color:{GOLD}}}
 .tagar{{top:570mm;font-weight:900;font-size:40mm;direction:rtl}}
 .line{{top:658mm;height:3mm;background:{GOLD};left:200mm;right:155mm}}
-.list{{top:700mm;display:flex;flex-direction:column;align-items:center;gap:30mm}}
+.list{{top:790mm;display:flex;flex-direction:column;align-items:center;gap:75mm}}
 .it{{display:flex;flex-direction:column;align-items:center}}
 .it img{{filter:drop-shadow(0 8mm 10mm rgba(0,0,0,.45))}}
-.it .en{{font-family:Poppins;font-weight:900;font-size:24mm;letter-spacing:2mm;margin-top:10mm;white-space:nowrap}}
-.it .ar{{font-weight:900;font-size:34mm;direction:rtl;color:{GOLD};margin-top:-4mm}}
-.it .sub{{font-family:Poppins;font-weight:700;font-size:12.5mm;letter-spacing:1mm;opacity:.8;margin-top:2mm;white-space:nowrap}}
-.foot{{top:2120mm;font-family:Poppins;font-weight:900;font-size:30mm}}
+.it .en{{font-family:Poppins;font-weight:900;font-size:27mm;letter-spacing:1mm;margin-top:4mm;white-space:nowrap}}
+.dot{{width:14mm;height:14mm;border-radius:50%;background:{GOLD}}}
+.it .ar{{font-weight:900;font-size:60mm;line-height:1.15;direction:rtl;color:#fff}}
+.it .sub{{font-family:Poppins;font-weight:700;font-size:15mm;letter-spacing:.6mm;color:{GOLD};margin-top:5mm;white-space:nowrap}}
+.foot{{top:2125mm;font-family:Poppins;font-weight:900;font-size:30mm}}
 .foot2{{top:2162mm;font-family:Poppins;font-weight:700;font-size:22mm;color:{GOLD}}}
 </style></head><body>
 <div class="c logo"><svg viewBox="{vb}" style="width:330mm;height:{330*h0/w0:.1f}mm"><path fill-rule="evenodd" fill="#fff" d="{lpath}"/></svg></div>
@@ -69,7 +72,7 @@ def run():
     pw, ph = round(W * 96 / 25.4), round(H * 96 / 25.4)
     js = (f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();"
           f"let p=await b.newPage({{viewport:{{width:{pw},height:{ph}}}}});await p.goto('file://{D}flag-print.html');await p.waitForTimeout(1500);"
-          f"await p.pdf({{path:'{D}974-teardrop-flag-600x2400mm.pdf',width:'{W}mm',height:'{H}mm',printBackground:true,pageRanges:'1'}});"
+          f"await p.pdf({{path:'{D}974-teardrop-flag-text-600x2400mm.pdf',width:'{W}mm',height:'{H}mm',printBackground:true,pageRanges:'1'}});"
           f"p=await b.newPage({{viewport:{{width:{pw},height:{ph}}},deviceScaleFactor:1}});await p.goto('file://{D}flag-preview.html');await p.waitForTimeout(1500);"
           f"await p.screenshot({{path:'{D}flag-preview-raw.png',omitBackground:true}});await b.close();}})()")
     subprocess.run(['node', '-e', js], check=True, cwd='/home/claude/974-social')

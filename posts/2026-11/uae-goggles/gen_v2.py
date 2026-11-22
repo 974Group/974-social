@@ -43,13 +43,16 @@ def page(story):
   <div style="font-weight:700;font-size:20px;opacity:.75">بألوان العلم</div>
 </div>
 <div class="abs" style="left:0;right:0;top:{1060 if story else 1050}px;display:flex;justify-content:center;gap:34px">{sw}</div>
-<div class="abs" style="left:0;right:0;top:{1170 if story else 1150}px;text-align:center;display:{'block' if story else 'none'}">{G.cta('كمّل لوكك الحين','#fff','#14110E')}</div>'''
+<div class="abs" style="left:0;right:0;top:{1150 if story else 1140}px;text-align:center"><span class="gcc">🚚 متوفر شحن لدول الخليج</span></div>
+<div class="abs" style="left:0;right:0;top:1240px;text-align:center;display:{'block' if story else 'none'}">{G.cta('كمّل لوكك الحين','#fff','#14110E')}</div>'''
     extra=G.CTA_CSS+'''.sw{display:flex;flex-direction:column;align-items:center;gap:6px}.sw b{width:54px;height:54px;border-radius:50%;border:3px solid rgba(255,255,255,.85);box-shadow:0 6px 14px rgba(0,0,0,.5)}
+
+.gcc{display:inline-block;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);border-radius:30px;padding:5px 24px 9px;font-weight:800;font-size:26px;color:#fff;direction:rtl}
 .sw i{font-style:normal;font-weight:700;font-size:13px;letter-spacing:3px;color:#CFC6B8}'''
     G.STORY=story
     return G.doc('#14110E','#fff',body,pf_ink='#fff',extra=extra)
 
 if __name__=='__main__':
     G.OUT=OUT
-    G.shot('974-uae-goggles-v7-post',page(False))
-    G.shot('974-uae-goggles-v7-story',page(True),1920)
+    G.shot('974-uae-goggles-v8-post',page(False))
+    G.shot('974-uae-goggles-v8-story',page(True),1920)

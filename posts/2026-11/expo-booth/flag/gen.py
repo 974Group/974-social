@@ -3,6 +3,8 @@
 # Output: full-size vector PDF 600 x 2400 mm (images embedded) + a teardrop-shaped preview PNG.
 # Safe area: pole sleeve on the left (~80 mm), curved top (~480 mm) and base area (~220 mm) kept clear of key content.
 import subprocess, re, sys
+sys.path.insert(0, '/home/claude/974-social/posts/2026-11/expo-booth/counter-card'); import gen as C
+WEB = 'https://974group.net/?utm_source=expo&utm_medium=flag&utm_campaign=expo'
 sys.path.insert(0, '/home/claude/974-social/templates')
 D = '/home/claude/974-social/posts/2026-11/expo-booth/flag/'
 SP = '/tmp/claude-0/-home-claude/bcc2c2d5-4d57-5df4-9795-f402b1a1cd9a/scratchpad'
@@ -53,14 +55,21 @@ background:radial-gradient(ellipse 500mm 700mm at 55% 30%,#9A1460 0%,rgba(154,20
 .dot{{width:14mm;height:14mm;border-radius:50%;background:{GOLD}}}
 .it .ar{{font-weight:900;font-size:60mm;line-height:1.15;direction:rtl;color:#fff}}
 .it .sub{{font-family:Poppins;font-weight:700;font-size:15mm;letter-spacing:.6mm;color:{GOLD};margin-top:5mm;white-space:nowrap}}
-.foot{{top:2125mm;font-family:Poppins;font-weight:900;font-size:30mm}}
-.foot2{{top:2162mm;font-family:Poppins;font-weight:700;font-size:22mm;color:{GOLD}}}
+.qrbox{{top:1800mm}}
+.qrbox .f{{display:inline-block;padding:9mm;background:#fff;border-radius:12mm;border:4mm solid {GOLD}}}
+.scan{{top:2045mm;font-family:Poppins;font-weight:900;font-size:22mm;letter-spacing:1.5mm;color:{GOLD}}}
+.scanar{{top:2080mm;font-weight:900;font-size:30mm;direction:rtl}}
+.foot{{top:2150mm;font-family:Poppins;font-weight:900;font-size:30mm}}
+.foot2{{top:2187mm;font-family:Poppins;font-weight:700;font-size:22mm;color:{GOLD}}}
 </style></head><body>
 <div class="c logo"><svg viewBox="{vb}" style="width:330mm;height:{330*h0/w0:.1f}mm"><path fill-rule="evenodd" fill="#fff" d="{lpath}"/></svg></div>
 <div class="c tag">A QATARI BRAND</div>
 <div class="c tagar">براند قطري</div>
 <div class="c line"></div>
 <div class="c list">{rows}</div>
+<div class="c qrbox"><div class="f">{C.qr(WEB, 200)}</div></div>
+<div class="c scan">SCAN &amp; SHOP</div>
+<div class="c scanar">امسح.. وتسوّق أونلاين</div>
 <div class="c foot">@974.group</div>
 <div class="c foot2">974group.net</div>
 </body></html>'''

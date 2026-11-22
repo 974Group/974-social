@@ -3,7 +3,7 @@
 import sys, os
 sys.path.insert(0,'/home/claude/974-social/posts/2026-11/ig-ads-best-sellers'); import gen as G
 D=os.path.dirname(os.path.abspath(__file__)); OUT=D+'/out'
-GOG='/home/claude/974-social/products/goggles/uae-edition-render.png'
+GOG=D+'/src/uae-971.png'
 MK='/home/claude/974-social/posts/2026-11/face-mask/src/cut/'
 RED='#E0263E'; GRN='#1F9D55'
 SKY='''<svg class="abs" style="left:0;bottom:0;width:1080px;height:1150px" viewBox="0 0 1080 1150">
@@ -29,7 +29,7 @@ def page(story):
   <div class="en" style="font-weight:700;font-size:18px;letter-spacing:7px;color:#CFC6B8">974 GUARDS · UAE EDITION</div>
   <div style="font-weight:900;font-size:84px;line-height:1.05;margin-top:6px">اللوك كامل.. <span style="color:{RED}">للبر</span> 🇦🇪</div>
 </div>
-<img class="abs" src="file://{GOG}" style="left:250px;top:280px;width:600px;filter:drop-shadow(0 26px 30px rgba(0,0,0,.6))">
+<img class="abs" src="file://{GOG}" style="left:150px;top:330px;width:700px;filter:drop-shadow(0 26px 30px rgba(0,0,0,.6))">
 <img class="abs" src="file://{MK}white.png" style="left:410px;top:{770 if story else 755}px;width:260px;filter:drop-shadow(0 20px 24px rgba(0,0,0,.6))">
 <div class="abs" style="left:56px;top:{820 if story else 800}px;width:300px;color:#fff;direction:rtl">
   <div style="font-weight:800;font-size:22px;color:#CFC6B8">النظارة</div>
@@ -50,5 +50,5 @@ def page(story):
 
 if __name__=='__main__':
     G.OUT=OUT
-    G.shot('974-uae-goggles-v4-post',page(False))
-    G.shot('974-uae-goggles-v4-story',page(True),1920)
+    G.shot('974-uae-goggles-v5-post',page(False))
+    G.shot('974-uae-goggles-v5-story',page(True),1920)

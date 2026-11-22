@@ -29,7 +29,8 @@ def page(story):
   <div class="en" style="font-weight:700;font-size:18px;letter-spacing:7px;color:#CFC6B8">974 GUARDS · UAE EDITION</div>
   <div style="font-weight:900;font-size:84px;line-height:1.05;margin-top:6px">اللوك كامل.. <span style="color:{RED}">للبر</span> 🇦🇪</div>
 </div>
-<img class="abs" src="file://{GOG}" style="left:150px;top:330px;width:700px;filter:drop-shadow(0 26px 30px rgba(0,0,0,.6))">
+<img class="abs" src="file://{D}/src/uae-flag-side.png" style="left:28px;top:{330 if story else 300}px;width:465px;filter:drop-shadow(0 22px 26px rgba(0,0,0,.6))">
+<img class="abs" src="file://{GOG}" style="left:585px;top:{372 if story else 342}px;width:465px;filter:drop-shadow(0 22px 26px rgba(0,0,0,.6))">
 <img class="abs" src="file://{MK}white.png" style="left:410px;top:{770 if story else 755}px;width:260px;filter:drop-shadow(0 20px 24px rgba(0,0,0,.6))">
 <div class="abs" style="left:56px;top:{820 if story else 800}px;width:300px;color:#fff;direction:rtl">
   <div style="font-weight:800;font-size:22px;color:#CFC6B8">النظارة</div>
@@ -50,5 +51,5 @@ def page(story):
 
 if __name__=='__main__':
     G.OUT=OUT
-    G.shot('974-uae-goggles-v5-post',page(False))
-    G.shot('974-uae-goggles-v5-story',page(True),1920)
+    G.shot('974-uae-goggles-v6-post',page(False))
+    G.shot('974-uae-goggles-v6-story',page(True),1920)

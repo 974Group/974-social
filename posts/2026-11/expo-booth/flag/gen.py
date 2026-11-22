@@ -16,7 +16,7 @@ W, H = 600, 2400
 k = 96 / 25.4
 TEAR = "path('" + ' '.join(t if t.isalpha() else f'{float(t)*k:.1f}' for t in f'M 0 {H} L 0 300 C 0 120 160 0 330 0 C 520 0 {W} 160 {W} 420 L {W} 1500 C {W} 1900 560 2200 470 {H} Z'.split()) + "')"
 ITEMS = [
-    (R + 'full-range/cut/w-sil.png', 'SMARTWATCH BANDS', 'سيور ساعات ذكية', 'WHOOP · GARMIN · FITBIT · APPLE', 185),
+    (R + 'full-range/cut/w-sil.png', 'WATCH BANDS', 'سيور ساعات', 'WHOOP · GARMIN · FITBIT · APPLE', 185),
     (R + 'summer-goggles/cut/red.png', 'GOGGLES', 'نظارات البر', '', 300),
     (R + 'sunglasses/cut/lusail-hero.png', 'SUNGLASSES', 'نظارات شمسية', '', 285),
     (R + 'full-range/cut/sock-white.png', 'SOCKS', 'دلاغات', 'RUNNING · GRIP · PILATES', 115),

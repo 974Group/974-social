@@ -237,6 +237,15 @@ def day9(story):
                 int(cw * 1.13) + 16, [('مطفي', '99', '59.40'), ('لمّاع', '109', '65.40')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='40%', ps=1.4, tmin=0, dy=(40 if not story else 0))
 
 
+
+def day10(story):
+    GM = '/home/claude/974-social/posts/2026-11/garmin-magnetic/cut/'
+    pics = [GM + c + '.png' for c in ('black', 'white-clean', 'starlight-clean', 'grey', 'dark-blue', 'wine-red', 'pink-clean', 'orange', 'lime', 'army-green')]
+    rows = [pics[:5], pics[5:]]
+    cw = 150 if not story else 128
+    return deal(story, 10, 'سيور <span style="font-family:Poppins">Garmin CIRQA</span> المغناطيس', 'بدون قفل · يتسكر بالمغناطيس · ١٠ ألوان', rows, cw, int(cw * 1.15),
+                int(cw * 1.15) + 16, [('كل الألوان', '99', '64.35')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%', ps=2.1, tmin=0, dy=(40 if not story else 10))
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -275,3 +284,6 @@ if __name__ == '__main__':
     if which in ('all', 'day9'):
         shot(day9(False), D + 'out/974-nov-deals-day9-waterproof-post.png', 1350)
         shot(day9(True), D + 'out/974-nov-deals-day9-waterproof-story.png', 1920)
+    if which in ('all', 'day10'):
+        shot(day10(False), D + 'out/974-nov-deals-day10-cirqa-magnetic-post.png', 1350)
+        shot(day10(True), D + 'out/974-nov-deals-day10-cirqa-magnetic-story.png', 1920)

@@ -93,11 +93,12 @@ def cirqa3():
 def pilates():
     C = P + 'pilates-socks/src/'; ink = '#5B2333'
     ks = ['cherrybow', 'pinkbow', 'coffee', 'juice', 'lemonade', 'orange', 'peach', 'cherrystripe']
-    line = ''.join(f'<div style="display:flex;flex-direction:column;align-items:center;transform:rotate({(-4 if i%2 else 4)}deg)"><div style="width:16px;height:34px;background:#C9A24B;border-radius:4px;margin-bottom:-8px;z-index:2"></div><img src="file://{C}{k}.png" style="height:250px"></div>' for i, k in enumerate(ks))
+    r2 = 664
+    line = ''.join(f'<div style="display:flex;flex-direction:column;align-items:center;transform:rotate({(-4 if i%2 else 4)}deg);transform-origin:50% 0"><div style="width:16px;height:34px;background:#C9A24B;border-radius:4px;margin-bottom:-8px;z-index:2"></div><img src="file://{C}{k}.png" style="height:250px"></div>' for i, k in enumerate(ks))
     body = f'''<div class="abs" style="inset:0;background:radial-gradient(90% 60% at 50% 40%,#FFF4F4 0%,#FBE1E4 70%,#F6CDD3 100%)"></div><!--/bk-->
 {head(LOGO_B, 'PILATES CLUB · GRIP SOCKS', ink)}
 <div class="abs ar" style="right:48px;top:40px;color:{ink}"><div style="font-weight:900;font-size:66px;line-height:1.1">دلاغات بيلاتيس 🎀<br><span style="font-size:44px">ثابتة على الريفورمر</span></div></div>
-<svg class="abs" style="left:0;top:322px" width="1080" height="60"><path d="M0 10 Q540 70 1080 10" stroke="#5B2333" stroke-width="3" fill="none"/></svg>
+<svg class="abs" style="left:0;top:330px" width="1080" height="40"><path d="M0 4 L1080 4" stroke="#5B2333" stroke-width="3" fill="none"/></svg><svg class="abs" style="left:0;top:{r2}px" width="1080" height="40"><path d="M0 4 L1080 4" stroke="#5B2333" stroke-width="3" fill="none"/></svg>
 <div class="abs" style="left:10px;right:10px;top:330px;display:flex;justify-content:space-between">{line[:len(line)//2] if False else ''}</div>
 <div class="abs" style="left:20px;right:20px;top:338px;display:grid;grid-template-columns:repeat(4,1fr);row-gap:40px;justify-items:center">{line}</div>
 <div class="abs" style="left:48px;right:48px;top:960px;display:flex;gap:12px;justify-content:center;direction:rtl;flex-wrap:wrap">

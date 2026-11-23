@@ -93,14 +93,21 @@ def cirqa3():
 def pilates():
     C = P + 'pilates-socks/src/'; ink = '#5B2333'
     ks = ['cherrybow', 'pinkbow', 'coffee', 'juice', 'lemonade', 'orange', 'peach', 'cherrystripe']
-    r2 = 664
-    line = ''.join(f'<div style="display:flex;flex-direction:column;align-items:center;transform:rotate({(-4 if i%2 else 4)}deg);transform-origin:50% 0"><div style="width:16px;height:34px;background:#C9A24B;border-radius:4px;margin-bottom:-8px;z-index:2"></div><img src="file://{C}{k}.png" style="height:250px"></div>' for i, k in enumerate(ks))
+    import math
+    SAG = 46; XS = [135, 405, 675, 945]; ROWS = [300, 632]
+    def ropey(a, x): t = x / 1080; return a + 4 * SAG * t * (1 - t)
+    def slope(x): t = x / 1080; return math.degrees(math.atan(4 * SAG * (1 - 2 * t) / 1080))
+    ropes = ''.join(f'<svg class="abs" style="left:0;top:0" width="1080" height="1350"><path d="M-10 {a} Q540 {a + 2 * SAG} 1090 {a}" stroke="#5B2333" stroke-width="3" fill="none"/></svg>' for a in ROWS)
+    socks = ''
+    for r, a in enumerate(ROWS):
+        for c, x in enumerate(XS):
+            k = ks[r * 4 + c]; y = ropey(a, x)
+            socks += (f'<div class="abs" style="left:{x - 110}px;top:{y - 18:.0f}px;width:220px;display:flex;flex-direction:column;align-items:center;transform:rotate({slope(x) * .6:.1f}deg);transform-origin:50% 18px">'
+                      f'<div style="width:16px;height:34px;background:#C9A24B;border-radius:4px;margin-bottom:-10px;z-index:2"></div><img src="file://{C}{k}.png" style="height:250px"></div>')
     body = f'''<div class="abs" style="inset:0;background:radial-gradient(90% 60% at 50% 40%,#FFF4F4 0%,#FBE1E4 70%,#F6CDD3 100%)"></div><!--/bk-->
 {head(LOGO_B, 'PILATES CLUB · GRIP SOCKS', ink)}
 <div class="abs ar" style="right:48px;top:40px;color:{ink}"><div style="font-weight:900;font-size:66px;line-height:1.1">دلاغات بيلاتيس 🎀<br><span style="font-size:44px">ثابتة على الريفورمر</span></div></div>
-<svg class="abs" style="left:0;top:330px" width="1080" height="40"><path d="M0 4 L1080 4" stroke="#5B2333" stroke-width="3" fill="none"/></svg><svg class="abs" style="left:0;top:{r2}px" width="1080" height="40"><path d="M0 4 L1080 4" stroke="#5B2333" stroke-width="3" fill="none"/></svg>
-<div class="abs" style="left:10px;right:10px;top:330px;display:flex;justify-content:space-between">{line[:len(line)//2] if False else ''}</div>
-<div class="abs" style="left:20px;right:20px;top:338px;display:grid;grid-template-columns:repeat(4,1fr);row-gap:40px;justify-items:center">{line}</div>
+{ropes}{socks}
 <div class="abs" style="left:48px;right:48px;top:960px;display:flex;gap:12px;justify-content:center;direction:rtl;flex-wrap:wrap">
  <span class="pill" style="background:{ink};color:#fff">تطريز مب طباعة</span><span class="pill" style="background:#fff;color:{ink}">نعل سيليكون ضد الزلق</span><span class="pill" style="background:#fff;color:{ink}"><span class="en">12</span> تصميم</span></div>
 {bottom('49', 'اختاري تصميمك', ink, ink, '#fff', 1060, pre='')}

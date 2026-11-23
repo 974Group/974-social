@@ -64,17 +64,17 @@ SLIDES = [
 
 
 def story():
-    body = f'''<img class="abs" src="file://{S}story.jpg" style="left:0;top:0;width:1080px;height:1920px;object-fit:cover;object-position:35% 50%">
-<div class="abs" style="left:0;right:0;top:0;height:700px;background:linear-gradient(180deg,rgba(12,27,69,.75) 0%,transparent 100%)"></div>
-<div class="abs" style="left:0;right:0;bottom:0;height:900px;background:linear-gradient(0deg,rgba(12,27,69,.95) 0%,rgba(12,27,69,.85) 45%,transparent 100%)"></div><!--/bk-->
-<img class="abs" src="file://{G.LW}" style="left:56px;top:0;height:44px">
-<div class="abs en" style="left:0;right:0;top:90px;text-align:center;font-weight:900;font-size:170px;letter-spacing:-3px;line-height:1;color:#fff">HALUL</div>
-<div class="abs en" style="left:0;right:0;top:265px;text-align:center;font-weight:700;font-size:20px;letter-spacing:6px;color:#BFD3FF">25.67° N · MADE TO EXPLORE</div>
-<div class="abs ar" style="left:56px;right:56px;top:1010px;text-align:center;color:#fff"><div style="font-weight:900;font-size:56px">بالظل شفافة.. وبالشمس تغمق</div>
- <div style="font-weight:800;font-size:26px;margin-top:8px;color:#BFD3FF">عدسة فوتوكروميك · <span class="en">33g</span> · ضد الصدمات</div></div>
-<div class="abs" style="left:56px;right:56px;top:1190px;display:flex;align-items:center;justify-content:space-between;direction:rtl">
- <div style="font-weight:900;font-size:30px;color:#fff"><span class="en" style="font-size:70px;font-weight:900">319</span> ر.ق</div>{G.cta('اطلبها الحين', '#fff', NV)}</div>'''
-    return G.doc('#0C1B45', '#fff', body, pf_ink='#fff', extra=CSS)
+    body = f'''<img class="abs" src="file://{S}story2.jpg" style="left:-700px;top:0;width:2480px;height:1920px;object-fit:cover;filter:blur(40px)">
+<div class="abs" style="inset:0;background:rgba(244,240,240,.35)"></div>
+<img class="abs" src="file://{S}story2.jpg" style="left:-260px;top:520px;width:1600px;-webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 74%,transparent 100%)"><!--/bk-->
+<img class="abs" src="file://{G.LB}" style="left:56px;top:0;height:44px">
+<div class="abs en" style="left:0;right:0;top:90px;text-align:center;font-weight:900;font-size:170px;letter-spacing:-3px;line-height:1;color:{NV}">HALUL</div>
+<div class="abs en" style="left:0;right:0;top:265px;text-align:center;font-weight:700;font-size:20px;letter-spacing:6px;color:{BL}">25.67° N · MADE TO EXPLORE</div>
+<div class="abs ar" style="left:56px;right:56px;top:1030px;text-align:center;color:{NV}"><div style="font-weight:900;font-size:56px">بالظل شفافة.. وبالشمس تغمق</div>
+ <div style="font-weight:800;font-size:26px;margin-top:8px;color:#3a4f86">عدسة فوتوكروميك · <span class="en">33g</span> · ضد الصدمات</div></div>
+<div class="abs" style="left:56px;right:56px;top:1200px;display:flex;align-items:center;justify-content:space-between;direction:rtl">
+ <div style="font-weight:900;font-size:30px;color:{NV}"><span class="en" style="font-size:70px;font-weight:900">319</span> ر.ق</div>{G.cta('اطلبها الحين', NV, '#fff')}</div>'''
+    return G.doc('#EFEBEA', NV, body, extra=CSS)
 
 
 if __name__ == '__main__':

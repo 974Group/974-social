@@ -246,6 +246,15 @@ def day10(story):
     return deal(story, 10, 'سيور <span style="font-family:Poppins">Garmin CIRQA</span> المغناطيس', 'بدون قفل · يتسكر بالمغناطيس · ١٠ ألوان', rows, cw, int(cw * 1.15),
                 int(cw * 1.15) + 16, [('كل الألوان', '99', '64.35')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='35%', ps=2.1, tmin=0, dy=(40 if not story else 10))
 
+
+def day11(story):
+    FA = '/home/claude/974-social/products/fitbit-air-magnetic/'
+    pics = [FA + c + '-cut.png' for c in ('black', 'dark-blue', 'wine-red', 'green', 'dark-gray', 'light-gray', 'starlight', 'white')]
+    rows = [pics[:4], pics[4:]]
+    cw = 165 if not story else 132
+    return deal(story, 11, 'سيور <span style="font-family:Poppins">Fitbit Air</span> المنسوجة', 'تتمطط · تتسكر بالمغناطيس · ٨ ألوان', rows, cw, int(cw * 1.28),
+                int(cw * 1.28) + 16, [('كل الألوان', '89', '53.40')], 'الخصم ينزل تلقائي في الموقع · ينتهي بعد ٢٤ ساعة ⏳', pct='40%', ps=2.1, tmin=0, dy=(40 if not story else 0))
+
 def shot(html, out, H):
     p = out.replace('.png', '.html'); open(p, 'w').write(html)
     js = f"const {{chromium}}=require('playwright');(async()=>{{const b=await chromium.launch();const p=await b.newPage({{viewport:{{width:1080,height:{H}}}}});await p.goto('file://{p}');await p.waitForTimeout(900);await p.screenshot({{path:'{out}'}});await b.close();}})()"
@@ -287,3 +296,6 @@ if __name__ == '__main__':
     if which in ('all', 'day10'):
         shot(day10(False), D + 'out/974-nov-deals-day10-cirqa-magnetic-post.png', 1350)
         shot(day10(True), D + 'out/974-nov-deals-day10-cirqa-magnetic-story.png', 1920)
+    if which in ('all', 'day11'):
+        shot(day11(False), D + 'out/974-nov-deals-day11-fitbit-air-woven-post.png', 1350)
+        shot(day11(True), D + 'out/974-nov-deals-day11-fitbit-air-woven-story.png', 1920)

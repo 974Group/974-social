@@ -1,0 +1,65 @@
+<!doctype html><html><head><style>html,body{margin:0;background:#F6F6F7}</style></head><body>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+const P = new URLSearchParams(location.search); const tex = P.get('tex');
+const W = 1200, H = 1200;
+const r = new THREE.WebGLRenderer({antialias:true, preserveDrawingBuffer:true}); r.setSize(W,H); r.setPixelRatio(1);
+r.outputColorSpace = THREE.SRGBColorSpace; r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.05;
+r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(r.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color('#F6F6F7');
+const cam = new THREE.PerspectiveCamera(28, 1, .1, 100); cam.position.set(-2.9, 2.7, 6.6); cam.lookAt(0.05, 1.1, 0);
+scene.add(new THREE.HemisphereLight(0xffffff, 0xd8d4d0, 1.1));
+const key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(-3, 5, 4); key.castShadow = true; key.shadow.mapSize.set(2048,2048); key.shadow.radius = 6;
+Object.assign(key.shadow.camera, {left:-3,right:3,top:3,bottom:-3}); scene.add(key);
+const fill = new THREE.DirectionalLight(0xffffff, .55); fill.position.set(4, 2, 3); scene.add(fill);
+const rim = new THREE.DirectionalLight(0xffffff, .5); rim.position.set(2, 3, -4); scene.add(rim);
+
+// ---- worn gaiter surface: theta around, t bottom(0)->top(1); front faces +z ----
+const NT = 260, NY = 220, HGT = 2.15;
+function R(th, t) {
+  const c = Math.cos(th), s = Math.sin(th), f = Math.max(0, c);
+  let rx, rz, zoff = 0;
+  if (t < 0.36) {                     // neck: bunched, slightly flared
+    const k = t / 0.36;
+    rx = rz = 1.02 + 0.06 * (1 - k);
+    const folds = 0.05 * Math.sin(t * 2 * Math.PI * 3.2 + 1.4 * Math.sin(th * 2 + 0.6)) * (0.6 + 0.4 * Math.cos(th * 3));
+    rx += folds; rz += folds;
+    if (t < 0.05) { rx += 0.03 * (1 - t / 0.05); rz += 0.03 * (1 - t / 0.05); }
+  } else {                            // face: chin, mouth, nose
+    const k = (t - 0.36) / 0.64;
+    rx = 0.95 - 0.16 * k; rz = 1.00 - 0.05 * k; zoff = 0.10 * Math.min(1, k * 3);
+    rz += 0.20 * Math.pow(f, 3) * Math.exp(-Math.pow((t - 0.52) / 0.09, 2));   // chin
+    rz += 0.10 * Math.pow(f, 2) * Math.exp(-Math.pow((t - 0.70) / 0.08, 2));   // mouth
+    rz += 0.36 * Math.pow(f, 14) * Math.exp(-Math.pow((t - 0.86) / 0.09, 2)); // nose ridge
+    rx -= 0.05 * Math.pow(Math.abs(s), 2) * Math.exp(-Math.pow((t - 0.92) / 0.08, 2)); // taut sides near top
+    rx += 0.02 * Math.sin(t * 40 + th * 3) * Math.exp(-Math.pow((t - 0.47) / 0.05, 2));
+  }
+  // tucked crease under the chin
+  const crease = 0.15 * Math.exp(-Math.pow((t - 0.365) / 0.022, 2)) * (0.55 + 0.45 * f);
+  return [s * (rx - crease), c * (rz - crease) + zoff];
+}
+function topEdge(th) { const f = Math.max(0, Math.cos(th)); return 0.96 + 0.05 * Math.cos(th) - 0.02 * Math.pow(f, 8); }
+const pos = [], uv = [], idx = [];
+for (let j = 0; j <= NY; j++) for (let i = 0; i <= NT; i++) {
+  const th = (i / NT) * Math.PI * 2 - Math.PI; let t = j / NY;
+  const te = topEdge(th); const tt = t * te;
+  const [x, z] = R(th, tt);
+  let y = tt * HGT;
+  if (tt > 0.38 && tt < 0.43) y += 0.0;      // keep
+  pos.push(x, y, z); uv.push((i / NT) * 2, tt);
+}
+for (let j = 0; j < NY; j++) for (let i = 0; i < NT; i++) {
+  const a = j * (NT + 1) + i, b = a + 1, c2 = a + NT + 1, d = c2 + 1; idx.push(a, b, c2, b, d, c2);
+}
+const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); g.setIndex(idx); g.computeVertexNormals();
+const tx = await new THREE.TextureLoader().loadAsync(tex); tx.colorSpace = THREE.SRGBColorSpace; tx.wrapS = THREE.RepeatWrapping; tx.wrapT = THREE.ClampToEdgeWrapping; tx.repeat.y = 0.75; tx.offset.x = parseFloat(P.get('ox')||'0.62'); tx.offset.y = parseFloat(P.get('oy')||'0.04'); tx.anisotropy = 8;
+const outer = new THREE.MeshStandardMaterial({map: tx, roughness: .82, metalness: 0, side: THREE.FrontSide});
+const inner = new THREE.MeshStandardMaterial({map: tx, roughness: .9, color: 0x6a6a6a, side: THREE.BackSide});
+const m1 = new THREE.Mesh(g, outer), m2 = new THREE.Mesh(g, inner); m1.castShadow = true;
+const grp = new THREE.Group(); grp.add(m1, m2); grp.rotation.y = parseFloat(P.get('ry')||'-0.95'); scene.add(grp);
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), new THREE.ShadowMaterial({opacity: .16})); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+r.render(scene, cam); window.DONE = true;
+</script></body></html>

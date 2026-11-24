@@ -56,21 +56,12 @@ def crackle(col, n=55, seed=9):
 
 
 def sadu():
-    # Gulf Sadu-inspired horizontal bands: triangles, diamonds, zigzags
     M, C, K, R = '#7A1030', '#EFE3CC', '#1A1414', '#C9A24B'
     out = f'<rect width="1200" height="900" fill="{M}"/>'
-    bands = [(0, 70, K), (70, 30, C), (100, 120, M), (220, 26, C), (246, 90, K), (336, 26, C), (362, 180, M), (542, 26, C), (568, 90, K), (658, 26, C), (684, 120, M), (804, 26, C), (830, 70, K)]
-    for y, h, c in bands: out += f'<rect y="{y}" width="1200" height="{h}" fill="{c}"/>'
-    # triangles row in band 100-220
-    for x in range(0, 1240, 60):
-        out += f'<polygon points="{x},210 {x+30},120 {x+60},210" fill="{C}"/><polygon points="{x+18},200 {x+30},160 {x+42},200" fill="{R}"/>'
-        out += f'<polygon points="{x},694 {x+30},784 {x+60},694" fill="{C}"/><polygon points="{x+18},704 {x+30},744 {x+42},704" fill="{R}"/>'
-    for x in range(0, 1240, 80):
-        for yy in (291, 613):
-            out += f'<polygon points="{x+40},{yy-36} {x+76},{yy} {x+40},{yy+36} {x+4},{yy}" fill="{M}"/><polygon points="{x+40},{yy-16} {x+56},{yy} {x+40},{yy+16} {x+24},{yy}" fill="{C}"/>'
-    zz = ' '.join(f'{x},{(85 if (x//30)%2 else 15)+0}' for x in range(-30, 1260, 30))
-    for yy in (20, 845):
-        out += f'<polyline transform="translate(0,{yy-10})" points="{zz}" fill="none" stroke="{R}" stroke-width="8" stroke-linejoin="miter" opacity=".9"/>'
+    for y0 in (60, 700):
+        out += f'<rect y="{y0}" width="1200" height="140" fill="{K}"/><rect y="{y0+8}" width="1200" height="4" fill="{C}"/><rect y="{y0+128}" width="1200" height="4" fill="{C}"/>'
+        for x in range(0, 1240, 70):
+            out += f'<polygon points="{x+35},{y0+30} {x+70},{y0+70} {x+35},{y0+110} {x},{y0+70}" fill="none" stroke="{C}" stroke-width="5"/><circle cx="{x+35}" cy="{y0+70}" r="7" fill="{R}"/>'
     return out
 
 
@@ -88,7 +79,7 @@ D10 = [
  ('dune-lines', svg(topo('#5E4630', amp=55, op=.45), '#D8C3A1'),
   '<div class="a en" style="left:520px;top:300px;color:#4A3524;font-weight:900;font-size:110px;line-height:.86;letter-spacing:-2px">KHOR AL<br>ADAID</div><div class="a en tag" style="left:525px;top:520px;color:#4A3524">24.63° N · DESERT ISSUE<br>WINTER 26/27</div>',
   'Khor Al Adaid · Sand', 'رمل وخطوط كثبان'),
- ('maroon-mono', svg(''.join(f'<text x="{x}" y="{y}" font-family="Poppins" font-weight="900" font-size="54" fill="#6A0E2C" opacity=".9" transform="rotate(-12 {x} {y})">974</text>' for y in range(40, 980, 80) for x in range(((y // 80) % 2) * 70 - 100, 1300, 140)), '#7E1236') + svg('<rect x="0" y="0" width="1200" height="14" fill="#F4F1F2"/><rect x="0" y="886" width="1200" height="14" fill="#F4F1F2"/>'),
+ ('maroon-mono', svg(''.join(f'<image href="file:///home/claude/974-social/products/winter-masks/logo-maroon-dark.png" x="{x}" y="{y}" width="92" transform="rotate(-12 {x} {y})"/>' for y in range(0, 980, 80) for x in range(((y // 80) % 2) * 70 - 100, 1300, 140)), '#7E1236') + svg('<rect x="0" y="0" width="1200" height="14" fill="#F4F1F2"/><rect x="0" y="886" width="1200" height="14" fill="#F4F1F2"/>'),
   '<div class="a en" style="left:470px;top:360px;color:#fff;font-weight:900;font-size:64px;line-height:.95">RIDE<br>THE WIND</div><div class="a ar" style="left:475px;top:500px;color:#F4D9A0;font-weight:900;font-size:30px">عنابي.. على البر</div>',
   'Maroon 974 · Monogram', 'عنابي بشعار 974 مكرر'),
  ('sealine', '<div class="a" style="inset:0;background:linear-gradient(170deg,#0F5E86 0%,#2C93B8 34%,#8FD1D9 52%,#EAD9B6 66%,#D7B98A 100%)"></div>' + svg(topo('#ffffff', n=14, seed=11, amp=30, sw=3, op=.25)),
@@ -98,17 +89,17 @@ D10 = [
   '<div class="a en" style="left:470px;top:320px;color:#fff;font-weight:900;font-style:italic;font-size:96px;line-height:.9">NIGHT<br>RIDE</div><div class="a en tag" style="left:476px;top:510px;color:#C9A24B">FOR THE ONES WHO RIDE AFTER SUNSET</div>',
   'Night Ride · Black', 'أسود بخطوط سرعة'),
  ('race-974', svg('<rect width="1200" height="900" fill="#E9ECEF"/>' + ''.join(f'<rect x="-200" y="{y}" width="1700" height="{h}" fill="#F26A1B" transform="rotate(-18 600 450)"/>' for y, h in [(600, 34), (650, 12), (676, 12)]) + topo('#AEB5BD', n=10, seed=5, amp=40, op=.35), 'none'),
-  '<div class="a en" style="left:440px;top:240px;color:#1B1F24;font-weight:900;font-style:italic;font-size:260px;letter-spacing:-10px;line-height:.8">974</div><div class="a en tag" style="left:452px;top:470px;color:#F26A1B">DUNE RACING TEAM · WINTER 26/27</div>',
-  '974 Racing · Grey × Orange', 'رمادي مع برتقالي ورقم 974'),
+  '<img class="a" src="file:///home/claude/974-social/products/winter-masks/logo-ink.png" style="left:450px;top:250px;width:420px;transform:skewX(-10deg)"><div class="a en tag" style="left:452px;top:470px;color:#F26A1B">DUNE RACING TEAM · WINTER 26/27</div>',
+  '974 Racing · Grey × Orange', 'رمادي مع برتقالي وشعار 974'),
  ('desert-camo', svg(blobs(['#C7A878', '#A88456', '#7D6143', '#E2CDA6']), '#D9C29A'),
   '<div class="a en" style="left:470px;top:350px;color:#2E241A;font-weight:900;font-size:84px;line-height:.9">BLEND<br>IN.</div><div class="a ar" style="left:476px;top:520px;color:#2E241A;font-weight:900;font-size:30px">مموّه البر</div>',
   'Desert Camo', 'تمويه صحراوي'),
  ('sadu', svg(sadu()),
-  '<div class="a" style="left:460px;top:395px;background:#1A1414;padding:10px 24px 14px;border:3px solid #C9A24B"><div class="en" style="color:#EFE3CC;font-weight:900;font-size:44px;letter-spacing:6px">S A D U</div><div class="ar" style="color:#C9A24B;font-weight:900;font-size:24px;text-align:center">نقشة السدو</div></div>',
-  'Sadu · Heritage', 'نقشة السدو الخليجية'),
+  '<div class="a en" style="left:480px;top:340px;color:#EFE3CC;font-weight:900;font-size:96px;letter-spacing:10px;line-height:1">SADU</div><div class="a ar" style="left:486px;top:450px;color:#C9A24B;font-weight:900;font-size:32px">نقشة من البر</div>',
+  'Sadu · Heritage', 'السدو بشكل أبسط'),
  ('flag-edge', svg(flagedge()),
-  '<div class="a en" style="left:560px;top:320px;color:#fff;font-weight:900;font-size:150px;line-height:.82;letter-spacing:-4px">974</div><div class="a en tag" style="left:566px;top:455px;color:#F4D9A0">A QATARI BRAND · <span style="font-family:Cairo">براند قطري</span></div>',
-  'Flag Edge · Maroon × White', 'حافة العلم ٩ رؤوس'),
+  '<img class="a" src="file:///home/claude/974-social/products/winter-masks/logo-white.png" style="left:570px;top:330px;width:280px"><div class="a en tag" style="left:566px;top:470px;color:#F4D9A0">A QATARI BRAND · <span style="font-family:Cairo">براند قطري</span></div>',
+  'Flag Edge · Maroon × White', 'حافة العلم ٩ رؤوس وشعار 974'),
  ('desert-night', '<div class="a" style="inset:0;background:linear-gradient(180deg,#0B1534 0%,#1E2A5A 55%,#3A2F5E 75%)"></div>' + svg(stars() + '<path d="M0 700 C 200 600, 380 640, 560 690 S 900 620, 1200 680 L1200 900 L0 900 Z" fill="#7A5A3C"/><path d="M0 780 C 260 700, 520 760, 760 740 S 1050 700, 1200 760 L1200 900 L0 900Z" fill="#5C4229"/><circle cx="980" cy="160" r="46" fill="#F4E7C0"/><circle cx="1000" cy="148" r="44" fill="#0F1A3E"/>'),
   '<div class="a en" style="left:460px;top:300px;color:#fff;font-weight:900;font-size:76px;line-height:.92">UNDER<br>THE STARS</div><div class="a ar" style="left:466px;top:470px;color:#F4E7C0;font-weight:900;font-size:30px">كشتة الليل</div>',
   'Desert Night', 'سما البر بالليل'),
@@ -124,7 +115,7 @@ async def main():
         for k, bg, ov, *_ in D10:
             logo = f'<div class="a en" style="right:40px;bottom:30px;font-weight:900;font-size:34px;color:rgba(255,255,255,.0)"></div>'
             html = f'<html><head><style>{FONT}</style></head><body>{bg}{ov}</body></html>'
-            await pg.set_content(html); await pg.wait_for_timeout(500)
+            open(D+'/tmp.html','w').write(html); await pg.goto('file://'+D+'/tmp.html'); await pg.wait_for_timeout(700)
             await pg.screenshot(path=f'{D}/flat/{k}.png')
         await b.close()
 

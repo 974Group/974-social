@@ -14,7 +14,7 @@ CSS = G.CTA_CSS + f'''
 #pct{{position:absolute;left:0;right:0;top:900px;text-align:center}}
 #pct b{{font-family:Poppins;font-weight:900;font-size:230px;color:#fff;line-height:1}}
 #pct span{{font-family:Cairo;font-weight:900;font-size:64px;color:{GOLD};vertical-align:top;margin-left:10px}}
-#date{{position:absolute;left:0;right:0;top:1170px;text-align:center;direction:rtl}}
+#date{{position:absolute;left:0;right:0;top:1195px;text-align:center;direction:rtl}}
 .chip{{display:inline-block;background:{GOLD};color:{DEEP};font-family:Cairo;font-weight:900;font-size:40px;border-radius:40px;padding:6px 34px 12px}}
 #soon{{font-family:Cairo;font-weight:900;font-size:36px;color:#fff;margin-top:18px}}
 '''
@@ -28,13 +28,13 @@ window.R=function(t){
  q('black').style.color=`rgba(255,255,255,${1-0.55*r})`;
  q('bur').style.opacity=seg(t,2.7,3.4); q('bur').style.transform=`scale(${0.8+0.2*seg(t,2.7,3.5)})`;
  q('fri').style.opacity=seg(t,3.2,3.8); q('fri').style.transform=`translateY(${(1-seg(t,3.2,3.8))*30}px)`;
- const p=seg(t,3.9,5.0); q('pct').style.opacity=seg(t,3.9,4.2); q('n').textContent=Math.round(40*p);
+ q('pct').style.opacity=seg(t,3.9,4.2); const sc=t<5.0; q('n').textContent= sc ? String(10+Math.floor(((t*37)%1)*89)) : '40'; document.documentElement.style.setProperty('--bl', (sc? 6 : 34*seg(t,5.0,5.4)+ (t>=5.4?0:0))+'px'); q('hint').style.opacity=seg(t,5.2,5.7);
  q('pct').style.transform=`scale(${1+0.12*Math.sin(Math.PI*seg(t,4.9,5.4))})`;
  q('date').style.opacity=seg(t,5.3,5.9); q('date').style.transform=`translateY(${(1-seg(t,5.3,5.9))*30}px)`;
  const f=document.querySelector('.pf'); if(f) f.style.opacity=seg(t,5.8,6.4);
  q('logo').style.opacity=seg(t,0,.5);
 };
-R(location.hash?parseFloat(location.hash.slice(1)):99); window.READY=1;
+R(location.hash?parseFloat(location.hash.slice(1)):99); document.documentElement.style.setProperty('--bl','34px'); window.READY=1;
 </script>'''
 
 
@@ -45,8 +45,8 @@ def page():
 <svg id="strike" viewBox="0 0 900 60"><path id="line" d="M10 40 C 220 10, 520 55, 890 18" stroke="{GOLD}" stroke-width="22" stroke-linecap="round" fill="none" stroke-dasharray="1000" stroke-dashoffset="0"/></svg>
 <div id="bur" class="w">BURGUNDY</div>
 <div id="fri" class="w">FRIDAY</div>
-<div id="pct"><b id="n">40</b><b>%</b><span>خصم</span></div>
-<div id="date"><span class="chip">الخميس والجمعة ٢٦ و ٢٧ نوفمبر</span><div id="soon">جهّز سلتك من الحين 🛒</div></div>
+<div id="pct"><b id="n" style="display:inline-block;filter:blur(var(--bl,0px))">40</b><b>%</b><span>خصم</span><div id="hint" style="font-family:Cairo;font-weight:900;font-size:34px;color:#fff;margin-top:-6px">كم؟ نكشفه الخميس 👀</div></div>
+<div id="date"><span class="chip">الخميس والجمعة ٢٦ و ٢٧ نوفمبر</span></div>
 {SCRIPT}'''
     return G.doc('#0B0B0D', '#fff', body, pf_ink='#fff', extra=CSS)
 
@@ -58,7 +58,7 @@ async def main():
     async with async_playwright() as pw:
         b = await pw.chromium.launch(); pg = await b.new_page(viewport={'width': 1080, 'height': 1920})
         await pg.goto('file://' + p); await pg.wait_for_function('window.READY===1'); await pg.wait_for_timeout(800)
-        await pg.evaluate('R(99)'); await pg.screenshot(path=OUT + '/974-burgundy-friday-story.png')
+        await pg.evaluate('R(99)'); await pg.evaluate("document.documentElement.style.setProperty('--bl','34px')"); await pg.screenshot(path=OUT + '/974-burgundy-friday-story.png')
         for i in range(240):
             await pg.evaluate(f'R({i/30})'); await pg.screenshot(path=f'{fr}/{i:03d}.jpg', type='jpeg', quality=92)
         await b.close()

@@ -36,7 +36,7 @@ body{background:#0B0B0D;color:#fff}
 #pct{position:absolute;left:0;right:0;top:900px;text-align:center}
 #pct b{font-family:Poppins;font-weight:900;font-size:230px;color:#fff;line-height:1}
 #pct span{font-family:Cairo;font-weight:900;font-size:64px;color:#C9A24B;vertical-align:top;margin-left:10px}
-#date{position:absolute;left:0;right:0;top:1170px;text-align:center;direction:rtl}
+#date{position:absolute;left:0;right:0;top:1195px;text-align:center;direction:rtl}
 .chip{display:inline-block;background:#C9A24B;color:#51022D;font-family:Cairo;font-weight:900;font-size:40px;border-radius:40px;padding:6px 34px 12px}
 #soon{font-family:Cairo;font-weight:900;font-size:36px;color:#fff;margin-top:18px}
 
@@ -46,8 +46,8 @@ body{height:1920px!important;--o:230px} .pf{bottom:250px!important}</style></hea
 <svg id="strike" viewBox="0 0 900 60"><path id="line" d="M10 40 C 220 10, 520 55, 890 18" stroke="#C9A24B" stroke-width="22" stroke-linecap="round" fill="none" stroke-dasharray="1000" stroke-dashoffset="0"/></svg>
 <div id="bur" class="w">BURGUNDY</div>
 <div id="fri" class="w">FRIDAY</div>
-<div id="pct"><b id="n">40</b><b>%</b><span>خصم</span></div>
-<div id="date"><span class="chip">الخميس والجمعة ٢٦ و ٢٧ نوفمبر</span><div id="soon">جهّز سلتك من الحين 🛒</div></div>
+<div id="pct"><b id="n" style="display:inline-block;filter:blur(var(--bl,0px))">40</b><b>%</b><span>خصم</span><div id="hint" style="font-family:Cairo;font-weight:900;font-size:34px;color:#fff;margin-top:-6px">كم؟ نكشفه الخميس 👀</div></div>
+<div id="date"><span class="chip">الخميس والجمعة ٢٦ و ٢٧ نوفمبر</span></div>
 <script>
 const ease=t=>t<0?0:t>1?1:1-Math.pow(1-t,3), seg=(t,a,b)=>ease((t-a)/(b-a));
 window.R=function(t){
@@ -58,13 +58,13 @@ window.R=function(t){
  q('black').style.color=`rgba(255,255,255,${1-0.55*r})`;
  q('bur').style.opacity=seg(t,2.7,3.4); q('bur').style.transform=`scale(${0.8+0.2*seg(t,2.7,3.5)})`;
  q('fri').style.opacity=seg(t,3.2,3.8); q('fri').style.transform=`translateY(${(1-seg(t,3.2,3.8))*30}px)`;
- const p=seg(t,3.9,5.0); q('pct').style.opacity=seg(t,3.9,4.2); q('n').textContent=Math.round(40*p);
+ q('pct').style.opacity=seg(t,3.9,4.2); const sc=t<5.0; q('n').textContent= sc ? String(10+Math.floor(((t*37)%1)*89)) : '40'; document.documentElement.style.setProperty('--bl', (sc? 6 : 34*seg(t,5.0,5.4)+ (t>=5.4?0:0))+'px'); q('hint').style.opacity=seg(t,5.2,5.7);
  q('pct').style.transform=`scale(${1+0.12*Math.sin(Math.PI*seg(t,4.9,5.4))})`;
  q('date').style.opacity=seg(t,5.3,5.9); q('date').style.transform=`translateY(${(1-seg(t,5.3,5.9))*30}px)`;
  const f=document.querySelector('.pf'); if(f) f.style.opacity=seg(t,5.8,6.4);
  q('logo').style.opacity=seg(t,0,.5);
 };
-R(location.hash?parseFloat(location.hash.slice(1)):99); window.READY=1;
+R(location.hash?parseFloat(location.hash.slice(1)):99); document.documentElement.style.setProperty('--bl','34px'); window.READY=1;
 </script></div><div class="pf"><div class="payfoot"><div class="pills">
 <div class="ch"><div class="lg"><svg viewBox="0 0 24 24" style="height:54px" fill="none" stroke="#1E8E4E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 10v4M18 10v4"/></svg></div><i>كاش</i></div>
 <div class="ch"><div class="lg"><svg fill="#1A1F71" style="height:120px;width:150px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.112 8.262 5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 0 1 .894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 0 1 1.913.336l.34-1.59a5.2 5.2 0 0 0-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.88.88 0 0 0-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656 1.02-2.815.588 2.815zm-8.16-4.84-1.603 7.496H8.34l1.605-7.496z"/></svg></div><i>Visa</i></div>

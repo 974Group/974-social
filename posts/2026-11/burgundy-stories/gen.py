@@ -13,7 +13,7 @@ S = [  # time, key, Arabic title, English line, images, old price, template, pre
  ('Thu 06:00', 'softfabric', 'سيور Whoop القماش', 'WHOOP SOFT FABRIC · 11 COLOURS', p(*[f'products/whoop5-soft-fabric/cut/{c}.png' for c in ['desert', 'onyx', 'pink', 'sky', 'forest', 'orange']]), 89, 'grid', 'من '),
  ('Thu 08:00', 'fitbitfabric', 'سيور Fitbit القماش', 'FITBIT FABRIC · يتسكر باللزقة', p(*[f'posts/2026-11/ig-ads-best-sellers/fitbit-trim/{c}.png' for c in ['grey', 'navy', 'olive', 'light-pink']]), 74, 'tape', 'من '),
  ('Thu 10:00', 'cirqa2', 'سيور CIRQA سيليكون 2.0', 'GARMIN CIRQA · SILICONE 2.0', p(*[f'posts/2026-11/cirqa-silicone-2-v3/cut/{c}.png' for c in ['orange', 'lime', 'mousse-pink', 'midnight-blue']]), 89, 'receipt', ''),
- ('Thu 12:00', 'halul', 'نظارة HALUL', 'HALUL 25.67° N · فوتوكروميك', p('posts/2026-11/sunglasses/cut/halul-hero.png'), 319, 'spot', ''),
+ ('Thu 12:00', 'halul', 'نظارة HALUL', 'HALUL 25.67° N · فوتوكروميك', p('posts/2026-11/halul-carousel/src/story2.jpg'), 319, 'photo', ''),
  ('Thu 14:00', 'mask', 'الماسك', 'FACE MASK · 23 COLOURS', p(*[f'posts/2026-11/face-mask/src/cut/{c}.png' for c in ['red', 'black', 'royalblue', 'khaki', 'pink', 'green']]), 39, 'grid', ''),
  ('Thu 16:00', 'loops', 'سيور Trail و Alpine', 'APPLE WATCH LOOPS', p('products/apple-loops/cut/trail-orange.png', 'products/apple-loops/cut/alpine-black.png', 'products/apple-loops/cut/trail-navy-orange.png'), 79, 'slash', ''),
  ('Thu 18:00', 'photochromic', 'نظارة Photochromic', 'بالليل شفافة · بالشمس تغمق', p('posts/2026-11/photochromic-v2/src/front-dark.png'), 349, 'split', ''),
@@ -157,7 +157,19 @@ def last(*_):
     return G.doc(DEEP, '#fff', body, pf_ink='#fff', extra=CSS)
 
 
-T = dict(slash=slash, split=split, grid=grid, tape=tape, receipt=receipt, spot=spot, last=last)
+def photo(t, ar, en, L, old, pre):
+    body = f'''<img class="abs" src="file://{L[0]}" style="left:-300px;top:0;width:1680px;height:1920px;object-fit:cover;filter:blur(40px)"><div class="abs" style="inset:0;background:rgba(244,241,242,.35)"></div>
+<img class="abs" src="file://{L[0]}" style="left:-120px;top:420px;width:1320px;-webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 78%,transparent 100%)">
+<div class="abs" style="left:0;right:0;bottom:0;height:1060px;background:linear-gradient(0deg,{DEEP} 0%,{DEEP} 62%,rgba(81,2,45,0) 100%)"></div><!--/bk-->{head('#fff', G.LB)}
+<div class="abs badge" style="right:60px;top:120px;width:180px;height:180px;font-size:54px;transform:rotate(-10deg)">-40%</div>
+<div class="abs ar" style="left:48px;right:48px;top:800px;color:#fff;text-align:center"><div style="font-weight:900;font-size:66px">{ar}</div><div class="en" style="font-weight:700;font-size:20px;letter-spacing:3px;color:{GOLD}">{en}</div></div>
+<div class="abs" style="left:0;right:0;top:930px">{price(old, pre, '#fff', GOLD)}</div>
+<div class="abs note" style="left:48px;right:48px;top:1150px;color:#F4D9A0">{NOTE}</div>
+<div class="abs" style="left:0;right:0;top:1205px;display:flex;justify-content:center">{G.cta('اطلب من الموقع', GOLD, DEEP)}</div>'''
+    return G.doc(DEEP, '#fff', body, pf_ink='#fff', extra=CSS)
+
+
+T = dict(photo=photo, slash=slash, split=split, grid=grid, tape=tape, receipt=receipt, spot=spot, last=last)
 if __name__ == '__main__':
     G.STORY = True
     only = sys.argv[1:]

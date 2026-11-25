@@ -34,7 +34,7 @@ def post():
     return G.doc(PAPER, DEEP, body, extra=CSS)
 
 def story():
-    keys = ['padel','sun','football','snowflake','pink-x','pink-flower','ladybug','handbag','pink-car']
+    keys = ['padel','tennis-ball','football','sun','snowflake','pink-x','pink-flower','ladybug','handbag']
     body = f'''
 <div class="abs" style="inset:0;background:radial-gradient(90% 60% at 50% 40%,{M} 0%,{DEEP} 70%)"></div><!--/bk-->
 <img class="abs" src="file://{G.LW}" style="left:50%;transform:translateX(-50%);top:0px;height:52px">

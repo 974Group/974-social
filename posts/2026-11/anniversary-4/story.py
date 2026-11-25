@@ -30,42 +30,43 @@ window.R=function(t){
  cx.clearRect(0,0,1080,1920);
  for(let i=0;i<140;i++){const x=rnd(i)*1080, y=(rnd(i+500)*1920 - t*(30+rnd(i+900)*60))%1920, a=0.15+0.5*rnd(i+77)*(0.5+0.5*Math.sin(t*3+i));
    cx.fillStyle=`rgba(232,200,120,${a})`; cx.beginPath(); cx.arc(x,(y+1920)%1920,1+rnd(i+3)*2.6,0,7); cx.fill();}
- for(const [tb,sd] of [[0.12,0],[5.55,1000]]){ if(t>tb){const k=t-tb; for(let i=0;i<200;i++){const j=i+sd, ang=rnd(j+11)*6.283, sp=500+rnd(j+31)*1300;
+ for(const [tb,sd] of [[0.7,0],[5.55,1000]]){ if(t>tb){const k=t-tb; for(let i=0;i<200;i++){const j=i+sd, ang=rnd(j+11)*6.283, sp=500+rnd(j+31)*1300;
    const x=540+Math.cos(ang)*sp*k*(1-0.35*k), y=A.cy+Math.sin(ang)*sp*k*(1-0.35*k)+520*k*k, al=Math.max(0,1-k/2.4);
    if(al<=0) continue; cx.save(); cx.translate(x,y); cx.rotate(k*8*rnd(j+5)+j); cx.fillStyle=(i%3==0)?`rgba(255,255,255,${al})`:(i%3==1)?`rgba(201,162,75,${al})`:`rgba(244,217,160,${al})`;
    cx.fillRect(-7,-3,14+rnd(j)*10,6); cx.restore();}}}
  // background: black -> burgundy wipe right after the hook
- document.documentElement.style.setProperty('--r',(seg(t,0.35,1.1)*140)+'%');
+ document.documentElement.style.setProperty('--r',(seg(t,0.7,1.4)*140)+'%');
  // 40% hook from frame 0 (punch-in)
- const p0=0.86+0.14*back(lin(t,0,0.3)); q('pct').style.transform=`scale(${p0})`;
+ const cn=Math.min(40,Math.floor(41*lin(t,0,0.68))); const pre=t<0.7; q('c40').textContent=cn+'%'; q('c40').style.opacity=pre?1:0;
+ const p0=pre?0.8+0.06*Math.sin(t*60)*0+0.12*lin(t,0,.68):0.92+0.08*back(lin(t,0.7,1.0)); q('pct').style.transform=`scale(${p0})`;
  // u: 0 = 4 sits in "40%", 1 = big outlined 4 centred (anniversary)
- const u=seg(t,1.9,2.6)-seg(t,4.9,5.5);
+ const u=seg(t,2.05,2.7)-seg(t,4.9,5.5);
  const bx=q('big4'); bx.style.transformOrigin=`${A.cx0-parseFloat(bx.style.left)}px ${A.cy0-parseFloat(bx.style.top)-230}px`;
  const m=1-u, sc=1+(A.s-1)*m; bx.style.transform=`translate(${(A.cx1-A.cx0)*m}px,${(A.cy1-A.cy0)*m}px) scale(${sc})`;
- const inAnn=t>1.85&&t<5.6; bx.style.opacity=inAnn?1:0; q('f4').style.color=inAnn?'transparent':'#C9A24B';
+ const inAnn=t>2.0&&t<5.6; bx.style.opacity=inAnn?1:0; q('f4').style.color=(inAnn||pre)?'transparent':'#C9A24B';
  q('st').style.strokeDashoffset=0; q('st').style.opacity=1;
  q('st').style.fill=`rgba(201,162,75,${1-seg(u,.3,.9)})`;
  const gl=0.5+0.5*Math.sin(t*5); q('st').style.filter=`drop-shadow(0 0 ${(18+22*gl)*u}px rgba(201,162,75,.9))`;
  // 0% leaves, then slams back
- const out=seg(t,1.8,2.2), z=lin(t,5.25,5.55), zb=t<5.25?0:back(z);
- const z0=t<3?(1-out):zb; q('f0').style.opacity=t<3?(1-out):(z>0?1:0);
+ const out=seg(t,1.95,2.3), z=lin(t,5.25,5.55), zb=t<5.25?0:back(z);
+ const z0=t<3?(1-out):zb; q('f0').style.opacity=pre?0:(t<3?(1-out):(z>0?1:0));
  q('f0').style.transform=t<3?`translateX(${out*260}px)`:`scale(${2.4-1.4*zb})`;
  // ring + shake at both slams
- q('ring').style.top=A.cy+'px'; let rk=lin(t,0.12,0.9); if(t>5.55) rk=lin(t,5.55,6.3); q('ring').style.opacity=(rk>0&&rk<1)?1-rk:0; q('ring').style.width=q('ring').style.height=(40+1400*ease(rk))+'px';
- const sh=(a)=>t>a&&t<a+0.3?Math.sin(t*120)*10*(a+0.3-t)/0.3:0; document.body.style.transform=`translate(${sh(0.12)+sh(5.55)}px,0)`;
+ q('ring').style.top=A.cy+'px'; let rk=lin(t,0.7,1.45); if(t>5.55) rk=lin(t,5.55,6.3); q('ring').style.opacity=(rk>0&&rk<1)?1-rk:0; q('ring').style.width=q('ring').style.height=(40+1400*ease(rk))+'px';
+ const sh=(a)=>t>a&&t<a+0.3?Math.sin(t*120)*10*(a+0.3-t)/0.3:0; document.body.style.transform=`translate(${sh(0.7)+sh(5.55)}px,0)`;
  // scene-2 texts: shown in the hook, hidden during anniversary, back at the end
- const hk=1-seg(t,1.75,2.1), fin=seg(t,5.6,6.0);
- q('blk').style.opacity=Math.max(seg(t,0.5,0.8)*hk,fin); q('ln').style.strokeDashoffset=1000*(1-Math.max(seg(t,0.75,1.05)*(t<3?1:0),seg(t,5.8,6.1)));
- const bu=Math.max(seg(t,0.95,1.3)*hk,fin); q('bur').style.opacity=bu; q('bur').style.transform=`scale(${0.75+0.25*bu})`;
- q('off').style.opacity=Math.max(seg(t,0.3,0.6)*hk,seg(t,5.8,6.2));
+ const hk=1-seg(t,1.9,2.2), fin=seg(t,5.6,6.0);
+ q('blk').style.opacity=Math.max(seg(t,1.0,1.25)*hk,fin); q('ln').style.strokeDashoffset=1000*(1-Math.max(seg(t,1.2,1.45)*(t<3?1:0),seg(t,5.8,6.1)));
+ const bu=Math.max(seg(t,1.4,1.7)*hk,fin); q('bur').style.opacity=bu; q('bur').style.transform=`scale(${0.75+0.25*bu})`;
+ q('off').style.opacity=Math.max(seg(t,0.85,1.1)*hk,seg(t,5.8,6.2));
  q('chip').style.opacity=seg(t,6.0,6.4); q('chip').style.transform=`scale(${0.6+0.4*back(lin(t,6.0,6.45))})`;
  q('terms').style.opacity=seg(t,6.3,6.7);
  const f=document.querySelector('.pf'); if(f) f.style.opacity=seg(t,6.5,6.9);
  // anniversary scene
- const an=seg(t,2.4,2.8)*(1-seg(t,4.7,5.0));
- q('yrs').style.opacity=an; q('yrs').style.transform=`translateX(${(1-seg(t,2.4,2.8))*120}px)`;
- q('cnt').textContent=2022+Math.min(4,Math.floor(5*lin(t,2.6,3.6))); q('cnt').style.opacity=an;
- q('ar1').style.opacity=seg(t,3.0,3.4)*(1-seg(t,4.7,5.0)); q('ar1').style.transform=`translateY(${(1-seg(t,3.0,3.4))*30}px)`;
+ const an=seg(t,2.5,2.9)*(1-seg(t,4.7,5.0));
+ q('yrs').style.opacity=an; q('yrs').style.transform=`translateX(${(1-seg(t,2.5,2.9))*120}px)`;
+ q('cnt').textContent=2022+Math.min(4,Math.floor(5*lin(t,2.7,3.7))); q('cnt').style.opacity=an;
+ q('ar1').style.opacity=seg(t,3.1,3.5)*(1-seg(t,4.7,5.0)); q('ar1').style.transform=`translateY(${(1-seg(t,3.1,3.5))*30}px)`;
  const g2=Math.sin(Math.PI*lin(t,6.6,7.9)); q('pct').style.textShadow=`0 0 ${70*g2}px rgba(244,217,160,${0.85*g2})`;
  q('logo').style.opacity=1;
 };
@@ -82,7 +83,7 @@ def page():
 <div id="blk" class="abs P" style="left:0;right:0;top:150px;text-align:center;font-size:110px;color:rgba(255,255,255,.55);letter-spacing:-2px">BLACK
  <svg style="position:absolute;left:300px;top:52px" width="480" height="40" viewBox="0 0 480 40"><path id="ln" d="M6 28 C 150 6, 320 36, 474 10" stroke="{GOLD}" stroke-width="16" stroke-linecap="round" fill="none" stroke-dasharray="1000" stroke-dashoffset="1000"/></svg></div>
 <div id="bur" class="abs P" style="left:0;right:0;top:290px;text-align:center;font-size:100px;color:#fff;line-height:1.05">BURGUNDY<br><span style="color:{GOLD}">FRIDAY</span></div>
-<div id="pct" class="abs P" style="left:0;right:0;top:560px;text-align:center;font-size:330px;line-height:1;letter-spacing:-8px"><span id="f4" style="color:transparent">4</span><span id="f0" style="display:inline-block;color:#fff;transform-origin:30% 60%">0%</span></div>
+<div id="pct" class="abs P" style="left:0;right:0;top:560px;text-align:center;font-size:330px;line-height:1;letter-spacing:-8px"><div id="c40" style="position:absolute;left:0;right:0;top:0;color:#fff">0%</div><span id="f4" style="color:transparent">4</span><span id="f0" style="display:inline-block;color:#fff;transform-origin:30% 60%">0%</span></div>
 <div id="off" class="abs" dir="rtl" style="left:0;right:0;top:930px;text-align:center;font-family:Cairo;font-weight:900;font-size:56px;color:#fff">خصم على كل الموقع</div>
 <div id="chip" class="abs" dir="rtl" style="left:0;right:0;top:1040px;text-align:center"><span class="chip">الخميس والجمعة ٢٦ و ٢٧ نوفمبر</span></div>
 <div id="terms" class="abs" dir="rtl" style="left:0;right:0;top:1140px;text-align:center;font-family:Cairo;font-weight:800;font-size:28px;color:#F4D9A0;line-height:1.55">للطلبات من الموقع فقط <span class="P" style="font-weight:700">974group.net</span><br>ما يجتمع مع أي خصم أو عرض ثاني</div>

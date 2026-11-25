@@ -44,13 +44,18 @@ def shimmer(dur):
 def swish(dur=.3):
     n = int(dur*SR); x = rng.standard_normal(n); y = x - lp(x, .15); return y*np.sin(np.pi*np.arange(n)/n)*.5
 
-add(impact(), 0.10, 1.0); add(sparkle(), 0.14, .55, -.3); add(sparkle(), 0.16, .55, .3)
-add(whoosh(.8), 0.32, 1.1)                    # burgundy wipe
-add(swish(), 0.75, 1.4)                        # strike through BLACK
-add(whoosh(.45, up=False), 1.78, 1.2, .4)       # 0% slides out
-add(shimmer(1.2), 1.95, 1.8)                   # 4 grows into the outline
-for k in range(5): add(tick(), 2.6+k*0.2, 1.8)  # 2022 -> 2026 counter
-add(whoosh(.5), 4.95, 1.1, -.3)                # 4 returns
+def clk(hi=True):
+    n = int(.05*SR); t = np.arange(n)/SR
+    return (np.sin(2*np.pi*(2400 if hi else 1700)*t)*np.exp(-t/.006) + (rng.standard_normal(n)*np.exp(-t/.002))*.4)*.6
+# 0 -> 40 count: a clock tick every 2 %
+for k in range(1, 21): add(clk(k % 2 == 0), 0.68*(2*k)/41, 1.6 + k*0.04, (-.2 if k % 2 else .2))
+add(impact(), 0.68, 1.0); add(sparkle(), 0.72, .55, -.3); add(sparkle(), 0.74, .55, .3)
+add(whoosh(.8), 0.72, 1.1)                    # burgundy wipe
+add(swish(), 1.2, 1.4)                        # strike through BLACK
+add(whoosh(.45, up=False), 1.93, 1.2, .4)      # 0% slides out
+add(shimmer(1.2), 2.1, 1.8)                   # 4 grows into the outline
+for k in range(5): add(clk(k % 2 == 0), 2.7+k*0.2, 2.6)   # 2022 -> 2026 tick-tock
+add(whoosh(.5), 4.95, 1.1, -.3)               # 4 returns
 add(impact(), 5.52, 1.0); add(sparkle(), 5.56, .55, -.3); add(sparkle(), 5.58, .55, .3)
 add(swish(), 5.85, 1.2)
 add(shimmer(1.3), 6.6, 1.2)                   # final glow

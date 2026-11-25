@@ -46,7 +46,7 @@ def page():
 <div id="bur" class="w">BURGUNDY</div>
 <div id="fri" class="w">FRIDAY</div>
 <div id="pct"><b id="n">40</b><b>%</b><span>خصم</span></div>
-<div id="date"><span class="chip">الجمعة ٢٧ نوفمبر</span><div id="soon">جهّز سلتك من الحين 🛒</div></div>
+<div id="date"><span class="chip">الخميس والجمعة · ٢٦–٢٧ نوفمبر</span><div id="soon">جهّز سلتك من الحين 🛒</div></div>
 {SCRIPT}'''
     return G.doc('#0B0B0D', '#fff', body, pf_ink='#fff', extra=CSS)
 

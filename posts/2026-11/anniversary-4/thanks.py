@@ -6,13 +6,14 @@ M, DEEP, GOLD = '#720842', '#51022D', '#C9A24B'
 CSS = '''
 .t{font-family:Cairo;color:#fff;text-align:center;direction:rtl}
 .P{font-family:Poppins;font-weight:900}
+/* owner asked: no payfoot on this story */ .pf{display:none!important}
 .ln{width:120px;height:4px;background:%s;margin:0 auto;border-radius:4px}
 ''' % GOLD
 def page():
     body = f'''<div class="abs" style="inset:0;background:radial-gradient(90% 55% at 50% 30%,#8A1550 0%,{M} 45%,{DEEP} 100%)"></div>
 <div class="abs" style="inset:0;background-image:radial-gradient(rgba(232,200,120,.10) 1.6px,transparent 1.7px);background-size:30px 30px"></div><!--/bk-->
 <img class="abs" src="file://{G.LW}" style="left:50%;transform:translateX(-50%);top:0;height:54px">
-<div class="abs t" style="left:70px;right:70px;top:110px">
+<div class="abs t" style="left:70px;right:70px;top:200px">
   <div style="display:flex;justify-content:center;align-items:center;gap:22px;direction:ltr">
     <span class="P" style="font-size:190px;line-height:.9;color:transparent;-webkit-text-stroke:5px {GOLD}">4</span>
     <span class="P" style="font-size:54px;line-height:1.05;color:#fff;text-align:left">YEARS<br><span style="color:{GOLD};font-size:34px;letter-spacing:3px">THANK YOU</span></span>

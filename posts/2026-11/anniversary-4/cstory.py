@@ -66,7 +66,7 @@ def page():
   <div class="P" style="font-size:46px;line-height:1.1"><span id="blk" style="position:relative;color:rgba(255,255,255,.55)">BLACK<svg style="position:absolute;left:-6px;top:22px" width="190" height="20" viewBox="0 0 190 20"><path id="ln" d="M4 12 C 60 4, 130 16, 186 6" stroke="{GOLD}" stroke-width="8" stroke-linecap="round" fill="none" stroke-dasharray="600" stroke-dashoffset="600"/></svg></span><span style="display:inline-block;width:22px"></span><span id="bur" style="color:#fff">BURGUNDY FRIDAY</span></div>
   <div id="pct" class="P" style="font-size:250px;color:#fff;line-height:1.05;margin-top:6px"><span id="cnt">0%</span></div>
   <div id="off" dir="rtl" style="font-family:Cairo;font-weight:900;font-size:48px;color:{GOLD}">خصم على كل الموقع</div>
-  <div id="chip" dir="rtl" style="margin-top:30px"><span class="chip">اليوم الجمعة آخر يوم لين الساعة ١١:٥٩</span></div>
+  <div id="chip" dir="rtl" style="margin-top:30px"><span class="chip">اليوم الجمعة آخر يوم لين الساعة <bdi dir="ltr" style="font-family:Poppins;font-weight:800">11:59</bdi></span></div>
  </div></div>
 <div id="terms" class="abs" dir="rtl" style="left:0;right:0;top:1150px;text-align:center;font-family:Cairo;font-weight:800;font-size:30px;line-height:1.6;color:{DEEP}">للطلبات من الموقع فقط <span class="P" style="font-weight:700">974group.net</span><br>ما يجتمع مع أي خصم أو عرض ثاني</div>
 <div id="ring"></div><canvas id="cv"></canvas>

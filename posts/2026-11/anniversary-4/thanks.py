@@ -20,19 +20,19 @@ def page():
   <div style="font-weight:900;font-size:66px;margin-top:26px;line-height:1.25">شكراً من القلب</div>
   <div class="ln" style="margin-top:26px"></div>
   <div style="font-weight:700;font-size:38px;line-height:1.75;margin-top:30px">
-    اللي يعرفنا يدري إننا نادراً نسوي خصومات<br>
-    خصم هالأسبوع مو عشان البيع..<br>
-    هو <span style="color:{GOLD};font-weight:900">تقدير لكل واحد دعمنا</span><br>
-    ووصّلنا للي احنا فيه اليوم، بمناسبة <span style="color:{GOLD};font-weight:900">٤ سنين</span> من الافتتاح
+    اللي يعرفنا يدري إن احنا نادراً نسوي خصومات<br>
+    خصم هالأسبوع مب عشان البيع..<br>
+    هو <span style="color:{GOLD};font-weight:900">تقدير لكل واحد دعمنا</span> بمناسبة <span style="color:{GOLD};font-weight:900">٤ سنين</span> من الافتتاح<br>
+    ووصلنا للي احنا فيه بفضل الله ثم فضلكم
   </div>
   <div class="ln" style="margin-top:34px;width:60px;opacity:.6"></div>
   <div style="font-weight:700;font-size:38px;line-height:1.75;margin-top:30px">
     والحمدلله الطلبات <span style="color:{GOLD};font-weight:900">فاقت توقعاتنا</span><br>
-    نطلب منكم شوي صبر علينا،<br>
+    نطلب منكم الصبر علينا،<br>
     وإن شاء الله كل الطلبات توصلكم اليوم<br>
     <span style="font-size:31px;color:#F4D9A0">وأي تأخير بيكون خارج عن إرادتنا</span>
   </div>
-  <div style="font-weight:900;font-size:44px;margin-top:40px">فريق <span class="P" style="font-size:44px">974</span> 🤍</div>
+  <div style="font-weight:900;font-size:44px;margin-top:40px;display:flex;justify-content:center;align-items:center;gap:16px">فريق <img src="file://{G.LW}" style="height:40px"> 🤍</div>
 </div>'''
     return G.doc(DEEP, '#fff', body, pf_ink='#fff', extra=CSS)
 if __name__ == '__main__':

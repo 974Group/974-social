@@ -22,7 +22,8 @@ def page():
   <div style="font-weight:700;font-size:38px;line-height:1.75;margin-top:30px">
     اللي يعرفنا يدري إن احنا نادر ما نسوي خصومات<br>
     خصم هالأسبوع مب عشان البيع..<br>
-    هو <span style="color:{GOLD};font-weight:900">تقدير لكل واحد دعمنا</span> بمناسبة <span style="color:{GOLD};font-weight:900">٤ سنين</span> من الافتتاح<br>
+    الخصم هو <span style="color:{GOLD};font-weight:900">تقدير لكل واحد دعمنا</span><br>
+    بمناسبة <span style="color:{GOLD};font-weight:900">٤ سنين</span> من الافتتاح<br>
     ووصلنا للي احنا فيه بفضل الله ثم فضلكم
   </div>
   <div class="ln" style="margin-top:34px;width:60px;opacity:.6"></div>

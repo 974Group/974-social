@@ -20,7 +20,7 @@ def page():
   <div style="font-weight:900;font-size:66px;margin-top:26px;line-height:1.25">شكراً من القلب</div>
   <div class="ln" style="margin-top:26px"></div>
   <div style="font-weight:700;font-size:38px;line-height:1.75;margin-top:30px">
-    اللي يعرفنا يدري إن احنا نادراً نسوي خصومات<br>
+    اللي يعرفنا يدري إن احنا نادر ما نسوي خصومات<br>
     خصم هالأسبوع مب عشان البيع..<br>
     هو <span style="color:{GOLD};font-weight:900">تقدير لكل واحد دعمنا</span> بمناسبة <span style="color:{GOLD};font-weight:900">٤ سنين</span> من الافتتاح<br>
     ووصلنا للي احنا فيه بفضل الله ثم فضلكم

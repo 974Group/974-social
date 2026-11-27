@@ -118,13 +118,13 @@ def receipt(t, ar, en, L, old, pre):
     line = lambda a, b, c='#333', w=700, s=34: f'<div style="display:flex;justify-content:space-between;direction:rtl;font-family:Cairo;font-weight:{w};font-size:{s}px;color:{c};margin:10px 0"><span>{a}</span><span class="en" style="font-family:Poppins">{b}</span></div>'
     body = f'''<div class="abs" style="inset:0;background:{BUR}"></div><div class="abs" style="inset:0;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 18px,transparent 18px 36px)"></div><!--/bk-->{head('#fff', G.LW)}
 <div class="abs" style="left:50px;top:90px">{imgs(L, 420)}</div>
-<div class="abs" style="left:120px;right:120px;top:530px;background:#FFFDF8;border-radius:22px 22px 0 0;padding:34px 46px 20px;box-shadow:0 20px 40px rgba(0,0,0,.35)">
+<div class="abs" style="left:120px;right:120px;top:530px;background:#FFFDF8;border-radius:22px 22px 0 0;padding:34px 46px 8px;box-shadow:0 20px 40px rgba(0,0,0,.35)">
  <div class="en" style="text-align:center;font-weight:800;font-size:18px;letter-spacing:5px;color:#888">974 · RECEIPT · BURGUNDY FRIDAY</div>
  <div class="ar" style="text-align:center;font-weight:900;font-size:46px;color:{DEEP};margin:10px 0 6px">{ar}</div>
  <div style="border-top:3px dashed #ccc;margin:14px 0"></div>
  {line('السعر', f'{pre}{old}')}{line('خصم', '-40%', BUR, 900)}
  <div style="border-top:3px dashed #ccc;margin:14px 0"></div>
- {line('الحين', f'{off(old)} QAR', DEEP, 900, 52)}
+ {line('بعد الخصم', f'{off(old)} QAR', DEEP, 900, 46)}
 </div>
 <svg class="abs" style="left:120px;top:{530+430}px" width="840" height="26"><polygon points="0,0 {zz} 840,0" fill="#FFFDF8"/></svg>
 <div class="abs note" style="left:48px;right:48px;top:1110px;color:#F4D9A0">{NOTE}</div>
